@@ -1,3 +1,6 @@
+CollisionPolygon2D
+StaticBody2D
+Camera2D
 CanvasLayer
 Control
 Node2D

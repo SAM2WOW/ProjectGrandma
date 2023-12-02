@@ -1,8 +1,23 @@
-[gd_scene format=3 uid="uid://svu81oy40o3p"]
+[gd_scene load_steps=3 format=3 uid="uid://svu81oy40o3p"]
+
+[ext_resource type="Texture2D" uid="uid://cmp4cxxq8yuat" path="res://arts/ivory-off-white-paper-texture.jpg" id="1_1jmmi"]
+[ext_resource type="Script" path="res://levels/main.gd" id="1_udxji"]
 
 [node name="Main" type="Node"]
+script = ExtResource("1_udxji")
 
 [node name="Node2D" type="Node2D" parent="."]
+
+[node name="BG" type="Sprite2D" parent="Node2D"]
+position = Vector2(0, -690)
+texture = ExtResource("1_1jmmi")
+
+[node name="Camera2D" type="Camera2D" parent="Node2D"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Node2D"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Node2D/StaticBody2D"]
+polygon = PackedVector2Array(-960, -544, -960, 544, 960, 544, 960, -544, 1088, -544, 1088, 672, -1088, 672, -1088, -544)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
