@@ -1,9 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://svu81oy40o3p"]
+[gd_scene load_steps=7 format=3 uid="uid://svu81oy40o3p"]
 
 [ext_resource type="Texture2D" uid="uid://cmp4cxxq8yuat" path="res://arts/ivory-off-white-paper-texture.jpg" id="1_1jmmi"]
-[ext_resource type="Script" path="res://levels/main.gd" id="1_udxji"]
+[ext_resource type="Script" path="res://scripts/main.gd" id="1_udxji"]
 [ext_resource type="Texture2D" uid="uid://cxt1od4epjtpf" path="res://icon.svg" id="3_u1ivw"]
 [ext_resource type="PackedScene" uid="uid://b5em8781rmds2" path="res://prefabs/ingredient.tscn" id="4_6e4e2"]
+[ext_resource type="Script" path="res://scripts/RecipeUI.gd" id="5_vajsc"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_racno"]
+font_size = 50
+font_color = Color(0.00392157, 0.00392157, 0.00392157, 1)
 
 [node name="Main" type="Node"]
 script = ExtResource("1_udxji")
@@ -48,7 +53,7 @@ texture = ExtResource("3_u1ivw")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Control" type="Control" parent="CanvasLayer"]
+[node name="RecipeUI" type="Control" parent="CanvasLayer"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -56,3 +61,12 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
+script = ExtResource("5_vajsc")
+
+[node name="IngredientLabel" type="Label" parent="CanvasLayer/RecipeUI"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "1. apple
+2. soysauce"
+label_settings = SubResource("LabelSettings_racno")
