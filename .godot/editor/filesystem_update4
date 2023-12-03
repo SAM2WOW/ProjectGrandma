@@ -1,7 +1,12 @@
-res://prefabs/ingredient.tscn
-res://scripts/ingredient.gd
 res://levels/main.tscn
-res://prefabs/draggable.tscn
-res://prefabs/pan.tscn
-res://scripts/ingredientState.gd
-res://scripts/pan.gd
+res://FluidSim2D/WaterGenPhysicsServer.gd
+res://scripts/ingredient.gd
+res://Water_View_Shader.gdshader
+res://FluidSim2D/Water Sim.tscn
+res://FluidSim2D/Water_Color.tscn
+res://FluidSim2D/MouseJig.tscn
+res://FluidSim2D/WaterParticle.tscn
+res://FluidSim2D/WaterParticle.gd
+res://scripts/liquidDraggable.gd
+res://prefabs/liquidContainer.tscn
+res://scripts/draggable.gd

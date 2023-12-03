@@ -3,6 +3,7 @@ class_name Draggable
 
 @export var dragPoint : RigidBody2D;
 @export var airDrag : float;
+var dragging = false;
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -24,14 +25,16 @@ func _on_mouse_exited():
 	# unhighlight object
 	pass # Replace with function body.
 
+func _physics_process(delta):
+	pass;
 
 func _on_input_event(viewport, event, shape_idx):
 	if !event is InputEventMouseButton: return;
-	if event.pressed:
+	if event.button_index == 1 && event.pressed:
 		GameManager.BeginDragObject(self);
-		print("pickup");
 
 func Drag(delta):
+	dragging = true;
 	var mousePos: Vector2 = get_global_mouse_position();
 	var speed: float = dragPoint.global_position.distance_to(mousePos) / delta;
 	var raycast = PhysicsRayQueryParameters2D.create(dragPoint.global_position, mousePos);
@@ -41,7 +44,8 @@ func Drag(delta):
 	
 	dragPoint.linear_velocity = velocity;
 	
-	#look_at(mousePos);
+func ObjectAction(event):
+	pass;
 
 func AirDrag(delta):
 	# print(linear_velocity.length());
