@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://svu81oy40o3p"]
+[gd_scene load_steps=8 format=3 uid="uid://svu81oy40o3p"]
 
 [ext_resource type="Texture2D" uid="uid://cmp4cxxq8yuat" path="res://arts/ivory-off-white-paper-texture.jpg" id="1_1jmmi"]
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_udxji"]
 [ext_resource type="Texture2D" uid="uid://cxt1od4epjtpf" path="res://icon.svg" id="3_u1ivw"]
 [ext_resource type="PackedScene" uid="uid://b5em8781rmds2" path="res://prefabs/ingredient.tscn" id="4_6e4e2"]
 [ext_resource type="Script" path="res://scripts/RecipeUI.gd" id="5_vajsc"]
+[ext_resource type="Script" path="res://scripts/RecipeManager.gd" id="6_coe6b"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_racno"]
 font_size = 50
@@ -12,6 +13,9 @@ font_color = Color(0.00392157, 0.00392157, 0.00392157, 1)
 
 [node name="Main" type="Node"]
 script = ExtResource("1_udxji")
+
+[node name="RecipeManager" type="Node2D" parent="."]
+script = ExtResource("6_coe6b")
 
 [node name="Node2D" type="Node2D" parent="."]
 
