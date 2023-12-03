@@ -1,2 +1,8 @@
 res://levels/main.tscn
-res://levels/main.gd
+res://scripts/ingredient.gd
+res://scripts/gameManager.gd
+res://levels/prefabs/draggable.tscn
+res://scripts/draggable.gd
+res://levels/prefabs/ingredient.tscn
+res://prefabs/ingredient.tscn
+res://prefabs/draggable.tscn

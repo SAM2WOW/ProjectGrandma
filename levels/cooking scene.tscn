@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://rd5xysv333t1"]
+
+[ext_resource type="Texture2D" uid="uid://cxt1od4epjtpf" path="res://icon.svg" id="1_ettcx"]
+
+[node name="CookingScene" type="Node2D"]
+
+[node name="Pan" type="RigidBody2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Pan"]
+modulate = Color(1, 1, 1, 0.235294)
+scale = Vector2(1, 0.25)
+texture = ExtResource("1_ettcx")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Pan"]
+polygon = PackedVector2Array(-64, -14, -49, 16, 45, 16, 62, -14, 43, 12, -46, 12)

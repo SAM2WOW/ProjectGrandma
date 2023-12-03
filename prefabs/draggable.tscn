@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=3 uid="uid://c3gtn7dcgsaa0"]
+
+[ext_resource type="Script" path="res://scripts/draggable.gd" id="1_4v06w"]
+[ext_resource type="Texture2D" uid="uid://cxt1od4epjtpf" path="res://icon.svg" id="2_0rn36"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_eujoj"]
+radius = 64.0
+height = 128.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_00g0w"]
+
+[node name="Draggable" type="RigidBody2D" node_paths=PackedStringArray("dragPoint")]
+input_pickable = true
+linear_damp = 4.0
+angular_damp = 4.0
+script = ExtResource("1_4v06w")
+dragPoint = NodePath("DragPoint")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_0rn36")
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_eujoj")
+metadata/_edit_lock_ = true
+
+[node name="PinJoint2D" type="PinJoint2D" parent="."]
+node_a = NodePath("..")
+node_b = NodePath("../DragPoint")
+
+[node name="DragPoint" type="RigidBody2D" parent="."]
+position = Vector2(0, -96)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DragPoint"]
+shape = SubResource("CircleShape2D_00g0w")
+disabled = true
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
