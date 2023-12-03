@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://svu81oy40o3p"]
+[gd_scene load_steps=6 format=3 uid="uid://svu81oy40o3p"]
 
 [ext_resource type="Texture2D" uid="uid://cmp4cxxq8yuat" path="res://arts/ivory-off-white-paper-texture.jpg" id="1_1jmmi"]
 [ext_resource type="Script" path="res://levels/main.gd" id="1_udxji"]
+[ext_resource type="PackedScene" uid="uid://bx1jmjos4d8m" path="res://prefabs/pan.tscn" id="3_i0x1x"]
 [ext_resource type="Texture2D" uid="uid://cxt1od4epjtpf" path="res://icon.svg" id="3_u1ivw"]
 [ext_resource type="PackedScene" uid="uid://b5em8781rmds2" path="res://prefabs/ingredient.tscn" id="4_6e4e2"]
 
@@ -11,29 +12,20 @@ script = ExtResource("1_udxji")
 [node name="Node2D" type="Node2D" parent="."]
 
 [node name="BG" type="Sprite2D" parent="Node2D"]
-visible = false
 position = Vector2(0, -690)
 texture = ExtResource("1_1jmmi")
-metadata/_edit_lock_ = true
 
 [node name="Camera2D" type="Camera2D" parent="Node2D"]
 
 [node name="Cooking Scene" type="Node2D" parent="Node2D"]
 position = Vector2(0, -446)
 
-[node name="Pan" type="RigidBody2D" parent="Node2D/Cooking Scene"]
-position = Vector2(0, 447)
-
-[node name="Sprite2D" type="Sprite2D" parent="Node2D/Cooking Scene/Pan"]
-modulate = Color(1, 1, 1, 0.235294)
-position = Vector2(-16, 15.0001)
-scale = Vector2(5.25, 1.25)
-texture = ExtResource("3_u1ivw")
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Node2D/Cooking Scene/Pan"]
-polygon = PackedVector2Array(-352, -65, -256, 95, 256, 95, 320, -65, 192, 63, -192, 63)
+[node name="Pan" parent="Node2D/Cooking Scene" instance=ExtResource("3_i0x1x")]
+position = Vector2(0, 446)
 
 [node name="Ingredient" parent="Node2D/Cooking Scene" instance=ExtResource("4_6e4e2")]
+linear_damp = 4.0
+angular_damp = 4.0
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Node2D"]
 position = Vector2(0, -446)

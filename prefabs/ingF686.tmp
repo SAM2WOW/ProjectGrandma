@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://b5em8781rmds2"]
+
+[ext_resource type="PackedScene" uid="uid://c3gtn7dcgsaa0" path="res://prefabs/draggable.tscn" id="1_fdwy0"]
+
+[node name="Ingredient" instance=ExtResource("1_fdwy0")]
+script = null

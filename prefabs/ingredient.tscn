@@ -1,7 +1,46 @@
-[gd_scene load_steps=3 format=3 uid="uid://b5em8781rmds2"]
+[gd_scene load_steps=8 format=3 uid="uid://b5em8781rmds2"]
 
 [ext_resource type="PackedScene" uid="uid://c3gtn7dcgsaa0" path="res://prefabs/draggable.tscn" id="1_fdwy0"]
-[ext_resource type="Script" path="res://scripts/ingredient.gd" id="2_pnt4y"]
+[ext_resource type="Script" path="res://scripts/ingredient.gd" id="2_ukt0v"]
+[ext_resource type="Script" path="res://scripts/ingredientState.gd" id="3_8mfa3"]
+
+[sub_resource type="Resource" id="Resource_qvnah"]
+script = ExtResource("3_8mfa3")
+state = 0
+cookTimer = 5.0
+typeInfluenceMultiplier = {
+0: 1,
+1: 1
+}
+
+[sub_resource type="Resource" id="Resource_ojaaw"]
+script = ExtResource("3_8mfa3")
+state = 1
+cookTimer = 10.0
+typeInfluenceMultiplier = {
+0: 1,
+1: 1
+}
+
+[sub_resource type="Resource" id="Resource_wka5m"]
+script = ExtResource("3_8mfa3")
+state = 2
+cookTimer = 10.0
+typeInfluenceMultiplier = {
+0: 1,
+1: 1
+}
+
+[sub_resource type="Resource" id="Resource_j8afd"]
+script = ExtResource("3_8mfa3")
+state = 3
+cookTimer = 0.0
+typeInfluenceMultiplier = {
+0: 1,
+1: 1
+}
 
 [node name="Ingredient" instance=ExtResource("1_fdwy0")]
-script = ExtResource("2_pnt4y")
+script = ExtResource("2_ukt0v")
+ingredientStates = Array[ExtResource("3_8mfa3")]([SubResource("Resource_qvnah"), SubResource("Resource_ojaaw"), SubResource("Resource_wka5m"), SubResource("Resource_j8afd")])
+airDrag = 0.0

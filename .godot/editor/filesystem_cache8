@@ -1,16 +1,20 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1701562119
+::res://::1701582120
 icon.svg::CompressedTexture2D::6428011793886220743::1701407322::1701407322::1::::<><>::
 ::res://arts/::1701496677
 ivory-off-white-paper-texture.jpg::CompressedTexture2D::5647838766071111795::1701407322::1701496677::1::::<><>::
-::res://levels/::1701562283
-cooking scene.tscn::PackedScene::1201267347511114192::1701554019::0::1::::<><>::uid://cxt1od4epjtpf::::res://icon.svg
-main.gd::GDScript::-1::1701558499::0::1::::<>Node<>::
-main.tscn::PackedScene::1308025777738598295::1701562492::0::1::::<><>::uid://cmp4cxxq8yuat::::res://arts/ivory-off-white-paper-texture.jpg<>res://levels/main.gd<>uid://cxt1od4epjtpf::::res://icon.svg<>uid://c3gtn7dcgsaa0::::res://levels/prefabs/draggable.tscn
-::res://levels/prefabs/::1701562428
-draggable.tscn::PackedScene::6751693779440008201::1701562428::0::1::::<><>::res://scripts/draggable.gd<>uid://cxt1od4epjtpf::::res://icon.svg
-ingredient.tscn::PackedScene::4501132771892635643::1701562492::0::1::::<><>::uid://c3gtn7dcgsaa0::::res://levels/prefabs/draggable.tscn
-::res://prefabs/::0
-::res://scripts/::1701562354
-draggable.gd::GDScript::-1::1701562354::0::1::::Draggable<>RigidBody2D<>::
-gameManager.gd::GDScript::-1::1701561282::0::1::::<>Node2D<>::
+::res://levels/::1701580605
+cooking scene.tscn::PackedScene::1201267347511114192::1701563823::0::1::::<><>::uid://cxt1od4epjtpf::::res://icon.svg
+main.gd::GDScript::-1::1701563823::0::1::::<>Node<>::
+main.tscn::PackedScene::1308025777738598295::1701580605::0::1::::<><>::uid://cmp4cxxq8yuat::::res://arts/ivory-off-white-paper-texture.jpg<>res://levels/main.gd<>uid://bx1jmjos4d8m::::res://prefabs/pan.tscn<>uid://cxt1od4epjtpf::::res://icon.svg<>uid://b5em8781rmds2::::res://prefabs/ingredient.tscn
+::res://prefabs/::1701581747
+draggable.tscn::PackedScene::6751693779440008201::1701581747::0::1::::<><>::res://scripts/draggable.gd<>uid://cxt1od4epjtpf::::res://icon.svg
+ingredient.tscn::PackedScene::4501132771892635643::1701580605::0::1::::<><>::uid://c3gtn7dcgsaa0::::res://prefabs/draggable.tscn<>res://scripts/ingredient.gd<>res://scripts/ingredientState.gd
+pan.tscn::PackedScene::119264890783215234::1701580605::0::1::::<><>::res://scripts/pan.gd<>uid://cxt1od4epjtpf::::res://icon.svg
+::res://Resources/::1701577363
+::res://scripts/::1701581022
+draggable.gd::GDScript::-1::1701571943::0::1::::Draggable<>RigidBody2D<>::
+gameManager.gd::GDScript::-1::1701563823::0::1::::<>Node2D<>::
+ingredient.gd::GDScript::-1::1701581022::0::1::::Ingredient<>Draggable<>::
+ingredientState.gd::GDScript::-1::1701580304::0::1::::IngredientState<>Resource<>::
+pan.gd::GDScript::-1::1701580504::0::1::::<>RigidBody2D<>::

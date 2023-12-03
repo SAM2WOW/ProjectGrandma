@@ -2,6 +2,7 @@ extends RigidBody2D
 class_name Draggable
 
 @export var dragPoint : RigidBody2D;
+@export var airDrag : float;
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -32,8 +33,19 @@ func _on_input_event(viewport, event, shape_idx):
 
 func Drag(delta):
 	var mousePos: Vector2 = get_global_mouse_position();
-	print(dragPoint.global_position.distance_to(mousePos))
 	var speed: float = dragPoint.global_position.distance_to(mousePos) / delta;
+	var raycast = PhysicsRayQueryParameters2D.create(dragPoint.global_position, mousePos);
+	if get_world_2d().direct_space_state.intersect_ray(raycast):
+		speed = clamp(speed, 0, 8000);
 	var velocity: Vector2 = speed * dragPoint.global_position.direction_to(mousePos);
 	
 	dragPoint.linear_velocity = velocity;
+	
+	#look_at(mousePos);
+
+func AirDrag(delta):
+	# print(linear_velocity.length());
+	var drag = -linear_velocity.normalized() * airDrag * pow(linear_velocity.length(), 2) * delta;
+	#apply_force(drag*delta);
+	print(drag);
+	pass;
