@@ -20,7 +20,7 @@ func _process(delta):
 
 func Cook(cookingType: IngredientState.CookingType, delta):
 	if currentStateIndex >= ingredientStates.size()-1: return;
-	print(GetCurrentState().cookTimer);
+	# print(GetCurrentState().cookTimer);
 	cookingTimer += delta * GetCurrentState().typeInfluenceMultiplier[cookingType];
 	if cookingTimer >= GetCurrentState().cookTimer:
 		ChangeState(currentStateIndex+1);

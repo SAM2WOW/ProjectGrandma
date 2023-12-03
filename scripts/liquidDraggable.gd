@@ -1,16 +1,16 @@
 extends Draggable
+# @export var generatorPoint: Marker2D;
 
-@export var liquidGenerator : LiquidGenerator;
 var produceLiquid = false;
+@export var generator : LiquidGenerator;
 
 func _ready():
 	super._ready();
-	if !liquidGenerator: liquidGenerator = get_node("WaterGen");
+	if !generator: generator = get_node("WaterGen");
 
 func ObjectAction(event):
 	super.ObjectAction(event);
 	if event.pressed:
-		print("zooweemama")
 		produceLiquid = true;
 	else:
 		produceLiquid = false;
@@ -25,10 +25,10 @@ func _process(delta):
 func UpdateLiquidGeneration(delta):
 	if produceLiquid:
 		rotation = lerp_angle(rotation, deg_to_rad(-135), 5*delta);
-		if rotation < deg_to_rad(-90) && rotation > deg_to_rad(-150):
-			liquidGenerator.generate = true;
+		if rotation < deg_to_rad(-90) && rotation > deg_to_rad(-180):
+			generator.generate = true;
 		else:
-			liquidGenerator.generate = false;
+			generator.generate = false;
 	elif !produceLiquid && dragging:
-		liquidGenerator.generate = false;
+		generator.generate = false;
 		rotation = lerp_angle(rotation, deg_to_rad(0), 5*delta);

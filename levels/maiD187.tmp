@@ -6,8 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://cxt1od4epjtpf" path="res://icon.svg" id="3_u1ivw"]
 [ext_resource type="PackedScene" uid="uid://b5em8781rmds2" path="res://prefabs/ingredient.tscn" id="4_6e4e2"]
 [ext_resource type="Shader" path="res://Water_View_Shader.gdshader" id="6_gynvk"]
-[ext_resource type="PackedScene" uid="uid://rnl82flkkwj2" path="res://prefabs/instantiation_manager.tscn" id="6_mkygc"]
 [ext_resource type="PackedScene" uid="uid://2xviyeelbeyx" path="res://prefabs/liquidDraggable.tscn" id="7_avq8n"]
+[ext_resource type="Script" path="res://scripts/instantiationManager.gd" id="8_504wp"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_y2278"]
 frequency = 0.0698
@@ -32,8 +32,6 @@ script = ExtResource("1_udxji")
 [node name="Node2D" type="Node2D" parent="."]
 
 [node name="BG" type="Sprite2D" parent="Node2D"]
-show_behind_parent = true
-z_index = -10
 position = Vector2(0, -690)
 texture = ExtResource("1_1jmmi")
 
@@ -49,13 +47,18 @@ position = Vector2(0, 446)
 linear_damp = 4.0
 angular_damp = 4.0
 
-[node name="InstantiationManager" parent="Node2D/Cooking Scene" instance=ExtResource("6_mkygc")]
+[node name="LiquidContainer" parent="Node2D/Cooking Scene" instance=ExtResource("7_avq8n")]
+position = Vector2(672, 478)
+
+[node name="InstantiationManager" type="Node2D" parent="Node2D/Cooking Scene"]
+show_behind_parent = true
+top_level = true
+script = ExtResource("8_504wp")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Node2D"]
 position = Vector2(0, -446)
 collision_layer = 3
 collision_mask = 3
-collision_priority = 100.0
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Node2D/StaticBody2D"]
 polygon = PackedVector2Array(-1792, -546, -1792, 544, 1792, 544, 1792, -544, 1952, -544, 1952, 672, -1952, 672, -1952, -544)
@@ -80,6 +83,3 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
-
-[node name="LiquidContainer" parent="." instance=ExtResource("7_avq8n")]
-position = Vector2(736, 0)

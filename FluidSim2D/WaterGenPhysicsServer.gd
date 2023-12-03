@@ -8,7 +8,9 @@ var current_particle_count = 0
 var spawn_timer = 0
 @export var spawn_time = 0.2
 var water_particles = []
-var generate = true;
+var generate = false;
+
+var trackedObject;
 
 func create_particle():
 	var ps = PhysicsServer2D
@@ -26,8 +28,9 @@ func create_particle():
 	#add shape to rigid body
 	ps.body_add_shape(water_col,shape,Transform2D.IDENTITY)
 	#set collision layer and mask
-	ps.body_set_collision_layer(water_col,1)
-	ps.body_set_collision_mask(water_col,1)
+	ps.body_set_collision_layer(water_col,2)
+	ps.body_set_collision_mask(water_col,2)
+	ps.body_attach_object_instance_id(water_col,10);
 	#set physics parameters
 	ps.body_set_param(water_col,PhysicsServer2D.BODY_PARAM_FRICTION,0.0)
 	ps.body_set_param(water_col,PhysicsServer2D.BODY_PARAM_MASS,0.05)
@@ -37,13 +40,9 @@ func create_particle():
 	#create canvas item(all 2D objects are canvas items)
 	var water_particle = vs.canvas_item_create()
 	#set the parent to this object
-	#vs.canvas_item_set_parent(water_particle, InstantiationManager.get_canvas_item())
+	vs.canvas_item_set_parent(water_particle, InstantiationManager.get_canvas_item())
 	#set its transform
-	#vs.canvas_item_set_transform(water_particle,InstantiationManager.global_transform)
-	#set the parent to this object
-	vs.canvas_item_set_parent(water_particle, get_canvas_item())
-	#set its transform
-	vs.canvas_item_set_transform(water_particle,InstantiationManager.global_transform)
+	vs.canvas_item_set_transform(water_particle, InstantiationManager.global_transform)
 	#create a rectangle that will contain the texture
 	var rect = Rect2()
 	rect.position = Vector2(-8,-8)
@@ -71,7 +70,8 @@ func _physics_process(delta):
 	
 	for col in water_particles:
 		var trans = PhysicsServer2D.body_get_state(col[0],PhysicsServer2D.BODY_STATE_TRANSFORM)
-		trans.origin = trans.origin - global_position
+		trans.origin = trans.origin - InstantiationManager.global_position;
+		# var trans2 = Transform2D(0, Vector2(200,200));
 		RenderingServer.canvas_item_set_transform(col[1],trans)
 		#Delete particles if Y position > than 1500. 2D y down is positive
 		if trans.origin.y > 1500:
@@ -81,3 +81,7 @@ func _physics_process(delta):
 			#remove reference
 			water_particles.erase(col)
 			# Globals.total_water_particles -=1
+
+func TrackObject():
+	if !trackedObject: return;
+	global_position = trackedObject.global_position;

@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://rnl82flkkwj2"]
+
+[ext_resource type="Script" path="res://scripts/instantiationManager.gd" id="1_lwnbg"]
+
+[node name="InstantiationManager" type="Node2D"]
+show_behind_parent = true
+top_level = true
+script = ExtResource("1_lwnbg")
