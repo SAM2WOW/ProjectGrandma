@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://2xviyeelbeyx"]
+
+[ext_resource type="PackedScene" uid="uid://c3gtn7dcgsaa0" path="res://prefabs/draggable.tscn" id="1_dc3it"]
+[ext_resource type="Script" path="res://scripts/liquidDraggable.gd" id="2_3p8mk"]
+[ext_resource type="PackedScene" uid="uid://bwxe4nvaf0kyj" path="res://prefabs/water_gen.tscn" id="3_16hnm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2ownh"]
+size = Vector2(128, 288)
+
+[node name="LiquidContainer" instance=ExtResource("1_dc3it")]
+script = ExtResource("2_3p8mk")
+
+[node name="Sprite2D" parent="." index="0"]
+position = Vector2(0, -80)
+scale = Vector2(1, 2.25)
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2(0, -80)
+shape = SubResource("RectangleShape2D_2ownh")
+
+[node name="PinJoint2D" parent="." index="2"]
+position = Vector2(0, -80)
+
+[node name="WaterGen" parent="." index="4" instance=ExtResource("3_16hnm")]
+position = Vector2(0, -224)

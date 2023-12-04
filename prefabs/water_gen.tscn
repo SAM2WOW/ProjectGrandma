@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://bwxe4nvaf0kyj"]
+
+[ext_resource type="Script" path="res://FluidSim2D/WaterGenPhysicsServer.gd" id="1_tr25a"]
+[ext_resource type="Texture2D" uid="uid://bbe84iqhimpn0" path="res://FluidSim2D/water_particle.png" id="2_rjldc"]
+
+[node name="WaterGen" type="Marker2D"]
+position = Vector2(896, 192)
+script = ExtResource("1_tr25a")
+particle_texture = ExtResource("2_rjldc")
+max_water_particles = 800

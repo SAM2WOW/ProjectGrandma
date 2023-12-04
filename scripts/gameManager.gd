@@ -1,11 +1,17 @@
 extends Node2D
 
-var draggedObject;
+var stageNumbers = 4;
+var currentStage = 1; 
+@onready var recipeManager = preload("res://scripts/RecipeManager.gd").new()
+
+signal gameEnd
+signal stageComplete
+var draggedObject : Draggable;
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
-
+	print("Game Manager is ready")
+	recipeManager.initRecipes()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -15,18 +21,28 @@ func _physics_process(delta):
 	DragObject(delta);
 
 func _input(event):
-	if event is InputEventMouseButton && !event.pressed:
-		DropObject();
-
-func BeginDragObject(object):
+	if event is InputEventMouseButton:
+		if event.button_index == 1 && !event.pressed:
+			DropObject();
+		elif event.button_index == 2 && draggedObject:
+			draggedObject.ObjectAction(event);
+func BeginDragObject(object : Draggable):
 	if draggedObject: return;
 	draggedObject = object;
 
 func DropObject():
 	if !draggedObject: return;
-	print("drop object");
+	draggedObject.dragging = false;
 	draggedObject = null;
 	
 func DragObject(delta):
-	if !draggedObject || !draggedObject is Draggable: return;
+	if !draggedObject: return;
 	draggedObject.Drag(delta);
+	
+func CheckGameEnd():
+	if currentStage == stageNumbers:
+		gameEnd.emit()
+		return true
+	return false
+
+

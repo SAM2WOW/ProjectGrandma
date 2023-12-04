@@ -1,0 +1,31 @@
+[gd_scene load_steps=3 format=3 uid="uid://bx1jmjos4d8m"]
+
+[ext_resource type="Script" path="res://scripts/pan.gd" id="1_7wqqa"]
+[ext_resource type="Texture2D" uid="uid://cxt1od4epjtpf" path="res://icon.svg" id="1_eq1w5"]
+
+[node name="Pan" type="RigidBody2D"]
+collision_layer = 3
+collision_mask = 3
+collision_priority = 100.0
+mass = 316.23
+gravity_scale = 4.038
+script = ExtResource("1_7wqqa")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 3
+collision_mask = 3
+
+[node name="PanCollider" type="CollisionPolygon2D" parent="Area2D"]
+polygon = PackedVector2Array(-320, -128, -310, 31, -242, 95, 241, 94, 295, 25, 320, -129)
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.235294)
+position = Vector2(-16, 15.0001)
+scale = Vector2(5.25, 1.25)
+texture = ExtResource("1_eq1w5")
+
+[node name="PanCollider" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-312, -81, -326.704, -30.4842, -328, 33, -256, 95, 256, 95, 306, 28, 309.148, -30.5458, 311, -65, 298.745, -33.2129, 279, 18, 192, 63, -192, 63, -297, 20, -314.398, -30.9933)
+
+[connection signal="body_shape_entered" from="Area2D" to="." method="_on_area_2d_body_shape_entered"]
+[connection signal="body_shape_exited" from="Area2D" to="." method="_on_area_2d_body_shape_exited"]

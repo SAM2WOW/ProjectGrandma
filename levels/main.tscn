@@ -1,9 +1,36 @@
-[gd_scene load_steps=5 format=3 uid="uid://svu81oy40o3p"]
+[gd_scene load_steps=15 format=3 uid="uid://svu81oy40o3p"]
 
 [ext_resource type="Texture2D" uid="uid://cmp4cxxq8yuat" path="res://arts/ivory-off-white-paper-texture.jpg" id="1_1jmmi"]
-[ext_resource type="Script" path="res://levels/main.gd" id="1_udxji"]
+[ext_resource type="Script" path="res://scripts/main.gd" id="1_udxji"]
+[ext_resource type="PackedScene" uid="uid://bx1jmjos4d8m" path="res://prefabs/pan.tscn" id="3_i0x1x"]
 [ext_resource type="Texture2D" uid="uid://cxt1od4epjtpf" path="res://icon.svg" id="3_u1ivw"]
 [ext_resource type="PackedScene" uid="uid://b5em8781rmds2" path="res://prefabs/ingredient.tscn" id="4_6e4e2"]
+[ext_resource type="Script" path="res://scripts/RecipeUI.gd" id="5_vajsc"]
+[ext_resource type="Script" path="res://scripts/RecipeManager.gd" id="6_coe6b"]
+[ext_resource type="Shader" path="res://Water_View_Shader.gdshader" id="6_gynvk"]
+[ext_resource type="PackedScene" uid="uid://rnl82flkkwj2" path="res://prefabs/instantiation_manager.tscn" id="6_mkygc"]
+[ext_resource type="PackedScene" uid="uid://2xviyeelbeyx" path="res://prefabs/liquidDraggable.tscn" id="7_avq8n"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_y2278"]
+frequency = 0.0698
+
+[sub_resource type="NoiseTexture2D" id="4"]
+seamless = true
+seamless_blend_skirt = 0.516
+noise = SubResource("FastNoiseLite_y2278")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_h723b"]
+shader = ExtResource("6_gynvk")
+shader_parameter/water_speed = 0.01
+shader_parameter/color_detect_threshold = 0.7
+shader_parameter/water_dev_color = Color(1, 0, 1, 1)
+shader_parameter/water_color = Color(0, 0.462745, 1, 1)
+shader_parameter/bubble_color = Color(1, 1, 1, 1)
+shader_parameter/noise = SubResource("4")
+
+[sub_resource type="LabelSettings" id="LabelSettings_ijvoj"]
+font_size = 50
+font_color = Color(0.0156863, 0.0156863, 0.0156863, 1)
 
 [node name="Main" type="Node"]
 script = ExtResource("1_udxji")
@@ -11,32 +38,30 @@ script = ExtResource("1_udxji")
 [node name="Node2D" type="Node2D" parent="."]
 
 [node name="BG" type="Sprite2D" parent="Node2D"]
-visible = false
+show_behind_parent = true
+z_index = -10
 position = Vector2(0, -690)
 texture = ExtResource("1_1jmmi")
-metadata/_edit_lock_ = true
 
 [node name="Camera2D" type="Camera2D" parent="Node2D"]
 
 [node name="Cooking Scene" type="Node2D" parent="Node2D"]
 position = Vector2(0, -446)
 
-[node name="Pan" type="RigidBody2D" parent="Node2D/Cooking Scene"]
-position = Vector2(0, 447)
-
-[node name="Sprite2D" type="Sprite2D" parent="Node2D/Cooking Scene/Pan"]
-modulate = Color(1, 1, 1, 0.235294)
-position = Vector2(-16, 15.0001)
-scale = Vector2(5.25, 1.25)
-texture = ExtResource("3_u1ivw")
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Node2D/Cooking Scene/Pan"]
-polygon = PackedVector2Array(-352, -65, -256, 95, 256, 95, 320, -65, 192, 63, -192, 63)
+[node name="Pan" parent="Node2D/Cooking Scene" instance=ExtResource("3_i0x1x")]
+position = Vector2(0, 446)
 
 [node name="Ingredient" parent="Node2D/Cooking Scene" instance=ExtResource("4_6e4e2")]
+linear_damp = 4.0
+angular_damp = 4.0
+
+[node name="InstantiationManager" parent="Node2D/Cooking Scene" instance=ExtResource("6_mkygc")]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Node2D"]
 position = Vector2(0, -446)
+collision_layer = 3
+collision_mask = 3
+collision_priority = 100.0
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Node2D/StaticBody2D"]
 polygon = PackedVector2Array(-1792, -546, -1792, 544, 1792, 544, 1792, -544, 1952, -544, 1952, 672, -1952, 672, -1952, -544)
@@ -46,9 +71,14 @@ position = Vector2(0, 1068)
 scale = Vector2(50, 8.198)
 texture = ExtResource("3_u1ivw")
 
+[node name="WaterColor" type="Sprite2D" parent="Node2D"]
+material = SubResource("ShaderMaterial_h723b")
+position = Vector2(536, 181)
+scale = Vector2(45.6875, 39.875)
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Control" type="Control" parent="CanvasLayer"]
+[node name="RecipeUI" type="Control" parent="CanvasLayer"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -56,3 +86,18 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
+script = ExtResource("5_vajsc")
+
+[node name="IngredientLabel" type="Label" parent="CanvasLayer/RecipeUI"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "1. Apple
+2. Coconut"
+label_settings = SubResource("LabelSettings_ijvoj")
+
+[node name="LiquidContainer" parent="." instance=ExtResource("7_avq8n")]
+position = Vector2(736, 0)
+
+[node name="RecipeManager" type="Node2D" parent="."]
+script = ExtResource("6_coe6b")
