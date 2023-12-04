@@ -1,0 +1,63 @@
+[gd_scene load_steps=8 format=3 uid="uid://csog54p5yksnb"]
+
+[ext_resource type="Script" path="res://FluidSim2D/WaterGenPhysicsServer.gd" id="2"]
+[ext_resource type="Script" path="res://FluidSim2D/Container.gd" id="3"]
+[ext_resource type="Shader" path="res://Water_View_Shader.gdshader" id="4"]
+[ext_resource type="Texture2D" uid="uid://bbe84iqhimpn0" path="res://FluidSim2D/water_particle.png" id="6"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_amfxg"]
+frequency = 0.0698
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_5qmdr"]
+seamless = true
+seamless_blend_skirt = 0.516
+noise = SubResource("FastNoiseLite_amfxg")
+
+[sub_resource type="ShaderMaterial" id="2"]
+shader = ExtResource("4")
+shader_parameter/water_speed = 0.01
+shader_parameter/color_detect_threshold = 0.7
+shader_parameter/water_dev_color = Color(1, 0, 1, 1)
+shader_parameter/water_color = Color(0, 0.462745, 1, 1)
+shader_parameter/bubble_color = Color(1, 1, 1, 1)
+shader_parameter/noise = SubResource("NoiseTexture2D_5qmdr")
+
+[node name="Water Sim" type="Node2D"]
+
+[node name="Container" type="StaticBody2D" parent="."]
+position = Vector2(164, 191)
+script = ExtResource("3")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Container"]
+polygon = PackedVector2Array(-166, -494, -90, -537, -81, -670, 14, -708, 75, -532, 98, -391, 314, -337, 472, -233, 273.477, -190.425, 172, -189, 137, 117, 391, 239, 395, 321, 107, 301, 111, 509, 273, 533, 341, 506, 432, 485, 483, 527, 528, 532, 631, 377, 614, 169, 409, 10, 573, -98, 658, -230, 573, -437, 762.306, -479.723, 794, -861, 1066, -880, 1087, -553, 1087, -259, 1125, 868, -160, 901)
+disabled = true
+
+[node name="WaterGen" type="Marker2D" parent="."]
+position = Vector2(587, -688)
+script = ExtResource("2")
+particle_texture = ExtResource("6")
+max_water_particles = 800
+
+[node name="WaterGen3" type="Marker2D" parent="."]
+position = Vector2(705, -686)
+script = ExtResource("2")
+particle_texture = ExtResource("6")
+max_water_particles = 800
+
+[node name="WaterGen2" type="Marker2D" parent="."]
+position = Vector2(467, -685)
+script = ExtResource("2")
+particle_texture = ExtResource("6")
+max_water_particles = 800
+
+[node name="Camera2D" type="Camera2D" parent="."]
+light_mask = 2
+position = Vector2(535, 234)
+zoom = Vector2(0.5, 0.5)
+
+[node name="WaterColor" type="Sprite2D" parent="."]
+material = SubResource("2")
+position = Vector2(536, 181)
+scale = Vector2(45.6875, 39.875)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
