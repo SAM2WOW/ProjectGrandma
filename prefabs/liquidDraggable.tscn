@@ -7,8 +7,9 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2ownh"]
 size = Vector2(128, 288)
 
-[node name="LiquidContainer" instance=ExtResource("1_dc3it")]
+[node name="LiquidDraggable" instance=ExtResource("1_dc3it")]
 script = ExtResource("2_3p8mk")
+liquidType = 0
 
 [node name="Sprite2D" parent="." index="0"]
 position = Vector2(0, -80)
@@ -16,6 +17,7 @@ scale = Vector2(1, 2.25)
 
 [node name="CollisionShape2D" parent="." index="1"]
 position = Vector2(0, -80)
+rotation = 0.0
 shape = SubResource("RectangleShape2D_2ownh")
 
 [node name="PinJoint2D" parent="." index="2"]

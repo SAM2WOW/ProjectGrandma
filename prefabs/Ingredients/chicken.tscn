@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://sytwr8cbqvm1"]
+
+[ext_resource type="PackedScene" uid="uid://b5em8781rmds2" path="res://prefabs/ingredient.tscn" id="1_56ysr"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_n6mev"]
+radius = 32.0
+height = 128.0
+
+[node name="Chicken" instance=ExtResource("1_56ysr")]
+
+[node name="CollisionShape2D" parent="." index="1"]
+shape = SubResource("CapsuleShape2D_n6mev")

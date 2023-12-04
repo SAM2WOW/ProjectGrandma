@@ -3,53 +3,56 @@
 [ext_resource type="PackedScene" uid="uid://c3gtn7dcgsaa0" path="res://prefabs/draggable.tscn" id="1_fdwy0"]
 [ext_resource type="Script" path="res://scripts/ingredient.gd" id="2_ukt0v"]
 [ext_resource type="Script" path="res://scripts/ingredientState.gd" id="3_8mfa3"]
-[ext_resource type="Texture2D" uid="uid://c6o4nchcveij5" path="res://arts/ingredients/garlic.png" id="4_ac8au"]
 
 [sub_resource type="Resource" id="Resource_qvnah"]
 script = ExtResource("3_8mfa3")
 state = 0
 cookTimer = 5.0
 typeInfluenceMultiplier = {
-0: 1,
-1: 1
+0: 1.0,
+1: 0.2
 }
-stateColor = Color(255, 255, 255, 255)
+stateColor = Color(1, 1, 1, 1)
 
 [sub_resource type="Resource" id="Resource_ojaaw"]
 script = ExtResource("3_8mfa3")
 state = 1
 cookTimer = 10.0
 typeInfluenceMultiplier = {
-0: 1,
-1: 1
+0: 1.0,
+1: 0.2
 }
-stateColor = Color(0, 0, 0, 1)
+stateColor = Color(0.94902, 0.776471, 0.4, 1)
 
 [sub_resource type="Resource" id="Resource_wka5m"]
 script = ExtResource("3_8mfa3")
 state = 2
 cookTimer = 10.0
 typeInfluenceMultiplier = {
-0: 1,
-1: 1
+0: 1.0,
+1: 0.1
 }
-stateColor = Color(255, 255, 255, 255)
+stateColor = Color(0.6, 0.443137, 0.101961, 1)
 
 [sub_resource type="Resource" id="Resource_j8afd"]
 script = ExtResource("3_8mfa3")
 state = 3
 cookTimer = 0.0
 typeInfluenceMultiplier = {
-0: 1,
-1: 1
+0: 1.0,
+1: 1.0
 }
-stateColor = Color(255, 255, 255, 255)
+stateColor = Color(0.231373, 0.164706, 0.0196078, 1)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_i27ke"]
+radius = 64.0
+height = 128.0
 
 [node name="Ingredient" instance=ExtResource("1_fdwy0")]
+gravity_scale = 2.0
 script = ExtResource("2_ukt0v")
+ingredientType = 0
 ingredientStates = Array[ExtResource("3_8mfa3")]([SubResource("Resource_qvnah"), SubResource("Resource_ojaaw"), SubResource("Resource_wka5m"), SubResource("Resource_j8afd")])
 
-[node name="Sprite2D" parent="." index="0"]
-position = Vector2(-3.72529e-09, 0)
-scale = Vector2(0.498541, 0.630263)
-texture = ExtResource("4_ac8au")
+[node name="CollisionShape2D" parent="." index="1"]
+shape = SubResource("CapsuleShape2D_i27ke")

@@ -1,7 +1,7 @@
 extends Node2D
 
 var stageNumbers = 4;
-var currentStage = 1; 
+var currentStage = 1;
 @onready var recipeManager = preload("res://scripts/RecipeManager.gd").new()
 
 signal gameEnd

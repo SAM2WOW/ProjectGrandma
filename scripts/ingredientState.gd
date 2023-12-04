@@ -5,8 +5,8 @@ enum CookingState {Undercooked, Cooked, Overcooked, Burnt};
 enum CookingType {Fried, Boiled};
 @export var state : CookingState = CookingState.Cooked;
 @export var cookTimer : float = 0;
-@export var typeInfluenceMultiplier = {CookingType.Fried : 1, CookingType.Boiled : 1};
-@export var stateColor: Color = Color(255,255,255,255);
+@export var typeInfluenceMultiplier = {CookingType.Fried : 1.0, CookingType.Boiled : 1.0};
+@export var stateColor: Color = Color.WHITE;
 
 
 # Called when the node enters the scene tree for the first time.

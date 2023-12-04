@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://csog54p5yksnb"]
+[gd_scene load_steps=11 format=3 uid="uid://csog54p5yksnb"]
 
 [ext_resource type="Script" path="res://scripts/instantiationManager.gd" id="1_nud3b"]
 [ext_resource type="Script" path="res://FluidSim2D/WaterGenPhysicsServer.gd" id="2"]
@@ -6,6 +6,7 @@
 [ext_resource type="Shader" path="res://Water_View_Shader.gdshader" id="4"]
 [ext_resource type="PackedScene" uid="uid://38m5gw2csxeb" path="res://FluidSim2D/MouseJig.tscn" id="5_aw4hi"]
 [ext_resource type="Texture2D" uid="uid://bbe84iqhimpn0" path="res://FluidSim2D/water_particle.png" id="6"]
+[ext_resource type="Texture2D" uid="uid://cxt1od4epjtpf" path="res://icon.svg" id="6_7xraf"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_amfxg"]
 frequency = 0.0698
@@ -17,8 +18,8 @@ noise = SubResource("FastNoiseLite_amfxg")
 
 [sub_resource type="ShaderMaterial" id="2"]
 shader = ExtResource("4")
-shader_parameter/water_speed = 0.01
-shader_parameter/color_detect_threshold = 0.7
+shader_parameter/water_speed = 0.1
+shader_parameter/color_detect_threshold = 0.8
 shader_parameter/water_dev_color = Color(1, 0, 1, 1)
 shader_parameter/water_color = Color(0, 0.462745, 1, 1)
 shader_parameter/bubble_color = Color(1, 1, 1, 1)
@@ -29,6 +30,8 @@ script = ExtResource("1_nud3b")
 
 [node name="Container" type="StaticBody2D" parent="."]
 position = Vector2(164, 191)
+collision_layer = 3
+collision_mask = 3
 script = ExtResource("3")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Container"]
@@ -39,18 +42,21 @@ position = Vector2(587, -688)
 script = ExtResource("2")
 particle_texture = ExtResource("6")
 max_water_particles = 800
+generate = true
 
 [node name="WaterGen3" type="Marker2D" parent="."]
 position = Vector2(705, -686)
 script = ExtResource("2")
 particle_texture = ExtResource("6")
 max_water_particles = 800
+generate = true
 
 [node name="WaterGen2" type="Marker2D" parent="."]
 position = Vector2(467, -685)
 script = ExtResource("2")
 particle_texture = ExtResource("6")
 max_water_particles = 800
+generate = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
 light_mask = 2
@@ -61,6 +67,7 @@ zoom = Vector2(0.5, 0.5)
 material = SubResource("2")
 position = Vector2(536, 181)
 scale = Vector2(45.6875, 39.875)
+texture = ExtResource("6_7xraf")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
