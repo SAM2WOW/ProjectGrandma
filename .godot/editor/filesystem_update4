@@ -1,19 +1,16 @@
-res://prefabs/Ingredients/chicken.tscn
+res://prefabs/Ingredients/garlic.tscn
 res://FluidSim2D/WaterGenPhysicsServer.gd
 res://scripts/ingredient.gd
 res://Water_View_Shader.gdshader
-res://prefabs/draggable.tscn
 res://levels/main.tscn
 res://FluidSim2D/Water Sim.tscn
 res://prefabs/liquidDraggable.tscn
 res://prefabs/ingredient.tscn
+res://prefabs/draggable.tscn
+res://prefabs/instantiation_manager.tscn
 res://prefabs/water_gen.tscn
-res://prefabs/liquidContainer.tscn
-res://prefabs/panContainer.tscn
+res://levels/cooking scene.tscn
 res://prefabs/ingredientGroup.tscn
-res://prefabs/Ingredients/garlic.tscn
-res://prefabs/cont.tscn
-res://scripts/liquidContainer.gd
-res://prefabs/panCont.tscn
-res://scripts/panContainer.gd
-res://scripts/liquidDraggable.gd
+res://prefabs/pan.tscn
+res://prefabs/Ingredients/chicken.tscn
+res://prefabs/liquidContainer.tscn
