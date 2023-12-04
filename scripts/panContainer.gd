@@ -1,8 +1,10 @@
 extends LiquidContainer
+class_name PanContainer
 
 var cookingObjects = [];
 
-var cookingHeat = 1.0;
+var cookingHeat : float = 0;
+var targetHeat : float = cookingHeat;
 var currentCookingState : IngredientState.CookingType;
 
 @export var thickenCap : float = 3.0;
@@ -22,8 +24,17 @@ func ObjectAction(event):
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	super._process(delta);
+	UpdateHeat(delta);
 	CookIngredients(delta);
 	ThickenFluids(delta);
+
+func UpdateHeat(delta):
+	if cookingHeat < targetHeat:
+		cookingHeat = lerpf(cookingHeat, targetHeat, 5*delta)
+		# print(cookingHeat)
+	elif cookingHeat > targetHeat:
+		cookingHeat = lerpf(cookingHeat, targetHeat, 0.2*delta)
+		# print(cookingHeat)
 	
 func CookIngredients(delta):
 	for ingredient in cookingObjects:

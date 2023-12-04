@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://dsppfnoxh56xm"]
+
+[ext_resource type="Script" path="res://scripts/stoveTop.gd" id="1_1055t"]
+[ext_resource type="Texture2D" uid="uid://cxt1od4epjtpf" path="res://icon.svg" id="2_34qb8"]
+[ext_resource type="PackedScene" uid="uid://besfnnu5msblc" path="res://prefabs/Knob/Knob.tscn" id="2_fay6n"]
+
+[node name="StoveTop" type="StaticBody2D"]
+position = Vector2(352, 256)
+script = ExtResource("1_1055t")
+
+[node name="Knob" parent="." instance=ExtResource("2_fay6n")]
+z_index = 1
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-128, -64, 128, -64, 192, 64, -192, 64)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_34qb8")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+polygon = PackedVector2Array(-128, -128, -128, -32, 128, -32, 128, -128)
+
+[connection signal="turnedKnob" from="Knob" to="." method="_on_knob_turned_knob"]
+[connection signal="body_shape_entered" from="Area2D" to="." method="_on_area_2d_body_shape_entered"]
+[connection signal="body_shape_exited" from="Area2D" to="." method="_on_area_2d_body_shape_exited"]

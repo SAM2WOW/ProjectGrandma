@@ -1,10 +1,10 @@
-Node2D
 CollisionShape2D
 Area2D
-RigidBody2D
-StaticBody2D
 Sprite2D
+Node2D
 CollisionPolygon2D
+StaticBody2D
+RigidBody2D
 DampedSpringJoint2D
 PinJoint2D
 CharacterBody2D

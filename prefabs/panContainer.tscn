@@ -24,3 +24,6 @@ texture = ExtResource("3_3boog")
 
 [node name="DragPoint" parent="." index="6"]
 position = Vector2(-383, -31)
+
+[node name="CollisionShape2D" parent="DragPoint" index="0"]
+position = Vector2(383, 31)

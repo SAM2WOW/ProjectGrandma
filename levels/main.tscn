@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://svu81oy40o3p"]
+[gd_scene load_steps=18 format=3 uid="uid://svu81oy40o3p"]
 
 [ext_resource type="Texture2D" uid="uid://cmp4cxxq8yuat" path="res://arts/ivory-off-white-paper-texture.jpg" id="1_1jmmi"]
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_udxji"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://rnl82flkkwj2" path="res://prefabs/instantiation_manager.tscn" id="6_mkygc"]
 [ext_resource type="PackedScene" uid="uid://2xviyeelbeyx" path="res://prefabs/liquidDraggable.tscn" id="7_avq8n"]
 [ext_resource type="PackedScene" uid="uid://drn5x3vivefyp" path="res://prefabs/liquidContainer.tscn" id="7_wm87n"]
+[ext_resource type="PackedScene" uid="uid://dsppfnoxh56xm" path="res://prefabs/stoveTop.tscn" id="8_fma0h"]
 [ext_resource type="PackedScene" uid="uid://h7fkjxle4fr2" path="res://prefabs/panContainer.tscn" id="13_blku6"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_y2278"]
@@ -65,7 +66,7 @@ gravity_scale = 1.0
 liquidType = 1
 
 [node name="Pan" parent="Node2D/Cooking Scene" instance=ExtResource("13_blku6")]
-position = Vector2(128, 414)
+position = Vector2(0, 222)
 
 [node name="Container" parent="Node2D/Cooking Scene" instance=ExtResource("7_wm87n")]
 position = Vector2(-640, 446)
@@ -75,6 +76,9 @@ position = Vector2(0, -128)
 scale = Vector2(-6.59748, -6.59748)
 ingredientPath = "res://prefabs/Ingredients/garlic.tscn"
 numIngredients = 10
+
+[node name="StoveTop" parent="Node2D/Cooking Scene" instance=ExtResource("8_fma0h")]
+position = Vector2(0, 478)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Node2D"]
 position = Vector2(0, -446)
