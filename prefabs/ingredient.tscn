@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://b5em8781rmds2"]
+[gd_scene load_steps=9 format=3 uid="uid://b5em8781rmds2"]
 
 [ext_resource type="PackedScene" uid="uid://c3gtn7dcgsaa0" path="res://prefabs/draggable.tscn" id="1_fdwy0"]
 [ext_resource type="Script" path="res://scripts/ingredient.gd" id="2_ukt0v"]
 [ext_resource type="Script" path="res://scripts/ingredientState.gd" id="3_8mfa3"]
+[ext_resource type="Texture2D" uid="uid://c6o4nchcveij5" path="res://arts/ingredients/garlic.png" id="4_ac8au"]
 
 [sub_resource type="Resource" id="Resource_qvnah"]
 script = ExtResource("3_8mfa3")
@@ -47,3 +48,8 @@ stateColor = Color(255, 255, 255, 255)
 [node name="Ingredient" instance=ExtResource("1_fdwy0")]
 script = ExtResource("2_ukt0v")
 ingredientStates = Array[ExtResource("3_8mfa3")]([SubResource("Resource_qvnah"), SubResource("Resource_ojaaw"), SubResource("Resource_wka5m"), SubResource("Resource_j8afd")])
+
+[node name="Sprite2D" parent="." index="0"]
+position = Vector2(-3.72529e-09, 0)
+scale = Vector2(0.498541, 0.630263)
+texture = ExtResource("4_ac8au")

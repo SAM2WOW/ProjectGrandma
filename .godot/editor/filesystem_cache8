@@ -1,37 +1,49 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1701651647
-icon.svg::CompressedTexture2D::6428011793886220743::1701407322::1701407322::1::::<><>::
-Water_View_Shader.gdshader::Shader::-1::1701651640::0::1::::<><>::
-::res://arts/::1701496677
-ivory-off-white-paper-texture.jpg::CompressedTexture2D::5647838766071111795::1701407322::1701496677::1::::<><>::
-::res://FluidSim2D/::1701650694
-Container.gd::GDScript::-1::1701586335::0::1::::<>StaticBody2D<>::
-Mouse.gd::GDScript::-1::1701586158::0::1::::<>RigidBody2D<>::
-MouseJig.tscn::PackedScene::2034194615835185141::1701599395::0::1::::<><>::res://FluidSim2D/Mouse.gd<>uid://cxt1od4epjtpf::::res://icon.svg
-Water Sim.tscn::PackedScene::6065561264946137043::1701650694::0::1::::<><>::res://scripts/instantiationManager.gd<>res://FluidSim2D/WaterGenPhysicsServer.gd<>res://FluidSim2D/Container.gd<>res://Water_View_Shader.gdshader<>uid://38m5gw2csxeb::::res://FluidSim2D/MouseJig.tscn<>uid://bbe84iqhimpn0::::res://FluidSim2D/water_particle.png
-WaterGenPhysicsServer.gd::GDScript::-1::1701650500::0::1::::LiquidGenerator<>Node2D<>::
-WaterParticle.gd::GDScript::-1::1701597545::0::1::::<>RigidBody2D<>::
-WaterParticle.tscn::PackedScene::4280358531979188395::1701599395::0::1::::<><>::uid://bbe84iqhimpn0::::res://FluidSim2D/water_particle.png<>res://FluidSim2D/WaterParticle.gd
-Water_Color.tscn::PackedScene::1673458978875837875::1701599395::0::1::::<><>::res://Water_View_Shader.gdshader
-water_particle.png::CompressedTexture2D::2466922932364807759::1665358930::1701582639::1::::<><>::
-::res://levels/::1701650727
-cooking scene.tscn::PackedScene::1201267347511114192::1701563823::0::1::::<><>::uid://cxt1od4epjtpf::::res://icon.svg
-main.gd::GDScript::-1::1701643347::0::1::::<>Node<>::
-main.tscn::PackedScene::1308025777738598295::1701650727::0::1::::<><>::uid://cmp4cxxq8yuat::::res://arts/ivory-off-white-paper-texture.jpg<>res://levels/main.gd<>uid://bx1jmjos4d8m::::res://prefabs/pan.tscn<>uid://cxt1od4epjtpf::::res://icon.svg<>uid://b5em8781rmds2::::res://prefabs/ingredient.tscn<>res://Water_View_Shader.gdshader<>uid://rnl82flkkwj2::::res://prefabs/instantiation_manager.tscn<>uid://2xviyeelbeyx::::res://prefabs/liquidDraggable.tscn
-::res://prefabs/::1701651638
-draggable.tscn::PackedScene::6751693779440008201::1701651631::0::1::::<><>::res://scripts/draggable.gd<>uid://cxt1od4epjtpf::::res://icon.svg
-ingredient.tscn::PackedScene::4501132771892635643::1701651638::0::1::::<><>::uid://c3gtn7dcgsaa0::::res://prefabs/draggable.tscn<>res://scripts/ingredient.gd<>res://scripts/ingredientState.gd
-instantiation_manager.tscn::PackedScene::1220775497136668085::1701650694::0::1::::<><>::res://scripts/instantiationManager.gd
-liquidDraggable.tscn::PackedScene::1943870076705691407::1701650694::0::1::::<><>::uid://c3gtn7dcgsaa0::::res://prefabs/draggable.tscn<>res://scripts/liquidDraggable.gd<>uid://bwxe4nvaf0kyj::::res://prefabs/water_gen.tscn
-pan.tscn::PackedScene::119264890783215234::1701650694::0::1::::<><>::res://scripts/pan.gd<>uid://cxt1od4epjtpf::::res://icon.svg
-water_gen.tscn::PackedScene::3978351303319617465::1701650694::0::1::::<><>::res://FluidSim2D/WaterGenPhysicsServer.gd<>uid://bbe84iqhimpn0::::res://FluidSim2D/water_particle.png
-::res://Resources/::1701577363
-::res://scripts/::1701651624
-draggable.gd::GDScript::-1::1701649818::0::1::::Draggable<>RigidBody2D<>::
-gameManager.gd::GDScript::-1::1701593219::0::1::::<>Node2D<>::
-Global.gd::GDScript::-1::1701648615::0::1::::<>Node<>::
-ingredient.gd::GDScript::-1::1701651624::0::1::::Ingredient<>Draggable<>::
-ingredientState.gd::GDScript::-1::1701649720::0::1::::IngredientState<>Resource<>::
-instantiationManager.gd::GDScript::-1::1701594484::0::1::::<>Node2D<>::
-liquidDraggable.gd::GDScript::-1::1701646053::0::1::::<>Draggable<>::
-pan.gd::GDScript::-1::1701649497::0::1::::<>RigidBody2D<>::
+::res://::1701682310
+icon.svg::CompressedTexture2D::6428011793886220743::1701402495::1701402495::1::::<><>::
+Water_View_Shader.gdshader::Shader::-1::1701682301::0::1::::<><>::
+::res://arts/::1701681405
+ivory-off-white-paper-texture.jpg::CompressedTexture2D::5647838766071111795::1701402495::1701669678::1::::<><>::
+::res://arts/ingredients/::1701681415
+bay leaf.png::CompressedTexture2D::158315755517558232::1701681414::1701681414::1::::<><>::
+drumstick.png::CompressedTexture2D::3763307884005011509::1701681414::1701681415::1::::<><>::
+garlic.png::CompressedTexture2D::6979380932812465888::1701681414::1701681414::1::::<><>::
+peppercorn.png::CompressedTexture2D::5941057490802750157::1701681414::1701681414::1::::<><>::
+soy sauce.png::CompressedTexture2D::1949198226626208916::1701681414::1701681415::1::::<><>::
+vinegar.png::CompressedTexture2D::539956782690660189::1701681414::1701681415::1::::<><>::
+::res://arts/kitchenware/::1701669637
+pan line art only.png::CompressedTexture2D::7771011622148157578::1701669637::1701669637::1::::<><>::
+pan watercolor only.png::CompressedTexture2D::4590189363216257769::1701669637::1701669637::1::::<><>::
+pan with handle.png::CompressedTexture2D::8333451276914892780::1701669637::1701669637::1::::<><>::
+::res://FluidSim2D/::1701682285
+Container.gd::GDScript::-1::1701669637::0::1::::<>StaticBody2D<>::
+Mouse.gd::GDScript::-1::1701669637::0::1::::<>RigidBody2D<>::
+MouseJig.tscn::PackedScene::2034194615835185141::1701669637::0::1::::<><>::res://FluidSim2D/Mouse.gd<>uid://cxt1od4epjtpf::::res://icon.svg
+Water Sim.tscn::PackedScene::6065561264946137043::1701682285::0::1::::<><>::res://scripts/instantiationManager.gd<>res://FluidSim2D/WaterGenPhysicsServer.gd<>res://FluidSim2D/Container.gd<>res://Water_View_Shader.gdshader<>uid://38m5gw2csxeb::::res://FluidSim2D/MouseJig.tscn<>uid://bbe84iqhimpn0::::res://FluidSim2D/water_particle.png
+WaterGenPhysicsServer.gd::GDScript::-1::1701670147::0::1::::LiquidGenerator<>Node2D<>::
+WaterParticle.gd::GDScript::-1::1701669637::0::1::::<>RigidBody2D<>::
+WaterParticle.tscn::PackedScene::4280358531979188395::1701669637::0::1::::<><>::uid://bbe84iqhimpn0::::res://FluidSim2D/water_particle.png<>res://FluidSim2D/WaterParticle.gd
+Water_Color.tscn::PackedScene::1673458978875837875::1701669637::0::1::::<><>::res://Water_View_Shader.gdshader
+water_particle.png::CompressedTexture2D::2466922932364807759::1701669637::1701669637::1::::<><>::
+::res://levels/::1701682286
+cooking scene.tscn::PackedScene::4639952571083579315::1701682286::0::1::::<><>::uid://cxt1od4epjtpf::::res://icon.svg
+main.tscn::PackedScene::1308025777738598295::1701682285::0::1::::<><>::uid://cmp4cxxq8yuat::::res://arts/ivory-off-white-paper-texture.jpg<>res://scripts/main.gd<>uid://bx1jmjos4d8m::::res://prefabs/pan.tscn<>uid://cxt1od4epjtpf::::res://icon.svg<>uid://b5em8781rmds2::::res://prefabs/ingredient.tscn<>res://scripts/RecipeUI.gd<>res://scripts/RecipeManager.gd<>res://Water_View_Shader.gdshader<>uid://rnl82flkkwj2::::res://prefabs/instantiation_manager.tscn<>uid://2xviyeelbeyx::::res://prefabs/liquidDraggable.tscn
+::res://prefabs/::1701682299
+draggable.tscn::PackedScene::6751693779440008201::1701682286::0::1::::<><>::res://scripts/draggable.gd<>uid://cxt1od4epjtpf::::res://icon.svg
+ingredient.tscn::PackedScene::4501132771892635643::1701682299::0::1::::<><>::uid://c3gtn7dcgsaa0::::res://prefabs/draggable.tscn<>res://scripts/ingredient.gd<>res://scripts/ingredientState.gd<>uid://c6o4nchcveij5::::res://arts/ingredients/garlic.png
+instantiation_manager.tscn::PackedScene::1220775497136668085::1701682286::0::1::::<><>::res://scripts/instantiationManager.gd
+liquidDraggable.tscn::PackedScene::1943870076705691407::1701682286::0::1::::<><>::uid://c3gtn7dcgsaa0::::res://prefabs/draggable.tscn<>res://scripts/liquidDraggable.gd<>uid://bwxe4nvaf0kyj::::res://prefabs/water_gen.tscn
+pan.tscn::PackedScene::119264890783215234::1701682286::0::1::::<><>::res://scripts/pan.gd<>uid://cxt1od4epjtpf::::res://icon.svg
+water_gen.tscn::PackedScene::3978351303319617465::1701682286::0::1::::<><>::res://FluidSim2D/WaterGenPhysicsServer.gd<>uid://bbe84iqhimpn0::::res://FluidSim2D/water_particle.png
+::res://scripts/::1701670147
+draggable.gd::GDScript::-1::1701669637::0::1::::Draggable<>RigidBody2D<>::
+gameManager.gd::GDScript::-1::1701669637::0::1::::<>Node2D<>::
+Global.gd::GDScript::-1::1701669637::0::1::::<>Node<>::
+ingredient.gd::GDScript::-1::1701670147::0::1::::Ingredient<>Draggable<>::
+ingredientState.gd::GDScript::-1::1701669637::0::1::::IngredientState<>Resource<>::
+instantiationManager.gd::GDScript::-1::1701669637::0::1::::<>Node2D<>::
+liquidDraggable.gd::GDScript::-1::1701669637::0::1::::<>Draggable<>::
+main.gd::GDScript::-1::1701669637::0::1::::<>Node<>::
+pan.gd::GDScript::-1::1701669637::0::1::::<>RigidBody2D<>::
+RecipeManager.gd::GDScript::-1::1701669637::0::1::::<>Node2D<>::
+RecipeUI.gd::GDScript::-1::1701669637::0::1::::<>Control<>::
