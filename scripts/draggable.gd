@@ -1,14 +1,10 @@
 extends RigidBody2D
 class_name Draggable
 
-@export var dragPoint : RigidBody2D;
-@export var sprite : Sprite2D;
 var dragging = false;
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	if !dragPoint: dragPoint = get_node("DragPoint");
-	if !sprite: sprite = get_node("Sprite2D");
 	pass # Replace with function body.
 
 
@@ -37,13 +33,13 @@ func _on_input_event(viewport, event, shape_idx):
 func Drag(delta):
 	dragging = true;
 	var mousePos: Vector2 = get_global_mouse_position();
-	var speed: float = dragPoint.global_position.distance_to(mousePos) / delta;
-	var raycast = PhysicsRayQueryParameters2D.create(dragPoint.global_position, mousePos);
+	var speed: float = $DragPoint.global_position.distance_to(mousePos) / delta;
+	var raycast = PhysicsRayQueryParameters2D.create($DragPoint.global_position, mousePos);
 	if get_world_2d().direct_space_state.intersect_ray(raycast):
 		speed = clamp(speed, 0, 8000);
-	var velocity: Vector2 = speed * dragPoint.global_position.direction_to(mousePos);
+	var velocity: Vector2 = speed * $DragPoint.global_position.direction_to(mousePos);
 	
-	dragPoint.linear_velocity = velocity;
+	$DragPoint.linear_velocity = velocity;
 	
 func ObjectAction(event):
 	pass;

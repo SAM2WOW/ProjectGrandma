@@ -7,9 +7,8 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2ownh"]
 size = Vector2(128, 288)
 
-[node name="LiquidContainer" node_paths=PackedStringArray("generator") instance=ExtResource("1_dc3it")]
+[node name="LiquidContainer" instance=ExtResource("1_dc3it")]
 script = ExtResource("2_3p8mk")
-generator = NodePath("WaterGen")
 
 [node name="Sprite2D" parent="." index="0"]
 position = Vector2(0, -80)

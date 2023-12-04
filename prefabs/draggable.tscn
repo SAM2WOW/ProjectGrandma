@@ -9,15 +9,13 @@ height = 128.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_00g0w"]
 
-[node name="Draggable" type="RigidBody2D" node_paths=PackedStringArray("dragPoint", "sprite")]
+[node name="Draggable" type="RigidBody2D"]
 collision_layer = 3
 collision_mask = 3
 input_pickable = true
 linear_damp = 2.0
 angular_damp = 2.0
 script = ExtResource("1_4v06w")
-dragPoint = NodePath("DragPoint")
-sprite = NodePath("Sprite2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_0rn36")
