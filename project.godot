@@ -19,7 +19,7 @@ config/icon="res://icon.svg"
 
 GameManager="*res://scripts/gameManager.gd"
 InstantiationManager="*res://scripts/instantiationManager.gd"
-InstantiationManager2="*res://prefabs/instantiation_manager.tscn"
+Global="*res://scripts/Global.gd"
 
 [display]
 

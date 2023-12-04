@@ -10,3 +10,7 @@ res://prefabs/pan.tscn
 res://prefabs/ingredient.tscn
 res://prefabs/draggable.tscn
 res://prefabs/instantiation_manager.tscn
+res://scripts/pan.gd
+res://scripts/Global.gd
+res://scripts/ingredientState.gd
+res://scripts/draggable.gd

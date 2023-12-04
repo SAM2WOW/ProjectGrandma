@@ -12,6 +12,7 @@ typeInfluenceMultiplier = {
 0: 1,
 1: 1
 }
+stateColor = Color(255, 255, 255, 255)
 
 [sub_resource type="Resource" id="Resource_ojaaw"]
 script = ExtResource("3_8mfa3")
@@ -21,6 +22,7 @@ typeInfluenceMultiplier = {
 0: 1,
 1: 1
 }
+stateColor = Color(1, 1, 1, 1)
 
 [sub_resource type="Resource" id="Resource_wka5m"]
 script = ExtResource("3_8mfa3")
@@ -30,6 +32,7 @@ typeInfluenceMultiplier = {
 0: 1,
 1: 1
 }
+stateColor = Color(255, 255, 255, 255)
 
 [sub_resource type="Resource" id="Resource_j8afd"]
 script = ExtResource("3_8mfa3")
@@ -39,8 +42,8 @@ typeInfluenceMultiplier = {
 0: 1,
 1: 1
 }
+stateColor = Color(255, 255, 255, 255)
 
 [node name="Ingredient" instance=ExtResource("1_fdwy0")]
 script = ExtResource("2_ukt0v")
 ingredientStates = Array[ExtResource("3_8mfa3")]([SubResource("Resource_qvnah"), SubResource("Resource_ojaaw"), SubResource("Resource_wka5m"), SubResource("Resource_j8afd")])
-airDrag = 0.0

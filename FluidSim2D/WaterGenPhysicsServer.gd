@@ -6,7 +6,7 @@ class_name LiquidGenerator
 @export var max_water_particles = 1000
 var current_particle_count = 0
 var spawn_timer = 0
-@export var spawn_time = 0.2
+@export var spawn_time = 0.05
 var water_particles = []
 var generate = false;
 
@@ -33,6 +33,7 @@ func create_particle():
 	ps.body_attach_object_instance_id(water_col,10);
 	#set physics parameters
 	ps.body_set_param(water_col,PhysicsServer2D.BODY_PARAM_FRICTION,0.0)
+	# ps.body_set_param(water_col,PhysicsServer2D.BODY_PARAM_MASS,0.05)
 	ps.body_set_param(water_col,PhysicsServer2D.BODY_PARAM_MASS,0.05)
 	ps.body_set_param(water_col,PhysicsServer2D.BODY_PARAM_GRAVITY_SCALE,2.0)
 	ps.body_set_state(water_col,PhysicsServer2D.BODY_STATE_TRANSFORM,trans)
@@ -58,14 +59,13 @@ func _physics_process(delta):
 	spawn_timer -= delta;
 	#add particles while less than max amount set and timer < 0
 	if spawn_timer < 0 and current_particle_count < max_water_particles and generate:
-		create_particle()
-		#for i in range(3):
-			#create_particle()
-			#current_particle_count += 1
-		current_particle_count += 1
+		for i in range(3):
+			create_particle()
+			current_particle_count += 1
+		# current_particle_count += 1
 		# Globals.total_water_particles += 1
 		spawn_timer = spawn_time
-	spawn_timer-=1;
+	# spawn_timer-=1;
 	#update particle texture position to be at Rigid body position
 	
 	for col in water_particles:

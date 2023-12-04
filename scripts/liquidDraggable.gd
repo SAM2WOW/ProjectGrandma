@@ -25,7 +25,7 @@ func _process(delta):
 func UpdateLiquidGeneration(delta):
 	if produceLiquid:
 		rotation = lerp_angle(rotation, deg_to_rad(-135), 5*delta);
-		if rotation < deg_to_rad(-90) && rotation > deg_to_rad(-180):
+		if rotation < deg_to_rad(-90) || rotation > deg_to_rad(90):
 			generator.generate = true;
 		else:
 			generator.generate = false;

@@ -2,12 +2,13 @@ extends RigidBody2D
 class_name Draggable
 
 @export var dragPoint : RigidBody2D;
-@export var airDrag : float;
+@export var sprite : Sprite2D;
 var dragging = false;
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	if !dragPoint: dragPoint = get_node("DragPoint");
+	if !sprite: sprite = get_node("Sprite2D");
 	pass # Replace with function body.
 
 
@@ -49,7 +50,7 @@ func ObjectAction(event):
 
 func AirDrag(delta):
 	# print(linear_velocity.length());
-	var drag = -linear_velocity.normalized() * airDrag * pow(linear_velocity.length(), 2) * delta;
+	# var drag = -linear_velocity.normalized() * airDrag * pow(linear_velocity.length(), 2) * delta;
 	#apply_force(drag*delta);
-	print(drag);
+	# print(drag);
 	pass;
