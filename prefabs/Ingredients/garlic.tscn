@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://dsyy6tka3361l"]
+
+[ext_resource type="PackedScene" uid="uid://b5em8781rmds2" path="res://prefabs/ingredient.tscn" id="1_mqbfx"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_llsia"]
+
+[node name="Ingredient" instance=ExtResource("1_mqbfx")]
+ingredientType = 1
+
+[node name="Sprite2D" parent="." index="0"]
+scale = Vector2(0.227173, 0.227173)
+
+[node name="CollisionShape2D" parent="." index="1"]
+shape = SubResource("CapsuleShape2D_llsia")
+
+[node name="DragPoint" parent="." index="3"]
+position = Vector2(0, -15)

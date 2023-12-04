@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://ckywdma1nd7rs"]
+
+[ext_resource type="Script" path="res://scripts/ingredientGroup.gd" id="1_d32su"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4vp2a"]
+radius = 27.0185
+
+[node name="IngredientGroup" type="Node2D"]
+script = ExtResource("1_d32su")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_4vp2a")

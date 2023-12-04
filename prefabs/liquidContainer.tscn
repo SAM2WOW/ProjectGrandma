@@ -1,0 +1,42 @@
+[gd_scene load_steps=3 format=3 uid="uid://drn5x3vivefyp"]
+
+[ext_resource type="PackedScene" uid="uid://c3gtn7dcgsaa0" path="res://prefabs/draggable.tscn" id="1_rj0oe"]
+[ext_resource type="Script" path="res://scripts/liquidContainer.gd" id="2_o3842"]
+
+[node name="Container" instance=ExtResource("1_rj0oe")]
+z_index = 1
+mass = 100.0
+script = ExtResource("2_o3842")
+mixThresholdRatio = 0.25
+liquidMix = {
+0: 0.5,
+1: 0.5
+}
+
+[node name="FrontSprite" type="Sprite2D" parent="." index="1"]
+visibility_layer = 4
+z_index = 3
+scale = Vector2(17.544, 1)
+
+[node name="Area2D" type="Area2D" parent="." index="2"]
+collision_layer = 3
+collision_mask = 3
+
+[node name="EnterBox" type="CollisionPolygon2D" parent="Area2D" index="0"]
+polygon = PackedVector2Array(-320, -128, -310, 31, -242, 95, 241, 94, 295, 25, 320, -129)
+
+[node name="Collider" type="CollisionPolygon2D" parent="." index="3"]
+polygon = PackedVector2Array(-312, -81, -326.704, -30.4842, -328, 33, -256, 95, 256, 95, 306, 28, 309.148, -30.5458, 311, -65, 298.745, -33.2129, 279, 18, 192, 63, -192, 63, -297, 20, -314.398, -30.9933)
+
+[node name="CollisionShape2D" parent="." index="4"]
+visible = false
+disabled = true
+
+[node name="DragPoint" parent="." index="6"]
+position = Vector2(0, 64)
+
+[connection signal="body_shape_entered" from="Area2D" to="." method="_on_area_2d_body_shape_entered"]
+[connection signal="body_shape_exited" from="Area2D" to="." method="_on_area_2d_body_shape_exited"]
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]
