@@ -5,9 +5,12 @@ var currentRecipet
 func _ready():
 	if (Engine.is_editor_hint):
 		get_window().size = Vector2i(960, 540);
+	print("Main is ready")
 		#updateStage(GameManager.currentStage)
+		#GameManager.gameEnd.connect(onGameEnd())
 func _process(delta):
-	pass
+	if Input.is_action_just_released("ui_accept"):
+		completeStage()
 
 func updateStage(stage: int):
 	#Instantiate cook scene
@@ -24,6 +27,8 @@ func completeStage():
 	else:
 		GameManager.currentStage += 1
 		updateStage(GameManager.currentStage)
-		GameManager.stageComplete.emit()
+		#GameManager.stageComplete.emit()
 
+func onGameEnd():
+	print("Game END")
 	
