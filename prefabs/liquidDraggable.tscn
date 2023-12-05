@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://2xviyeelbeyx"]
+[gd_scene load_steps=10 format=3 uid="uid://2xviyeelbeyx"]
 
 [ext_resource type="PackedScene" uid="uid://c3gtn7dcgsaa0" path="res://prefabs/draggable.tscn" id="1_dc3it"]
 [ext_resource type="Script" path="res://scripts/liquidDraggable.gd" id="2_3p8mk"]
@@ -6,6 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://dheapkl0gvtjg" path="res://sounds/Bottle1.wav" id="4_0jexg"]
 [ext_resource type="AudioStream" uid="uid://5v4py7blxtfr" path="res://sounds/Bottle2.wav" id="5_vsjf0"]
 [ext_resource type="AudioStream" uid="uid://2jcjncs56epu" path="res://sounds/Bottle3.wav" id="6_asf3h"]
+[ext_resource type="AudioStream" uid="uid://pj6upjblbml7" path="res://sounds/Pouring.wav" id="7_ttqlr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2ownh"]
 size = Vector2(128, 288)
@@ -42,6 +43,10 @@ position = Vector2(0, -224)
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." index="5"]
 stream = SubResource("AudioStreamRandomizer_ilbxc")
+bus = &"SFX"
+
+[node name="Pouring" type="AudioStreamPlayer2D" parent="." index="6"]
+stream = ExtResource("7_ttqlr")
 bus = &"SFX"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
