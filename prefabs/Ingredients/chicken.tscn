@@ -1,11 +1,19 @@
-[gd_scene load_steps=5 format=3 uid="uid://sytwr8cbqvm1"]
+[gd_scene load_steps=7 format=3 uid="uid://sytwr8cbqvm1"]
 
 [ext_resource type="PackedScene" uid="uid://b5em8781rmds2" path="res://prefabs/ingredient.tscn" id="1_56ysr"]
 [ext_resource type="Texture2D" uid="uid://btu8epp0jyk0l" path="res://arts/ingredients/drumstick.png" id="2_xxpdl"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_n6mev"]
-radius = 30.0
-height = 114.0
+radius = 28.0
+height = 70.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ljngj"]
+radius = 8.0
+height = 52.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_e0du0"]
+radius = 16.0
+height = 32.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qbico"]
 radius = 49.0
@@ -19,10 +27,20 @@ scale = Vector2(0.18709, 0.20756)
 texture = ExtResource("2_xxpdl")
 
 [node name="CollisionShape2D" parent="." index="1"]
-position = Vector2(4, 3)
+position = Vector2(23, 0)
 shape = SubResource("CapsuleShape2D_n6mev")
 
-[node name="DragPoint" parent="." index="3"]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="." index="2"]
+position = Vector2(-36, 2)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_ljngj")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="." index="3"]
+position = Vector2(-13, 2)
+rotation = -3.14159
+shape = SubResource("CapsuleShape2D_e0du0")
+
+[node name="DragPoint" parent="." index="5"]
 position = Vector2(0, -35)
 
 [node name="CollisionShape2D" parent="InteractArea" index="0"]

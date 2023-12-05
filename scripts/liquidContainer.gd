@@ -43,13 +43,10 @@ func _on_area_2d_body_shape_exited(body_rid, body, body_shape_index, local_shape
 func OnLiquidEnter(id, body_rid):
 	if !containedLiquid.keys().has(id): containedLiquid[id] = {};
 	containedLiquid[id][body_rid] = InstantiationManager.liquidParticles[id][body_rid];
-	if CheckMixed():
-		print("mixed");
-	
+
 func OnLiquidExit(id, body_rid):
+	if !containedLiquid.keys().has(id): return;
 	containedLiquid[id].erase(body_rid);
-	if !CheckMixed():
-		print("not mixed");
 
 func CheckMixed() -> bool:
 	var mixed = false;

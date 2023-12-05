@@ -28,7 +28,7 @@ func UpdateRender(state, trans) -> bool:
 		PhysicsServer2D.free_rid(state.bodyRid)
 		RenderingServer.free_rid(state.renderRid)
 		#remove reference
-		liquidParticles[state.type].erase(state.bodyRid);
+		liquidParticles[state.liquidType].erase(state.bodyRid);
 		return false;
 	return true;
 

@@ -14,3 +14,7 @@ res://scripts/instantiationManager.gd
 res://scripts/liquidState.gd
 res://scripts/liquidContainer.gd
 res://prefabs/instantiation_manager.tscn
+res://prefabs/Ingredients/peppercorn.tscn
+res://scripts/ingredientGroup.gd
+res://scripts/stoveTop.gd
+res://prefabs/stoveTop.tscn
