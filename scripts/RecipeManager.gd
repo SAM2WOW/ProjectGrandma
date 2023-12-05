@@ -21,9 +21,10 @@ const RecipeInfos = {
 	},
 }
 func _ready():
-	print("Recipe Manager is ready")
+	print("Recipe Manager is ready: ", self);
 	recipe.sort_custom(func(x, y): return x.step < y.step);
-		
+	#for component in recipe:
+		#print(component.description);
 #func initRecipes():
 	#print("Initialized Recipes")
 	#for i in range(GameManager.stageNumbers):

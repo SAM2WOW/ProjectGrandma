@@ -14,7 +14,7 @@ func _ready():
 		var randPos = Global.randv_circle(0, $Area2D/CollisionShape2D.shape.radius);
 		ingredient.global_position = global_position + randPos;
 		ingredient.MultiplyScale(1+randf_range(-sizeVarianceMultiplier, sizeVarianceMultiplier));
-		InstantiationManager.add_child(ingredient);
+		GameManager.instantiationManager.add_child(ingredient);
 		ingredients.append(ingredient);
 
 

@@ -284,6 +284,6 @@ step = 4
 description = " Simmer on low heat for around x seconds or until the sauce thickens."
 quantityPoints = Array[ExtResource("3_eufjj")]([])
 
-[node name="RecipeManager" type="Node2D"]
+[node name="RecipeManager" type="Node2D" groups=["RecipeManager"]]
 script = ExtResource("1_bgt5p")
 recipe = Array[ExtResource("2_6kl6y")]([SubResource("Resource_t5c2e"), SubResource("Resource_c5yxf"), SubResource("Resource_6h8y0"), SubResource("Resource_gqaa1"), SubResource("Resource_gv8wc"), SubResource("Resource_3s2vj"), SubResource("Resource_lw685")])
