@@ -11,10 +11,18 @@ func _ready():
 func ObjectAction(event):
 	super.ObjectAction(event);
 	produceLiquid = event.pressed;
+	
+	if produceLiquid:
+		$Pouring.play()
+	else:
+		$Pouring.stop()
 
 func _physics_process(delta):
 	super._physics_process(delta);
 	UpdateLiquidGeneration(delta);
+	
+	# set volume base on rotation
+	$Pouring.set_volume_db(linear_to_db(remap(rotation, -2.35, 0.0, 1.0, 0.0)))
 
 func _process(delta):
 	super._process(delta);
