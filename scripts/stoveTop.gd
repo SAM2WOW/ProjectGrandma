@@ -35,14 +35,14 @@ func _on_knob_turned_knob(analog):
 
 
 func _on_area_2d_area_entered(area):
-	if area.get_name() == "EnterArea":# is PanContainer:
+	if area.get_name() == "EnterArea" && area.get_parent() is PanContainer:
 		print("area on heat")
 		panRef = area.get_parent();
 		panRef.targetHeat = heatMultiplier;
 
 
 func _on_area_2d_area_exited(area):
-	if area.get_name() == "EnterArea":# is PanContainer:
+	if area.get_name() == "EnterArea" && area.get_parent() is PanContainer:
 		print("area off heat")
 		area.get_parent().targetHeat = 0;
 		panRef = null;

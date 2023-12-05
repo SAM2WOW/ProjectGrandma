@@ -1,10 +1,20 @@
-[gd_scene load_steps=3 format=3 uid="uid://drn5x3vivefyp"]
+[gd_scene load_steps=6 format=3 uid="uid://drn5x3vivefyp"]
 
 [ext_resource type="PackedScene" uid="uid://c3gtn7dcgsaa0" path="res://prefabs/draggable.tscn" id="1_rj0oe"]
 [ext_resource type="Script" path="res://scripts/liquidContainer.gd" id="2_o3842"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c3qqw"]
+size = Vector2(196.165, 35.7112)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wmtlb"]
+size = Vector2(196.165, 35.7112)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_waguf"]
+size = Vector2(384, 32)
+
 [node name="Container" instance=ExtResource("1_rj0oe")]
 z_index = 1
+collision_priority = 50.0
 mass = 100.0
 script = ExtResource("2_o3842")
 mixThresholdRatio = 0.25
@@ -26,9 +36,33 @@ collision_mask = 3
 polygon = PackedVector2Array(-224, -128, -186, 7, -160, 96, 160, 96, 186, 10, 224, -128)
 
 [node name="Collider" type="CollisionPolygon2D" parent="." index="3"]
+visible = false
 polygon = PackedVector2Array(-224, -128, -192, 32, -160, 96, 160, 96, 192, 32, 224, -128, 199, -162, 215, -122, 160, 32, 128, 64, -128, 64, -160, 32, -215, -125, -207, -162)
+one_way_collision_margin = 43.8
 
-[node name="CollisionShape2D" parent="." index="4"]
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="." index="4"]
+position = Vector2(544, -64)
+polygon = PackedVector2Array(-336, -16, -290, -16, -325, -73)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." index="5"]
+position = Vector2(85, -64)
+polygon = PackedVector2Array(-336, -16, -290, -16, -294, -72)
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="." index="6"]
+position = Vector2(-206, -6)
+rotation = -1.83259
+shape = SubResource("RectangleShape2D_c3qqw")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="." index="7"]
+position = Vector2(206.601, -4.05588)
+rotation = -1.309
+shape = SubResource("RectangleShape2D_wmtlb")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="." index="8"]
+position = Vector2(0, 80)
+shape = SubResource("RectangleShape2D_waguf")
+
+[node name="CollisionShape2D" parent="." index="9"]
 visible = false
 disabled = true
 

@@ -6,16 +6,19 @@ var cookingObjects = [];
 var cookingHeat : float = 0;
 var targetHeat : float = cookingHeat;
 var currentCookingState : IngredientState.CookingType;
+var averageLiquidHeat : float = 0;
 
 @export var thickenCap : float = 3.0;
 @export var thickenHeatThreshold : float = 0.5;
 @export var thickenTimer : float = 10.0;
-@export var liquidThreshold : int = 10;
+@export var liquidThreshold : int = 20;
+@export var heatUpCoefficient: float = 0.5;
+@export var coolDownCoefficient: float = 0.3;
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	super._ready();
-	pass # Replace with function body.
+	InstantiationManager.pan = self;
 
 func ObjectAction(event):
 	super.ObjectAction(event);
@@ -25,25 +28,37 @@ func ObjectAction(event):
 func _process(delta):
 	super._process(delta);
 	UpdateHeat(delta);
+	UpdateFluids(delta);
 	CookIngredients(delta);
-	ThickenFluids(delta);
 
 func UpdateHeat(delta):
 	if cookingHeat < targetHeat:
-		cookingHeat = lerpf(cookingHeat, targetHeat, 5*delta)
+		cookingHeat += heatUpCoefficient * delta;
 		# print(cookingHeat)
 	elif cookingHeat > targetHeat:
-		cookingHeat = lerpf(cookingHeat, targetHeat, 0.2*delta)
+		cookingHeat -= coolDownCoefficient * delta;
 		# print(cookingHeat)
+	cookingHeat = clamp(cookingHeat, 0, targetHeat);
 	
 func CookIngredients(delta):
+	var heat = cookingHeat;
+	if currentCookingState == IngredientState.CookingType.Boiled: heat = averageLiquidHeat;
 	for ingredient in cookingObjects:
-		ingredient.Cook(currentCookingState, cookingHeat, delta);
+		ingredient.Cook(currentCookingState, heat, delta);
 
-func ThickenFluids(delta):
+func UpdateFluids(delta):
+	averageLiquidHeat = 0;
+	var num = 0;
 	for key in containedLiquid.keys():
-		for liquid in containedLiquid[key].values():
-			liquid.Thicken(delta, cookingHeat);
+		for liquid in containedLiquid[key].keys():
+			if !liquid:
+				containedLiquid[key].erase(liquid);
+				continue;
+			var state = containedLiquid[key][liquid];
+			state.UpdateHeat(delta, cookingHeat);
+			num+=1;
+			averageLiquidHeat += state.currentHeat;
+	averageLiquidHeat /= num;
 
 func _on_area_2d_body_shape_entered(body_rid, body, body_shape_index, local_shape_index):
 	super._on_area_2d_body_shape_entered(body_rid, body, body_shape_index, local_shape_index);

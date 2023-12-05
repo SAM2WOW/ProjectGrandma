@@ -1,6 +1,8 @@
 extends Node2D
 
+var ingredients = {};
 var liquidParticles = {};
+var pan;
 @export var liquidColors = {
 	0: Color.WHITE
 }
@@ -12,7 +14,11 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
 	for type in liquidParticles.values():
-		for state in type.values():
+		for liquid in type.keys():
+			if !liquid:
+				type.erase(liquid);
+				continue;
+			var state = type[liquid];
 			var trans = PhysicsServer2D.body_get_state(state.bodyRid,PhysicsServer2D.BODY_STATE_TRANSFORM)
 			if !UpdateRender(state, trans): continue;
 			CheckCollision(state, trans);
@@ -37,12 +43,17 @@ func CheckCollision(state, trans):
 	var query = PhysicsShapeQueryParameters2D.new()
 	query.shape_rid = state.shapeRid;
 	query.transform = trans
-	query.collision_mask = 2 #or just leave it alone, it defaults to all layers
 	var results = space_state.intersect_shape(query)
 	for coll in results:
-		if !Global.LiquidType.values().has(coll.collider_id): continue;
-		OnParticleCollision(state, coll);
+		if Global.LiquidType.values().has(coll.collider_id):
+			OnParticleCollision(state, coll);
+		# print(PhysicsServer2D.body_get_collision_layer(coll.rid));
 
 func OnParticleCollision(colState, colTwo):
 	var collTwoState = liquidParticles[colTwo.collider_id][colTwo.rid];
 	colState.MixLiquid(collTwoState);
+
+func DeleteParticle(state : LiquidState):
+	PhysicsServer2D.free_rid(state.bodyRid);
+	RenderingServer.free_rid(state.renderRid);
+	liquidParticles[state.liquidType].erase(state.bodyRid);

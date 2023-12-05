@@ -9,6 +9,8 @@ class_name LiquidState;
 @export var minThickenHeatThreshold: float = 0.1;
 @export var maxFriction: float = 5;
 @export var maxMass: float = 0.15;
+@export var heatUpCoefficient: float = 0.2;
+@export var coolDownCoefficient: float = 0.1;
 
 var baseFriction : float = 0;
 var baseMass : float = 0;
@@ -18,6 +20,8 @@ var thickenTimer : float;
 var bodyRid : RID;
 var shapeRid : RID;
 var renderRid : RID;
+var currentHeat : float = 0;
+var targetHeat : float;
 
 var liquidComposition = {};
 var collidedLiquids = {};
@@ -41,13 +45,23 @@ func Thicken(delta, heat):
 		var thickenSpeed = Global.remap_range(heat, minThickenHeatThreshold, thickenHeatThreshold, 1, 0.2);
 		thickenTimer += delta * thickenSpeed;
 	elif heat >= unthickenHeatThreshold:
-		thickenTimer -= delta*heat;
+		thickenTimer -= delta * heat;
 	thickenTimer = clamp(thickenTimer, 0, maxThickenTimer);
-	var friction = baseFriction+((maxFriction-baseFriction) * ease(thickenTimer/maxThickenTimer, 4.8));
-	var mass = baseMass+((maxMass-baseMass) * ease(thickenTimer/maxThickenTimer, 4.8));
+	consistency = ease(thickenTimer/maxThickenTimer, 4.8);
+	var friction = baseFriction+((maxFriction-baseFriction) * consistency);
+	var mass = baseMass+((maxMass-baseMass) * consistency);
 	# print(friction, ", ", mass);
 	PhysicsServer2D.body_set_param(bodyRid, PhysicsServer2D.BODY_PARAM_FRICTION, friction);
 	PhysicsServer2D.body_set_param(bodyRid, PhysicsServer2D.BODY_PARAM_MASS, mass);
+
+func UpdateHeat(delta, heat):
+	targetHeat = heat;
+	if currentHeat < targetHeat:
+		currentHeat += heatUpCoefficient * delta;
+	elif currentHeat > targetHeat:
+		currentHeat -= coolDownCoefficient * delta;
+	heat = clamp(heat, 0, targetHeat);
+	Thicken(delta, heat);
 
 func MixLiquid(col : LiquidState):
 	if !collidedLiquids.keys().has(col.liquidType): collidedLiquids[col.liquidType] = {};

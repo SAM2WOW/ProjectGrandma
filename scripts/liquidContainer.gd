@@ -4,7 +4,7 @@ class_name LiquidContainer
 
 var containedLiquid = {};
 var pouring=false;
-var rotateSpeed : float = 2.0;
+var rotateSpeed : float = 4.0;
 @export var mixThresholdRatio = 0.25;
 
 @export var liquidMix = {
@@ -24,7 +24,7 @@ func UpdatePouring(delta):
 	if pouring:
 		rotation = lerp_angle(rotation, deg_to_rad(135), rotateSpeed*delta);
 	else:
-		rotation = lerp_angle(rotation, deg_to_rad(0), rotateSpeed*delta);
+		rotation = lerp_angle(rotation, deg_to_rad(0), rotateSpeed*2*delta);
 
 func _on_area_2d_body_shape_entered(body_rid, body, body_shape_index, local_shape_index):
 	var id = PhysicsServer2D.body_get_object_instance_id(body_rid);

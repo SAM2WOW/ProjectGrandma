@@ -16,8 +16,8 @@ height = 192.0
 [node name="Draggable" type="RigidBody2D"]
 visibility_layer = 2
 z_index = 2
-collision_layer = 3
-collision_mask = 3
+collision_layer = 2
+collision_mask = 7
 input_pickable = true
 gravity_scale = 4.0
 linear_damp = 2.0

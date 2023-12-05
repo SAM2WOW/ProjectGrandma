@@ -10,7 +10,7 @@ var current_particle_count = 0
 var spawn_timer = 0
 var liquid_type : Global.LiquidType;
 @export var spawn_time = 0.05
-@export var base_particle_size = 6;
+@export var base_particle_size = 4.5;
 var water_particles = []
 @export var generate = false;
 

@@ -62,6 +62,7 @@ liquidType = 1
 
 [node name="Pan" parent="Node2D/Cooking Scene" instance=ExtResource("13_blku6")]
 position = Vector2(0, 222)
+collision_priority = 1.0
 
 [node name="Container" parent="Node2D/Cooking Scene" instance=ExtResource("7_wm87n")]
 position = Vector2(-640, 446)
@@ -81,10 +82,19 @@ scale = Vector2(-6.59748, -6.59748)
 ingredientPath = "res://prefabs/Ingredients/chicken.tscn"
 numIngredients = 3
 
+[node name="Container2" parent="Node2D/Cooking Scene" instance=ExtResource("7_wm87n")]
+position = Vector2(-1280, 446)
+
+[node name="IngredientGroup" parent="Node2D/Cooking Scene/Container2" instance=ExtResource("6_b25a0")]
+position = Vector2(0, -128)
+scale = Vector2(-6.59748, -6.59748)
+ingredientPath = "res://prefabs/Ingredients/peppercorn.tscn"
+numIngredients = 10
+
 [node name="StaticBody2D" type="StaticBody2D" parent="Node2D"]
 position = Vector2(0, -446)
-collision_layer = 3
-collision_mask = 3
+collision_layer = 6
+collision_mask = 7
 collision_priority = 100.0
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Node2D/StaticBody2D"]
