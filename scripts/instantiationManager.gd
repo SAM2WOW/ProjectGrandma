@@ -8,6 +8,7 @@ var pan;
 }
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	print("instantiation manager ready");
 	pass # Replace with function body.
 
 
@@ -27,7 +28,7 @@ func _physics_process(delta):
 
 
 func UpdateRender(state, trans) -> bool:
-	trans.origin = trans.origin - InstantiationManager.global_position;
+	trans.origin = trans.origin - GameManager.instantiationManager.global_position;
 	RenderingServer.canvas_item_set_transform(state.renderRid,trans)
 	if trans.origin.y > 1500:
 		#remove RIDs

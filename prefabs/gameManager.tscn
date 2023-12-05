@@ -2,5 +2,5 @@
 
 [ext_resource type="Script" path="res://scripts/gameManager.gd" id="1_goxm8"]
 
-[node name="gameManager" type="Node2D"]
+[node name="gameManager" type="Node2D" groups=["GameManager"]]
 script = ExtResource("1_goxm8")

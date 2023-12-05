@@ -2,6 +2,11 @@ extends Node2D
 
 var stageNumbers = 4;
 var currentStage = 1;
+
+@onready var recipeUI = $CanvasLayer/RecipeUI
+@onready var recipeManager = $RecipeManager;
+@onready var gameManager = $gameManager;
+@onready var instantiationManager = $InstantiationManager;
 # @onready var recipeManager = preload("res://scripts/RecipeManager.gd").new()
 
 signal gameEnd
@@ -11,6 +16,9 @@ var draggedObject : Draggable;
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	print("Game Manager is ready")
+	recipeManager = get_tree().get_first_node_in_group("RecipeManager");
+	instantiationManager = get_tree().get_first_node_in_group("InstantiationManager");
+	print("Recipe Manager Size: ", recipeManager.recipe.size());
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
