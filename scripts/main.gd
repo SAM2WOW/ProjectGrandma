@@ -1,11 +1,11 @@
 extends Node
 @onready var recipeUI = $CanvasLayer/RecipeUI
-
+var currentRecipet
 func _ready():
 	if (Engine.is_editor_hint):
 		get_window().size = Vector2i(960, 540);
-	print("Main is ready")
-		#updateStage(GameManager.currentStage)
+		GameManager.gameEnd.connect(onGameEnd)
+		updateStage(GameManager.currentStage)
 		#GameManager.gameEnd.connect(onGameEnd())
 func _process(delta):
 	if Input.is_action_just_released("ui_accept"):
@@ -13,7 +13,6 @@ func _process(delta):
 
 func updateStage(stage: int):
 	#Instantiate cook scene
-
 	#Get current stage's receipe
 	print('Updated stage')
 	# currentRecipet = GameManager.recipeManager.GetCurrentRecipe(stage)
@@ -21,12 +20,13 @@ func updateStage(stage: int):
 
 	
 func completeStage():
+	pass
 	if  GameManager.CheckGameEnd():
 		print("Complete last stage, game ends")
 	else:
 		GameManager.currentStage += 1
 		updateStage(GameManager.currentStage)
-		#GameManager.stageComplete.emit()
+		GameManager.stageComplete.emit()
 
 func onGameEnd():
 	print("Game END")

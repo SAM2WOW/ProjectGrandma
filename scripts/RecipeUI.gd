@@ -4,8 +4,7 @@ extends Control
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	print("UI is ready")# Replace with function body.
-	#GameManager.gameEnd.connect(onGameEnd())
-
+	GameManager.gameEnd.connect(onGameEnd)
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass

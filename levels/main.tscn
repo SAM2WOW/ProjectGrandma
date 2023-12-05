@@ -113,6 +113,8 @@ position = Vector2(536, 181)
 scale = Vector2(45.6875, 39.875)
 texture = ExtResource("3_u1ivw")
 
+[node name="Cooking Scene Parent" type="Node2D" parent="Node2D"]
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="RecipeUI" type="Control" parent="CanvasLayer"]
@@ -134,6 +136,13 @@ text = "1. Apple
 label_settings = SubResource("LabelSettings_ijvoj")
 
 [node name="RecipeManager" parent="." instance=ExtResource("11_bxixm")]
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/RecipeUI"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="LiquidContainer" parent="." instance=ExtResource("7_avq8n")]
+position = Vector2(736, 0)
 
 [node name="InstantiationManager" parent="." instance=ExtResource("6_mkygc")]
 
