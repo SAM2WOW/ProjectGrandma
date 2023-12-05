@@ -1,17 +1,18 @@
-[gd_scene load_steps=17 format=3 uid="uid://svu81oy40o3p"]
+[gd_scene load_steps=18 format=3 uid="uid://svu81oy40o3p"]
 
 [ext_resource type="Texture2D" uid="uid://cmp4cxxq8yuat" path="res://arts/ivory-off-white-paper-texture.jpg" id="1_1jmmi"]
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_udxji"]
 [ext_resource type="Texture2D" uid="uid://cxt1od4epjtpf" path="res://icon.svg" id="3_u1ivw"]
 [ext_resource type="Script" path="res://scripts/RecipeUI.gd" id="5_vajsc"]
 [ext_resource type="PackedScene" uid="uid://g218crvxx0hm" path="res://prefabs/ingredientGroup.tscn" id="6_b25a0"]
-[ext_resource type="Script" path="res://scripts/RecipeManager.gd" id="6_coe6b"]
 [ext_resource type="Shader" path="res://Water_View_Shader.gdshader" id="6_gynvk"]
 [ext_resource type="PackedScene" uid="uid://rnl82flkkwj2" path="res://prefabs/instantiation_manager.tscn" id="6_mkygc"]
 [ext_resource type="PackedScene" uid="uid://2xviyeelbeyx" path="res://prefabs/liquidDraggable.tscn" id="7_avq8n"]
 [ext_resource type="PackedScene" uid="uid://drn5x3vivefyp" path="res://prefabs/liquidContainer.tscn" id="7_wm87n"]
 [ext_resource type="PackedScene" uid="uid://dsppfnoxh56xm" path="res://prefabs/stoveTop.tscn" id="8_fma0h"]
+[ext_resource type="PackedScene" uid="uid://w7pwgo4f8bvq" path="res://prefabs/recipeManager.tscn" id="11_bxixm"]
 [ext_resource type="PackedScene" uid="uid://h7fkjxle4fr2" path="res://prefabs/panContainer.tscn" id="13_blku6"]
+[ext_resource type="PackedScene" uid="uid://bt4diyeaca8l0" path="res://prefabs/gameManager.tscn" id="13_cncv6"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_y2278"]
 frequency = 0.0698
@@ -132,7 +133,8 @@ text = "1. Apple
 2. Coconut"
 label_settings = SubResource("LabelSettings_ijvoj")
 
-[node name="RecipeManager" type="Node2D" parent="."]
-script = ExtResource("6_coe6b")
+[node name="RecipeManager" parent="." instance=ExtResource("11_bxixm")]
 
 [node name="InstantiationManager" parent="." instance=ExtResource("6_mkygc")]
+
+[node name="gameManager" parent="." instance=ExtResource("13_cncv6")]
