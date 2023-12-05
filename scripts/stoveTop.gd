@@ -15,14 +15,15 @@ func _process(delta):
 	pass
 
 func _on_area_2d_body_shape_entered(body_rid, body, body_shape_index, local_shape_index):
-	print(body);
 	if body is PanContainer:
+		print("pan on heat")
 		panRef = body;
 		panRef.targetHeat = heatMultiplier;
 
 
 func _on_area_2d_body_shape_exited(body_rid, body, body_shape_index, local_shape_index):
 	if body is PanContainer:
+		print("pan off heat")
 		body.targetHeat = 0;
 		panRef = null;
 

@@ -1,7 +1,7 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1701687863
+::res://::1701743252
 icon.svg::CompressedTexture2D::6428011793886220743::1701407322::1701407322::1::::<><>::
-Water_View_Shader.gdshader::Shader::-1::1701687857::0::1::::<><>::
+Water_View_Shader.gdshader::Shader::-1::1701743246::0::1::::<><>::
 ::res://arts/::1701687706
 ivory-off-white-paper-texture.jpg::CompressedTexture2D::5647838766071111795::1701407322::1701496677::1::::<><>::
 ::res://arts/ingredients/::1701687706
@@ -15,49 +15,49 @@ vinegar.png::CompressedTexture2D::539956782690660189::1701687706::1701687706::1:
 pan line art only.png::CompressedTexture2D::7771011622148157578::1701652509::1701652509::1::::<><>::
 pan watercolor only.png::CompressedTexture2D::4590189363216257769::1701652509::1701652509::1::::<><>::
 pan with handle.png::CompressedTexture2D::8333451276914892780::1701652509::1701652509::1::::<><>::
-::res://FluidSim2D/::1701683557
+::res://FluidSim2D/::1701743102
 Container.gd::GDScript::-1::1701652361::0::1::::<>StaticBody2D<>::
 Mouse.gd::GDScript::-1::1701652361::0::1::::<>RigidBody2D<>::
 MouseJig.tscn::PackedScene::2034194615835185141::1701652361::0::1::::<><>::res://FluidSim2D/Mouse.gd<>uid://cxt1od4epjtpf::::res://icon.svg
 Water Sim.tscn::PackedScene::6065561264946137043::1701680528::0::1::::<><>::res://scripts/instantiationManager.gd<>res://FluidSim2D/WaterGenPhysicsServer.gd<>res://FluidSim2D/Container.gd<>res://Water_View_Shader.gdshader<>uid://38m5gw2csxeb::::res://FluidSim2D/MouseJig.tscn<>uid://bbe84iqhimpn0::::res://FluidSim2D/water_particle.png<>uid://cxt1od4epjtpf::::res://icon.svg
-WaterGenPhysicsServer.gd::GDScript::-1::1701683557::0::1::::LiquidGenerator<>Node2D<>::
+WaterGenPhysicsServer.gd::GDScript::-1::1701743102::0::1::::LiquidGenerator<>Node2D<>::
 WaterParticle.gd::GDScript::-1::1701652361::0::1::::<>RigidBody2D<>::
 WaterParticle.tscn::PackedScene::4280358531979188395::1701652361::0::1::::<><>::uid://bbe84iqhimpn0::::res://FluidSim2D/water_particle.png<>res://FluidSim2D/WaterParticle.gd
 Water_Color.tscn::PackedScene::1673458978875837875::1701652361::0::1::::<><>::res://Water_View_Shader.gdshader
 water_particle.png::CompressedTexture2D::2466922932364807759::1701652361::1701652361::1::::<><>::
-::res://levels/::1701687852
+::res://levels/::1701743221
 cooking scene.tscn::PackedScene::4639952571083579315::1701652361::0::1::::<><>::uid://cxt1od4epjtpf::::res://icon.svg
-main.tscn::PackedScene::1308025777738598295::1701687852::0::1::::<><>::uid://cmp4cxxq8yuat::::res://arts/ivory-off-white-paper-texture.jpg<>res://scripts/main.gd<>uid://cxt1od4epjtpf::::res://icon.svg<>uid://b5em8781rmds2::::res://prefabs/ingredient.tscn<>res://scripts/RecipeUI.gd<>uid://ckywdma1nd7rs::::res://prefabs/ingredientGroup.tscn<>res://scripts/RecipeManager.gd<>res://Water_View_Shader.gdshader<>uid://rnl82flkkwj2::::res://prefabs/instantiation_manager.tscn<>uid://2xviyeelbeyx::::res://prefabs/liquidDraggable.tscn<>uid://drn5x3vivefyp::::res://prefabs/liquidContainer.tscn<>uid://dsppfnoxh56xm::::res://prefabs/stoveTop.tscn<>uid://h7fkjxle4fr2::::res://prefabs/panContainer.tscn
-::res://prefabs/::1701687749
-draggable.tscn::PackedScene::6751693779440008201::1701687749::0::1::::<><>::res://scripts/draggable.gd<>uid://cxt1od4epjtpf::::res://icon.svg
-ingredient.tscn::PackedScene::4501132771892635643::1701687749::0::1::::<><>::uid://c3gtn7dcgsaa0::::res://prefabs/draggable.tscn<>res://scripts/ingredient.gd<>res://scripts/ingredientState.gd
+main.tscn::PackedScene::1308025777738598295::1701743221::0::1::::<><>::uid://cmp4cxxq8yuat::::res://arts/ivory-off-white-paper-texture.jpg<>res://scripts/main.gd<>uid://cxt1od4epjtpf::::res://icon.svg<>res://scripts/RecipeUI.gd<>uid://g218crvxx0hm::::res://prefabs/ingredientGroup.tscn<>res://scripts/RecipeManager.gd<>res://Water_View_Shader.gdshader<>uid://rnl82flkkwj2::::res://prefabs/instantiation_manager.tscn<>uid://2xviyeelbeyx::::res://prefabs/liquidDraggable.tscn<>uid://drn5x3vivefyp::::res://prefabs/liquidContainer.tscn<>uid://dsppfnoxh56xm::::res://prefabs/stoveTop.tscn<>uid://h7fkjxle4fr2::::res://prefabs/panContainer.tscn
+::res://prefabs/::1701743222
+draggable.tscn::PackedScene::6751693779440008201::1701743221::0::1::::<><>::res://scripts/draggable.gd<>uid://cxt1od4epjtpf::::res://icon.svg
+ingredient.tscn::PackedScene::4501132771892635643::1701743221::0::1::::<><>::uid://c3gtn7dcgsaa0::::res://prefabs/draggable.tscn<>res://scripts/ingredient.gd<>res://scripts/ingredientState.gd
 ingredientGroup.tscn::PackedScene::478508966492786022::1701687706::0::1::::<><>::res://scripts/ingredientGroup.gd
 instantiation_manager.tscn::PackedScene::1220775497136668085::1701676324::0::1::::<><>::res://scripts/instantiationManager.gd
-liquidContainer.tscn::PackedScene::8381173390257844355::1701687749::0::1::::<><>::uid://c3gtn7dcgsaa0::::res://prefabs/draggable.tscn<>res://scripts/liquidContainer.gd
-liquidDraggable.tscn::PackedScene::1943870076705691407::1701687749::0::1::::<><>::uid://c3gtn7dcgsaa0::::res://prefabs/draggable.tscn<>res://scripts/liquidDraggable.gd<>uid://bwxe4nvaf0kyj::::res://prefabs/water_gen.tscn
-pan.tscn::PackedScene::1796051411171406457::1701687706::0::1::::<><>::res://scripts/pan.gd<>uid://cxt1od4epjtpf::::res://icon.svg
-panContainer.tscn::PackedScene::557703945245954873::1701687749::0::1::::<><>::uid://drn5x3vivefyp::::res://prefabs/liquidContainer.tscn<>res://scripts/panContainer.gd<>uid://dqy1ywdlmbisa::::res://arts/kitchenware/pan with handle.png<>uid://b6nr0o5mal2iv::::res://arts/kitchenware/pan watercolor only.png
-stoveTop.tscn::PackedScene::8454547292222202710::1701687749::0::1::::<><>::res://scripts/stoveTop.gd<>uid://cxt1od4epjtpf::::res://icon.svg<>uid://besfnnu5msblc::::res://prefabs/Knob/Knob.tscn
-water_gen.tscn::PackedScene::3978351303319617465::1701677446::0::1::::<><>::res://FluidSim2D/WaterGenPhysicsServer.gd<>uid://bbe84iqhimpn0::::res://FluidSim2D/water_particle.png
-::res://prefabs/Ingredients/::1701687749
-chicken.tscn::PackedScene::1314138105878846998::1701687706::0::1::::<><>::uid://b5em8781rmds2::::res://prefabs/ingredient.tscn<>uid://btu8epp0jyk0l::::res://arts/ingredients/drumstick.png
-garlic.tscn::PackedScene::8473719883529019163::1701687749::0::1::::<><>::uid://b5em8781rmds2::::res://prefabs/ingredient.tscn
-::res://prefabs/Knob/::1701687749
+liquidContainer.tscn::PackedScene::8381173390257844355::1701743222::0::1::::<><>::uid://c3gtn7dcgsaa0::::res://prefabs/draggable.tscn<>res://scripts/liquidContainer.gd
+liquidDraggable.tscn::PackedScene::1943870076705691407::1701743222::0::1::::<><>::uid://c3gtn7dcgsaa0::::res://prefabs/draggable.tscn<>res://scripts/liquidDraggable.gd<>uid://bwxe4nvaf0kyj::::res://prefabs/water_gen.tscn
+panContainer.tscn::PackedScene::557703945245954873::1701743221::0::1::::<><>::uid://drn5x3vivefyp::::res://prefabs/liquidContainer.tscn<>res://scripts/panContainer.gd<>uid://dqy1ywdlmbisa::::res://arts/kitchenware/pan with handle.png<>uid://b6nr0o5mal2iv::::res://arts/kitchenware/pan watercolor only.png
+stoveTop.tscn::PackedScene::8454547292222202710::1701727886::0::1::::<><>::res://scripts/stoveTop.gd<>uid://cxt1od4epjtpf::::res://icon.svg<>uid://besfnnu5msblc::::res://prefabs/Knob/Knob.tscn
+water_gen.tscn::PackedScene::3978351303319617465::1701743222::0::1::::<><>::res://FluidSim2D/WaterGenPhysicsServer.gd<>uid://bbe84iqhimpn0::::res://FluidSim2D/water_particle.png
+::res://prefabs/Ingredients/::1701743221
+chicken.tscn::PackedScene::1314138105878846998::1701743221::0::1::::<><>::uid://b5em8781rmds2::::res://prefabs/ingredient.tscn<>uid://btu8epp0jyk0l::::res://arts/ingredients/drumstick.png
+garlic.tscn::PackedScene::8473719883529019163::1701743221::0::1::::<><>::uid://b5em8781rmds2::::res://prefabs/ingredient.tscn
+::res://prefabs/Knob/::1701727886
 Knob.gd::GDScript::-1::1701687706::0::1::::<>Node2D<>::
-Knob.tscn::PackedScene::2704662373182350476::1701687749::0::1::::<><>::res://prefabs/Knob/Knob.gd<>uid://cxt1od4epjtpf::::res://icon.svg
+Knob.tscn::PackedScene::2704662373182350476::1701727886::0::1::::<><>::res://prefabs/Knob/Knob.gd<>uid://cxt1od4epjtpf::::res://icon.svg
 ::res://Resources/::1701577363
-::res://scripts/::1701687706
-draggable.gd::GDScript::-1::1701652361::0::1::::Draggable<>RigidBody2D<>::
+::res://scripts/::1701743185
+draggable.gd::GDScript::-1::1701730165::0::1::::Draggable<>RigidBody2D<>::
 gameManager.gd::GDScript::-1::1701680528::0::1::::<>Node2D<>::
-Global.gd::GDScript::-1::1701680528::0::1::::<>Node<>::
-ingredient.gd::GDScript::-1::1701683557::0::1::::Ingredient<>Draggable<>::
+Global.gd::GDScript::-1::1701737923::0::1::::<>Node<>::
+ingredient.gd::GDScript::-1::1701733410::0::1::::Ingredient<>Draggable<>::
 ingredientGroup.gd::GDScript::-1::1701680528::0::1::::<>Node2D<>::
 ingredientState.gd::GDScript::-1::1701680528::0::1::::IngredientState<>Resource<>::
-instantiationManager.gd::GDScript::-1::1701652361::0::1::::<>Node2D<>::
-liquidContainer.gd::GDScript::-1::1701680528::0::1::::LiquidContainer<>Draggable<>::
+instantiationManager.gd::GDScript::-1::1701736036::0::1::::<>Node2D<>::
+liquidContainer.gd::GDScript::-1::1701741831::0::1::::LiquidContainer<>Draggable<>::
 liquidDraggable.gd::GDScript::-1::1701680528::0::1::::<>Draggable<>::
+liquidState.gd::GDScript::-1::1701743185::0::1::::LiquidState<>Resource<>::
 main.gd::GDScript::-1::1701652361::0::1::::<>Node<>::
-panContainer.gd::GDScript::-1::1701687706::0::1::::PanContainer<>LiquidContainer<>::
+panContainer.gd::GDScript::-1::1701737487::0::1::::PanContainer<>LiquidContainer<>::
 RecipeManager.gd::GDScript::-1::1701652361::0::1::::<>Node2D<>::
 RecipeUI.gd::GDScript::-1::1701652361::0::1::::<>Control<>::
-stoveTop.gd::GDScript::-1::1701687706::0::1::::<>StaticBody2D<>::
+stoveTop.gd::GDScript::-1::1701733980::0::1::::<>StaticBody2D<>::

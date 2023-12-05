@@ -41,16 +41,9 @@ func CookIngredients(delta):
 		ingredient.Cook(currentCookingState, cookingHeat, delta);
 
 func ThickenFluids(delta):
-	for liquid in liquidParticles.keys():
-		if cookingHeat <= thickenHeatThreshold:
-			liquidParticles[liquid] += delta;
-		else:
-			liquidParticles[liquid] -= delta;
-		liquidParticles[liquid] = clamp(liquidParticles[liquid], 0, thickenCap);
-		var timer = liquidParticles[liquid];
-		var friction = Global.remap_range(timer, 0, thickenTimer, 0, thickenCap);
-		friction = ease(friction/thickenCap, 4.8);
-		PhysicsServer2D.body_set_param(liquid, PhysicsServer2D.BODY_PARAM_FRICTION, friction);
+	for key in containedLiquid.keys():
+		for liquid in containedLiquid[key].values():
+			liquid.Thicken(delta, cookingHeat);
 
 func _on_area_2d_body_shape_entered(body_rid, body, body_shape_index, local_shape_index):
 	super._on_area_2d_body_shape_entered(body_rid, body, body_shape_index, local_shape_index);
@@ -65,13 +58,10 @@ func _on_area_2d_body_shape_exited(body_rid, body, body_shape_index, local_shape
 
 func OnLiquidEnter(id, body_rid):
 	super.OnLiquidEnter(id, body_rid);
-	var friction = PhysicsServer2D.body_get_param(body_rid, PhysicsServer2D.BODY_PARAM_FRICTION);
-	var timer = Global.remap_range(friction,0,thickenCap,0,thickenTimer);
-	liquidParticles[body_rid] = timer;
-	if liquidParticles.size() > liquidThreshold:
+	if GetLiquidTotal() > liquidThreshold:
 		currentCookingState = IngredientState.CookingType.Boiled;
 	
 func OnLiquidExit(id, body_rid):
 	super.OnLiquidExit(id, body_rid);
-	if liquidParticles.size() < liquidThreshold:
+	if GetLiquidTotal() < liquidThreshold:
 		currentCookingState = IngredientState.CookingType.Fried;

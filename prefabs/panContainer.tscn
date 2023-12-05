@@ -1,9 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://h7fkjxle4fr2"]
+[gd_scene load_steps=6 format=3 uid="uid://h7fkjxle4fr2"]
 
 [ext_resource type="PackedScene" uid="uid://drn5x3vivefyp" path="res://prefabs/liquidContainer.tscn" id="1_ribvh"]
 [ext_resource type="Script" path="res://scripts/panContainer.gd" id="2_2j0dy"]
 [ext_resource type="Texture2D" uid="uid://dqy1ywdlmbisa" path="res://arts/kitchenware/pan with handle.png" id="2_ksjrc"]
 [ext_resource type="Texture2D" uid="uid://b6nr0o5mal2iv" path="res://arts/kitchenware/pan watercolor only.png" id="3_3boog"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xl3c2"]
+radius = 128.0
+height = 960.0
 
 [node name="Pan" instance=ExtResource("1_ribvh")]
 script = ExtResource("2_2j0dy")
@@ -23,7 +27,8 @@ scale = Vector2(1.2, 1.2)
 texture = ExtResource("3_3boog")
 
 [node name="DragPoint" parent="." index="6"]
-position = Vector2(-383, -31)
+position = Vector2(0, 0)
 
-[node name="CollisionShape2D" parent="DragPoint" index="0"]
-position = Vector2(383, 31)
+[node name="CollisionShape2D" parent="InteractArea" index="0"]
+position = Vector2(-192, 0)
+shape = SubResource("CapsuleShape2D_xl3c2")

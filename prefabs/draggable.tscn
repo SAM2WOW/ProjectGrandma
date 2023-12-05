@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://c3gtn7dcgsaa0"]
+[gd_scene load_steps=6 format=3 uid="uid://c3gtn7dcgsaa0"]
 
 [ext_resource type="Script" path="res://scripts/draggable.gd" id="1_4v06w"]
 [ext_resource type="Texture2D" uid="uid://cxt1od4epjtpf" path="res://icon.svg" id="2_0rn36"]
@@ -8,6 +8,10 @@ radius = 64.0
 height = 128.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_00g0w"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_io3f3"]
+radius = 96.0
+height = 192.0
 
 [node name="Draggable" type="RigidBody2D"]
 visibility_layer = 2
@@ -38,7 +42,17 @@ position = Vector2(0, -64)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DragPoint"]
 shape = SubResource("CircleShape2D_00g0w")
 disabled = true
+metadata/_edit_lock_ = true
+
+[node name="InteractArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractArea"]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_io3f3")
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="input_event" from="InteractArea" to="." method="_on_interact_area_input_event"]
+[connection signal="mouse_entered" from="InteractArea" to="." method="_on_interact_area_mouse_entered"]
+[connection signal="mouse_exited" from="InteractArea" to="." method="_on_interact_area_mouse_exited"]

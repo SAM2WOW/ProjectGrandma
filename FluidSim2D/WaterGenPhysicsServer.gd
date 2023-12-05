@@ -4,6 +4,8 @@ class_name LiquidGenerator
 #Water Gen with Physics2DServer
 @export var particle_texture:Texture;
 @export var max_water_particles = 1000
+@export var size_variance : float = 0.2;
+@export var numParticlesPerSpawn : int = 3;
 var current_particle_count = 0
 var spawn_timer = 0
 var liquid_type : Global.LiquidType;
@@ -11,8 +13,6 @@ var liquid_type : Global.LiquidType;
 @export var base_particle_size = 6;
 var water_particles = []
 @export var generate = false;
-
-var trackedObject;
 
 func create_particle():
 	var ps = PhysicsServer2D
@@ -26,7 +26,9 @@ func create_particle():
 	ps.body_set_space(water_col,get_world_2d().space)
 	#create circle shape for collision
 	var shape = ps.circle_shape_create()
-	ps.shape_set_data(shape,base_particle_size)
+	var randVariance = 1+randf_range(-size_variance, size_variance);
+	randVariance = 1;
+	ps.shape_set_data(shape,base_particle_size*randVariance)
 	#add shape to rigid body
 	ps.body_add_shape(water_col,shape,Transform2D.IDENTITY)
 	#set collision layer and mask
@@ -49,42 +51,26 @@ func create_particle():
 	#create a rectangle that will contain the texture
 	var rect = Rect2()
 	rect.position = Vector2(-8,-8)
-	rect.size = particle_texture.get_size()/2
+	rect.size = particle_texture.get_size()*randVariance/2
 	#add the texture to the canvas item
 	vs.canvas_item_add_texture_rect(water_particle,rect,particle_texture)
 	#set the texture color to pink
-	vs.canvas_item_set_self_modulate(water_particle,Color("ff00ff"))
+	# vs.canvas_item_set_self_modulate(water_particle,Color("ff00ff"))
+	vs.canvas_item_set_self_modulate(water_particle,InstantiationManager.liquidColors[liquid_type]);
 	# vs.canvas_item_set_z_index(water_particle,2);
 	#add RID pair to array
 	water_particles.append([water_col,water_particle])
+	if (!InstantiationManager.liquidParticles.keys().has(liquid_type)):
+		InstantiationManager.liquidParticles[liquid_type] = {};
+	InstantiationManager.liquidParticles[liquid_type][water_col] = LiquidState.new(
+		liquid_type, water_col, water_particle, InstantiationManager.liquidColors[liquid_type]
+	);
 
 func _physics_process(delta):
 	spawn_timer -= delta;
 	#add particles while less than max amount set and timer < 0
 	if spawn_timer < 0 and current_particle_count < max_water_particles and generate:
-		for i in range(3):
+		for i in range(numParticlesPerSpawn):
 			create_particle()
 			current_particle_count += 1
-		# current_particle_count += 1
-		# Globals.total_water_particles += 1
 		spawn_timer = spawn_time
-	# spawn_timer-=1;
-	#update particle texture position to be at Rigid body position
-	
-	for col in water_particles:
-		var trans = PhysicsServer2D.body_get_state(col[0],PhysicsServer2D.BODY_STATE_TRANSFORM)
-		trans.origin = trans.origin - InstantiationManager.global_position;
-		# var trans2 = Transform2D(0, Vector2(200,200));
-		RenderingServer.canvas_item_set_transform(col[1],trans)
-		#Delete particles if Y position > than 1500. 2D y down is positive
-		if trans.origin.y > 1500:
-			#remove RIDs
-			PhysicsServer2D.free_rid(col[0])
-			RenderingServer.free_rid(col[1])
-			#remove reference
-			water_particles.erase(col)
-			# Globals.total_water_particles -=1
-
-func TrackObject():
-	if !trackedObject: return;
-	global_position = trackedObject.global_position;
