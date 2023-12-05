@@ -23,7 +23,11 @@ func _physics_process(delta: float) -> void:
 		knobAnalog = remap($knob.rotation, -2, 2, 0, 1);
 		# print(knobAnalog);
 		emit_signal("turnedKnob", knobAnalog) 
-#
+		
+		# change fire sfx volumes
+		$Fire.set_volume_db(linear_to_db(knobAnalog))
+		
+
 #range_lerp(75, 0, 100, -1, 1) # Returns 0.5
 func _input(event):
 	if !event is InputEventMouseButton: return;

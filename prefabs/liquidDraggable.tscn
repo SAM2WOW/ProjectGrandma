@@ -42,5 +42,6 @@ position = Vector2(0, -224)
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." index="5"]
 stream = SubResource("AudioStreamRandomizer_ilbxc")
+bus = &"SFX"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
