@@ -66,3 +66,28 @@ func GetLiquidTotal() -> int:
 	for val in containedLiquid.values():
 		total += val.size();
 	return total;
+
+
+func _on_area_2d_input_event(viewport, event, shape_idx):
+	super._on_input_event(viewport, event, shape_idx);
+
+func _on_area_2d_mouse_entered():
+	super._on_mouse_entered();
+
+func _on_area_2d_mouse_exited():
+	super._on_mouse_exited();
+
+
+func _on_body_entered(body):
+	if not $AudioStreamPlayer2D.is_playing():
+
+		# get velocity
+		var velocity = get_linear_velocity()
+		var speed = clamp(velocity.length() / 500.0, 0.0, 1.0)
+		var volume = lerp(0.7, 1.0, speed)
+		var pitch = lerp(0.8, 1.2, speed)
+
+		# set volume and pitch
+		$AudioStreamPlayer2D.volume_db = -80.0 + 80.0 * volume;
+		$AudioStreamPlayer2D.pitch_scale = pitch;
+		$AudioStreamPlayer2D.play()
