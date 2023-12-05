@@ -1,11 +1,25 @@
-[gd_scene load_steps=3 format=3 uid="uid://drn5x3vivefyp"]
+[gd_scene load_steps=7 format=3 uid="uid://drn5x3vivefyp"]
 
 [ext_resource type="PackedScene" uid="uid://c3gtn7dcgsaa0" path="res://prefabs/draggable.tscn" id="1_rj0oe"]
 [ext_resource type="Script" path="res://scripts/liquidContainer.gd" id="2_o3842"]
+[ext_resource type="AudioStream" uid="uid://bvnntyidr4bjj" path="res://sounds/Impact2.wav" id="3_lhk6v"]
+[ext_resource type="AudioStream" uid="uid://d1fimxj74503o" path="res://sounds/Impact5.wav" id="4_otrud"]
+[ext_resource type="AudioStream" uid="uid://qt5xnbvjptbt" path="res://sounds/Impact7.wav" id="5_m4oob"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_lqpty"]
+streams_count = 3
+stream_0/stream = ExtResource("3_lhk6v")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("4_otrud")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("5_m4oob")
+stream_2/weight = 1.0
 
 [node name="Container" instance=ExtResource("1_rj0oe")]
 z_index = 1
 mass = 100.0
+max_contacts_reported = 1
+contact_monitor = true
 script = ExtResource("2_o3842")
 mixThresholdRatio = 0.25
 liquidMix = {
@@ -35,6 +49,10 @@ disabled = true
 [node name="DragPoint" parent="." index="6"]
 position = Vector2(0, 64)
 
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." index="7"]
+stream = SubResource("AudioStreamRandomizer_lqpty")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_shape_entered" from="Area2D" to="." method="_on_area_2d_body_shape_entered"]
 [connection signal="body_shape_exited" from="Area2D" to="." method="_on_area_2d_body_shape_exited"]
 [connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
