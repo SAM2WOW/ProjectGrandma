@@ -42,7 +42,7 @@ func _on_area_2d_body_shape_exited(body_rid, body, body_shape_index, local_shape
 
 func OnLiquidEnter(id, body_rid):
 	if !containedLiquid.keys().has(id): containedLiquid[id] = {};
-	containedLiquid[id][body_rid] = InstantiationManager.liquidParticles[id][body_rid];
+	containedLiquid[id][body_rid] = Global.instantiationManager.liquidParticles[id][body_rid];
 
 func OnLiquidExit(id, body_rid):
 	if !containedLiquid.keys().has(id): return;

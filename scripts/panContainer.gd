@@ -18,7 +18,7 @@ var averageLiquidHeat : float = 0;
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	super._ready();
-	InstantiationManager.pan = self;
+	Global.instantiationManager.pan = self;
 
 func ObjectAction(event):
 	super.ObjectAction(event);

@@ -45,9 +45,9 @@ func create_particle():
 	#create canvas item(all 2D objects are canvas items)
 	var water_particle = vs.canvas_item_create()
 	#set the parent to this object
-	vs.canvas_item_set_parent(water_particle, InstantiationManager.get_canvas_item())
+	vs.canvas_item_set_parent(water_particle, Global.instantiationManager.get_canvas_item())
 	#set its transform
-	vs.canvas_item_set_transform(water_particle, InstantiationManager.global_transform)
+	vs.canvas_item_set_transform(water_particle, Global.instantiationManager.global_transform)
 	#create a rectangle that will contain the texture
 	var rect = Rect2()
 	rect.position = Vector2(-8,-8)
@@ -56,14 +56,14 @@ func create_particle():
 	vs.canvas_item_add_texture_rect(water_particle,rect,particle_texture)
 	#set the texture color to pink
 	# vs.canvas_item_set_self_modulate(water_particle,Color("ff00ff"))
-	vs.canvas_item_set_self_modulate(water_particle,InstantiationManager.liquidColors[liquid_type]);
+	vs.canvas_item_set_self_modulate(water_particle,Global.instantiationManager.liquidColors[liquid_type]);
 	# vs.canvas_item_set_z_index(water_particle,2);
 	#add RID pair to array
 	water_particles.append([water_col,water_particle])
-	if (!InstantiationManager.liquidParticles.keys().has(liquid_type)):
-		InstantiationManager.liquidParticles[liquid_type] = {};
-	InstantiationManager.liquidParticles[liquid_type][water_col] = LiquidState.new(
-		liquid_type, water_col, water_particle, InstantiationManager.liquidColors[liquid_type]
+	if (!Global.instantiationManager.liquidParticles.keys().has(liquid_type)):
+		Global.instantiationManager.liquidParticles[liquid_type] = {};
+	Global.instantiationManager.liquidParticles[liquid_type][water_col] = LiquidState.new(
+		liquid_type, water_col, water_particle, Global.instantiationManager.liquidColors[liquid_type]
 	);
 
 func _physics_process(delta):

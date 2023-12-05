@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/instantiationManager.gd" id="1_lwnbg"]
 
-[node name="InstantiationManager" type="Node2D"]
+[node name="InstantiationManager" type="Node2D" groups=["InstantiationManager"]]
 show_behind_parent = true
 top_level = true
 script = ExtResource("1_lwnbg")
