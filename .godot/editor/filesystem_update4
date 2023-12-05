@@ -19,3 +19,4 @@ res://Resources/ingredientPoints.gd
 res://Resources/liquidMixtureComponent.gd
 res://Resources/liquidMixturePoints.gd
 res://Resources/recipeQuantity.gd
+res://scripts/liquidContainer.gd
