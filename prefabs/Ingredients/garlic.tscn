@@ -1,9 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://dsyy6tka3361l"]
 
 [ext_resource type="PackedScene" uid="uid://b5em8781rmds2" path="res://prefabs/ingredient.tscn" id="1_mqbfx"]
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_s61ss"]
-load_path = "res://.godot/imported/garlic.png-c17fd52e70c352b5529c2a1b9115fb5b.ctex"
+[ext_resource type="Texture2D" uid="uid://dm3qi3ecgttw0" path="res://arts/ingredients/garlic v2.png" id="2_i6ckg"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_llsia"]
 
@@ -13,7 +11,7 @@ ingredientType = 1
 [node name="Sprite2D" parent="." index="0"]
 position = Vector2(0, -1.90735e-06)
 scale = Vector2(0.113587, 0.113587)
-texture = SubResource("CompressedTexture2D_s61ss")
+texture = ExtResource("2_i6ckg")
 
 [node name="CollisionShape2D" parent="." index="1"]
 shape = SubResource("CapsuleShape2D_llsia")
