@@ -1,7 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://besfnnu5msblc"]
+[gd_scene load_steps=6 format=3 uid="uid://besfnnu5msblc"]
 
 [ext_resource type="Script" path="res://prefabs/Knob/Knob.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://cxt1od4epjtpf" path="res://icon.svg" id="2"]
+[ext_resource type="AudioStream" uid="uid://epmj6pcl5y8m" path="res://sounds/Switch.wav" id="3_jya4n"]
+[ext_resource type="Script" path="res://scripts/AudioRandomizer.gd" id="4_t11wf"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_40rb2"]
 radius = 64.0
@@ -31,6 +33,11 @@ position = Vector2(0, -64)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_40rb2")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_jya4n")
+script = ExtResource("4_t11wf")
+volume_low = -5.0
 
 [connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
 [connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
