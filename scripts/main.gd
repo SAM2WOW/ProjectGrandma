@@ -21,11 +21,11 @@ func updateStage(stage: int):
 
 	
 func completeStage():
-	if  GameManager.CheckGameEnd():
+	if  Global.gameManager.CheckGameEnd():
 		print("Complete last stage, game ends")
 	else:
-		GameManager.currentStage += 1
-		updateStage(GameManager.currentStage)
+		Global.gameManager.currentStage += 1
+		updateStage(Global.gameManager.currentStage)
 		#GameManager.stageComplete.emit()
 
 func onGameEnd():

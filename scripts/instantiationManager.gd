@@ -28,7 +28,7 @@ func _physics_process(delta):
 
 
 func UpdateRender(state, trans) -> bool:
-	trans.origin = trans.origin - GameManager.instantiationManager.global_position;
+	trans.origin = trans.origin - Global.instantiationManager.global_position;
 	RenderingServer.canvas_item_set_transform(state.renderRid,trans)
 	if trans.origin.y > 1500:
 		#remove RIDs
