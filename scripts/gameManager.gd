@@ -2,7 +2,7 @@ extends Node2D
 
 var stageNumbers = 4;
 var currentStage = 1;
-@onready var recipeManager = preload("res://scripts/RecipeManager.gd").new()
+# @onready var recipeManager = preload("res://scripts/RecipeManager.gd").new()
 
 signal gameEnd
 signal stageComplete
@@ -11,7 +11,6 @@ var draggedObject : Draggable;
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	print("Game Manager is ready")
-	recipeManager.initRecipes()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -44,5 +43,3 @@ func CheckGameEnd():
 		gameEnd.emit()
 		return true
 	return false
-
-

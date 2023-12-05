@@ -1,7 +1,6 @@
 extends Node
 @onready var recipeUI = $CanvasLayer/RecipeUI
 
-var currentRecipet
 func _ready():
 	if (Engine.is_editor_hint):
 		get_window().size = Vector2i(960, 540);
@@ -17,8 +16,8 @@ func updateStage(stage: int):
 
 	#Get current stage's receipe
 	print('Updated stage')
-	currentRecipet = GameManager.recipeManager.GetCurrentRecipe(stage)
-	recipeUI.updateIngredientLable(currentRecipet.ingredients)
+	# currentRecipet = GameManager.recipeManager.GetCurrentRecipe(stage)
+	# recipeUI.updateIngredientLable(currentRecipet.ingredients)
 
 	
 func completeStage():

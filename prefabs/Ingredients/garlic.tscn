@@ -1,11 +1,18 @@
-[gd_scene load_steps=4 format=3 uid="uid://dsyy6tka3361l"]
+[gd_scene load_steps=5 format=3 uid="uid://dsyy6tka3361l"]
 
 [ext_resource type="PackedScene" uid="uid://b5em8781rmds2" path="res://prefabs/ingredient.tscn" id="1_mqbfx"]
 [ext_resource type="Texture2D" uid="uid://dm3qi3ecgttw0" path="res://arts/ingredients/garlic v2.png" id="2_i6ckg"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_llsia"]
+radius = 6.0
+height = 18.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_twrtb"]
+radius = 15.0
 
 [node name="Ingredient" instance=ExtResource("1_mqbfx")]
+collision_layer = 3
+collision_mask = 3
 ingredientType = 1
 
 [node name="Sprite2D" parent="." index="0"]
@@ -17,4 +24,7 @@ texture = ExtResource("2_i6ckg")
 shape = SubResource("CapsuleShape2D_llsia")
 
 [node name="DragPoint" parent="." index="3"]
-position = Vector2(0, -15)
+position = Vector2(0, -7)
+
+[node name="CollisionShape2D" parent="InteractArea" index="0"]
+shape = SubResource("CapsuleShape2D_twrtb")

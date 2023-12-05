@@ -6,3 +6,7 @@
 show_behind_parent = true
 top_level = true
 script = ExtResource("1_lwnbg")
+liquidColors = {
+0: Color(0.0901961, 0.027451, 0.00784314, 1),
+1: Color(0.870588, 0.866667, 0.815686, 1)
+}

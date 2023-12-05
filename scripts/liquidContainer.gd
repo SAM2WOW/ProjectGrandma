@@ -2,10 +2,9 @@ extends Draggable
 
 class_name LiquidContainer
 
-var liquidParticles = {};
-var typeCount = {};
+var containedLiquid = {};
 var pouring=false;
-var rotateSpeed : float = 2.0;
+var rotateSpeed : float = 4.0;
 @export var mixThresholdRatio = 0.25;
 
 @export var liquidMix = {
@@ -25,7 +24,7 @@ func UpdatePouring(delta):
 	if pouring:
 		rotation = lerp_angle(rotation, deg_to_rad(135), rotateSpeed*delta);
 	else:
-		rotation = lerp_angle(rotation, deg_to_rad(0), rotateSpeed*delta);
+		rotation = lerp_angle(rotation, deg_to_rad(0), rotateSpeed*2*delta);
 
 func _on_area_2d_body_shape_entered(body_rid, body, body_shape_index, local_shape_index):
 	var id = PhysicsServer2D.body_get_object_instance_id(body_rid);
@@ -42,43 +41,41 @@ func _on_area_2d_body_shape_exited(body_rid, body, body_shape_index, local_shape
 		OnLiquidExit(id, body_rid);
 
 func OnLiquidEnter(id, body_rid):
-	liquidParticles[body_rid] = 0.0;
-	if !typeCount.has(id): typeCount[id] = 0;
-	typeCount[id] += 1;
-	if CheckMixed():
-		print("mixed");
-	
+	if !containedLiquid.keys().has(id): containedLiquid[id] = {};
+	containedLiquid[id][body_rid] = InstantiationManager.liquidParticles[id][body_rid];
+
 func OnLiquidExit(id, body_rid):
-	liquidParticles.erase(body_rid);
-	if typeCount.has(id): typeCount[id] -= 1;
-	if !CheckMixed():
-		print("not mixed");
+	if !containedLiquid.keys().has(id): return;
+	containedLiquid[id].erase(body_rid);
 
 func CheckMixed() -> bool:
-	var total = 0.0;
-	for typeNum in typeCount.values():
-		total += typeNum;
 	var mixed = false;
 	for liquid in liquidMix.keys():
-		if !typeCount.has(liquid):
+		if !containedLiquid.has(liquid):
 			mixed = false;
 			break;
-		var ratio = typeCount[liquid]/total;
+		var ratio = containedLiquid[liquid].size()/float(GetLiquidTotal());
 		if ratio > liquidMix[liquid]-mixThresholdRatio && ratio < liquidMix[liquid]+mixThresholdRatio:
 			mixed = true;
 		else:
 			mixed = false;
 	return mixed;
+	
+func GetLiquidTotal() -> int:
+	var total = 0;
+	for val in containedLiquid.values():
+		total += val.size();
+	return total;
 
 
 func _on_area_2d_input_event(viewport, event, shape_idx):
 	super._on_input_event(viewport, event, shape_idx);
 
-func _on_area_2d_mouse_entered():
-	super._on_mouse_entered();
-
-func _on_area_2d_mouse_exited():
-	super._on_mouse_exited();
+#func _on_area_2d_mouse_entered():
+	#super._on_mouse_entered();
+#
+#func _on_area_2d_mouse_exited():
+	#super._on_mouse_exited();
 
 
 func _on_body_entered(body):

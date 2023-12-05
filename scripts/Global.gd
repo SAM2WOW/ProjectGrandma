@@ -1,6 +1,6 @@
 extends Node
 
-enum LiquidType {SoySauce, Vinegar};
+enum LiquidType {SoySauce, Vinegar, AbodoSauce};
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
