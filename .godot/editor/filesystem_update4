@@ -22,3 +22,8 @@ res://prefabs/water_gen.tscn
 res://prefabs/Ingredients/bayLeaf.tscn
 res://scripts/gameManager.gd
 res://scripts/panContainer.gd
+res://scripts/draggable.gd
+res://scripts/liquidDraggable.gd
+res://scripts/Global.gd
+res://scripts/main.gd
+res://scripts/liquidContainer.gd

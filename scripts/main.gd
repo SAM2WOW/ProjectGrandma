@@ -5,7 +5,7 @@ var recipeMode = false
 func _ready():
 	
 	if (Engine.is_editor_hint):
-		get_window().size = Vector2i(960, 540);
+		# get_window().size = Vector2i(960, 540);
 		pass
 	print("Main is ready")
 		#updateStage(GameManager.currentStage)
