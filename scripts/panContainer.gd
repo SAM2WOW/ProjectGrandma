@@ -65,7 +65,7 @@ func UpdateFluids(delta):
 			averageConsistency += state.consistency;
 	averageLiquidHeat /= num;
 	averageConsistency /= num;
-	print("average consistency: ", averageConsistency);
+	# print("average consistency: ", averageConsistency);
 
 func _on_area_2d_body_shape_entered(body_rid, body, body_shape_index, local_shape_index):
 	super._on_area_2d_body_shape_entered(body_rid, body, body_shape_index, local_shape_index);
