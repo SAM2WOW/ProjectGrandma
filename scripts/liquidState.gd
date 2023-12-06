@@ -56,7 +56,7 @@ func Thicken(delta, heat):
 	elif heat >= unthickenHeatThreshold:
 		thickenTimer -= delta * heat;
 	thickenTimer = clamp(thickenTimer, 0, maxThickenTimer);
-	consistency = ease(thickenTimer/maxThickenTimer, 4.8);
+	consistency = ease(thickenTimer/maxThickenTimer, 3.0);
 	var friction = baseFriction+((maxFriction-baseFriction) * consistency);
 	var mass = baseMass+((maxMass-baseMass) * consistency);
 	# print(friction, ", ", mass);

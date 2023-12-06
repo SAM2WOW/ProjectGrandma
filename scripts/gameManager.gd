@@ -34,6 +34,9 @@ func _input(event):
 			DropObject();
 		elif event.button_index == 2 && draggedObject:
 			draggedObject.ObjectAction(event);
+	if event is InputEventKey and event.keycode == KEY_SPACE and draggedObject:
+		draggedObject.ObjectAction(event);
+
 func BeginDragObject(object : Draggable):
 	if draggedObject: DropObject();
 	draggedObject = object;
