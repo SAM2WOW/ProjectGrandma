@@ -7,10 +7,8 @@ var cookingHeat : float = 0;
 var targetHeat : float = cookingHeat;
 var currentCookingState : IngredientState.CookingType;
 var averageLiquidHeat : float = 0;
+var averageConsistency : float = 0;
 
-@export var thickenCap : float = 3.0;
-@export var thickenHeatThreshold : float = 0.5;
-@export var thickenTimer : float = 10.0;
 @export var liquidThreshold : int = 20;
 @export var heatUpCoefficient: float = 0.5;
 @export var coolDownCoefficient: float = 0.3;
@@ -59,7 +57,9 @@ func UpdateFluids(delta):
 			state.UpdateHeat(delta, cookingHeat);
 			num+=1;
 			averageLiquidHeat += state.currentHeat;
+			averageConsistency += state.consistency;
 	averageLiquidHeat /= num;
+	averageConsistency /= num;
 
 func _on_area_2d_body_shape_entered(body_rid, body, body_shape_index, local_shape_index):
 	super._on_area_2d_body_shape_entered(body_rid, body, body_shape_index, local_shape_index);
