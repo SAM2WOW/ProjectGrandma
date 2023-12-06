@@ -1,7 +1,7 @@
 extends LiquidContainer
 class_name PanContainer
 
-var cookingObjects = [];
+var cookingObjects = {};
 
 var cookingHeat : float = 0;
 var targetHeat : float = cookingHeat;
@@ -43,8 +43,9 @@ func UpdateHeat(delta):
 func CookIngredients(delta):
 	var heat = cookingHeat;
 	if currentCookingState == IngredientState.CookingType.Boiled: heat = averageLiquidHeat;
-	for ingredient in cookingObjects:
-		ingredient.Cook(currentCookingState, heat, delta);
+	for type in cookingObjects.values():
+		for ingredient in type:
+			ingredient.Cook(currentCookingState, heat, delta);
 
 func UpdateFluids(delta):
 	averageLiquidHeat = 0;
@@ -63,13 +64,15 @@ func UpdateFluids(delta):
 func _on_area_2d_body_shape_entered(body_rid, body, body_shape_index, local_shape_index):
 	super._on_area_2d_body_shape_entered(body_rid, body, body_shape_index, local_shape_index);
 	if body is Ingredient:
-		cookingObjects.append(body);
+		if !cookingObjects.keys().has(body.ingredientType): 
+			cookingObjects[body.ingredientType] = [];
+		cookingObjects[body.ingredientType].append(body);
 
 
 func _on_area_2d_body_shape_exited(body_rid, body, body_shape_index, local_shape_index):
 	super._on_area_2d_body_shape_exited(body_rid, body, body_shape_index, local_shape_index);
 	if body is Ingredient:
-		cookingObjects.erase(body);
+		cookingObjects[body.ingredientType].erase(body);
 
 func OnLiquidEnter(id, body_rid):
 	super.OnLiquidEnter(id, body_rid);
