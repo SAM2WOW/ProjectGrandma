@@ -1,32 +1,37 @@
-[gd_scene load_steps=5 format=3 uid="uid://dsyy6tka3361l"]
+[gd_scene load_steps=6 format=3 uid="uid://dsyy6tka3361l"]
 
 [ext_resource type="PackedScene" uid="uid://b5em8781rmds2" path="res://prefabs/ingredient.tscn" id="1_mqbfx"]
+[ext_resource type="Texture2D" uid="uid://c6o4nchcveij5" path="res://arts/ingredients/garlic.png" id="2_tli4m"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_s61ss"]
 load_path = "res://.godot/imported/garlic.png-c17fd52e70c352b5529c2a1b9115fb5b.ctex"
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_llsia"]
-radius = 6.0
-height = 18.0
+radius = 15.0
+height = 38.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_twrtb"]
-radius = 15.0
+radius = 17.0
+height = 46.0
 
 [node name="Ingredient" instance=ExtResource("1_mqbfx")]
 collision_layer = 3
 ingredientType = 1
 
-[node name="Sprite2D" parent="." index="0"]
+[node name="Sprite2DShadow" parent="." index="0"]
+scale = Vector2(0.124516, 0.124516)
+texture = ExtResource("2_tli4m")
+
+[node name="Sprite2D" parent="." index="1"]
 material = null
 position = Vector2(0, -1.90735e-06)
-scale = Vector2(0.113587, 0.113587)
+scale = Vector2(0.163716, 0.163716)
 texture = SubResource("CompressedTexture2D_s61ss")
 
-[node name="CollisionShape2D" parent="." index="1"]
-material = null
+[node name="CollisionShape2D" parent="." index="2"]
 shape = SubResource("CapsuleShape2D_llsia")
 
-[node name="DragPoint" parent="." index="3"]
+[node name="DragPoint" parent="." index="4"]
 position = Vector2(0, -7)
 
 [node name="CollisionShape2D" parent="InteractArea" index="0"]
