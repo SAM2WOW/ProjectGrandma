@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://svu81oy40o3p"]
+[gd_scene load_steps=28 format=3 uid="uid://svu81oy40o3p"]
 
 [ext_resource type="Texture2D" uid="uid://cmp4cxxq8yuat" path="res://arts/ivory-off-white-paper-texture.jpg" id="1_1jmmi"]
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_udxji"]
@@ -10,8 +10,10 @@
 [ext_resource type="PackedScene" uid="uid://2xviyeelbeyx" path="res://prefabs/liquidDraggable.tscn" id="7_avq8n"]
 [ext_resource type="PackedScene" uid="uid://drn5x3vivefyp" path="res://prefabs/liquidContainer.tscn" id="7_wm87n"]
 [ext_resource type="PackedScene" uid="uid://dsppfnoxh56xm" path="res://prefabs/stoveTop.tscn" id="8_fma0h"]
+[ext_resource type="FontFile" uid="uid://ds8uy6wtxnlvu" path="res://arts/fonts/Zeyada-Regular.ttf" id="10_hjo2k"]
 [ext_resource type="Shader" path="res://arts/UI/transition.gdshader" id="11_b5byl"]
 [ext_resource type="PackedScene" uid="uid://w7pwgo4f8bvq" path="res://prefabs/recipeManager.tscn" id="11_bxixm"]
+[ext_resource type="FontFile" uid="uid://lf3j1njjt8sb" path="res://arts/fonts/RockSalt-Regular.ttf" id="11_ml1rf"]
 [ext_resource type="Texture2D" uid="uid://c6dw2f176slrg" path="res://arts/UI/transition.jpg" id="12_hwjn3"]
 [ext_resource type="Texture2D" uid="uid://y0x4wmm0704m" path="res://arts/UI/black.png" id="13_3lq1v"]
 [ext_resource type="PackedScene" uid="uid://h7fkjxle4fr2" path="res://prefabs/panContainer.tscn" id="13_blku6"]
@@ -46,7 +48,7 @@ shader_parameter/mask = ExtResource("12_hwjn3")
 
 [sub_resource type="Animation" id="Animation_ksgmm"]
 resource_name = "Intro"
-length = 0.5
+length = 2.0
 step = 0.01
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -55,7 +57,7 @@ tracks/0/path = NodePath("CanvasLayer/ColorRect:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.49, 0.5),
+"times": PackedFloat32Array(0, 0.5, 0.51),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [true, true, false]
@@ -67,10 +69,22 @@ tracks/1/path = NodePath("CanvasLayer/ColorRect:material:shader_parameter/cutoff
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5),
+"times": PackedFloat32Array(0, 0.51),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [0.0, 1.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Node2D/Camera2D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector2(0, -3000), Vector2(0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_na2py"]
@@ -87,6 +101,18 @@ tracks/0/keys = {
 "update": 0,
 "values": [0.0]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Node2D/Camera2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -1656)]
+}
 
 [sub_resource type="Animation" id="Animation_qwj85"]
 resource_name = "Transition"
@@ -100,7 +126,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(-2, -2),
 "update": 0,
-"values": [Vector2(0, 0), Vector2(0, -2160)]
+"values": [Vector2(0, 0), Vector2(0, -1656)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_uv4j4"]
@@ -128,10 +154,10 @@ texture = ExtResource("1_1jmmi")
 [node name="Node2D" type="Node2D" parent="."]
 
 [node name="Camera2D" type="Camera2D" parent="Node2D"]
+position = Vector2(0, -1656)
 zoom = Vector2(0.5, 0.5)
 
 [node name="Cooking Scene" type="Node2D" parent="Node2D"]
-position = Vector2(0, -446)
 
 [node name="LiquidDraggable" parent="Node2D/Cooking Scene" instance=ExtResource("7_avq8n")]
 position = Vector2(736, 446)
@@ -173,16 +199,15 @@ scale = Vector2(-6.59748, -6.59748)
 ingredientPath = "res://prefabs/Ingredients/peppercorn.tscn"
 numIngredients = 10
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Node2D"]
-position = Vector2(0, -446)
+[node name="StaticBody2D" type="StaticBody2D" parent="Node2D/Cooking Scene"]
 collision_layer = 4
 collision_mask = 7
 collision_priority = 100.0
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Node2D/StaticBody2D"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Node2D/Cooking Scene/StaticBody2D"]
 polygon = PackedVector2Array(-1792, -546, -1792, 544, 1792, 544, 1792, -544, 2560, -546, 2592, 1310, -2496, 1310, -2496, -546)
 
-[node name="Sprite2D" type="Sprite2D" parent="Node2D/StaticBody2D"]
+[node name="Sprite2D" type="Sprite2D" parent="Node2D/Cooking Scene/StaticBody2D"]
 position = Vector2(0, 1068)
 scale = Vector2(50, 8.198)
 texture = ExtResource("3_u1ivw")
@@ -198,28 +223,33 @@ texture = ExtResource("3_u1ivw")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Node2D/Recipe Scene"]
 offset_left = -1216.0
-offset_top = -2912.0
-offset_right = 1120.0
-offset_bottom = -1568.0
+offset_top = -2618.0
+offset_right = 1233.0
+offset_bottom = -426.0
 rotation = -0.0488692
 theme_override_colors/default_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/normal_font_size = 76
-text = "Ingredients
-1/2 pounds chicken thighs
-1/4 cup white vinegar
-1/4 cup soy sauce
-Steamed rice, for serving
+theme_override_fonts/normal_font = ExtResource("10_hjo2k")
+theme_override_fonts/bold_font = ExtResource("11_ml1rf")
+theme_override_font_sizes/normal_font_size = 90
+theme_override_font_sizes/bold_font_size = 71
+bbcode_enabled = true
+text = "[b]Ingredients[/b]
+	* 1/2 pounds chicken thighs
+	* 1/4 cup white vinegar
+	* 1/4 cup soy sauce
+	* Steamed rice, for serving
 
-Steps
-1. Brown the chicken thighs in a small pan with oil. Add crushed garlic to cook slightly with chicken
-2. Combine vinegar and soy sauce. Add to pot with chicken
-3. Bring to a boil then let simmer for 30-40mins with cover on
-4. Serve over rice!
+[b]Steps[/b]
+	1. Brown the chicken thighs in a small pan with oil. Add crushed garlic to cook slightly with chicken
+	2. Combine vinegar and soy sauce. Add to pot with chicken
+	3. Bring to a boil then let simmer for 30-40mins with cover on
+	4. Serve over rice!
 "
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="RecipeUI" type="Control" parent="CanvasLayer"]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -239,6 +269,7 @@ text = "1. Apple
 label_settings = SubResource("LabelSettings_ijvoj")
 
 [node name="ColorRect" type="TextureRect" parent="CanvasLayer"]
+visible = false
 texture_filter = 1
 material = SubResource("ShaderMaterial_kbxna")
 anchors_preset = 15
@@ -275,11 +306,11 @@ grow_vertical = 2
 [node name="Label" type="Label" parent="CanvasLayer/HUD/HoverArea/CenterContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 36
+theme_override_fonts/font = ExtResource("10_hjo2k")
+theme_override_font_sizes/font_size = 40
 text = "^ My Adobo Recipe ^"
 
 [node name="HoverArea2" type="Control" parent="CanvasLayer/HUD"]
-visible = false
 custom_minimum_size = Vector2(0, 81.13)
 layout_mode = 1
 anchors_preset = 12
@@ -300,7 +331,8 @@ grow_vertical = 2
 [node name="Label" type="Label" parent="CanvasLayer/HUD/HoverArea2/CenterContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 36
+theme_override_fonts/font = ExtResource("10_hjo2k")
+theme_override_font_sizes/font_size = 40
 text = "My Kitchen Below"
 
 [node name="RecipeManager" parent="." instance=ExtResource("11_bxixm")]
