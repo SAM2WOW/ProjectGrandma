@@ -160,11 +160,11 @@ zoom = Vector2(0.5, 0.5)
 [node name="Cooking Scene" type="Node2D" parent="Node2D"]
 
 [node name="LiquidDraggable" parent="Node2D/Cooking Scene" instance=ExtResource("7_avq8n")]
-position = Vector2(736, 446)
+position = Vector2(704, 366)
 gravity_scale = 1.0
 
 [node name="LiquidDraggable2" parent="Node2D/Cooking Scene" instance=ExtResource("7_avq8n")]
-position = Vector2(576, 446)
+position = Vector2(544, 366)
 gravity_scale = 1.0
 liquidType = 1
 

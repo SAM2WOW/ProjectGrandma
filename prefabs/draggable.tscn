@@ -4,8 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://cxt1od4epjtpf" path="res://icon.svg" id="2_0rn36"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_eqadk"]
-radius = 64.0
-height = 128.0
+radius = 78.3425
+height = 444.548
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_00g0w"]
 

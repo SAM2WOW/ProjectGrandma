@@ -3,10 +3,17 @@ extends Draggable
 @export var liquidType : Global.LiquidType;
 var produceLiquid = false;
 var rotateSpeed : float = 5.0;
+var bottleImage = [
+	"res://arts/ingredients/soy sauce.png",
+	"res://arts/ingredients/vinegar.png",
+	"res://arts/ingredients/vinegar.png",
+]
 
 func _ready():
 	super._ready();
 	$WaterGen.liquid_type = liquidType;
+	
+	$Sprite2D.set_texture(load(bottleImage[liquidType]))
 
 func ObjectAction(event):
 	super.ObjectAction(event);
