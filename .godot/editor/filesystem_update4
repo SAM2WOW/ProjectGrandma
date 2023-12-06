@@ -16,3 +16,4 @@ res://prefabs/instantiation_manager.tscn
 res://scripts/Global.gd
 res://scripts/panContainer.gd
 res://scripts/textManager.gd
+res://Resources/recipeComponent.gd

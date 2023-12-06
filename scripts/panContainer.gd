@@ -63,16 +63,12 @@ func UpdateFluids(delta):
 func _on_area_2d_body_shape_entered(body_rid, body, body_shape_index, local_shape_index):
 	super._on_area_2d_body_shape_entered(body_rid, body, body_shape_index, local_shape_index);
 	if body is Ingredient:
-		Global.textManager.Activate("Dad Note");
-		Global.textManager.Activate("Mom Note");
-		Global.textManager.Activate("Grandma Note");
 		cookingObjects.append(body);
 
 
 func _on_area_2d_body_shape_exited(body_rid, body, body_shape_index, local_shape_index):
 	super._on_area_2d_body_shape_exited(body_rid, body, body_shape_index, local_shape_index);
 	if body is Ingredient:
-		Global.textManager.Deactivate("Mom Note");
 		cookingObjects.erase(body);
 
 func OnLiquidEnter(id, body_rid):
