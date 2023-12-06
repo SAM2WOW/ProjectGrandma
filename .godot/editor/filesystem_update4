@@ -1,10 +1,6 @@
-res://levels/main.tscn
-res://FluidSim2D/WaterGenPhysicsServer.gd
-res://Resources/ingredientComponent.gd
-res://Resources/liquidComponent.gd
-res://Water_View_Shader.gdshader
-res://Resources/textEvent.gd
 res://prefabs/ingredient.tscn
+res://FluidSim2D/WaterGenPhysicsServer.gd
+res://Water_View_Shader.gdshader
 res://prefabs/panContainer.tscn
 res://prefabs/liquidContainer.tscn
 res://prefabs/stoveTop.tscn
@@ -13,7 +9,10 @@ res://prefabs/recipeManager.tscn
 res://prefabs/gameManager.tscn
 res://prefabs/draggable.tscn
 res://prefabs/instantiation_manager.tscn
-res://scripts/Global.gd
-res://scripts/panContainer.gd
-res://scripts/textManager.gd
+res://levels/main.tscn
+res://Resources/ingredientComponent.gd
 res://Resources/recipeComponent.gd
+res://Resources/liquidComponent.gd
+res://scripts/textManager.gd
+res://scripts/Global.gd
+res://Resources/textEvent.gd
