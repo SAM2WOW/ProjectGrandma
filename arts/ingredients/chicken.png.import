@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cdpeqf2eyluh7"
-path="res://.godot/imported/soy sauce v2.png-27f43ad8c71bbf3a47823d15287af235.ctex"
+uid="uid://7n8v3vrmu2v2"
+path="res://.godot/imported/chicken.png-129b1af9f42b7349cb31331a301054f5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://arts/ingredients/soy sauce v2.png"
-dest_files=["res://.godot/imported/soy sauce v2.png-27f43ad8c71bbf3a47823d15287af235.ctex"]
+source_file="res://arts/ingredients/chicken.png"
+dest_files=["res://.godot/imported/chicken.png-129b1af9f42b7349cb31331a301054f5.ctex"]
 
 [params]
 

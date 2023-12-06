@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://7n8v3vrmu2v2"
-path="res://.godot/imported/chicken v2.png-cfdd13c3479f31a6acfac3a147e2ea8a.ctex"
+uid="uid://d20c43o5pavgo"
+path="res://.godot/imported/peppercorn.png-64bbc00b7319f423a4e898841405b75e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://arts/ingredients/chicken v2.png"
-dest_files=["res://.godot/imported/chicken v2.png-cfdd13c3479f31a6acfac3a147e2ea8a.ctex"]
+source_file="res://arts/ingredients/peppercorn.png"
+dest_files=["res://.godot/imported/peppercorn.png-64bbc00b7319f423a4e898841405b75e.ctex"]
 
 [params]
 

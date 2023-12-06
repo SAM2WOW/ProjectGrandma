@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://c0vtw5cekns37"
-path="res://.godot/imported/bay leaf v2.png-2211e216dd253b10a3cc994aafe28250.ctex"
+path="res://.godot/imported/bay leaf.png-e744b8b03f719ffa0f9aea2c084c8fae.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://arts/ingredients/bay leaf v2.png"
-dest_files=["res://.godot/imported/bay leaf v2.png-2211e216dd253b10a3cc994aafe28250.ctex"]
+source_file="res://arts/ingredients/bay leaf.png"
+dest_files=["res://.godot/imported/bay leaf.png-e744b8b03f719ffa0f9aea2c084c8fae.ctex"]
 
 [params]
 
