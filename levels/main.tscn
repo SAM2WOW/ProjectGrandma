@@ -1,4 +1,4 @@
-[gd_scene load_steps=69 format=3 uid="uid://svu81oy40o3p"]
+[gd_scene load_steps=70 format=3 uid="uid://svu81oy40o3p"]
 
 [ext_resource type="Texture2D" uid="uid://cmp4cxxq8yuat" path="res://arts/ivory-off-white-paper-texture.jpg" id="1_1jmmi"]
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_udxji"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://2xviyeelbeyx" path="res://prefabs/liquidDraggable.tscn" id="7_avq8n"]
 [ext_resource type="PackedScene" uid="uid://drn5x3vivefyp" path="res://prefabs/liquidContainer.tscn" id="7_wm87n"]
 [ext_resource type="PackedScene" uid="uid://dsppfnoxh56xm" path="res://prefabs/stoveTop.tscn" id="8_fma0h"]
+[ext_resource type="Texture2D" uid="uid://dnle2jjcpad0l" path="res://arts/main scene/kitchen scene.png" id="8_ggq8h"]
 [ext_resource type="PackedScene" uid="uid://w7pwgo4f8bvq" path="res://prefabs/recipeManager.tscn" id="11_bxixm"]
 [ext_resource type="Script" path="res://Resources/liquidMixturePoints.gd" id="12_b5qn8"]
 [ext_resource type="PackedScene" uid="uid://h7fkjxle4fr2" path="res://prefabs/panContainer.tscn" id="13_blku6"]
@@ -325,7 +326,8 @@ script = ExtResource("1_udxji")
 [node name="BG" type="Sprite2D" parent="Node2D"]
 show_behind_parent = true
 z_index = -10
-position = Vector2(0, -690)
+position = Vector2(0, -453)
+scale = Vector2(1, 1.18287)
 texture = ExtResource("1_1jmmi")
 
 [node name="Camera2D" type="Camera2D" parent="Node2D"]
@@ -384,9 +386,9 @@ collision_priority = 100.0
 polygon = PackedVector2Array(-1792, -546, -1792, 544, 1792, 544, 1792, -544, 2560, -546, 2592, 1310, -2496, 1310, -2496, -546)
 
 [node name="Sprite2D" type="Sprite2D" parent="Node2D/StaticBody2D"]
-position = Vector2(0, 1068)
-scale = Vector2(50, 8.198)
-texture = ExtResource("3_u1ivw")
+position = Vector2(-12, 1026)
+scale = Vector2(2.0125, 1.9305)
+texture = ExtResource("8_ggq8h")
 
 [node name="WaterColor" type="Sprite2D" parent="Node2D"]
 visible = false
@@ -409,8 +411,10 @@ script = ExtResource("5_vajsc")
 
 [node name="IngredientLabel" type="Label" parent="CanvasLayer/RecipeUI"]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
+offset_left = 64.0
+offset_top = 64.0
+offset_right = 323.0
+offset_bottom = 205.0
 text = "1. Apple
 2. Coconut"
 label_settings = SubResource("LabelSettings_ijvoj")
