@@ -10,6 +10,6 @@ void fragment()
 	float value = texture(mask, UV).r;
 	float alpha = smoothstep(cutoff, cutoff + smooth_size, value * (1.0 - smooth_size) + smooth_size);
 	vec4 colour = texture(TEXTURE, UV);
-	colour.a = texture(mask, UV).a;
-	COLOR = vec4(colour.rgb, alpha * texture(TEXTURE, UV).a);
+	colour.a *= texture(mask, UV).a;
+	COLOR = vec4(colour.rgb, alpha);
 }

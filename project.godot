@@ -24,8 +24,6 @@ Global="*res://scripts/Global.gd"
 window/size/viewport_width=1920
 window/size/viewport_height=1080
 window/stretch/mode="viewport"
-mouse_cursor/custom_image="res://arts/UI/player cursor/Hand young v3.png"
-mouse_cursor/custom_image_hotspot=Vector2(8, 8)
 
 [layer_names]
 
