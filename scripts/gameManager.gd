@@ -9,6 +9,7 @@ var currentStage = 1;
 signal gameEnd
 signal stageComplete
 var draggedObject : Draggable;
+var hoveredObject : Draggable;
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -27,8 +28,11 @@ func _input(event):
 			DropObject();
 		elif event.button_index == 2 && draggedObject:
 			draggedObject.ObjectAction(event);
+	if event is InputEventKey and event.keycode == KEY_SPACE and draggedObject:
+		draggedObject.ObjectAction(event);
+
 func BeginDragObject(object : Draggable):
-	if draggedObject: return;
+	if draggedObject: DropObject();
 	draggedObject = object;
 
 func DropObject():

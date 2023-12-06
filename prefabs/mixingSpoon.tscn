@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://dcdllixbqh58h"]
+
+[ext_resource type="PackedScene" uid="uid://c3gtn7dcgsaa0" path="res://prefabs/draggable.tscn" id="1_6ia7r"]
+[ext_resource type="Script" path="res://scripts/mixingSpoon.gd" id="2_lmuof"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jo5k7"]
+radius = 32.0
+height = 640.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g0hsb"]
+radius = 96.0
+height = 704.0
+
+[node name="MixingSpoon" instance=ExtResource("1_6ia7r")]
+script = ExtResource("2_lmuof")
+rotateSpeed = 100.0
+
+[node name="Sprite2D" parent="." index="1"]
+position = Vector2(0, 1.81899e-12)
+scale = Vector2(0.75, 5)
+
+[node name="CollisionShape2D" parent="." index="2"]
+rotation = 0.0
+shape = SubResource("CapsuleShape2D_jo5k7")
+
+[node name="CollisionShape2D" parent="InteractArea" index="0"]
+rotation = 0.0
+shape = SubResource("CapsuleShape2D_g0hsb")

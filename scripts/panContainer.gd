@@ -7,10 +7,8 @@ var cookingHeat : float = 0;
 var targetHeat : float = cookingHeat;
 var currentCookingState : IngredientState.CookingType;
 var averageLiquidHeat : float = 0;
+var averageConsistency : float = 0;
 
-@export var thickenCap : float = 3.0;
-@export var thickenHeatThreshold : float = 0.5;
-@export var thickenTimer : float = 10.0;
 @export var liquidThreshold : int = 20;
 @export var heatUpCoefficient: float = 0.5;
 @export var coolDownCoefficient: float = 0.3;
@@ -31,6 +29,9 @@ func _process(delta):
 	UpdateFluids(delta);
 	CookIngredients(delta);
 
+func _physics_process(delta):
+	super._physics_process(delta);
+
 func UpdateHeat(delta):
 	if cookingHeat < targetHeat:
 		cookingHeat += heatUpCoefficient * delta;
@@ -45,10 +46,12 @@ func CookIngredients(delta):
 	if currentCookingState == IngredientState.CookingType.Boiled: heat = averageLiquidHeat;
 	for type in cookingObjects.values():
 		for ingredient in type:
+			# print(heat)
 			ingredient.Cook(currentCookingState, heat, delta);
 
 func UpdateFluids(delta):
 	averageLiquidHeat = 0;
+	averageConsistency = 0;
 	var num = 0;
 	for key in containedLiquid.keys():
 		for liquid in containedLiquid[key].keys():
@@ -59,14 +62,18 @@ func UpdateFluids(delta):
 			state.UpdateHeat(delta, cookingHeat);
 			num+=1;
 			averageLiquidHeat += state.currentHeat;
+			averageConsistency += state.consistency;
 	averageLiquidHeat /= num;
+	averageConsistency /= num;
+	# print("average consistency: ", averageConsistency);
 
 func _on_area_2d_body_shape_entered(body_rid, body, body_shape_index, local_shape_index):
 	super._on_area_2d_body_shape_entered(body_rid, body, body_shape_index, local_shape_index);
 	if body is Ingredient:
 		if !cookingObjects.keys().has(body.ingredientType): 
 			cookingObjects[body.ingredientType] = [];
-		cookingObjects[body.ingredientType].append(body);
+		if !cookingObjects[body.ingredientType].has(body):
+			cookingObjects[body.ingredientType].append(body);
 
 
 func _on_area_2d_body_shape_exited(body_rid, body, body_shape_index, local_shape_index):

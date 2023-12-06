@@ -1,9 +1,1 @@
-res://levels/cooking scene.tscn
-res://FluidSim2D/WaterGenPhysicsServer.gd
-res://Water_View_Shader.gdshader
-res://prefabs/recipeManager.tscn
-res://prefabs/instantiation_manager.tscn
-res://prefabs/gameManager.tscn
-res://prefabs/Knob/Knob.tscn
-res://prefabs/Ingredients/garlic.tscn
-res://levels/main.tscn
+res://prefabs/Ingredients/bayLeaf.tscn

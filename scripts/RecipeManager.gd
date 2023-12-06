@@ -70,11 +70,26 @@ func CheckIngredients(recipeStep : IngredientComponent) -> float:
 	return stepPoints;
 
 func CheckLiquids(recipeStep : LiquidComponent) -> float:
-	return 0;
+	var consPoints = recipeStep.GetConsistencyPoints(Global.instantiationManager.pan.averageConsistency);
+	totalPoints += recipeStep.totalPoints;
+	var stepPoints = consPoints.points;
+	points += stepPoints;
+	print(stepPoints,"/",recipeStep.totalPoints,": ",consPoints.description);
+	return stepPoints;
 
-func CheckLiquidMixture(recipeStep : LiquidMixtureComponent) -> LiquidMixturePoints:
-	var total = Global.instantiationManager.pan.GetLiquidTotal();
-	return null;
+func CheckLiquidMixture(recipeStep : LiquidMixtureComponent) -> float:
+	var mixPoints = recipeStep.CheckMixture(Global.instantiationManager.pan.containedLiquid);
+	var stepPoints = 0.0;
+	totalPoints += recipeStep.totalPoints;
+	for point in mixPoints:
+		if !point: continue;
+		if point is RecipePoints && Global.instantiationManager.pan.GetLiquidTotal() > 0:
+			stepPoints += point.points;
+		elif point is RecipeQuantity:
+			stepPoints += point.quantityPoints;
+		print(stepPoints,"/",recipeStep.totalPoints,": ",point.description);
+		points += stepPoints;
+	return stepPoints;
 
 # func CheckQuantity(quantityArr)
 #func initRecipes():

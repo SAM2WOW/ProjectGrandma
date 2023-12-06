@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://2xviyeelbeyx"]
+[gd_scene load_steps=12 format=3 uid="uid://2xviyeelbeyx"]
 
 [ext_resource type="PackedScene" uid="uid://c3gtn7dcgsaa0" path="res://prefabs/draggable.tscn" id="1_dc3it"]
 [ext_resource type="Script" path="res://scripts/liquidDraggable.gd" id="2_3p8mk"]
+[ext_resource type="Texture2D" uid="uid://21haltqg77do" path="res://arts/ingredients/soy sauce.png" id="3_0lj40"]
 [ext_resource type="PackedScene" uid="uid://bwxe4nvaf0kyj" path="res://prefabs/water_gen.tscn" id="3_16hnm"]
 [ext_resource type="AudioStream" uid="uid://dheapkl0gvtjg" path="res://sounds/Bottle1.wav" id="4_0jexg"]
 [ext_resource type="AudioStream" uid="uid://5v4py7blxtfr" path="res://sounds/Bottle2.wav" id="5_vsjf0"]
@@ -9,7 +10,7 @@
 [ext_resource type="AudioStream" uid="uid://pj6upjblbml7" path="res://sounds/Pouring.wav" id="7_ttqlr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2ownh"]
-size = Vector2(128, 288)
+size = Vector2(185, 447)
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_ilbxc"]
 streams_count = 3
@@ -20,26 +21,36 @@ stream_1/weight = 1.0
 stream_2/stream = ExtResource("6_asf3h")
 stream_2/weight = 1.0
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_w36hi"]
+radius = 96.0
+height = 544.0
+
 [node name="LiquidDraggable" instance=ExtResource("1_dc3it")]
 max_contacts_reported = 1
 contact_monitor = true
 script = ExtResource("2_3p8mk")
 liquidType = 0
 
-[node name="Sprite2D" parent="." index="0"]
+[node name="Sprite2DShadow" parent="." index="0"]
 position = Vector2(0, -80)
-scale = Vector2(1, 2.25)
+scale = Vector2(0.537, 0.537)
 
-[node name="CollisionShape2D" parent="." index="1"]
+[node name="Sprite2D" parent="." index="1"]
 position = Vector2(0, -80)
+scale = Vector2(0.537274, 0.537274)
+texture = ExtResource("3_0lj40")
+
+[node name="CollisionShape2D" parent="." index="2"]
+position = Vector2(9.53674e-07, -80)
 rotation = 0.0
+scale = Vector2(0.814367, 1.09774)
 shape = SubResource("RectangleShape2D_2ownh")
 
-[node name="PinJoint2D" parent="." index="2"]
+[node name="PinJoint2D" parent="." index="3"]
 position = Vector2(0, -80)
 
 [node name="WaterGen" parent="." index="4" instance=ExtResource("3_16hnm")]
-position = Vector2(0, -224)
+position = Vector2(0, -322)
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." index="5"]
 stream = SubResource("AudioStreamRandomizer_ilbxc")
@@ -48,5 +59,10 @@ bus = &"SFX"
 [node name="Pouring" type="AudioStreamPlayer2D" parent="." index="6"]
 stream = ExtResource("7_ttqlr")
 bus = &"SFX"
+
+[node name="CollisionShape2D" parent="InteractArea" index="0"]
+position = Vector2(0, -80)
+rotation = 3.14159
+shape = SubResource("CapsuleShape2D_w36hi")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -5,8 +5,8 @@ var recipeMode = false
 func _ready():
 	
 	if (Engine.is_editor_hint):
+		get_window().size = Vector2i(960, 540);
 		pass
-		#get_window().size = Vector2i(960, 540);
 	print("Main is ready")
 		#updateStage(GameManager.currentStage)
 		#GameManager.gameEnd.connect(onGameEnd())
@@ -63,3 +63,8 @@ func _on_hover_area_2_mouse_entered():
 	$CanvasLayer/HUD/HoverArea2.hide()
 	
 	$AnimationPlayer.play_backwards("Transition")
+
+
+func _on_animation_player_animation_finished(anim_name):
+	if anim_name == "Intro":
+		$CanvasLayer/HUD/HoverArea.show()
