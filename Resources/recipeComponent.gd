@@ -7,11 +7,19 @@ class_name RecipeComponent;
 @export_category("Quantity")
 @export var quantityPoints : Array[RecipeQuantity];
 
-# Called when the node enters the scene tree for the first time.
+var totalPoints : float = 0.0;
+
 func _ready():
-	pass # Replace with function body.
+	for quantity in quantityPoints:
+		if quantity.quantityPoints > totalPoints:
+			totalPoints = quantity.quantityPoints;
 
+func GetDescription() -> String:
+	return description;
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+func GetQuantityPoints(size) -> RecipeQuantity:
+	if quantityPoints.size() <= 0: return null;
+	for quantity in quantityPoints:
+		if size <= quantity.belowOrEqualQuantity:
+			return quantity;
+	return quantityPoints[0];
