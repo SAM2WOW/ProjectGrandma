@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://c3iy54urrkxj8"]
+[gd_scene load_steps=10 format=3 uid="uid://c3iy54urrkxj8"]
 
 [ext_resource type="PackedScene" uid="uid://b5em8781rmds2" path="res://prefabs/ingredient.tscn" id="1_niybt"]
+[ext_resource type="Texture2D" uid="uid://cixo4ueej5cu" path="res://arts/ingredients/bay leaf.png" id="2_12u4g"]
 [ext_resource type="Script" path="res://scripts/ingredientState.gd" id="2_bffmu"]
 
 [sub_resource type="Resource" id="Resource_54sm5"]
@@ -61,11 +62,11 @@ ingredientStates = Array[ExtResource("2_bffmu")]([SubResource("Resource_54sm5"),
 
 [node name="Sprite2DShadow" parent="." index="0"]
 scale = Vector2(0.4, 0.4)
-texture = null
+texture = ExtResource("2_12u4g")
 
 [node name="Sprite2D" parent="." index="1"]
 scale = Vector2(0.4, 0.4)
-texture = null
+texture = ExtResource("2_12u4g")
 
 [node name="CollisionShape2D" parent="." index="2"]
 position = Vector2(0, 5)
