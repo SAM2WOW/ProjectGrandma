@@ -5,6 +5,7 @@ enum LiquidType {SoySauce, Vinegar, AbodoSauce};
 @onready var recipeManager = $RecipeManager;
 @onready var gameManager = $gameManager;
 @onready var instantiationManager = $InstantiationManager;
+@onready var textManager = $TextManager;
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -12,6 +13,7 @@ func _ready():
 	recipeManager = get_tree().get_first_node_in_group("RecipeManager");
 	gameManager = get_tree().get_first_node_in_group("GameManager");
 	instantiationManager = get_tree().get_first_node_in_group("InstantiationManager");
+	textManager = get_tree().get_first_node_in_group("TextManager");
 	print("Recipe Manager Size: ", recipeManager.recipe.size());
 
 
