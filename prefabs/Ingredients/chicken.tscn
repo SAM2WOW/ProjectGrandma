@@ -22,7 +22,7 @@ state = 1
 cookTimer = 25.0
 typeInfluenceMultiplier = {
 0: 1.0,
-1: 0.4
+1: 0.5
 }
 stateColor = Color(0.94902, 0.776471, 0.4, 1)
 

@@ -2,7 +2,7 @@ extends Resource;
 class_name LiquidState;
 
 @export var liquidType : Global.LiquidType;
-@export var maxThickenTimer : float = 10;
+@export var maxThickenTimer : float = 30;
 @export var consistencyCap: float = 3;
 @export var thickenHeatThreshold: float = 0.7;
 @export var unthickenHeatThreshold: float = 1.4;
@@ -22,7 +22,7 @@ var shapeRid : RID;
 var renderRid : RID;
 var currentHeat : float = 0;
 var targetHeat : float;
-var maxThickenVelocity = 400.0;
+var maxThickenVelocity = 200.0;
 var minVelocityMultiplier = 0.2;
 var velocityMultiplierCap = 2.0;
 
@@ -49,7 +49,7 @@ func Thicken(delta, heat):
 	var velMagnitude = clamp(velocity.length(), 0, maxThickenVelocity);
 	var velocityMultiplier = remap(velMagnitude, 0, maxThickenVelocity, minVelocityMultiplier, velocityMultiplierCap);
 	# print("vel: ", velocity.length());
-	# sprint("vel mult: ", velocityMultiplier);
+	# print("vel mult: ", velocityMultiplier);
 	if heat <= thickenHeatThreshold && heat >= minThickenHeatThreshold:
 		var thickenSpeed = Global.remap_range(heat, minThickenHeatThreshold, thickenHeatThreshold, 1, 0.2);
 		thickenTimer += delta * thickenSpeed * velocityMultiplier;

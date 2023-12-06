@@ -51,6 +51,7 @@ func CookIngredients(delta):
 
 func UpdateFluids(delta):
 	averageLiquidHeat = 0;
+	averageConsistency = 0;
 	var num = 0;
 	for key in containedLiquid.keys():
 		for liquid in containedLiquid[key].keys():
@@ -64,6 +65,7 @@ func UpdateFluids(delta):
 			averageConsistency += state.consistency;
 	averageLiquidHeat /= num;
 	averageConsistency /= num;
+	print("average consistency: ", averageConsistency);
 
 func _on_area_2d_body_shape_entered(body_rid, body, body_shape_index, local_shape_index):
 	super._on_area_2d_body_shape_entered(body_rid, body, body_shape_index, local_shape_index);

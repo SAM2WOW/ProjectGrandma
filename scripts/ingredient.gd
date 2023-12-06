@@ -7,7 +7,7 @@ enum IngredientType {
 @export var ingredientType: IngredientType;
 @export var ingredientStates: Array[IngredientState] = [];
 @export var highVelocityMultiplier: float = 0.2;
-@export var cookingVelocityThresholds: float = 100;
+@export var cookingVelocityThresholds: float = 200;
 
 var currentStateIndex: int = 0;
 var cookingTimer: float = 0;
