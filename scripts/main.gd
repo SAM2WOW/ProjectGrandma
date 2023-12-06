@@ -3,13 +3,24 @@ extends Node
 func _ready():
 	
 	if (Engine.is_editor_hint):
-		get_window().size = Vector2i(960, 540);
+		pass
+		#get_window().size = Vector2i(960, 540);
 	print("Main is ready")
 		#updateStage(GameManager.currentStage)
-	Global.gameManager.gameEnd.connect(onGameEnd())
+		#GameManager.gameEnd.connect(onGameEnd())
+
+
 func _process(delta):
 	if Input.is_action_just_released("ui_accept"):
 		completeStage()
+
+
+func _physics_process(delta):
+	# offset the camera base on the mouse position to the center
+	var mousePos = get_viewport().get_mouse_position()
+	var center = get_viewport().get_visible_rect().size / 2
+	var offset = (mousePos - center) / 50
+	$Node2D/Camera2D.offset = lerp($Node2D/Camera2D.offset, offset, delta * 5)
 
 func updateStage(stage: int):
 	#Instantiate cook scene
