@@ -1,4 +1,8 @@
+Label
+TextEvent
+RichTextLabel
 Node2D
+Control
 CollisionPolygon2D
 CollisionShape2D
 Area2D
@@ -8,7 +12,3 @@ RigidBody2D
 DampedSpringJoint2D
 PinJoint2D
 CharacterBody2D
-AnimatedSprite2D
-Camera2D
-CanvasLayer
-Control

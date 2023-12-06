@@ -62,7 +62,7 @@ shape = SubResource("RectangleShape2D_wmtlb")
 position = Vector2(0, 80)
 shape = SubResource("RectangleShape2D_waguf")
 
-[node name="CollisionShape2D" parent="." index="9"]
+[node name="CollisionShape2D" parent="." index="10"]
 visible = false
 disabled = true
 

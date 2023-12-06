@@ -54,5 +54,5 @@ script = ExtResource("2_ukt0v")
 ingredientType = 0
 ingredientStates = Array[ExtResource("3_8mfa3")]([SubResource("Resource_qvnah"), SubResource("Resource_ojaaw"), SubResource("Resource_wka5m"), SubResource("Resource_j8afd")])
 
-[node name="CollisionShape2D" parent="." index="1"]
+[node name="CollisionShape2D" parent="." index="2"]
 shape = SubResource("CapsuleShape2D_i27ke")
