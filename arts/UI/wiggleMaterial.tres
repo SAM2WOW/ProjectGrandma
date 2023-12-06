@@ -1,0 +1,11 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://be65qpikd7xak"]
+
+[ext_resource type="Shader" path="res://arts/UI/wiggle.gdshader" id="1_81c3k"]
+[ext_resource type="Texture2D" uid="uid://fbq7sb4cpaef" path="res://arts/UI/2471-normal.jpg" id="2_mpxva"]
+
+[resource]
+shader = ExtResource("1_81c3k")
+shader_parameter/strength = 0.01
+shader_parameter/speed = 2.0
+shader_parameter/frames = 3
+shader_parameter/flowMap = ExtResource("2_mpxva")

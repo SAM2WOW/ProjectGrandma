@@ -1,5 +1,7 @@
 extends Node
 
+var recipeMode = false
+
 func _ready():
 	
 	if (Engine.is_editor_hint):
@@ -14,13 +16,15 @@ func _process(delta):
 	if Input.is_action_just_released("ui_accept"):
 		completeStage()
 
-
-func _physics_process(delta):
+#func _physics_process(delta):
 	# offset the camera base on the mouse position to the center
 	var mousePos = get_viewport().get_mouse_position()
 	var center = get_viewport().get_visible_rect().size / 2
 	var offset = (mousePos - center) / 50
 	$Node2D/Camera2D.offset = lerp($Node2D/Camera2D.offset, offset, delta * 5)
+	
+	# update camera position base on ingredient mode
+	
 
 func updateStage(stage: int):
 	#Instantiate cook scene
@@ -42,3 +46,20 @@ func completeStage():
 func onGameEnd():
 	print("Game END")
 	
+
+func _on_hover_area_mouse_entered():
+	recipeMode = true
+	
+	$CanvasLayer/HUD/HoverArea.hide()
+	$CanvasLayer/HUD/HoverArea2.show()
+	
+	$AnimationPlayer.play("Transition")
+
+
+func _on_hover_area_2_mouse_entered():
+	recipeMode = false
+	
+	$CanvasLayer/HUD/HoverArea.show()
+	$CanvasLayer/HUD/HoverArea2.hide()
+	
+	$AnimationPlayer.play_backwards("Transition")
