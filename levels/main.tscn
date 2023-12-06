@@ -38,13 +38,19 @@ font_color = Color(0.0156863, 0.0156863, 0.0156863, 1)
 [node name="Main" type="Node"]
 script = ExtResource("1_udxji")
 
-[node name="Node2D" type="Node2D" parent="."]
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
-[node name="BG" type="Sprite2D" parent="Node2D"]
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.1, 0.1)
+motion_mirroring = Vector2(3888, 2592)
+
+[node name="BG" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
 show_behind_parent = true
 z_index = -10
-position = Vector2(0, -690)
+position = Vector2(1920, 1280)
 texture = ExtResource("1_1jmmi")
+
+[node name="Node2D" type="Node2D" parent="."]
 
 [node name="Camera2D" type="Camera2D" parent="Node2D"]
 zoom = Vector2(0.5, 0.5)
