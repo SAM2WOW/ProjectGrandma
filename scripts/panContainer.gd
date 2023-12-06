@@ -8,7 +8,6 @@ var targetHeat : float = cookingHeat;
 var currentCookingState : IngredientState.CookingType;
 var averageLiquidHeat : float = 0;
 var averageConsistency : float = 0;
-
 @export var liquidThreshold : int = 20;
 @export var heatUpCoefficient: float = 0.5;
 @export var coolDownCoefficient: float = 0.3;

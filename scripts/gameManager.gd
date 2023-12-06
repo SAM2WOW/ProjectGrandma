@@ -1,7 +1,7 @@
 extends Node2D
 
 var stageNumbers = 4;
-var currentStage = 1;
+var currentStage = 0;
 
 @onready var recipeUI = $CanvasLayer/RecipeUI
 # @onready var recipeManager = preload("res://scripts/RecipeManager.gd").new()
@@ -10,7 +10,13 @@ signal gameEnd
 signal stageComplete
 var draggedObject : Draggable;
 var hoveredObject : Draggable;
-
+var stageScenes: Array[String] = [
+"res://levels/stageOne.tscn",
+"res://levels/stageTwo.tscn",
+"res://levels/stageThree.tscn",
+"res://levels/stageFour.tscn",
+"res://levels/endStageScene.tscn"
+]
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	print("Game Manager is ready")
@@ -41,6 +47,11 @@ func DragObject(delta):
 	if !draggedObject: return;
 	draggedObject.Drag(delta);
 	
+func UpdateStage():
+	var scenePath = stageScenes[currentStage]
+	print(scenePath)
+	Global.sceneManager.SwitchScene(scenePath)
+	pass
 func CheckGameEnd():
 	if currentStage == stageNumbers:
 		gameEnd.emit()

@@ -1,7 +1,6 @@
 res://prefabs/recipeManager.tscn
 res://FluidSim2D/WaterGenPhysicsServer.gd
 res://Water_View_Shader.gdshader
-res://scripts/liquidState.gd
 res://levels/main.tscn
 res://levels/cooking scene.tscn
 res://prefabs/instantiation_manager.tscn
@@ -20,8 +19,15 @@ res://prefabs/stoveTop.tscn
 res://prefabs/textManager.tscn
 res://prefabs/water_gen.tscn
 res://prefabs/Ingredients/bayLeaf.tscn
-res://scripts/instantiationManager.gd
-res://scripts/mixingSpoon.gd
+res://scripts/Global.gd
+res://scripts/SceneSwitchManager.gd
+res://scripts/main.gd
 res://scripts/gameManager.gd
-res://scripts/ingredient.gd
+res://scripts/SceneManager.gd
+res://levels/stageOne.tscn
+res://scripts/RecipeManager.gd
+res://levels/Intro.tscn
+res://levels/Intro.gd
+res://levels/endStageScene.tscn
+res://levels/stageTwo.tscn
 res://scripts/panContainer.gd

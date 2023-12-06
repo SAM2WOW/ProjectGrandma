@@ -10,13 +10,12 @@ const heatDescriptions = {
 };
 var points : float;
 var totalPoints : float;
-
 func _ready():
 	print("Recipe Manager is ready: ", self);
 	recipe.sort_custom(func(x, y): return x.step < y.step);
 	for component in recipe:
 		component._ready();
-		print(component.GetDescription());
+		#print(component.GetDescription());
 	Global.recipeManager.CheckRecipePoints();
 	
 func CheckRecipePoints():
@@ -71,6 +70,13 @@ func CheckLiquidMixture(recipeStep : LiquidMixtureComponent) -> float:
 		points += stepPoints;
 	return stepPoints;
 
+func GetCurrentRecipeIngredients():
+	var ingredients = {}
+	for i in Global.instantiationManager.ingredients:
+		print("Ingrdient: ", i)
+	for i in Global.instantiationManager.liquidParticles:
+		print("Prticle: ",i)
+		
 # func CheckQuantity(quantityArr)
 #func initRecipes():
 	#print("Initialized Recipes")

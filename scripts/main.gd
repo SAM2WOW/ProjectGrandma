@@ -1,13 +1,17 @@
 extends Node
 
 var recipeMode = false
-
+var canCompleteStage = false
+var currentRecipe
 func _ready():
 	
 	if (Engine.is_editor_hint):
 		get_window().size = Vector2i(960, 540);
 		pass
 	print("Main is ready")
+	print(Global.gameManager.currentStage)
+	$CanvasLayer/TestLevelText.text = "Level" + str(Global.gameManager.currentStage+1)
+	Global.recipeManager.GetCurrentRecipeIngredients()
 		#updateStage(GameManager.currentStage)
 		#GameManager.gameEnd.connect(onGameEnd())
 
@@ -15,7 +19,6 @@ func _ready():
 func _process(delta):
 	if Input.is_action_just_released("ui_accept"):
 		completeStage()
-
 #func _physics_process(delta):
 	# offset the camera base on the mouse position to the center
 	var mousePos = get_viewport().get_mouse_position()
@@ -28,19 +31,19 @@ func _process(delta):
 
 func updateStage(stage: int):
 	#Instantiate cook scene
-
+	
 	#Get current stage's receipe
 	print('Updated stage')
 	# currentRecipet = GameManager.recipeManager.GetCurrentRecipe(stage)
 	# recipeUI.updateIngredientLable(currentRecipet.ingredients)
-
 	
 func completeStage():
 	if  Global.gameManager.CheckGameEnd():
 		print("Complete last stage, game ends")
 	else:
 		Global.gameManager.currentStage += 1
-		updateStage(Global.gameManager.currentStage)
+		Global.gameManager.UpdateStage()
+		#updateStage(Global.gameManager.currentStage)
 		#GameManager.stageComplete.emit()
 
 func onGameEnd():

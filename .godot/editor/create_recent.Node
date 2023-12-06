@@ -1,8 +1,8 @@
-CollisionShape2D
+Node2D
 Label
+CollisionShape2D
 TextEvent
 RichTextLabel
-Node2D
 Control
 CollisionPolygon2D
 Area2D
