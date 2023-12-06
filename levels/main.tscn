@@ -1,4 +1,4 @@
-[gd_scene load_steps=72 format=3 uid="uid://svu81oy40o3p"]
+[gd_scene load_steps=69 format=3 uid="uid://svu81oy40o3p"]
 
 [ext_resource type="Texture2D" uid="uid://cmp4cxxq8yuat" path="res://arts/ivory-off-white-paper-texture.jpg" id="1_1jmmi"]
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_udxji"]
@@ -21,8 +21,6 @@
 [ext_resource type="Script" path="res://Resources/liquidPoints.gd" id="17_dva5t"]
 [ext_resource type="Script" path="res://Resources/liquidComponent.gd" id="18_xb4is"]
 [ext_resource type="Script" path="res://Resources/recipeComponent.gd" id="19_dpcux"]
-[ext_resource type="PackedScene" uid="uid://v5qskld56om" path="res://prefabs/textManager.tscn" id="21_rjtit"]
-[ext_resource type="Script" path="res://Resources/textEvent.gd" id="22_3bq5e"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_y2278"]
 frequency = 0.0698
@@ -319,10 +317,6 @@ step = 4
 description = " Simmer on low heat for around x seconds or until the sauce thickens."
 quantityPoints = Array[ExtResource("13_h3lya")]([])
 
-[sub_resource type="LabelSettings" id="LabelSettings_ft37y"]
-font_size = 50
-font_color = Color(0, 0, 0, 1)
-
 [node name="Main" type="Node"]
 script = ExtResource("1_udxji")
 
@@ -425,47 +419,5 @@ label_settings = SubResource("LabelSettings_ijvoj")
 recipe = Array[ExtResource("19_dpcux")]([SubResource("Resource_t5c2e"), SubResource("Resource_c5yxf"), SubResource("Resource_6h8y0"), SubResource("Resource_gqaa1"), SubResource("Resource_gv8wc"), SubResource("Resource_3s2vj"), SubResource("Resource_lw685")])
 
 [node name="InstantiationManager" parent="." instance=ExtResource("6_mkygc")]
-
-[node name="TextManager" parent="." groups=["TextManager"] instance=ExtResource("21_rjtit")]
-
-[node name="Dad Note" type="Node2D" parent="TextManager"]
-position = Vector2(10, -650)
-rotation = 0.174533
-script = ExtResource("22_3bq5e")
-dissapearTimer = 5.0
-playOnce = false
-
-[node name="Label" type="Label" parent="TextManager/Dad Note"]
-offset_right = 40.0
-offset_bottom = 40.0
-text = "Time to die!"
-label_settings = SubResource("LabelSettings_ft37y")
-horizontal_alignment = 1
-
-[node name="Mom Note" type="Node2D" parent="TextManager"]
-position = Vector2(512, -594)
-rotation = -0.249582
-script = ExtResource("22_3bq5e")
-
-[node name="Label" type="Label" parent="TextManager/Mom Note"]
-offset_right = 40.0
-offset_bottom = 40.0
-text = "Time to live!"
-label_settings = SubResource("LabelSettings_ft37y")
-horizontal_alignment = 1
-
-[node name="Grandma Note" type="Node2D" parent="TextManager"]
-position = Vector2(64, -1129)
-script = ExtResource("22_3bq5e")
-dissapearTimer = 10.0
-
-[node name="Label" type="Label" parent="TextManager/Grandma Note"]
-offset_right = 960.0
-offset_bottom = 213.0
-text = "pyoropyoropyoropyoropyoropyoropyoropyoropyoropyoro
-pyoropyoropyoropyoropyoropyoro
-pyoropyoropyoropyoropyoropyoropyoropyoropyoro"
-label_settings = SubResource("LabelSettings_ft37y")
-autowrap_mode = 3
 
 [node name="gameManager" parent="." instance=ExtResource("13_cncv6")]
