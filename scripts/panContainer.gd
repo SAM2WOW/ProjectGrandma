@@ -29,6 +29,9 @@ func _process(delta):
 	UpdateFluids(delta);
 	CookIngredients(delta);
 
+func _physics_process(delta):
+	super._physics_process(delta);
+
 func UpdateHeat(delta):
 	if cookingHeat < targetHeat:
 		cookingHeat += heatUpCoefficient * delta;
@@ -43,6 +46,7 @@ func CookIngredients(delta):
 	if currentCookingState == IngredientState.CookingType.Boiled: heat = averageLiquidHeat;
 	for type in cookingObjects.values():
 		for ingredient in type:
+			# print(heat)
 			ingredient.Cook(currentCookingState, heat, delta);
 
 func UpdateFluids(delta):
@@ -66,7 +70,8 @@ func _on_area_2d_body_shape_entered(body_rid, body, body_shape_index, local_shap
 	if body is Ingredient:
 		if !cookingObjects.keys().has(body.ingredientType): 
 			cookingObjects[body.ingredientType] = [];
-		cookingObjects[body.ingredientType].append(body);
+		if !cookingObjects[body.ingredientType].has(body):
+			cookingObjects[body.ingredientType].append(body);
 
 
 func _on_area_2d_body_shape_exited(body_rid, body, body_shape_index, local_shape_index):

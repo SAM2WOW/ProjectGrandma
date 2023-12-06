@@ -1,25 +1,69 @@
-[gd_scene load_steps=7 format=3 uid="uid://sytwr8cbqvm1"]
+[gd_scene load_steps=12 format=3 uid="uid://sytwr8cbqvm1"]
 
 [ext_resource type="PackedScene" uid="uid://b5em8781rmds2" path="res://prefabs/ingredient.tscn" id="1_56ysr"]
+[ext_resource type="Script" path="res://scripts/ingredientState.gd" id="2_t4qnj"]
 [ext_resource type="Texture2D" uid="uid://btu8epp0jyk0l" path="res://arts/ingredients/drumstick.png" id="2_xxpdl"]
 
+[sub_resource type="Resource" id="Resource_onfv7"]
+resource_local_to_scene = true
+script = ExtResource("2_t4qnj")
+state = 0
+cookTimer = 15.0
+typeInfluenceMultiplier = {
+0: 1.0,
+1: 0.5
+}
+stateColor = Color(1, 1, 1, 1)
+
+[sub_resource type="Resource" id="Resource_atocn"]
+resource_local_to_scene = true
+script = ExtResource("2_t4qnj")
+state = 1
+cookTimer = 25.0
+typeInfluenceMultiplier = {
+0: 1.0,
+1: 0.4
+}
+stateColor = Color(0.94902, 0.776471, 0.4, 1)
+
+[sub_resource type="Resource" id="Resource_hxhva"]
+script = ExtResource("2_t4qnj")
+state = 2
+cookTimer = 25.0
+typeInfluenceMultiplier = {
+0: 1.5,
+1: 0.5
+}
+stateColor = Color(0.6, 0.443137, 0.101961, 1)
+
+[sub_resource type="Resource" id="Resource_gd71g"]
+script = ExtResource("2_t4qnj")
+state = 3
+cookTimer = 0.0
+typeInfluenceMultiplier = {
+0: 1.0,
+1: 1.0
+}
+stateColor = Color(0.231373, 0.164706, 0.0196078, 1)
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ljngj"]
-radius = 8.0
-height = 52.0
+radius = 5.83658
+height = 35.0195
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_e0du0"]
-radius = 16.0
-height = 32.0
+radius = 8.40736
+height = 25.2221
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_n6mev"]
-radius = 28.0
-height = 70.0
+radius = 17.3308
+height = 58.2314
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qbico"]
 radius = 52.0
 height = 200.0
 
 [node name="Chicken" instance=ExtResource("1_56ysr")]
+ingredientStates = Array[ExtResource("2_t4qnj")]([SubResource("Resource_onfv7"), SubResource("Resource_atocn"), SubResource("Resource_hxhva"), SubResource("Resource_gd71g")])
 
 [node name="Sprite2DShadow" parent="." index="0"]
 scale = Vector2(0.233, 0.233)
@@ -44,7 +88,7 @@ scale = Vector2(1.42732, 1.42732)
 shape = SubResource("CapsuleShape2D_e0du0")
 
 [node name="CollisionShape2D" parent="." index="4"]
-position = Vector2(36, 1)
+position = Vector2(29, 1)
 scale = Vector2(1.44252, 1.44252)
 shape = SubResource("CapsuleShape2D_n6mev")
 

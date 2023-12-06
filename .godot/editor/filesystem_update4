@@ -1,6 +1,7 @@
 res://prefabs/recipeManager.tscn
 res://FluidSim2D/WaterGenPhysicsServer.gd
 res://Water_View_Shader.gdshader
+res://scripts/liquidState.gd
 res://levels/main.tscn
 res://levels/cooking scene.tscn
 res://prefabs/instantiation_manager.tscn
@@ -11,11 +12,16 @@ res://prefabs/ingredientGroup.tscn
 res://prefabs/Ingredients/chicken.tscn
 res://prefabs/Ingredients/garlic.tscn
 res://prefabs/Ingredients/peppercorn.tscn
-res://levels/testLevel.tscn
 res://prefabs/panContainer.tscn
 res://prefabs/liquidDraggable.tscn
 res://prefabs/liquidContainer.tscn
-res://Resources/liquidMixtureComponent.gd
-res://Resources/liquidComponent.gd
+res://prefabs/mixingSpoon.tscn
+res://prefabs/stoveTop.tscn
+res://prefabs/textManager.tscn
+res://prefabs/water_gen.tscn
+res://prefabs/Ingredients/bayLeaf.tscn
+res://scripts/instantiationManager.gd
+res://scripts/mixingSpoon.gd
+res://scripts/gameManager.gd
+res://scripts/ingredient.gd
 res://scripts/panContainer.gd
-res://scripts/RecipeManager.gd

@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://dpg0gbpttdpy5"]
+[gd_scene load_steps=33 format=3 uid="uid://dpg0gbpttdpy5"]
 
 [ext_resource type="Texture2D" uid="uid://cmp4cxxq8yuat" path="res://arts/ivory-off-white-paper-texture.jpg" id="1_1jmmi"]
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_udxji"]
@@ -10,16 +10,20 @@
 [ext_resource type="PackedScene" uid="uid://2xviyeelbeyx" path="res://prefabs/liquidDraggable.tscn" id="7_avq8n"]
 [ext_resource type="PackedScene" uid="uid://drn5x3vivefyp" path="res://prefabs/liquidContainer.tscn" id="7_wm87n"]
 [ext_resource type="PackedScene" uid="uid://dsppfnoxh56xm" path="res://prefabs/stoveTop.tscn" id="8_fma0h"]
-[ext_resource type="FontFile" path="res://arts/fonts/Zeyada-Regular.ttf" id="10_hjo2k"]
+[ext_resource type="PackedScene" uid="uid://dcdllixbqh58h" path="res://prefabs/mixingSpoon.tscn" id="9_vpwpm"]
+[ext_resource type="FontFile" uid="uid://ds8uy6wtxnlvu" path="res://arts/fonts/Zeyada-Regular.ttf" id="10_hjo2k"]
 [ext_resource type="Shader" path="res://arts/UI/transition.gdshader" id="11_b5byl"]
 [ext_resource type="PackedScene" uid="uid://w7pwgo4f8bvq" path="res://prefabs/recipeManager.tscn" id="11_bxixm"]
-[ext_resource type="FontFile" path="res://arts/fonts/RockSalt-Regular.ttf" id="11_ml1rf"]
+[ext_resource type="FontFile" uid="uid://lf3j1njjt8sb" path="res://arts/fonts/RockSalt-Regular.ttf" id="11_ml1rf"]
 [ext_resource type="Texture2D" uid="uid://c6dw2f176slrg" path="res://arts/UI/transition.jpg" id="12_hwjn3"]
 [ext_resource type="Texture2D" uid="uid://y0x4wmm0704m" path="res://arts/UI/black.png" id="13_3lq1v"]
 [ext_resource type="PackedScene" uid="uid://h7fkjxle4fr2" path="res://prefabs/panContainer.tscn" id="13_blku6"]
 [ext_resource type="PackedScene" uid="uid://bt4diyeaca8l0" path="res://prefabs/gameManager.tscn" id="13_cncv6"]
 [ext_resource type="Script" path="res://textEvent.gd" id="19_5tann"]
 [ext_resource type="PackedScene" uid="uid://v5qskld56om" path="res://prefabs/textManager.tscn" id="21_rjtit"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_thd3q"]
+size = Vector2(5056, 1370)
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_y2278"]
 frequency = 0.0698
@@ -188,14 +192,15 @@ scale = Vector2(-6.59748, -6.59748)
 ingredientPath = "res://prefabs/Ingredients/garlic.tscn"
 numIngredients = 10
 
-[node name="StoveTop" parent="Node2D/Cooking Scene" instance=ExtResource("8_fma0h")]
-position = Vector2(0, 478)
-
-[node name="IngredientGroup" parent="Node2D/Cooking Scene" instance=ExtResource("6_b25a0")]
-position = Vector2(-640, -34)
-scale = Vector2(-6.59748, -6.59748)
+[node name="IngredientGroup2" parent="Node2D/Cooking Scene/Container" instance=ExtResource("6_b25a0")]
+position = Vector2(0, -305)
+rotation = 3.14159
+scale = Vector2(6.59748, 6.59748)
 ingredientPath = "res://prefabs/Ingredients/chicken.tscn"
 numIngredients = 3
+
+[node name="StoveTop" parent="Node2D/Cooking Scene" instance=ExtResource("8_fma0h")]
+position = Vector2(0, 478)
 
 [node name="Container2" parent="Node2D/Cooking Scene" instance=ExtResource("7_wm87n")]
 position = Vector2(-1280, 446)
@@ -206,18 +211,31 @@ scale = Vector2(-6.59748, -6.59748)
 ingredientPath = "res://prefabs/Ingredients/peppercorn.tscn"
 numIngredients = 10
 
+[node name="IngredientGroup2" parent="Node2D/Cooking Scene/Container2" instance=ExtResource("6_b25a0")]
+position = Vector2(0, -305)
+scale = Vector2(-6.59748, -6.59748)
+ingredientPath = "res://prefabs/Ingredients/bayLeaf.tscn"
+numIngredients = 10
+
 [node name="StaticBody2D" type="StaticBody2D" parent="Node2D/Cooking Scene"]
 collision_layer = 4
 collision_mask = 7
 collision_priority = 100.0
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Node2D/Cooking Scene/StaticBody2D"]
-polygon = PackedVector2Array(-1792, -546, -1792, 544, 1792, 544, 1792, -544, 2560, -546, 2592, 1310, -2496, 1310, -2496, -546)
+polygon = PackedVector2Array(-1792, -3584, -1792, 544, 1792, 544, 1792, -3584, 2560, -4416, 2592, 1310, -2496, 1310, -2496, -4384)
 
 [node name="Sprite2D" type="Sprite2D" parent="Node2D/Cooking Scene/StaticBody2D"]
 position = Vector2(0, 1068)
 scale = Vector2(50, 8.198)
 texture = ExtResource("3_u1ivw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Cooking Scene/StaticBody2D"]
+position = Vector2(32, -3699)
+shape = SubResource("RectangleShape2D_thd3q")
+
+[node name="MixingSpoon" parent="Node2D/Cooking Scene" instance=ExtResource("9_vpwpm")]
+position = Vector2(1408, -96)
 
 [node name="WaterColor" type="Sprite2D" parent="Node2D"]
 visible = false
