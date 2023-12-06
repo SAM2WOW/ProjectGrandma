@@ -8,3 +8,4 @@ res://levels/cooking scene.tscn
 res://prefabs/instantiation_manager.tscn
 res://prefabs/gameManager.tscn
 res://prefabs/Knob/Knob.tscn
+res://prefabs/Ingredients/garlic.tscn

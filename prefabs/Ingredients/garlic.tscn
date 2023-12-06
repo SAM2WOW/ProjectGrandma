@@ -16,8 +16,8 @@ collision_mask = 3
 ingredientType = 1
 
 [node name="Sprite2D" parent="." index="0"]
-position = Vector2(0, -1.90735e-06)
-scale = Vector2(0.113587, 0.113587)
+position = Vector2(2, 1.19209e-07)
+scale = Vector2(0.153879, 0.181862)
 texture = ExtResource("2_i6ckg")
 
 [node name="CollisionShape2D" parent="." index="1"]
