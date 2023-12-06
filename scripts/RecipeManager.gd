@@ -8,26 +8,6 @@ const heatDescriptions = {
 	1.5: "Medium High",
 	2.0: "High"
 };
-var stageRecipes : Array =[]
-const RecipeInfos = {
-	"1": {
-		"ingredients" = ["Apple","Soysauce"],
-		"steps" = ["Cooking","Cooking"]
-	},
-	"2": {
-		"ingredients" = ["Beef","Soysauce"],
-		"steps" = ["Cooking","Quit"]
-	},
-	"3": {
-		"ingredients" = ["Chicken","Soysauce"],
-		"steps" = ["Cooking","Quit","Cooking"]
-	},
-	"4": {
-		"ingredients" = ["Shrimp","Soysauce"],
-		"steps" = ["Cooking"]
-	},
-}
-
 var points : float;
 var totalPoints : float;
 

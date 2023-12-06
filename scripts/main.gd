@@ -6,7 +6,7 @@ func _ready():
 		get_window().size = Vector2i(960, 540);
 	print("Main is ready")
 		#updateStage(GameManager.currentStage)
-		#GameManager.gameEnd.connect(onGameEnd())
+	Global.gameManager.gameEnd.connect(onGameEnd())
 func _process(delta):
 	if Input.is_action_just_released("ui_accept"):
 		completeStage()
