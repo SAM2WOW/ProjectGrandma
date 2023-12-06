@@ -14,7 +14,6 @@ radius = 15.0
 
 [node name="Ingredient" instance=ExtResource("1_mqbfx")]
 collision_layer = 3
-collision_mask = 3
 ingredientType = 1
 
 [node name="Sprite2D" parent="." index="0"]

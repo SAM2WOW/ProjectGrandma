@@ -8,7 +8,6 @@ enum LiquidType {SoySauce, Vinegar, AbodoSauce};
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
 	recipeManager = get_tree().get_first_node_in_group("RecipeManager");
 	gameManager = get_tree().get_first_node_in_group("GameManager");
 	instantiationManager = get_tree().get_first_node_in_group("InstantiationManager");
