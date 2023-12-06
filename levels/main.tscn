@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://dpg0gbpttdpy5"]
+[gd_scene load_steps=32 format=3 uid="uid://dpg0gbpttdpy5"]
 
 [ext_resource type="Texture2D" uid="uid://cmp4cxxq8yuat" path="res://arts/ivory-off-white-paper-texture.jpg" id="1_1jmmi"]
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_udxji"]
@@ -10,10 +10,11 @@
 [ext_resource type="PackedScene" uid="uid://2xviyeelbeyx" path="res://prefabs/liquidDraggable.tscn" id="7_avq8n"]
 [ext_resource type="PackedScene" uid="uid://drn5x3vivefyp" path="res://prefabs/liquidContainer.tscn" id="7_wm87n"]
 [ext_resource type="PackedScene" uid="uid://dsppfnoxh56xm" path="res://prefabs/stoveTop.tscn" id="8_fma0h"]
-[ext_resource type="FontFile" path="res://arts/fonts/Zeyada-Regular.ttf" id="10_hjo2k"]
+[ext_resource type="Texture2D" uid="uid://dnle2jjcpad0l" path="res://arts/main scene/kitchen scene.png" id="8_l17oo"]
+[ext_resource type="FontFile" uid="uid://ds8uy6wtxnlvu" path="res://arts/fonts/Zeyada-Regular.ttf" id="10_hjo2k"]
 [ext_resource type="Shader" path="res://arts/UI/transition.gdshader" id="11_b5byl"]
 [ext_resource type="PackedScene" uid="uid://w7pwgo4f8bvq" path="res://prefabs/recipeManager.tscn" id="11_bxixm"]
-[ext_resource type="FontFile" path="res://arts/fonts/RockSalt-Regular.ttf" id="11_ml1rf"]
+[ext_resource type="FontFile" uid="uid://lf3j1njjt8sb" path="res://arts/fonts/RockSalt-Regular.ttf" id="11_ml1rf"]
 [ext_resource type="Texture2D" uid="uid://c6dw2f176slrg" path="res://arts/UI/transition.jpg" id="12_hwjn3"]
 [ext_resource type="Texture2D" uid="uid://y0x4wmm0704m" path="res://arts/UI/black.png" id="13_3lq1v"]
 [ext_resource type="PackedScene" uid="uid://h7fkjxle4fr2" path="res://prefabs/panContainer.tscn" id="13_blku6"]
@@ -215,9 +216,9 @@ collision_priority = 100.0
 polygon = PackedVector2Array(-1792, -546, -1792, 544, 1792, 544, 1792, -544, 2560, -546, 2592, 1310, -2496, 1310, -2496, -546)
 
 [node name="Sprite2D" type="Sprite2D" parent="Node2D/Cooking Scene/StaticBody2D"]
-position = Vector2(0, 1068)
-scale = Vector2(50, 8.198)
-texture = ExtResource("3_u1ivw")
+position = Vector2(7.62939e-06, 1071)
+scale = Vector2(2.56094, 2.10425)
+texture = ExtResource("8_l17oo")
 
 [node name="WaterColor" type="Sprite2D" parent="Node2D"]
 visible = false
