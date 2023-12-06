@@ -13,9 +13,9 @@ var cookingVelocityThresholds: float = 100;
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	super._ready();
-	if !GameManager.instantiationManager.ingredients.has(ingredientType): 
-		GameManager.instantiationManager.ingredients[ingredientType] = [];
-	GameManager.instantiationManager.ingredients[ingredientType].append(self);
+	if !Global.instantiationManager.ingredients.has(ingredientType): 
+		Global.instantiationManager.ingredients[ingredientType] = [];
+	Global.instantiationManager.ingredients[ingredientType].append(self);
 	ingredientStates.sort_custom(func(x, y): return x.state < y.state);
 	pass # Replace with function body.
 

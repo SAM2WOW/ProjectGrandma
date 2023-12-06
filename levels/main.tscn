@@ -1,4 +1,4 @@
-[gd_scene load_steps=70 format=3 uid="uid://svu81oy40o3p"]
+[gd_scene load_steps=69 format=3 uid="uid://svu81oy40o3p"]
 
 [ext_resource type="Texture2D" uid="uid://cmp4cxxq8yuat" path="res://arts/ivory-off-white-paper-texture.jpg" id="1_1jmmi"]
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_udxji"]
@@ -317,12 +317,6 @@ step = 4
 description = " Simmer on low heat for around x seconds or until the sauce thickens."
 quantityPoints = Array[ExtResource("13_h3lya")]([])
 
-[sub_resource type="Resource" id="Resource_d8ogl"]
-script = ExtResource("19_dpcux")
-step = 0
-description = ""
-quantityPoints = Array[ExtResource("13_h3lya")]([])
-
 [node name="Main" type="Node"]
 script = ExtResource("1_udxji")
 
@@ -422,7 +416,7 @@ text = "1. Apple
 label_settings = SubResource("LabelSettings_ijvoj")
 
 [node name="RecipeManager" parent="." instance=ExtResource("11_bxixm")]
-recipe = Array[ExtResource("19_dpcux")]([SubResource("Resource_t5c2e"), SubResource("Resource_c5yxf"), SubResource("Resource_6h8y0"), SubResource("Resource_gqaa1"), SubResource("Resource_gv8wc"), SubResource("Resource_3s2vj"), SubResource("Resource_lw685"), SubResource("Resource_d8ogl")])
+recipe = Array[ExtResource("19_dpcux")]([SubResource("Resource_t5c2e"), SubResource("Resource_c5yxf"), SubResource("Resource_6h8y0"), SubResource("Resource_gqaa1"), SubResource("Resource_gv8wc"), SubResource("Resource_3s2vj"), SubResource("Resource_lw685")])
 
 [node name="InstantiationManager" parent="." instance=ExtResource("6_mkygc")]
 

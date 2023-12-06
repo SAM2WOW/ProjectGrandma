@@ -13,3 +13,5 @@ res://scripts/instantiationManager.gd
 res://scripts/liquidContainer.gd
 res://scripts/panContainer.gd
 res://scripts/ingredient.gd
+res://scripts/Global.gd
+res://scripts/draggable.gd

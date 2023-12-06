@@ -18,7 +18,7 @@ func _physics_process(delta):
 func _on_input_event(viewport, event, shape_idx):
 	if !event is InputEventMouseButton: return;
 	if event.button_index == 1 && event.pressed:
-		GameManager.BeginDragObject(self);
+		Global.gameManager.BeginDragObject(self);
 
 func Drag(delta):
 	dragging = true;
@@ -48,7 +48,7 @@ func AirDrag(delta):
 func _on_interact_area_input_event(viewport, event, shape_idx):
 	if !event is InputEventMouseButton: return;
 	if event.button_index == 1 && event.pressed:
-		GameManager.BeginDragObject(self);
+		Global.gameManager.BeginDragObject(self);
 
 
 func _on_interact_area_mouse_entered():
