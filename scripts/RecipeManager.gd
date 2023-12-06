@@ -10,12 +10,26 @@ const heatDescriptions = {
 };
 var points : float;
 var totalPoints : float;
+var allIngredients = {}
+var allLiquid = {}
 func _ready():
 	print("Recipe Manager is ready: ", self);
 	recipe.sort_custom(func(x, y): return x.step < y.step);
 	for component in recipe:
 		component._ready();
+		if component is IngredientComponent:
+			#allIngredients.append(component.ingredient)
+			if(!allIngredients.has(component.ingredient)):
+				allIngredients[component.ingredient] = component.ingredient
 		#print(component.GetDescription());
+		elif component is LiquidMixtureComponent:
+			for i:LiquidMixturePoints in component.liquidMixtureRecipe:
+			#	allLiquid.append(i.liquidType)
+				if(!allLiquid.has(i.liquidType)):
+					allLiquid[i.liquidType] = i.liquidType
+
+				
+			
 	Global.recipeManager.CheckRecipePoints();
 	
 func CheckRecipePoints():
@@ -71,11 +85,11 @@ func CheckLiquidMixture(recipeStep : LiquidMixtureComponent) -> float:
 	return stepPoints;
 
 func GetCurrentRecipeIngredients():
-	var ingredients = {}
-	for i in Global.instantiationManager.ingredients:
-		print("Ingrdient: ", i)
-	for i in Global.instantiationManager.liquidParticles:
-		print("Prticle: ",i)
+	for i in allIngredients:
+		print("Ingredients:",i)
+	for i in allLiquid:
+		print("Liquid:", i)
+	
 		
 # func CheckQuantity(quantityArr)
 #func initRecipes():

@@ -17,8 +17,8 @@ func _ready():
 
 
 func _process(delta):
-	if Input.is_action_just_released("ui_accept"):
-		completeStage()
+	#if Input.is_action_just_released("ui_accept"):
+		#completeStage()
 #func _physics_process(delta):
 	# offset the camera base on the mouse position to the center
 	var mousePos = get_viewport().get_mouse_position()

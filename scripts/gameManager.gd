@@ -10,6 +10,8 @@ signal gameEnd
 signal stageComplete
 var draggedObject : Draggable;
 var hoveredObject : Draggable;
+
+var liquidInPan: Array
 var stageScenes: Array[String] = [
 "res://levels/stageOne.tscn",
 "res://levels/stageTwo.tscn",

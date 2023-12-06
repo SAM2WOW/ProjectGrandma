@@ -6,6 +6,7 @@ class_name RecipeComponent;
 @export var description : String;
 @export_category("Quantity")
 @export var quantityPoints : Array[RecipeQuantity];
+var inPot : bool = false;
 
 var totalPoints : float = 0.0;
 

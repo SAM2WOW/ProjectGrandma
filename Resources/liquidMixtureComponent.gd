@@ -11,6 +11,7 @@ func _ready():
 		if !mixtureDict.keys().has(mixPoints.liquidType):
 			mixtureDict[mixPoints.liquidType] = [];
 		mixtureDict[mixPoints.liquidType].append(mixPoints);
+		
 	for arr in mixtureDict.values():
 		arr.sort_custom(func(x, y): return x.lessOrEqualRatio < y.lessOrEqualRatio);
 	
