@@ -17,11 +17,13 @@ collision_layer = 3
 ingredientType = 1
 
 [node name="Sprite2D" parent="." index="0"]
+material = null
 position = Vector2(0, -1.90735e-06)
 scale = Vector2(0.113587, 0.113587)
 texture = SubResource("CompressedTexture2D_s61ss")
 
 [node name="CollisionShape2D" parent="." index="1"]
+material = null
 shape = SubResource("CapsuleShape2D_llsia")
 
 [node name="DragPoint" parent="." index="3"]
@@ -29,3 +31,7 @@ position = Vector2(0, -7)
 
 [node name="CollisionShape2D" parent="InteractArea" index="0"]
 shape = SubResource("CapsuleShape2D_twrtb")
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

@@ -69,7 +69,8 @@ func GetLiquidTotal() -> int:
 
 
 func _on_area_2d_input_event(viewport, event, shape_idx):
-	super._on_input_event(viewport, event, shape_idx);
+	pass
+	#super._on_input_event(viewport, event, shape_idx);
 
 #func _on_area_2d_mouse_entered():
 	#super._on_mouse_entered();

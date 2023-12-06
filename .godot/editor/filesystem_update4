@@ -1,10 +1,19 @@
-res://levels/main.tscn
+res://prefabs/ingredient.tscn
 res://FluidSim2D/WaterGenPhysicsServer.gd
 res://Water_View_Shader.gdshader
-res://scripts/RecipeUI.gd
+res://prefabs/panContainer.tscn
+res://prefabs/liquidContainer.tscn
+res://prefabs/stoveTop.tscn
+res://prefabs/textManager.tscn
 res://prefabs/recipeManager.tscn
-res://scripts/RecipeManager.gd
-res://levels/cooking scene.tscn
-res://prefabs/instantiation_manager.tscn
 res://prefabs/gameManager.tscn
-res://scripts/main.gd
+res://prefabs/draggable.tscn
+res://prefabs/instantiation_manager.tscn
+res://levels/main.tscn
+res://Resources/ingredientComponent.gd
+res://Resources/recipeComponent.gd
+res://Resources/liquidComponent.gd
+res://scripts/textManager.gd
+res://scripts/Global.gd
+res://Resources/textEvent.gd
+res://scripts/panContainer.gd
