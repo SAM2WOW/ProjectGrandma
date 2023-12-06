@@ -1,4 +1,4 @@
-[gd_scene load_steps=70 format=3 uid="uid://svu81oy40o3p"]
+[gd_scene load_steps=31 format=3 uid="uid://dpg0gbpttdpy5"]
 
 [ext_resource type="Texture2D" uid="uid://cmp4cxxq8yuat" path="res://arts/ivory-off-white-paper-texture.jpg" id="1_1jmmi"]
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_udxji"]
@@ -10,18 +10,16 @@
 [ext_resource type="PackedScene" uid="uid://2xviyeelbeyx" path="res://prefabs/liquidDraggable.tscn" id="7_avq8n"]
 [ext_resource type="PackedScene" uid="uid://drn5x3vivefyp" path="res://prefabs/liquidContainer.tscn" id="7_wm87n"]
 [ext_resource type="PackedScene" uid="uid://dsppfnoxh56xm" path="res://prefabs/stoveTop.tscn" id="8_fma0h"]
-[ext_resource type="Texture2D" uid="uid://dnle2jjcpad0l" path="res://arts/main scene/kitchen scene.png" id="8_ggq8h"]
+[ext_resource type="FontFile" path="res://arts/fonts/Zeyada-Regular.ttf" id="10_hjo2k"]
+[ext_resource type="Shader" path="res://arts/UI/transition.gdshader" id="11_b5byl"]
 [ext_resource type="PackedScene" uid="uid://w7pwgo4f8bvq" path="res://prefabs/recipeManager.tscn" id="11_bxixm"]
-[ext_resource type="Script" path="res://Resources/liquidMixturePoints.gd" id="12_b5qn8"]
+[ext_resource type="FontFile" path="res://arts/fonts/RockSalt-Regular.ttf" id="11_ml1rf"]
+[ext_resource type="Texture2D" uid="uid://c6dw2f176slrg" path="res://arts/UI/transition.jpg" id="12_hwjn3"]
+[ext_resource type="Texture2D" uid="uid://y0x4wmm0704m" path="res://arts/UI/black.png" id="13_3lq1v"]
 [ext_resource type="PackedScene" uid="uid://h7fkjxle4fr2" path="res://prefabs/panContainer.tscn" id="13_blku6"]
 [ext_resource type="PackedScene" uid="uid://bt4diyeaca8l0" path="res://prefabs/gameManager.tscn" id="13_cncv6"]
-[ext_resource type="Script" path="res://Resources/recipeQuantity.gd" id="13_h3lya"]
-[ext_resource type="Script" path="res://Resources/liquidMixtureComponent.gd" id="14_50evq"]
-[ext_resource type="Script" path="res://Resources/ingredientPoints.gd" id="15_4t0mj"]
-[ext_resource type="Script" path="res://Resources/ingredientComponent.gd" id="16_2313s"]
-[ext_resource type="Script" path="res://Resources/liquidPoints.gd" id="17_dva5t"]
-[ext_resource type="Script" path="res://Resources/liquidComponent.gd" id="18_xb4is"]
-[ext_resource type="Script" path="res://Resources/recipeComponent.gd" id="19_dpcux"]
+[ext_resource type="Script" path="res://textEvent.gd" id="19_5tann"]
+[ext_resource type="PackedScene" uid="uid://v5qskld56om" path="res://prefabs/textManager.tscn" id="21_rjtit"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_y2278"]
 frequency = 0.0698
@@ -44,297 +42,129 @@ shader_parameter/noise = SubResource("4")
 font_size = 50
 font_color = Color(0.0156863, 0.0156863, 0.0156863, 1)
 
-[sub_resource type="Resource" id="Resource_4x1ep"]
-script = ExtResource("12_b5qn8")
-liquidType = 0
-greaterOrEqualRatio = 0.4
-notEnoughDescription = "not enough soy sauce."
-points = 2.0
-description = "enough soy sauce."
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kbxna"]
+shader = ExtResource("11_b5byl")
+shader_parameter/cutoff = 0.0
+shader_parameter/smooth_size = 0.125
+shader_parameter/mask = ExtResource("12_hwjn3")
 
-[sub_resource type="Resource" id="Resource_0l17c"]
-script = ExtResource("12_b5qn8")
-liquidType = 1
-greaterOrEqualRatio = 0.4
-notEnoughDescription = "not enough vinegar."
-points = 0.0
-description = "enough vinegar."
+[sub_resource type="LabelSettings" id="LabelSettings_c5rhk"]
+font = ExtResource("10_hjo2k")
+font_size = 50
+font_color = Color(0, 0, 0, 1)
 
-[sub_resource type="Resource" id="Resource_o8but"]
-script = ExtResource("13_h3lya")
-belowOrEqualQuantity = 0
-quantityPoints = 0.0
-quantityDescription = "no sauce."
+[sub_resource type="Animation" id="Animation_ksgmm"]
+resource_name = "Intro"
+length = 2.0
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/ColorRect:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.51),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/ColorRect:material:shader_parameter/cutoff")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.51),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Node2D/Camera2D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector2(0, -3000), Vector2(0, 0)]
+}
 
-[sub_resource type="Resource" id="Resource_dqhqo"]
-script = ExtResource("13_h3lya")
-belowOrEqualQuantity = 50
-quantityPoints = 1.0
-quantityDescription = "not enough sauce."
+[sub_resource type="Animation" id="Animation_na2py"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/ColorRect:material:shader_parameter/cutoff")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Node2D/Camera2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -1656)]
+}
 
-[sub_resource type="Resource" id="Resource_6rkxi"]
-script = ExtResource("13_h3lya")
-belowOrEqualQuantity = 200
-quantityPoints = 3.0
-quantityDescription = "enough sauce."
+[sub_resource type="Animation" id="Animation_qwj85"]
+resource_name = "Transition"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D/Camera2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(-2, -2),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -1656)]
+}
 
-[sub_resource type="Resource" id="Resource_qqu8g"]
-script = ExtResource("13_h3lya")
-belowOrEqualQuantity = 100000000
-quantityPoints = 1.0
-quantityDescription = "too much sauce."
-
-[sub_resource type="Resource" id="Resource_t5c2e"]
-script = ExtResource("14_50evq")
-targetLiquid = 2
-liquidMixtureRecipe = Array[ExtResource("12_b5qn8")]([SubResource("Resource_4x1ep"), SubResource("Resource_0l17c")])
-step = 0
-description = "Add x cup of Soy Sauce and x cup of Vinegar to a bowl."
-quantityPoints = Array[ExtResource("13_h3lya")]([SubResource("Resource_o8but"), SubResource("Resource_dqhqo"), SubResource("Resource_6rkxi"), SubResource("Resource_qqu8g")])
-
-[sub_resource type="Resource" id="Resource_7xp4x"]
-script = ExtResource("15_4t0mj")
-doneness = 0
-points = 0.0
-description = "ITS FUCKING RAW!!"
-
-[sub_resource type="Resource" id="Resource_koqgb"]
-script = ExtResource("15_4t0mj")
-doneness = 1
-points = 5.0
-description = "Fuck yeah that chicken is cooked."
-
-[sub_resource type="Resource" id="Resource_an53y"]
-script = ExtResource("15_4t0mj")
-doneness = 2
-points = 3.0
-description = "Chicken is lil smoky."
-
-[sub_resource type="Resource" id="Resource_j8isl"]
-script = ExtResource("15_4t0mj")
-doneness = 3
-points = 0.0
-description = "Chicken burnt as fuck."
-
-[sub_resource type="Resource" id="Resource_2n77r"]
-script = ExtResource("13_h3lya")
-belowOrEqualQuantity = 0
-quantityPoints = 0.0
-quantityDescription = "no chicken?"
-
-[sub_resource type="Resource" id="Resource_cabr1"]
-script = ExtResource("13_h3lya")
-belowOrEqualQuantity = 3
-quantityPoints = 1.0
-quantityDescription = "too little chicken"
-
-[sub_resource type="Resource" id="Resource_dvlml"]
-script = ExtResource("13_h3lya")
-belowOrEqualQuantity = 10
-quantityPoints = 3.0
-quantityDescription = "enough chicken."
-
-[sub_resource type="Resource" id="Resource_5tvxt"]
-script = ExtResource("13_h3lya")
-belowOrEqualQuantity = 20
-quantityPoints = 1.0
-quantityDescription = "I didn't even know you could have too much chicken."
-
-[sub_resource type="Resource" id="Resource_c5yxf"]
-script = ExtResource("16_2313s")
-ingredient = 0
-donenessPoints = Array[ExtResource("15_4t0mj")]([SubResource("Resource_7xp4x"), SubResource("Resource_koqgb"), SubResource("Resource_an53y"), SubResource("Resource_j8isl")])
-step = 1
-description = "Fry over medium heat for around x seconds or until it browns."
-quantityPoints = Array[ExtResource("13_h3lya")]([SubResource("Resource_2n77r"), SubResource("Resource_cabr1"), SubResource("Resource_dvlml"), SubResource("Resource_5tvxt")])
-
-[sub_resource type="Resource" id="Resource_qstk4"]
-script = ExtResource("17_dva5t")
-belowEqualConsistency = 0.2
-points = 0.0
-description = "hasn't thickened at all."
-
-[sub_resource type="Resource" id="Resource_cguvo"]
-script = ExtResource("17_dva5t")
-belowEqualConsistency = 0.6
-points = 2.0
-description = "somewhat thickened."
-
-[sub_resource type="Resource" id="Resource_yk3e1"]
-script = ExtResource("17_dva5t")
-belowEqualConsistency = 1.0
-points = 5.0
-description = "perfectly thickened."
-
-[sub_resource type="Resource" id="Resource_6h8y0"]
-script = ExtResource("18_xb4is")
-liquidType = 2
-consistencyPoints = Array[ExtResource("17_dva5t")]([SubResource("Resource_qstk4"), SubResource("Resource_cguvo"), SubResource("Resource_yk3e1")])
-step = 2
-description = "Add your adobo sauce to the pan."
-quantityPoints = Array[ExtResource("13_h3lya")]([])
-
-[sub_resource type="Resource" id="Resource_43lcn"]
-script = ExtResource("15_4t0mj")
-doneness = 0
-points = 1.0
-description = "Garlic undercooked."
-
-[sub_resource type="Resource" id="Resource_p6aen"]
-script = ExtResource("15_4t0mj")
-doneness = 1
-points = 4.0
-description = "garlic cooked right."
-
-[sub_resource type="Resource" id="Resource_3moy0"]
-script = ExtResource("15_4t0mj")
-doneness = 2
-points = 2.0
-description = "garlic a little burnt."
-
-[sub_resource type="Resource" id="Resource_oarsa"]
-script = ExtResource("15_4t0mj")
-doneness = 3
-points = 0.0
-description = "garlic is fucking gone."
-
-[sub_resource type="Resource" id="Resource_ukews"]
-script = ExtResource("13_h3lya")
-belowOrEqualQuantity = 0
-quantityPoints = 0.0
-quantityDescription = "no garlic??"
-
-[sub_resource type="Resource" id="Resource_img4u"]
-script = ExtResource("13_h3lya")
-belowOrEqualQuantity = 5
-quantityPoints = 1.0
-quantityDescription = "too little garlic"
-
-[sub_resource type="Resource" id="Resource_oyhu0"]
-script = ExtResource("13_h3lya")
-belowOrEqualQuantity = 15
-quantityPoints = 2.0
-quantityDescription = "enough garlic"
-
-[sub_resource type="Resource" id="Resource_ucp6o"]
-script = ExtResource("13_h3lya")
-belowOrEqualQuantity = 9999
-quantityPoints = 1.0
-quantityDescription = "too much garlic"
-
-[sub_resource type="Resource" id="Resource_gqaa1"]
-script = ExtResource("16_2313s")
-ingredient = 1
-donenessPoints = Array[ExtResource("15_4t0mj")]([SubResource("Resource_43lcn"), SubResource("Resource_p6aen"), SubResource("Resource_3moy0"), SubResource("Resource_oarsa")])
-step = 3
-description = "Add garlic to the pan"
-quantityPoints = Array[ExtResource("13_h3lya")]([SubResource("Resource_ukews"), SubResource("Resource_img4u"), SubResource("Resource_oyhu0"), SubResource("Resource_ucp6o")])
-
-[sub_resource type="Resource" id="Resource_tdh2h"]
-script = ExtResource("15_4t0mj")
-doneness = 0
-points = 1.0
-description = "straight peppercorns bro?"
-
-[sub_resource type="Resource" id="Resource_vbgtq"]
-script = ExtResource("15_4t0mj")
-doneness = 1
-points = 3.0
-description = "nice peppercorns"
-
-[sub_resource type="Resource" id="Resource_rp744"]
-script = ExtResource("15_4t0mj")
-doneness = 2
-points = 2.0
-description = "not so nice peppercorns"
-
-[sub_resource type="Resource" id="Resource_jt160"]
-script = ExtResource("15_4t0mj")
-doneness = 3
-points = 0.0
-description = "how the FUCK did you burn peppercorns."
-
-[sub_resource type="Resource" id="Resource_gv8wc"]
-script = ExtResource("16_2313s")
-ingredient = 3
-donenessPoints = Array[ExtResource("15_4t0mj")]([SubResource("Resource_tdh2h"), SubResource("Resource_vbgtq"), SubResource("Resource_rp744"), SubResource("Resource_jt160")])
-step = 3
-description = "add x pepper corns"
-quantityPoints = Array[ExtResource("13_h3lya")]([])
-
-[sub_resource type="Resource" id="Resource_et8wm"]
-script = ExtResource("15_4t0mj")
-doneness = 0
-points = 2.0
-description = "raw bay leaf? mmmmm"
-
-[sub_resource type="Resource" id="Resource_eeqc3"]
-script = ExtResource("15_4t0mj")
-doneness = 1
-points = 3.0
-description = "can you even cook bay leafs?"
-
-[sub_resource type="Resource" id="Resource_45a1t"]
-script = ExtResource("15_4t0mj")
-doneness = 2
-points = 1.0
-description = "leaf is lil burnt."
-
-[sub_resource type="Resource" id="Resource_kqcul"]
-script = ExtResource("15_4t0mj")
-doneness = 3
-points = 4.0
-description = "leaf is burnt bro."
-
-[sub_resource type="Resource" id="Resource_b2ggp"]
-script = ExtResource("13_h3lya")
-belowOrEqualQuantity = 0
-quantityPoints = 0.0
-quantityDescription = "no bay leaves"
-
-[sub_resource type="Resource" id="Resource_ax0k2"]
-script = ExtResource("13_h3lya")
-belowOrEqualQuantity = 3
-quantityPoints = 2.0
-quantityDescription = "enough bay leaves"
-
-[sub_resource type="Resource" id="Resource_hivu6"]
-script = ExtResource("13_h3lya")
-belowOrEqualQuantity = 999999
-quantityPoints = 1.0
-quantityDescription = "too many bay leaves."
-
-[sub_resource type="Resource" id="Resource_3s2vj"]
-script = ExtResource("16_2313s")
-ingredient = 4
-donenessPoints = Array[ExtResource("15_4t0mj")]([SubResource("Resource_et8wm"), SubResource("Resource_eeqc3"), SubResource("Resource_45a1t"), SubResource("Resource_kqcul")])
-step = 3
-description = "add x bay leafs"
-quantityPoints = Array[ExtResource("13_h3lya")]([SubResource("Resource_b2ggp"), SubResource("Resource_ax0k2"), SubResource("Resource_hivu6")])
-
-[sub_resource type="Resource" id="Resource_lw685"]
-script = ExtResource("19_dpcux")
-step = 4
-description = " Simmer on low heat for around x seconds or until the sauce thickens."
-quantityPoints = Array[ExtResource("13_h3lya")]([])
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_uv4j4"]
+_data = {
+"Intro": SubResource("Animation_ksgmm"),
+"RESET": SubResource("Animation_na2py"),
+"Transition": SubResource("Animation_qwj85")
+}
 
 [node name="Main" type="Node"]
 script = ExtResource("1_udxji")
 
-[node name="Node2D" type="Node2D" parent="."]
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
-[node name="BG" type="Sprite2D" parent="Node2D"]
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.1, 0.1)
+motion_mirroring = Vector2(3888, 2592)
+
+[node name="BG" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
 show_behind_parent = true
 z_index = -10
-position = Vector2(0, -453)
-scale = Vector2(1, 1.18287)
+position = Vector2(1920, 1280)
 texture = ExtResource("1_1jmmi")
 
+[node name="Node2D" type="Node2D" parent="."]
+
 [node name="Camera2D" type="Camera2D" parent="Node2D"]
+position = Vector2(0, -1656)
 zoom = Vector2(0.5, 0.5)
 
 [node name="Cooking Scene" type="Node2D" parent="Node2D"]
-position = Vector2(0, -446)
 
 [node name="LiquidDraggable" parent="Node2D/Cooking Scene" instance=ExtResource("7_avq8n")]
 position = Vector2(736, 446)
@@ -376,19 +206,18 @@ scale = Vector2(-6.59748, -6.59748)
 ingredientPath = "res://prefabs/Ingredients/peppercorn.tscn"
 numIngredients = 10
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Node2D"]
-position = Vector2(0, -446)
-collision_layer = 6
+[node name="StaticBody2D" type="StaticBody2D" parent="Node2D/Cooking Scene"]
+collision_layer = 4
 collision_mask = 7
 collision_priority = 100.0
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Node2D/StaticBody2D"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Node2D/Cooking Scene/StaticBody2D"]
 polygon = PackedVector2Array(-1792, -546, -1792, 544, 1792, 544, 1792, -544, 2560, -546, 2592, 1310, -2496, 1310, -2496, -546)
 
-[node name="Sprite2D" type="Sprite2D" parent="Node2D/StaticBody2D"]
-position = Vector2(-12, 1026)
-scale = Vector2(2.0125, 1.9305)
-texture = ExtResource("8_ggq8h")
+[node name="Sprite2D" type="Sprite2D" parent="Node2D/Cooking Scene/StaticBody2D"]
+position = Vector2(0, 1068)
+scale = Vector2(50, 8.198)
+texture = ExtResource("3_u1ivw")
 
 [node name="WaterColor" type="Sprite2D" parent="Node2D"]
 visible = false
@@ -397,9 +226,37 @@ position = Vector2(536, 181)
 scale = Vector2(45.6875, 39.875)
 texture = ExtResource("3_u1ivw")
 
+[node name="Recipe Scene" type="Node2D" parent="Node2D"]
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Node2D/Recipe Scene"]
+offset_left = -1216.0
+offset_top = -2618.0
+offset_right = 1233.0
+offset_bottom = -426.0
+rotation = -0.0488692
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("10_hjo2k")
+theme_override_fonts/bold_font = ExtResource("11_ml1rf")
+theme_override_font_sizes/normal_font_size = 90
+theme_override_font_sizes/bold_font_size = 71
+bbcode_enabled = true
+text = "[b]Ingredients[/b]
+	* 1/2 pounds chicken thighs
+	* 1/4 cup white vinegar
+	* 1/4 cup soy sauce
+	* Steamed rice, for serving
+
+[b]Steps[/b]
+	1. Brown the chicken thighs in a small pan with oil. Add crushed garlic to cook slightly with chicken
+	2. Combine vinegar and soy sauce. Add to pot with chicken
+	3. Bring to a boil then let simmer for 30-40mins with cover on
+	4. Serve over rice!
+"
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="RecipeUI" type="Control" parent="CanvasLayer"]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -411,17 +268,103 @@ script = ExtResource("5_vajsc")
 
 [node name="IngredientLabel" type="Label" parent="CanvasLayer/RecipeUI"]
 layout_mode = 0
-offset_left = 64.0
-offset_top = 64.0
-offset_right = 323.0
-offset_bottom = 205.0
+offset_right = 40.0
+offset_bottom = 23.0
 text = "1. Apple
 2. Coconut"
 label_settings = SubResource("LabelSettings_ijvoj")
 
+[node name="ColorRect" type="TextureRect" parent="CanvasLayer"]
+visible = false
+texture_filter = 1
+material = SubResource("ShaderMaterial_kbxna")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("13_3lq1v")
+
+[node name="HUD" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="HoverArea" type="Control" parent="CanvasLayer/HUD"]
+custom_minimum_size = Vector2(0, 81.13)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/HUD/HoverArea"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/HUD/HoverArea/CenterContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("10_hjo2k")
+theme_override_font_sizes/font_size = 40
+text = "^ My Adobo Recipe ^"
+
+[node name="HoverArea2" type="Control" parent="CanvasLayer/HUD"]
+custom_minimum_size = Vector2(0, 81.13)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/HUD/HoverArea2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/HUD/HoverArea2/CenterContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("10_hjo2k")
+theme_override_font_sizes/font_size = 40
+text = "My Kitchen Below"
+
 [node name="RecipeManager" parent="." instance=ExtResource("11_bxixm")]
-recipe = Array[ExtResource("19_dpcux")]([SubResource("Resource_t5c2e"), SubResource("Resource_c5yxf"), SubResource("Resource_6h8y0"), SubResource("Resource_gqaa1"), SubResource("Resource_gv8wc"), SubResource("Resource_3s2vj"), SubResource("Resource_lw685")])
 
 [node name="InstantiationManager" parent="." instance=ExtResource("6_mkygc")]
 
+[node name="TextManager" parent="." groups=["TextManager"] instance=ExtResource("21_rjtit")]
+
+[node name="Note of Pain" type="Node2D" parent="TextManager"]
+position = Vector2(0, -75)
+script = ExtResource("19_5tann")
+dissapearTimer = 5.0
+
+[node name="Label" type="Label" parent="TextManager/Note of Pain"]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "pain"
+label_settings = SubResource("LabelSettings_c5rhk")
+
 [node name="gameManager" parent="." instance=ExtResource("13_cncv6")]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_uv4j4")
+}
+autoplay = "Intro"
+
+[connection signal="mouse_entered" from="CanvasLayer/HUD/HoverArea" to="." method="_on_hover_area_mouse_entered"]
+[connection signal="mouse_entered" from="CanvasLayer/HUD/HoverArea2" to="." method="_on_hover_area_2_mouse_entered"]
