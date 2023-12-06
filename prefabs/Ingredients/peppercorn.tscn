@@ -14,10 +14,16 @@ height = 22.0
 collision_layer = 3
 
 [node name="Sprite2D" parent="." index="0"]
+material = null
 scale = Vector2(0.125, 0.125)
 
 [node name="CollisionShape2D" parent="." index="1"]
+material = null
 shape = SubResource("CapsuleShape2D_uu5sx")
 
 [node name="CollisionShape2D" parent="InteractArea" index="0"]
 shape = SubResource("CapsuleShape2D_qbve2")
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

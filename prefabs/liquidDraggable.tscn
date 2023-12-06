@@ -27,18 +27,22 @@ contact_monitor = true
 script = ExtResource("2_3p8mk")
 liquidType = 0
 
-[node name="Sprite2D" parent="." index="0"]
+[node name="Sprite2DShadow" parent="." index="0"]
+position = Vector2(0, -80)
+scale = Vector2(0.537, 0.537)
+
+[node name="Sprite2D" parent="." index="1"]
 position = Vector2(0, -80)
 scale = Vector2(0.537274, 0.537274)
 texture = ExtResource("3_0lj40")
 
-[node name="CollisionShape2D" parent="." index="1"]
+[node name="CollisionShape2D" parent="." index="2"]
 position = Vector2(9.53674e-07, -80)
 rotation = 0.0
 scale = Vector2(0.814367, 1.09774)
 shape = SubResource("RectangleShape2D_2ownh")
 
-[node name="PinJoint2D" parent="." index="2"]
+[node name="PinJoint2D" parent="." index="3"]
 position = Vector2(0, -80)
 
 [node name="WaterGen" parent="." index="4" instance=ExtResource("3_16hnm")]
@@ -51,5 +55,9 @@ bus = &"SFX"
 [node name="Pouring" type="AudioStreamPlayer2D" parent="." index="6"]
 stream = ExtResource("7_ttqlr")
 bus = &"SFX"
+
+[node name="CollisionShape2D" parent="InteractArea" index="0"]
+position = Vector2(0, -80)
+rotation = 3.14159
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

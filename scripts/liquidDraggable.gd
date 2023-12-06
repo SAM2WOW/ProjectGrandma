@@ -13,7 +13,9 @@ func _ready():
 	super._ready();
 	$WaterGen.liquid_type = liquidType;
 	
-	$Sprite2D.set_texture(load(bottleImage[liquidType]))
+	var texture = load(bottleImage[liquidType])
+	$Sprite2D.set_texture(texture)
+	$Sprite2DShadow.set_texture(texture)
 
 func ObjectAction(event):
 	super.ObjectAction(event);

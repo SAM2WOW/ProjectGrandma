@@ -347,6 +347,21 @@ libraries = {
 }
 autoplay = "Intro"
 
+[connection signal="input_event" from="Node2D/Cooking Scene/LiquidDraggable" to="Node2D/Cooking Scene/LiquidDraggable" method="_on_input_event"]
+[connection signal="mouse_entered" from="Node2D/Cooking Scene/LiquidDraggable" to="Node2D/Cooking Scene/LiquidDraggable" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Node2D/Cooking Scene/LiquidDraggable" to="Node2D/Cooking Scene/LiquidDraggable" method="_on_mouse_exited"]
+[connection signal="input_event" from="Node2D/Cooking Scene/LiquidDraggable2" to="Node2D/Cooking Scene/LiquidDraggable2" method="_on_input_event"]
+[connection signal="mouse_entered" from="Node2D/Cooking Scene/LiquidDraggable2" to="Node2D/Cooking Scene/LiquidDraggable2" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Node2D/Cooking Scene/LiquidDraggable2" to="Node2D/Cooking Scene/LiquidDraggable2" method="_on_mouse_exited"]
+[connection signal="input_event" from="Node2D/Cooking Scene/Pan" to="Node2D/Cooking Scene/Pan" method="_on_input_event"]
+[connection signal="mouse_entered" from="Node2D/Cooking Scene/Pan" to="Node2D/Cooking Scene/Pan" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Node2D/Cooking Scene/Pan" to="Node2D/Cooking Scene/Pan" method="_on_mouse_exited"]
+[connection signal="input_event" from="Node2D/Cooking Scene/Container" to="Node2D/Cooking Scene/Container" method="_on_input_event"]
+[connection signal="mouse_entered" from="Node2D/Cooking Scene/Container" to="Node2D/Cooking Scene/Container" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Node2D/Cooking Scene/Container" to="Node2D/Cooking Scene/Container" method="_on_mouse_exited"]
+[connection signal="input_event" from="Node2D/Cooking Scene/Container2" to="Node2D/Cooking Scene/Container2" method="_on_input_event"]
+[connection signal="mouse_entered" from="Node2D/Cooking Scene/Container2" to="Node2D/Cooking Scene/Container2" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Node2D/Cooking Scene/Container2" to="Node2D/Cooking Scene/Container2" method="_on_mouse_exited"]
 [connection signal="mouse_entered" from="CanvasLayer/HUD/HoverArea" to="." method="_on_hover_area_mouse_entered"]
 [connection signal="mouse_entered" from="CanvasLayer/HUD/HoverArea2" to="." method="_on_hover_area_2_mouse_entered"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
