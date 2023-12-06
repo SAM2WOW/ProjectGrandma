@@ -5,6 +5,7 @@
 [ext_resource type="Script" path="res://scripts/ingredientState.gd" id="3_8mfa3"]
 
 [sub_resource type="Resource" id="Resource_qvnah"]
+resource_local_to_scene = true
 script = ExtResource("3_8mfa3")
 state = 0
 cookTimer = 5.0
@@ -15,6 +16,7 @@ typeInfluenceMultiplier = {
 stateColor = Color(1, 1, 1, 1)
 
 [sub_resource type="Resource" id="Resource_ojaaw"]
+resource_local_to_scene = true
 script = ExtResource("3_8mfa3")
 state = 1
 cookTimer = 10.0
@@ -25,6 +27,7 @@ typeInfluenceMultiplier = {
 stateColor = Color(0.94902, 0.776471, 0.4, 1)
 
 [sub_resource type="Resource" id="Resource_wka5m"]
+resource_local_to_scene = true
 script = ExtResource("3_8mfa3")
 state = 2
 cookTimer = 10.0
@@ -35,6 +38,7 @@ typeInfluenceMultiplier = {
 stateColor = Color(0.6, 0.443137, 0.101961, 1)
 
 [sub_resource type="Resource" id="Resource_j8afd"]
+resource_local_to_scene = true
 script = ExtResource("3_8mfa3")
 state = 3
 cookTimer = 0.0
@@ -53,6 +57,8 @@ gravity_scale = 2.0
 script = ExtResource("2_ukt0v")
 ingredientType = 0
 ingredientStates = Array[ExtResource("3_8mfa3")]([SubResource("Resource_qvnah"), SubResource("Resource_ojaaw"), SubResource("Resource_wka5m"), SubResource("Resource_j8afd")])
+highVelocityMultiplier = 0.2
+cookingVelocityThresholds = 200.0
 
-[node name="CollisionShape2D" parent="." index="1"]
+[node name="CollisionShape2D" parent="." index="2"]
 shape = SubResource("CapsuleShape2D_i27ke")

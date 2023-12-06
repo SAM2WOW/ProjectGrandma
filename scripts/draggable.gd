@@ -15,6 +15,10 @@ func _process(delta):
 	$Sprite2DShadow.self_modulate.a = lerp($Sprite2DShadow.self_modulate.a, 0.5 * float(hovering), 5 * delta)
 
 func _physics_process(delta):
+	if global_position.y > 1500:
+		print("reset")
+		linear_velocity = Vector2(0, 0);
+		global_position = Vector2(0,0);
 	pass;
 
 func Drag(delta):

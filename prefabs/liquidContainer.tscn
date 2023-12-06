@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://drn5x3vivefyp"]
+[gd_scene load_steps=7 format=3 uid="uid://drn5x3vivefyp"]
 
 [ext_resource type="PackedScene" uid="uid://c3gtn7dcgsaa0" path="res://prefabs/draggable.tscn" id="1_rj0oe"]
 [ext_resource type="Script" path="res://scripts/liquidContainer.gd" id="2_o3842"]
@@ -11,6 +11,10 @@ size = Vector2(196.165, 35.7112)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_waguf"]
 size = Vector2(384, 32)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xf1h7"]
+radius = 116.0
+height = 554.0
 
 [node name="Container" instance=ExtResource("1_rj0oe")]
 z_index = 1
@@ -65,6 +69,10 @@ shape = SubResource("RectangleShape2D_waguf")
 [node name="CollisionShape2D" parent="." index="10"]
 visible = false
 disabled = true
+
+[node name="CollisionShape2D" parent="InteractArea" index="0"]
+position = Vector2(0, -16)
+shape = SubResource("CapsuleShape2D_xf1h7")
 
 [connection signal="body_shape_entered" from="EnterArea" to="." method="_on_area_2d_body_shape_entered"]
 [connection signal="body_shape_exited" from="EnterArea" to="." method="_on_area_2d_body_shape_exited"]

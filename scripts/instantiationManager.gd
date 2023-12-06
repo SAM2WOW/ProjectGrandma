@@ -22,9 +22,8 @@ func _physics_process(delta):
 			var state = type[liquid];
 			var trans = PhysicsServer2D.body_get_state(state.bodyRid,PhysicsServer2D.BODY_STATE_TRANSFORM)
 			if !UpdateRender(state, trans): continue;
+			# check collision
 			CheckCollision(state, trans);
-	# var trans = PhysicsServer2D.body_get_state(col[0],PhysicsServer2D.BODY_STATE_TRANSFORM)
-	# U
 
 
 func UpdateRender(state, trans) -> bool:
@@ -47,7 +46,8 @@ func CheckCollision(state, trans):
 	var results = space_state.intersect_shape(query)
 	for coll in results:
 		if Global.LiquidType.values().has(coll.collider_id):
-			OnParticleCollision(state, coll);
+			var collTwoState = liquidParticles[coll.collider_id][coll.rid];
+			state.MixLiquid(collTwoState);
 		# print(PhysicsServer2D.body_get_collision_layer(coll.rid));
 
 func OnParticleCollision(colState, colTwo):

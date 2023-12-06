@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=3 uid="uid://w7pwgo4f8bvq"]
+[gd_scene load_steps=61 format=3 uid="uid://w7pwgo4f8bvq"]
 
 [ext_resource type="Script" path="res://scripts/RecipeManager.gd" id="1_bgt5p"]
 [ext_resource type="Script" path="res://Resources/recipeComponent.gd" id="2_6kl6y"]
@@ -10,21 +10,47 @@
 [ext_resource type="Script" path="res://Resources/liquidMixturePoints.gd" id="6_6kdyy"]
 [ext_resource type="Script" path="res://Resources/liquidMixtureComponent.gd" id="7_6786d"]
 
+[sub_resource type="Resource" id="Resource_jeml7"]
+script = ExtResource("6_6kdyy")
+liquidType = 0
+lessOrEqualRatio = 0.39
+points = 0.0
+description = "not enough soy sauce"
+
 [sub_resource type="Resource" id="Resource_4x1ep"]
 script = ExtResource("6_6kdyy")
 liquidType = 0
-greaterOrEqualRatio = 0.4
-notEnoughDescription = "not enough soy sauce."
+lessOrEqualRatio = 0.6
 points = 2.0
 description = "enough soy sauce."
 
 [sub_resource type="Resource" id="Resource_0l17c"]
 script = ExtResource("6_6kdyy")
-liquidType = 1
-greaterOrEqualRatio = 0.4
-notEnoughDescription = "not enough vinegar."
+liquidType = 0
+lessOrEqualRatio = 1.0
 points = 0.0
-description = "enough vinegar."
+description = "too much soy sauce"
+
+[sub_resource type="Resource" id="Resource_i8hd8"]
+script = ExtResource("6_6kdyy")
+liquidType = 1
+lessOrEqualRatio = 0.39
+points = 0.0
+description = "too little vinegar"
+
+[sub_resource type="Resource" id="Resource_fl8sh"]
+script = ExtResource("6_6kdyy")
+liquidType = 1
+lessOrEqualRatio = 0.6
+points = 2.0
+description = "enough vinegar"
+
+[sub_resource type="Resource" id="Resource_22652"]
+script = ExtResource("6_6kdyy")
+liquidType = 1
+lessOrEqualRatio = 1.0
+points = 0.0
+description = "too much vinegar"
 
 [sub_resource type="Resource" id="Resource_o8but"]
 script = ExtResource("3_eufjj")
@@ -53,9 +79,9 @@ description = "too much sauce"
 [sub_resource type="Resource" id="Resource_t5c2e"]
 script = ExtResource("7_6786d")
 targetLiquid = 2
-liquidMixtureRecipe = Array[ExtResource("6_6kdyy")]([SubResource("Resource_4x1ep"), SubResource("Resource_0l17c")])
+liquidMixtureRecipe = Array[ExtResource("6_6kdyy")]([SubResource("Resource_jeml7"), SubResource("Resource_4x1ep"), SubResource("Resource_0l17c"), SubResource("Resource_i8hd8"), SubResource("Resource_fl8sh"), SubResource("Resource_22652")])
 step = 0
-description = "Add 1/2 cup of %s and 1/2 cup of %s to a bowl and set it aside."
+description = "Add 1/2 cup of Soy Sauce and 1/2 cup of Vinegar to a bowl and set it aside."
 quantityPoints = Array[ExtResource("3_eufjj")]([SubResource("Resource_o8but"), SubResource("Resource_dqhqo"), SubResource("Resource_6rkxi"), SubResource("Resource_qqu8g")])
 
 [sub_resource type="Resource" id="Resource_7xp4x"]
