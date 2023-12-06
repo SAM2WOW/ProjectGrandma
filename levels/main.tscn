@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://2xviyeelbeyx" path="res://prefabs/liquidDraggable.tscn" id="7_avq8n"]
 [ext_resource type="PackedScene" uid="uid://drn5x3vivefyp" path="res://prefabs/liquidContainer.tscn" id="7_wm87n"]
 [ext_resource type="PackedScene" uid="uid://dsppfnoxh56xm" path="res://prefabs/stoveTop.tscn" id="8_fma0h"]
+[ext_resource type="Texture2D" uid="uid://dnle2jjcpad0l" path="res://arts/main scene/kitchen scene.png" id="8_ocn02"]
 [ext_resource type="PackedScene" uid="uid://dcdllixbqh58h" path="res://prefabs/mixingSpoon.tscn" id="9_vpwpm"]
 [ext_resource type="FontFile" uid="uid://ds8uy6wtxnlvu" path="res://arts/fonts/Zeyada-Regular.ttf" id="10_hjo2k"]
 [ext_resource type="Shader" path="res://arts/UI/transition.gdshader" id="11_b5byl"]
@@ -378,9 +379,9 @@ collision_priority = 100.0
 polygon = PackedVector2Array(-1792, -3584, -1792, 544, 1792, 544, 1792, -3584, 2560, -4416, 2592, 1310, -2496, 1310, -2496, -4384)
 
 [node name="Sprite2D" type="Sprite2D" parent="Node2D/Cooking Scene/StaticBody2D"]
-position = Vector2(0, 1068)
-scale = Vector2(50, 8.198)
-texture = ExtResource("3_u1ivw")
+position = Vector2(3.99997, 1062)
+scale = Vector2(2.04271, 2.06618)
+texture = ExtResource("8_ocn02")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Cooking Scene/StaticBody2D"]
 position = Vector2(32, -3699)
