@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://svu81oy40o3p"]
+[gd_scene load_steps=31 format=3 uid="uid://dpg0gbpttdpy5"]
 
 [ext_resource type="Texture2D" uid="uid://cmp4cxxq8yuat" path="res://arts/ivory-off-white-paper-texture.jpg" id="1_1jmmi"]
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_udxji"]
@@ -10,14 +10,16 @@
 [ext_resource type="PackedScene" uid="uid://2xviyeelbeyx" path="res://prefabs/liquidDraggable.tscn" id="7_avq8n"]
 [ext_resource type="PackedScene" uid="uid://drn5x3vivefyp" path="res://prefabs/liquidContainer.tscn" id="7_wm87n"]
 [ext_resource type="PackedScene" uid="uid://dsppfnoxh56xm" path="res://prefabs/stoveTop.tscn" id="8_fma0h"]
-[ext_resource type="FontFile" uid="uid://ds8uy6wtxnlvu" path="res://arts/fonts/Zeyada-Regular.ttf" id="10_hjo2k"]
+[ext_resource type="FontFile" path="res://arts/fonts/Zeyada-Regular.ttf" id="10_hjo2k"]
 [ext_resource type="Shader" path="res://arts/UI/transition.gdshader" id="11_b5byl"]
 [ext_resource type="PackedScene" uid="uid://w7pwgo4f8bvq" path="res://prefabs/recipeManager.tscn" id="11_bxixm"]
-[ext_resource type="FontFile" uid="uid://lf3j1njjt8sb" path="res://arts/fonts/RockSalt-Regular.ttf" id="11_ml1rf"]
+[ext_resource type="FontFile" path="res://arts/fonts/RockSalt-Regular.ttf" id="11_ml1rf"]
 [ext_resource type="Texture2D" uid="uid://c6dw2f176slrg" path="res://arts/UI/transition.jpg" id="12_hwjn3"]
 [ext_resource type="Texture2D" uid="uid://y0x4wmm0704m" path="res://arts/UI/black.png" id="13_3lq1v"]
 [ext_resource type="PackedScene" uid="uid://h7fkjxle4fr2" path="res://prefabs/panContainer.tscn" id="13_blku6"]
 [ext_resource type="PackedScene" uid="uid://bt4diyeaca8l0" path="res://prefabs/gameManager.tscn" id="13_cncv6"]
+[ext_resource type="Script" path="res://textEvent.gd" id="19_5tann"]
+[ext_resource type="PackedScene" uid="uid://v5qskld56om" path="res://prefabs/textManager.tscn" id="21_rjtit"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_y2278"]
 frequency = 0.0698
@@ -45,6 +47,11 @@ shader = ExtResource("11_b5byl")
 shader_parameter/cutoff = 0.0
 shader_parameter/smooth_size = 0.125
 shader_parameter/mask = ExtResource("12_hwjn3")
+
+[sub_resource type="LabelSettings" id="LabelSettings_c5rhk"]
+font = ExtResource("10_hjo2k")
+font_size = 50
+font_color = Color(0, 0, 0, 1)
 
 [sub_resource type="Animation" id="Animation_ksgmm"]
 resource_name = "Intro"
@@ -337,6 +344,19 @@ text = "My Kitchen Below"
 [node name="RecipeManager" parent="." instance=ExtResource("11_bxixm")]
 
 [node name="InstantiationManager" parent="." instance=ExtResource("6_mkygc")]
+
+[node name="TextManager" parent="." groups=["TextManager"] instance=ExtResource("21_rjtit")]
+
+[node name="Note of Pain" type="Node2D" parent="TextManager"]
+position = Vector2(0, -75)
+script = ExtResource("19_5tann")
+dissapearTimer = 5.0
+
+[node name="Label" type="Label" parent="TextManager/Note of Pain"]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "pain"
+label_settings = SubResource("LabelSettings_c5rhk")
 
 [node name="gameManager" parent="." instance=ExtResource("13_cncv6")]
 

@@ -1,6 +1,6 @@
 Label
-RichTextLabel
 TextEvent
+RichTextLabel
 Node2D
 Control
 CollisionPolygon2D
