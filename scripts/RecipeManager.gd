@@ -24,9 +24,6 @@ func _ready():
 			for i:LiquidMixturePoints in component.liquidMixtureRecipe:
 				if(!allLiquid.has(i.liquidType)):
 					allLiquid.append(i.liquidType)
-
-				
-			
 	Global.recipeManager.CheckRecipePoints();
 	
 func CheckRecipePoints():
@@ -87,11 +84,6 @@ func _input(event):
 		print("total: ", Global.instantiationManager.pan.GetLiquidTotal());
 		Global.recipeManager.CheckRecipePoints();
 		
-func GetCurrentRecipeIngredients():
-	for i in allIngredients:
-		print("Ingredients:",i)
-	for i in allLiquid:
-		print("Liquid:", i)
 
 # func CheckQuantity(quantityArr)
 #func initRecipes():

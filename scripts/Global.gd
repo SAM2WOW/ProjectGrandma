@@ -7,9 +7,11 @@ var gameManager;
 var instantiationManager;
 var textManager;
 var sceneManager;
-
+var stageNumbers = 4;
+var currentStage = 0;
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	print("Global is ready")
 	recipeManager = get_tree().get_first_node_in_group("RecipeManager");
 	gameManager = get_tree().get_first_node_in_group("GameManager");
 	instantiationManager = get_tree().get_first_node_in_group("InstantiationManager");
@@ -17,7 +19,9 @@ func _ready():
 	sceneManager = get_tree().get_first_node_in_group("SceneManager")
 	print("Recipe Manager Size: ", recipeManager.recipe.size());
 	
-
+func Reset():
+	_ready()
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
@@ -33,5 +37,3 @@ func randv_circle(min_radius := 1.0, max_radius := 1.0) -> Vector2:
 	var t := rng.randf() * TAU
 	return Vector2(r, 0).rotated(t)
 
-func LoadGameScene():
-	pass

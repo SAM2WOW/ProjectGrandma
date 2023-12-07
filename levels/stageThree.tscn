@@ -2,4 +2,4 @@
 
 [ext_resource type="PackedScene" uid="uid://dpg0gbpttdpy5" path="res://levels/main.tscn" id="1_ltxbc"]
 
-[node name="Main" instance=ExtResource("1_ltxbc")]
+[node name="Main4" instance=ExtResource("1_ltxbc")]

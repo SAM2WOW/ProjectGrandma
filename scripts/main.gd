@@ -7,8 +7,7 @@ func _ready():
 	print("Main is ready")
 	Global.gameManager.stageComplete.connect(completeStage)
 	Global.gameManager.gameEnd.connect(onGameEnd)
-	$CanvasLayer/TestLevelText.text = "Level" + str(Global.gameManager.currentStage+1)
-	Global.recipeManager.GetCurrentRecipeIngredients()
+	$CanvasLayer/TestLevelText.text = "Level" + str(Global.currentStage+1)
 	$CanvasLayer/CompeletLevelButton.modulate.a = 0.1
  
 
@@ -32,8 +31,9 @@ func _input(ev):
 	if ev is InputEventKey and ev.keycode == KEY_ENTER:
 		if Global.gameManager.canCompleteStage:
 			Global.gameManager.OnCompleteStage()
+	# Test Code
 	if ev is InputEventKey and ev.keycode == KEY_S:
-		Global.gameManager.UpdateStage()
+		Global.gameManager.OnCompleteStage()
 
 
 func onGameEnd():

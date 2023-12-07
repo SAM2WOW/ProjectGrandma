@@ -1,8 +1,7 @@
 extends Node2D
 
-var stageNumbers = 4;
-var currentStage = 0;
-var canCompleteStage = false
+
+@export var canCompleteStage = false
 # @onready var recipeManager = preload("res://scripts/RecipeManager.gd").new()
 
 signal gameEnd
@@ -21,7 +20,7 @@ var stageScenes: Array[String] = [
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	print("Game Manager is ready")
-
+	print("Recipe Manager Size: ", Global.recipeManager.recipe.size());
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -58,14 +57,14 @@ func DragObject(delta):
 	
 func UpdateStage():
 	if !canCompleteStage: return
-	print('Update Scene')
-	currentStage += 1
-	var scenePath = stageScenes[currentStage]
+	#print('Update Scene')
+	Global.currentStage += 1
+	var scenePath = stageScenes[Global.currentStage]
 	#print(scenePath)
 	Global.sceneManager.SwitchScene(scenePath)
 	
 func CheckGameEnd():
-	if currentStage == stageNumbers:
+	if Global.currentStage == Global.stageNumbers:
 		gameEnd.emit()
 		return true
 	return false
