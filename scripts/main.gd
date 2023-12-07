@@ -6,7 +6,7 @@ var currentRecipe
 func _ready():
 	
 	if (Engine.is_editor_hint):
-		get_window().size = Vector2i(960, 540);
+		# get_window().size = Vector2i(960, 540);
 		pass
 	print("Main is ready")
 	print(Global.gameManager.currentStage)
@@ -14,7 +14,7 @@ func _ready():
 	Global.recipeManager.GetCurrentRecipeIngredients()
 		#updateStage(GameManager.currentStage)
 		#GameManager.gameEnd.connect(onGameEnd())
-
+ 
 
 func _process(delta):
 	if Input.is_action_just_released("ui_accept"):

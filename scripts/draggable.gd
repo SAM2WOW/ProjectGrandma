@@ -35,6 +35,10 @@ func Drag(delta):
 	dragObj.linear_velocity = velocity;
 	# $DragPoint.linear_velocity = velocity;
 	
+func StopDrag():
+	dragging = false;
+	Global.gameManager.draggedObject = null;
+
 func ObjectAction(event):
 	pass;
 
@@ -53,7 +57,7 @@ func _on_interact_area_input_event(viewport, event, shape_idx):
 
 
 func _on_interact_area_mouse_entered():
-	hovering = true
+	Global.gameManager
 
 
 func _on_interact_area_mouse_exited():

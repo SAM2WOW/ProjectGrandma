@@ -43,10 +43,14 @@ func BeginDragObject(object : Draggable):
 	if draggedObject: DropObject();
 	draggedObject = object;
 
+func HoverObject(object : Draggable):
+	if hoveredObject: hoveredObject.hovering = false;
+	hoveredObject = object;
+	object.hovering = true;
+
 func DropObject():
 	if !draggedObject: return;
-	draggedObject.dragging = false;
-	draggedObject = null;
+	draggedObject.StopDrag();
 	
 func DragObject(delta):
 	if !draggedObject: return;
