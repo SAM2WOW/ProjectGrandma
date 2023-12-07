@@ -36,7 +36,7 @@ script = ExtResource("6_6kdyy")
 liquidType = 1
 lessOrEqualRatio = 0.39
 points = 0.0
-description = "too little vinegar"
+description = "not enough vinegar"
 
 [sub_resource type="Resource" id="Resource_fl8sh"]
 script = ExtResource("6_6kdyy")
@@ -89,25 +89,25 @@ quantityPoints = Array[ExtResource("3_eufjj")]([SubResource("Resource_o8but"), S
 script = ExtResource("2_yyyyq")
 doneness = 0
 points = 1.0
-description = "ITS FUCKING RAW!!"
+description = "Chicken is undercooked"
 
 [sub_resource type="Resource" id="Resource_koqgb"]
 script = ExtResource("2_yyyyq")
 doneness = 1
 points = 4.0
-description = "Fuck yeah that chicken is cooked."
+description = "Chicken is cooked properly"
 
 [sub_resource type="Resource" id="Resource_an53y"]
 script = ExtResource("2_yyyyq")
 doneness = 2
 points = 2.0
-description = "Chicken is lil smoky."
+description = "Chicken is overcooked"
 
 [sub_resource type="Resource" id="Resource_j8isl"]
 script = ExtResource("2_yyyyq")
 doneness = 3
 points = 0.0
-description = "Chicken burnt as fuck."
+description = "Chicken is burnt"
 
 [sub_resource type="Resource" id="Resource_2n77r"]
 script = ExtResource("3_eufjj")
@@ -147,11 +147,11 @@ quantityPoints = Array[ExtResource("3_eufjj")]([SubResource("Resource_2n77r"), S
 script = ExtResource("4_tnfeb")
 belowEqualConsistency = 0.2
 points = 0.0
-description = "hasn't thickened at all."
+description = "hasn't thickened at all"
 
 [sub_resource type="Resource" id="Resource_cguvo"]
 script = ExtResource("4_tnfeb")
-belowEqualConsistency = 0.6
+belowEqualConsistency = 0.65
 points = 2.0
 description = "somewhat thickened."
 
@@ -159,7 +159,7 @@ description = "somewhat thickened."
 script = ExtResource("4_tnfeb")
 belowEqualConsistency = 1.0
 points = 5.0
-description = "perfectly thickened."
+description = "perfectly thickened"
 
 [sub_resource type="Resource" id="Resource_6h8y0"]
 script = ExtResource("3_rhgy1")
@@ -174,28 +174,27 @@ quantityPoints = Array[ExtResource("3_eufjj")]([])
 script = ExtResource("2_yyyyq")
 doneness = 0
 points = 2.0
-description = "Garlic undercooked."
+description = "Garlic undercooked"
 
 [sub_resource type="Resource" id="Resource_p6aen"]
 script = ExtResource("2_yyyyq")
 doneness = 1
 points = 4.0
-description = "garlic cooked right."
+description = "garlic cooked right"
 
 [sub_resource type="Resource" id="Resource_3moy0"]
 script = ExtResource("2_yyyyq")
 doneness = 2
 points = 2.0
-description = "garlic a little burnt."
+description = "garlic a little burnt"
 
 [sub_resource type="Resource" id="Resource_oarsa"]
 script = ExtResource("2_yyyyq")
 doneness = 3
 points = 0.0
-description = "garlic is fucking gone."
+description = "garlic is burnt"
 
 [sub_resource type="Resource" id="Resource_ukews"]
-resource_name = "no garlic"
 script = ExtResource("3_eufjj")
 belowOrEqualQuantity = 0
 quantityPoints = 0.0
@@ -291,25 +290,25 @@ quantityPoints = Array[ExtResource("3_eufjj")]([SubResource("Resource_n74go"), S
 script = ExtResource("2_yyyyq")
 doneness = 0
 points = 2.0
-description = "raw bay leaf? mmmmm"
+description = "bay leaf undercooked"
 
 [sub_resource type="Resource" id="Resource_eeqc3"]
 script = ExtResource("2_yyyyq")
 doneness = 1
 points = 3.0
-description = "can you even cook bay leafs?"
+description = "bay leaf flavor incorporated"
 
 [sub_resource type="Resource" id="Resource_45a1t"]
 script = ExtResource("2_yyyyq")
 doneness = 2
 points = 1.0
-description = "leaf is lil burnt."
+description = "bay leaf is lil burnt"
 
 [sub_resource type="Resource" id="Resource_kqcul"]
 script = ExtResource("2_yyyyq")
 doneness = 3
 points = 4.0
-description = "leaf is burnt bro."
+description = "bay leaf is burnt"
 
 [sub_resource type="Resource" id="Resource_b2ggp"]
 script = ExtResource("3_eufjj")

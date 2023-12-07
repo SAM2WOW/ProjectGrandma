@@ -3,7 +3,9 @@ extends Node
 var recipeMode = false
 
 func _ready():
-	
+	if (Engine.is_editor_hint):
+		get_window().size = Vector2i(960, 540);
+		pass
 	print("Main is ready")
 	Global.gameManager.stageComplete.connect(completeStage)
 	Global.gameManager.gameEnd.connect(onGameEnd)

@@ -54,6 +54,7 @@ targetLiquid = 2
 liquidMixtureRecipe = Array[ExtResource("2_eqct0")]([SubResource("Resource_4x1ep"), SubResource("Resource_0l17c")])
 step = 0
 description = "Add 1/2 cup of %s and 1/2 cup of %s to a bowl and set it aside."
+formatDescription = true
 quantityPoints = Array[ExtResource("3_ucveq")]([SubResource("Resource_o8but"), SubResource("Resource_dqhqo"), SubResource("Resource_6rkxi"), SubResource("Resource_qqu8g")])
 
 [sub_resource type="Resource" id="Resource_7xp4x"]
@@ -111,6 +112,7 @@ donenessPoints = Array[ExtResource("5_ohypu")]([SubResource("Resource_7xp4x"), S
 showName = true
 step = 1
 description = "Fry %d - %d pieces of %s over medium heat for around x seconds or until it browns."
+formatDescription = true
 quantityPoints = Array[ExtResource("3_ucveq")]([SubResource("Resource_2n77r"), SubResource("Resource_cabr1"), SubResource("Resource_dvlml"), SubResource("Resource_5tvxt")])
 
 [sub_resource type="Resource" id="Resource_qstk4"]
@@ -137,6 +139,7 @@ liquidType = 2
 consistencyPoints = Array[ExtResource("7_kvr17")]([SubResource("Resource_qstk4"), SubResource("Resource_cguvo"), SubResource("Resource_yk3e1")])
 step = 2
 description = "Add your sauce mixture to the pan."
+formatDescription = true
 quantityPoints = Array[ExtResource("3_ucveq")]([])
 
 [sub_resource type="Resource" id="Resource_43lcn"]
@@ -194,6 +197,7 @@ donenessPoints = Array[ExtResource("5_ohypu")]([SubResource("Resource_43lcn"), S
 showName = true
 step = 3
 description = "Add %d - %d bits of %s"
+formatDescription = true
 quantityPoints = Array[ExtResource("3_ucveq")]([SubResource("Resource_ukews"), SubResource("Resource_img4u"), SubResource("Resource_oyhu0"), SubResource("Resource_ucp6o")])
 
 [sub_resource type="Resource" id="Resource_tdh2h"]
@@ -251,6 +255,7 @@ donenessPoints = Array[ExtResource("5_ohypu")]([SubResource("Resource_tdh2h"), S
 showName = true
 step = 3
 description = "Add %d - %d %ss"
+formatDescription = true
 quantityPoints = Array[ExtResource("3_ucveq")]([SubResource("Resource_n74go"), SubResource("Resource_bqbhi"), SubResource("Resource_l1j1g"), SubResource("Resource_1o2jq")])
 
 [sub_resource type="Resource" id="Resource_et8wm"]
@@ -302,12 +307,14 @@ donenessPoints = Array[ExtResource("5_ohypu")]([SubResource("Resource_et8wm"), S
 showName = false
 step = 3
 description = "Add %d Bay Leaves"
+formatDescription = true
 quantityPoints = Array[ExtResource("3_ucveq")]([SubResource("Resource_b2ggp"), SubResource("Resource_ax0k2"), SubResource("Resource_hivu6")])
 
 [sub_resource type="Resource" id="Resource_lw685"]
 script = ExtResource("9_qgajm")
 step = 4
 description = "Simmer on low heat for around x seconds or until the sauce thickens."
+formatDescription = true
 quantityPoints = Array[ExtResource("3_ucveq")]([])
 
 [node name="Main" instance=ExtResource("1_y2kh4")]
