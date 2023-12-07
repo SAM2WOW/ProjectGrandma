@@ -46,7 +46,7 @@ func Cook(cookingType: IngredientState.CookingType, heatMultiplier, delta):
 		else:
 			currentVelocityMult = lowVelocityMultiplier;
 	# print("vel mult: ", currentVelocityMult);
-	print(IngredientState.CookingType.keys()[cookingType]);
+	#print(IngredientState.CookingType.keys()[cookingType]);
 	# currentVelocityMult
 	# print("multiplier: ", GetCurrentState().typeInfluenceMultiplier[cookingType] * velocityMultiplier * heatMultiplier);
 	cookingTimer += delta * GetCurrentState().typeInfluenceMultiplier[cookingType] * currentVelocityMult * heatMultiplier;

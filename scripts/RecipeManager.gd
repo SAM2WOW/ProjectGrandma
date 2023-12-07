@@ -10,23 +10,21 @@ const heatDescriptions = {
 };
 var points : float;
 var totalPoints : float;
-var allIngredients = {}
-var allLiquid = {}
+var allIngredients : Array
+var allLiquid : Array
 func _ready():
 	print("Recipe Manager is ready: ", self);
 	recipe.sort_custom(func(x, y): return x.step < y.step);
 	for component in recipe:
 		component._ready();
 		if component is IngredientComponent:
-			#allIngredients.append(component.ingredient)
 			if(!allIngredients.has(component.ingredient)):
-				allIngredients[component.ingredient] = component.ingredient
+				allIngredients.append(component.ingredient)
 		#print(component.GetDescription());
 		elif component is LiquidMixtureComponent:
 			for i:LiquidMixturePoints in component.liquidMixtureRecipe:
-			#	allLiquid.append(i.liquidType)
 				if(!allLiquid.has(i.liquidType)):
-					allLiquid[i.liquidType] = i.liquidType
+					allLiquid.append(i.liquidType)
 
 				
 			
@@ -89,6 +87,7 @@ func GetCurrentRecipeIngredients():
 		print("Ingredients:",i)
 	for i in allLiquid:
 		print("Liquid:", i)
+
 	
 		
 # func CheckQuantity(quantityArr)
