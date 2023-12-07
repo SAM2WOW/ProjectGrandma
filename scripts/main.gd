@@ -2,7 +2,6 @@ extends Node
 
 var recipeMode = false
 
-var currentRecipe
 func _ready():
 	
 	print("Main is ready")
@@ -24,7 +23,7 @@ func _process(delta):
 	
 	
 func completeStage():
-	print('Stage Complete')
+	#print('Stage Complete')
 	$CanvasLayer/CompeletLevelButton.modulate.a = 1	
 
 func _input(ev):
@@ -40,10 +39,10 @@ func _input(ev):
 func onGameEnd():
 	print("Game END")
 	
-	#$CanvasLayer/HUD/HoverArea.hide()
-	#$CanvasLayer/HUD/HoverArea2.hide()
-	#
-	#$AnimationPlayer.play("Final")
+	$CanvasLayer/HUD/HoverArea.hide()
+	$CanvasLayer/HUD/HoverArea2.hide()
+	
+	$AnimationPlayer.play("Final")
 	
 
 func _on_hover_area_mouse_entered():
@@ -79,6 +78,5 @@ func _on_animation_player_animation_finished(anim_name):
 
 func _on_compelet_level_button_pressed():
 	if !Global.gameManager.canCompleteStage:
-		print('Cant Complete Stage')
 		return
 	Global.gameManager.OnCompleteStage()

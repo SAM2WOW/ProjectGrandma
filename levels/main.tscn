@@ -321,7 +321,7 @@ _data = {
 "Transition": SubResource("Animation_qwj85")
 }
 
-[node name="Main" type="Node"]
+[node name="Main2" type="Node"]
 script = ExtResource("1_udxji")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
