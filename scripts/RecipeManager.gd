@@ -10,23 +10,20 @@ const heatDescriptions = {
 };
 var points : float;
 var totalPoints : float;
-var allIngredients = {}
-var allLiquid = {}
+var allIngredients : Array
+var allLiquid : Array
 func _ready():
-	print("Recipe Manager is ready: ", self);
 	recipe.sort_custom(func(x, y): return x.step < y.step);
 	for component in recipe:
 		component._ready();
 		if component is IngredientComponent:
-			#allIngredients.append(component.ingredient)
 			if(!allIngredients.has(component.ingredient)):
-				allIngredients[component.ingredient] = component.ingredient
+				allIngredients.append(component.ingredient)
 		#print(component.GetDescription());
 		elif component is LiquidMixtureComponent:
 			for i:LiquidMixturePoints in component.liquidMixtureRecipe:
-			#	allLiquid.append(i.liquidType)
 				if(!allLiquid.has(i.liquidType)):
-					allLiquid[i.liquidType] = i.liquidType
+					allLiquid.append(i.liquidType)
 
 				
 			
@@ -59,7 +56,7 @@ func CheckIngredients(recipeStep : IngredientComponent) -> float:
 		elif point is RecipeQuantity:
 			stepPoints += point.quantityPoints;
 		print(stepPoints,"/",recipeStep.totalPoints,": ",point.description);
-		points += stepPoints;
+	points += stepPoints;
 	return stepPoints;
 
 func CheckLiquids(recipeStep : LiquidComponent) -> float:
@@ -71,26 +68,31 @@ func CheckLiquids(recipeStep : LiquidComponent) -> float:
 	return stepPoints;
 
 func CheckLiquidMixture(recipeStep : LiquidMixtureComponent) -> float:
+	print("check liquid mixture");
 	var mixPoints = recipeStep.CheckMixture(Global.instantiationManager.pan.containedLiquid);
 	var stepPoints = 0.0;
 	totalPoints += recipeStep.totalPoints;
 	for point in mixPoints:
 		if !point: continue;
 		if point is RecipePoints && Global.instantiationManager.pan.GetLiquidTotal() > 0:
-			stepPoints += point.points;
+			stepPoints+= point.points;
 		elif point is RecipeQuantity:
 			stepPoints += point.quantityPoints;
 		print(stepPoints,"/",recipeStep.totalPoints,": ",point.description);
-		points += stepPoints;
+	points += stepPoints;
 	return stepPoints;
 
+func _input(event):
+	if event is InputEventKey && event.keycode == KEY_D:
+		print("total: ", Global.instantiationManager.pan.GetLiquidTotal());
+		Global.recipeManager.CheckRecipePoints();
+		
 func GetCurrentRecipeIngredients():
 	for i in allIngredients:
 		print("Ingredients:",i)
 	for i in allLiquid:
 		print("Liquid:", i)
-	
-		
+
 # func CheckQuantity(quantityArr)
 #func initRecipes():
 	#print("Initialized Recipes")

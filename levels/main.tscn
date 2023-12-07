@@ -306,7 +306,7 @@ _data = {
 "Transition": SubResource("Animation_qwj85")
 }
 
-[node name="Main" type="Node"]
+[node name="Main2" type="Node"]
 script = ExtResource("1_udxji")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
@@ -607,6 +607,39 @@ script = ExtResource("19_5tann")
 dissapearTimer = 5.0
 
 [node name="Label" type="Label" parent="TextManager/Note of Pain"]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "pain"
+label_settings = SubResource("LabelSettings_c5rhk")
+
+[node name="Note of Pain2" type="Node2D" parent="TextManager"]
+position = Vector2(0, -75)
+script = ExtResource("19_5tann")
+dissapearTimer = 5.0
+
+[node name="Label" type="Label" parent="TextManager/Note of Pain2"]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "pain"
+label_settings = SubResource("LabelSettings_c5rhk")
+
+[node name="Note of Pain3" type="Node2D" parent="TextManager"]
+position = Vector2(0, -75)
+script = ExtResource("19_5tann")
+dissapearTimer = 5.0
+
+[node name="Label" type="Label" parent="TextManager/Note of Pain3"]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "pain"
+label_settings = SubResource("LabelSettings_c5rhk")
+
+[node name="Note of Pain4" type="Node2D" parent="TextManager"]
+position = Vector2(0, -75)
+script = ExtResource("19_5tann")
+dissapearTimer = 5.0
+
+[node name="Label" type="Label" parent="TextManager/Note of Pain4"]
 offset_right = 40.0
 offset_bottom = 23.0
 text = "pain"

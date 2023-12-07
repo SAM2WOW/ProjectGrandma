@@ -16,6 +16,7 @@ func _ready():
 
 func GetDescription() -> String:
 	var parts = [];
+	if !formatDescription: return description;
 	if quantityPoints.size() >= 4:
 		parts.append(quantityPoints[1].belowOrEqualQuantity+1);
 		parts.append(quantityPoints[2].belowOrEqualQuantity);
@@ -29,16 +30,19 @@ func GetDescription() -> String:
 func CheckIngredients(cookedIngredients : Array) -> Array:
 	var quantityPoints = GetQuantityPoints(cookedIngredients.size());
 	if donenessPoints.size() <= 0: return [null, quantityPoints];
-	cookedIngredients.sort_custom(func(x, y): return x.doneness < y.doneness);
+	cookedIngredients.sort_custom(func(x, y): return x.GetCurrentState().state < y.GetCurrentState().state);
 	var judgeIngredients = [];
 	if cookedIngredients.size() > 0:
 		judgeIngredients = [cookedIngredients[0], cookedIngredients[cookedIngredients.size()-1]];
-	var lowestPoints = donenessPoints[0];
+	var lowestPoints = null;#donenessPoints[0];
+	# var lowestPoints = null;
 	for donenessPoints : IngredientPoints in donenessPoints:
 		if judgeIngredients.size() <= 0: continue;
-		if ((donenessPoints.doneness == judgeIngredients[0] || 
-		donenessPoints.doneness == judgeIngredients[1]) &&
-		donenessPoints.points < lowestPoints.points):
-			lowestPoints = donenessPoints;
-
+		if ((donenessPoints.doneness == judgeIngredients[0].GetCurrentState().state || 
+		donenessPoints.doneness == judgeIngredients[1].GetCurrentState().state)):
+			if !lowestPoints:
+				lowestPoints = donenessPoints;
+			elif donenessPoints.points < lowestPoints.points:
+				lowestPoints = donenessPoints;
+	if !lowestPoints: lowestPoints = donenessPoints[0];
 	return [lowestPoints, quantityPoints];

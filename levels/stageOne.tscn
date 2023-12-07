@@ -1,4 +1,4 @@
-[gd_scene load_steps=66 format=3 uid="uid://uetxp6v8gega"]
+[gd_scene load_steps=57 format=3 uid="uid://uetxp6v8gega"]
 
 [ext_resource type="PackedScene" uid="uid://dpg0gbpttdpy5" path="res://levels/main.tscn" id="1_y2kh4"]
 [ext_resource type="Script" path="res://Resources/liquidMixturePoints.gd" id="2_eqct0"]
@@ -310,64 +310,7 @@ step = 4
 description = "Simmer on low heat for around x seconds or until the sauce thickens."
 quantityPoints = Array[ExtResource("3_ucveq")]([])
 
-[sub_resource type="Resource" id="Resource_wpu0i"]
-script = ExtResource("5_ohypu")
-doneness = 0
-points = 0.0
-description = "Raw Onion"
-
-[sub_resource type="Resource" id="Resource_dc86u"]
-script = ExtResource("5_ohypu")
-doneness = 1
-points = 2.0
-description = "Edible Onion"
-
-[sub_resource type="Resource" id="Resource_ix572"]
-script = ExtResource("5_ohypu")
-doneness = 2
-points = 0.0
-description = "CRISP ONION"
-
-[sub_resource type="Resource" id="Resource_b1hxn"]
-script = ExtResource("5_ohypu")
-doneness = 3
-points = 0.0
-description = "Miserable Onion"
-
-[sub_resource type="Resource" id="Resource_clkdj"]
-script = ExtResource("3_ucveq")
-belowOrEqualQuantity = 0
-quantityPoints = 0.0
-description = "no onion"
-
-[sub_resource type="Resource" id="Resource_rwx4p"]
-script = ExtResource("3_ucveq")
-belowOrEqualQuantity = 3
-quantityPoints = 2.0
-description = "too little onions"
-
-[sub_resource type="Resource" id="Resource_1hbof"]
-script = ExtResource("3_ucveq")
-belowOrEqualQuantity = 5
-quantityPoints = 4.0
-description = "enough onions"
-
-[sub_resource type="Resource" id="Resource_y4cui"]
-script = ExtResource("3_ucveq")
-belowOrEqualQuantity = 20
-quantityPoints = 0.0
-description = "onion  is over"
-
-[sub_resource type="Resource" id="Resource_v41pf"]
-script = ExtResource("6_7jlq1")
-ingredient = 2
-donenessPoints = Array[ExtResource("5_ohypu")]([SubResource("Resource_wpu0i"), SubResource("Resource_dc86u"), SubResource("Resource_ix572"), SubResource("Resource_b1hxn")])
-showName = false
-step = 3
-description = "Fried Onions"
-quantityPoints = Array[ExtResource("3_ucveq")]([SubResource("Resource_clkdj"), SubResource("Resource_rwx4p"), SubResource("Resource_1hbof"), SubResource("Resource_y4cui")])
-
 [node name="Main" instance=ExtResource("1_y2kh4")]
 
 [node name="RecipeManager" parent="." index="3"]
-recipe = Array[ExtResource("9_qgajm")]([SubResource("Resource_t5c2e"), SubResource("Resource_c5yxf"), SubResource("Resource_6h8y0"), SubResource("Resource_gqaa1"), SubResource("Resource_gv8wc"), SubResource("Resource_3s2vj"), SubResource("Resource_lw685"), SubResource("Resource_v41pf")])
+recipe = Array[ExtResource("9_qgajm")]([SubResource("Resource_t5c2e"), SubResource("Resource_c5yxf"), SubResource("Resource_6h8y0"), SubResource("Resource_gqaa1"), SubResource("Resource_gv8wc"), SubResource("Resource_3s2vj"), SubResource("Resource_lw685")])

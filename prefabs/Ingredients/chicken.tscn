@@ -1,8 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://sytwr8cbqvm1"]
+[gd_scene load_steps=11 format=3 uid="uid://sytwr8cbqvm1"]
 
 [ext_resource type="PackedScene" uid="uid://b5em8781rmds2" path="res://prefabs/ingredient.tscn" id="1_56ysr"]
 [ext_resource type="Script" path="res://scripts/ingredientState.gd" id="2_t4qnj"]
-[ext_resource type="Texture2D" uid="uid://btu8epp0jyk0l" path="res://arts/ingredients/drumstick.png" id="2_xxpdl"]
+[ext_resource type="Texture2D" uid="uid://7n8v3vrmu2v2" path="res://arts/ingredients/drumstick.png" id="2_xxpdl"]
 
 [sub_resource type="Resource" id="Resource_onfv7"]
 resource_local_to_scene = true
@@ -19,9 +19,9 @@ stateColor = Color(1, 1, 1, 1)
 resource_local_to_scene = true
 script = ExtResource("2_t4qnj")
 state = 1
-cookTimer = 25.0
+cookTimer = 20.0
 typeInfluenceMultiplier = {
-0: 1.0,
+0: 1.3,
 1: 0.5
 }
 stateColor = Color(0.94902, 0.776471, 0.4, 1)
@@ -29,7 +29,7 @@ stateColor = Color(0.94902, 0.776471, 0.4, 1)
 [sub_resource type="Resource" id="Resource_hxhva"]
 script = ExtResource("2_t4qnj")
 state = 2
-cookTimer = 25.0
+cookTimer = 15.0
 typeInfluenceMultiplier = {
 0: 1.5,
 1: 0.5
@@ -50,13 +50,9 @@ stateColor = Color(0.231373, 0.164706, 0.0196078, 1)
 radius = 5.83658
 height = 35.0195
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_e0du0"]
-radius = 8.40736
-height = 25.2221
-
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_n6mev"]
 radius = 17.3308
-height = 58.2314
+height = 70.7096
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qbico"]
 radius = 52.0
@@ -64,6 +60,7 @@ height = 200.0
 
 [node name="Chicken" instance=ExtResource("1_56ysr")]
 ingredientStates = Array[ExtResource("2_t4qnj")]([SubResource("Resource_onfv7"), SubResource("Resource_atocn"), SubResource("Resource_hxhva"), SubResource("Resource_gd71g")])
+lowVelocityMultiplier = 1.0
 
 [node name="Sprite2DShadow" parent="." index="0"]
 scale = Vector2(0.233, 0.233)
@@ -81,18 +78,12 @@ rotation = 1.5708
 scale = Vector2(1.542, 1.542)
 shape = SubResource("CapsuleShape2D_ljngj")
 
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="." index="3"]
-position = Vector2(-13, 2)
-rotation = -3.14159
-scale = Vector2(1.42732, 1.42732)
-shape = SubResource("CapsuleShape2D_e0du0")
-
-[node name="CollisionShape2D" parent="." index="4"]
-position = Vector2(29, 1)
+[node name="CollisionShape2D" parent="." index="3"]
+position = Vector2(21, 1)
 scale = Vector2(1.44252, 1.44252)
 shape = SubResource("CapsuleShape2D_n6mev")
 
-[node name="DragPoint" parent="." index="6"]
+[node name="DragPoint" parent="." index="5"]
 position = Vector2(0, -35)
 
 [node name="CollisionShape2D" parent="InteractArea" index="0"]
