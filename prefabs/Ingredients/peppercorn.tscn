@@ -2,13 +2,13 @@
 
 [ext_resource type="PackedScene" uid="uid://b5em8781rmds2" path="res://prefabs/ingredient.tscn" id="1_nvuoi"]
 [ext_resource type="Script" path="res://scripts/ingredientState.gd" id="2_5wb6r"]
-[ext_resource type="Texture2D" uid="uid://cqv5l4kfdliw0" path="res://arts/ingredients/peppercorn.png" id="2_wi8wm"]
+[ext_resource type="Texture2D" uid="uid://d20c43o5pavgo" path="res://arts/ingredients/peppercorn.png" id="2_wi8wm"]
 
 [sub_resource type="Resource" id="Resource_j1ya3"]
 resource_local_to_scene = true
 script = ExtResource("2_5wb6r")
 state = 0
-cookTimer = 10.0
+cookTimer = 7.0
 typeInfluenceMultiplier = {
 0: 1.0,
 1: 0.7
@@ -19,10 +19,10 @@ stateColor = Color(1, 1, 1, 1)
 resource_local_to_scene = true
 script = ExtResource("2_5wb6r")
 state = 1
-cookTimer = 40.0
+cookTimer = 30.0
 typeInfluenceMultiplier = {
-0: 1.5,
-1: 0.3
+0: 1.3,
+1: 0.5
 }
 stateColor = Color(0.94902, 0.776471, 0.4, 1)
 
@@ -30,10 +30,10 @@ stateColor = Color(0.94902, 0.776471, 0.4, 1)
 resource_local_to_scene = true
 script = ExtResource("2_5wb6r")
 state = 2
-cookTimer = 40.0
+cookTimer = 20.0
 typeInfluenceMultiplier = {
 0: 1.7,
-1: 0.3
+1: 0.7
 }
 stateColor = Color(0.6, 0.443137, 0.101961, 1)
 
@@ -60,6 +60,7 @@ height = 22.0
 collision_layer = 3
 ingredientType = 3
 ingredientStates = Array[ExtResource("2_5wb6r")]([SubResource("Resource_j1ya3"), SubResource("Resource_prvg1"), SubResource("Resource_pyv0s"), SubResource("Resource_tgiid")])
+lowVelocityMultiplier = 1.0
 
 [node name="Sprite2DShadow" parent="." index="0"]
 scale = Vector2(0.175, 0.175)

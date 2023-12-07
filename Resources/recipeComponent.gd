@@ -4,6 +4,7 @@ class_name RecipeComponent;
 
 @export var step : int;
 @export var description : String;
+@export var formatDescription : bool = true;
 @export_category("Quantity")
 @export var quantityPoints : Array[RecipeQuantity];
 

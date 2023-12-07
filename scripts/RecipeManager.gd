@@ -32,12 +32,11 @@ var points : float;
 var totalPoints : float;
 
 func _ready():
-	print("Recipe Manager is ready: ", self);
 	recipe.sort_custom(func(x, y): return x.step < y.step);
 	for component in recipe:
 		component._ready();
 		print(component.GetDescription());
-	Global.recipeManager.CheckRecipePoints();
+	
 	
 func CheckRecipePoints():
 	totalPoints = 0.0;
@@ -66,7 +65,7 @@ func CheckIngredients(recipeStep : IngredientComponent) -> float:
 		elif point is RecipeQuantity:
 			stepPoints += point.quantityPoints;
 		print(stepPoints,"/",recipeStep.totalPoints,": ",point.description);
-		points += stepPoints;
+	points += stepPoints;
 	return stepPoints;
 
 func CheckLiquids(recipeStep : LiquidComponent) -> float:
@@ -78,19 +77,24 @@ func CheckLiquids(recipeStep : LiquidComponent) -> float:
 	return stepPoints;
 
 func CheckLiquidMixture(recipeStep : LiquidMixtureComponent) -> float:
+	print("check liquid mixture");
 	var mixPoints = recipeStep.CheckMixture(Global.instantiationManager.pan.containedLiquid);
 	var stepPoints = 0.0;
 	totalPoints += recipeStep.totalPoints;
 	for point in mixPoints:
 		if !point: continue;
 		if point is RecipePoints && Global.instantiationManager.pan.GetLiquidTotal() > 0:
-			stepPoints += point.points;
+			stepPoints+= point.points;
 		elif point is RecipeQuantity:
 			stepPoints += point.quantityPoints;
 		print(stepPoints,"/",recipeStep.totalPoints,": ",point.description);
-		points += stepPoints;
+	points += stepPoints;
 	return stepPoints;
 
+func _input(event):
+	if event is InputEventKey && event.keycode == KEY_D:
+		print("total: ", Global.instantiationManager.pan.GetLiquidTotal());
+		Global.recipeManager.CheckRecipePoints();
 # func CheckQuantity(quantityArr)
 #func initRecipes():
 	#print("Initialized Recipes")

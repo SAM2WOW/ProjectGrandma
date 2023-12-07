@@ -8,10 +8,12 @@ var targetHeat : float = cookingHeat;
 var currentCookingState : IngredientState.CookingType;
 var averageLiquidHeat : float = 0;
 var averageConsistency : float = 0;
+var averageLiquidVelocity : float = 0;
+var averageIngredientVelocity : float = 0;
 
 @export var liquidThreshold : int = 20;
-@export var heatUpCoefficient: float = 0.5;
-@export var coolDownCoefficient: float = 0.3;
+@export var heatUpCoefficient: float = 0.2;
+@export var coolDownCoefficient: float = 0.2;
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -39,15 +41,21 @@ func UpdateHeat(delta):
 	elif cookingHeat > targetHeat:
 		cookingHeat -= coolDownCoefficient * delta;
 		# print(cookingHeat)
-	cookingHeat = clamp(cookingHeat, 0, targetHeat);
+	cookingHeat = clamp(cookingHeat, 0, 2);
+	# print("cooking heat: ", cookingHeat);
 	
 func CookIngredients(delta):
 	var heat = cookingHeat;
+	averageIngredientVelocity = 0;
+	var total = 0;
 	if currentCookingState == IngredientState.CookingType.Boiled: heat = averageLiquidHeat;
 	for type in cookingObjects.values():
 		for ingredient in type:
+			total += 1;
+			averageIngredientVelocity += ingredient.linear_velocity.length();
 			# print(heat)
 			ingredient.Cook(currentCookingState, heat, delta);
+	averageIngredientVelocity /= total;
 
 func UpdateFluids(delta):
 	averageLiquidHeat = 0;
@@ -63,8 +71,15 @@ func UpdateFluids(delta):
 			num+=1;
 			averageLiquidHeat += state.currentHeat;
 			averageConsistency += state.consistency;
-	averageLiquidHeat /= num;
-	averageConsistency /= num;
+			averageLiquidVelocity += state.currentVelocity.length();
+	if num != 0:
+		averageLiquidHeat /= num;
+		averageConsistency /= num;
+		averageLiquidVelocity /= num;
+	else:
+		averageLiquidHeat = 0;
+		averageConsistency = 0;
+		averageLiquidVelocity = 0;
 	# print("average consistency: ", averageConsistency);
 
 func _on_area_2d_body_shape_entered(body_rid, body, body_shape_index, local_shape_index):

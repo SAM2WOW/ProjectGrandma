@@ -23,8 +23,8 @@ height = 1054.0
 collision_priority = 1000.0
 script = ExtResource("2_2j0dy")
 liquidThreshold = 20
-heatUpCoefficient = 0.5
-coolDownCoefficient = 0.3
+heatUpCoefficient = 0.2
+coolDownCoefficient = 0.2
 
 [node name="Sprite2DShadow" parent="." index="0"]
 position = Vector2(10, 10)

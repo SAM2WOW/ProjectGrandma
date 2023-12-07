@@ -335,6 +335,8 @@ liquidType = 1
 [node name="Pan" parent="Node2D/Cooking Scene" instance=ExtResource("13_blku6")]
 position = Vector2(0, 222)
 collision_priority = 1.0
+heatUpCoefficient = 0.2
+coolDownCoefficient = 0.2
 
 [node name="Container" parent="Node2D/Cooking Scene" instance=ExtResource("7_wm87n")]
 position = Vector2(-640, 446)
@@ -368,7 +370,7 @@ numIngredients = 10
 position = Vector2(0, -305)
 scale = Vector2(-6.59748, -6.59748)
 ingredientPath = "res://prefabs/Ingredients/bayLeaf.tscn"
-numIngredients = 10
+numIngredients = 3
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Node2D/Cooking Scene"]
 collision_layer = 4

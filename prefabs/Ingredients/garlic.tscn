@@ -2,16 +2,16 @@
 
 [ext_resource type="PackedScene" uid="uid://b5em8781rmds2" path="res://prefabs/ingredient.tscn" id="1_mqbfx"]
 [ext_resource type="Script" path="res://scripts/ingredientState.gd" id="2_r3ji1"]
-[ext_resource type="Texture2D" uid="uid://c6o4nchcveij5" path="res://arts/ingredients/garlic.png" id="2_tli4m"]
+[ext_resource type="Texture2D" uid="uid://dm3qi3ecgttw0" path="res://arts/ingredients/garlic.png" id="2_tli4m"]
 
 [sub_resource type="Resource" id="Resource_jcwh0"]
 resource_local_to_scene = true
 script = ExtResource("2_r3ji1")
 state = 0
-cookTimer = 10.0
+cookTimer = 7.0
 typeInfluenceMultiplier = {
 0: 1.0,
-1: 0.5
+1: 0.7
 }
 stateColor = Color(1, 1, 1, 1)
 
@@ -19,7 +19,7 @@ stateColor = Color(1, 1, 1, 1)
 resource_local_to_scene = true
 script = ExtResource("2_r3ji1")
 state = 1
-cookTimer = 30.0
+cookTimer = 20.0
 typeInfluenceMultiplier = {
 0: 1.5,
 1: 0.5
@@ -30,7 +30,7 @@ stateColor = Color(0.94902, 0.776471, 0.4, 1)
 resource_local_to_scene = true
 script = ExtResource("2_r3ji1")
 state = 2
-cookTimer = 30.0
+cookTimer = 20.0
 typeInfluenceMultiplier = {
 0: 2.0,
 1: 0.7
@@ -63,6 +63,7 @@ height = 46.0
 collision_layer = 3
 ingredientType = 1
 ingredientStates = Array[ExtResource("2_r3ji1")]([SubResource("Resource_jcwh0"), SubResource("Resource_ibhdy"), SubResource("Resource_fpbvp"), SubResource("Resource_dgaum")])
+lowVelocityMultiplier = 1.0
 
 [node name="Sprite2DShadow" parent="." index="0"]
 scale = Vector2(0.124516, 0.124516)
