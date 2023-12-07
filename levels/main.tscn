@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://dpg0gbpttdpy5"]
+[gd_scene load_steps=40 format=3 uid="uid://dpg0gbpttdpy5"]
 
 [ext_resource type="Texture2D" uid="uid://cmp4cxxq8yuat" path="res://arts/ivory-off-white-paper-texture.jpg" id="1_1jmmi"]
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_udxji"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://2xviyeelbeyx" path="res://prefabs/liquidDraggable.tscn" id="7_avq8n"]
 [ext_resource type="PackedScene" uid="uid://drn5x3vivefyp" path="res://prefabs/liquidContainer.tscn" id="7_wm87n"]
 [ext_resource type="PackedScene" uid="uid://dsppfnoxh56xm" path="res://prefabs/stoveTop.tscn" id="8_fma0h"]
+[ext_resource type="Texture2D" uid="uid://dnle2jjcpad0l" path="res://arts/main scene/kitchen scene.png" id="8_ocn02"]
 [ext_resource type="PackedScene" uid="uid://dcdllixbqh58h" path="res://prefabs/mixingSpoon.tscn" id="9_vpwpm"]
 [ext_resource type="FontFile" uid="uid://ds8uy6wtxnlvu" path="res://arts/fonts/Zeyada-Regular.ttf" id="10_hjo2k"]
 [ext_resource type="Shader" path="res://arts/UI/transition.gdshader" id="11_b5byl"]
@@ -19,6 +20,9 @@
 [ext_resource type="Texture2D" uid="uid://y0x4wmm0704m" path="res://arts/UI/black.png" id="13_3lq1v"]
 [ext_resource type="PackedScene" uid="uid://h7fkjxle4fr2" path="res://prefabs/panContainer.tscn" id="13_blku6"]
 [ext_resource type="PackedScene" uid="uid://bt4diyeaca8l0" path="res://prefabs/gameManager.tscn" id="13_cncv6"]
+[ext_resource type="Texture2D" uid="uid://cdpeqf2eyluh7" path="res://arts/ingredients/soy sauce.png" id="13_tncqk"]
+[ext_resource type="Texture2D" uid="uid://diyloqr1ltoak" path="res://arts/kitchenware/pan line art only.png" id="14_qm216"]
+[ext_resource type="Texture2D" uid="uid://dwxil1uon205v" path="res://arts/UI/frame-3541621_1280.png" id="19_3bhao"]
 [ext_resource type="Script" path="res://textEvent.gd" id="19_5tann"]
 [ext_resource type="PackedScene" uid="uid://v5qskld56om" path="res://prefabs/textManager.tscn" id="21_rjtit"]
 
@@ -52,10 +56,145 @@ shader_parameter/cutoff = 0.0
 shader_parameter/smooth_size = 0.125
 shader_parameter/mask = ExtResource("12_hwjn3")
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1lh3a"]
+shader = ExtResource("11_b5byl")
+shader_parameter/cutoff = 1.0
+shader_parameter/smooth_size = 0.125
+shader_parameter/mask = ExtResource("12_hwjn3")
+
 [sub_resource type="LabelSettings" id="LabelSettings_c5rhk"]
 font = ExtResource("10_hjo2k")
 font_size = 50
 font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_jsi21"]
+resource_name = "Exit"
+length = 2.0
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/ColorRect:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.51, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [true, true, false, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/ColorRect:material:shader_parameter/cutoff")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.51, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 1.0, 1.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Node2D/Camera2D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector2(0, -4000), Vector2(0, -1656)]
+}
+
+[sub_resource type="Animation" id="Animation_hn1si"]
+resource_name = "Final"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D/Camera2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(-2, -2),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -1656)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Node2D/Recipe Scene/RichTextLabel:visible_ratio")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.2, 1.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Node2D/Result Scene:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1.2, 1.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Node2D/Result Scene/RichTextLabel2:visible_ratio")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1.5, 2.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Node2D/Result Scene:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(1.1, 1.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CanvasLayer/LetterBoxing:material:shader_parameter/cutoff")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(1.4, 2.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("CanvasLayer/LetterBoxing:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
 
 [sub_resource type="Animation" id="Animation_ksgmm"]
 resource_name = "Intro"
@@ -124,6 +263,18 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector2(0, -1656)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CanvasLayer/LetterBoxing:material:shader_parameter/cutoff")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
 
 [sub_resource type="Animation" id="Animation_qwj85"]
 resource_name = "Transition"
@@ -142,6 +293,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_uv4j4"]
 _data = {
+"Exit": SubResource("Animation_jsi21"),
+"Final": SubResource("Animation_hn1si"),
 "Intro": SubResource("Animation_ksgmm"),
 "RESET": SubResource("Animation_na2py"),
 "Transition": SubResource("Animation_qwj85")
@@ -226,9 +379,9 @@ collision_priority = 100.0
 polygon = PackedVector2Array(-1792, -3584, -1792, 544, 1792, 544, 1792, -3584, 2560, -4416, 2592, 1310, -2496, 1310, -2496, -4384)
 
 [node name="Sprite2D" type="Sprite2D" parent="Node2D/Cooking Scene/StaticBody2D"]
-position = Vector2(0, 1068)
-scale = Vector2(50, 8.198)
-texture = ExtResource("3_u1ivw")
+position = Vector2(3.99997, 1062)
+scale = Vector2(2.04271, 2.06618)
+texture = ExtResource("8_ocn02")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Cooking Scene/StaticBody2D"]
 position = Vector2(32, -3699)
@@ -270,6 +423,37 @@ text = "[b]Ingredients[/b]
 	3. Bring to a boil then let simmer for 30-40mins with cover on
 	4. Serve over rice!
 "
+visible_characters = 74
+visible_ratio = 0.2
+
+[node name="Result Scene" type="Node2D" parent="Node2D"]
+modulate = Color(1, 1, 1, 0)
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="Node2D/Result Scene"]
+offset_left = -1216.0
+offset_top = -2179.0
+offset_right = -521.0
+offset_bottom = -1795.0
+rotation = -0.0488692
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("10_hjo2k")
+theme_override_fonts/bold_font = ExtResource("11_ml1rf")
+theme_override_font_sizes/normal_font_size = 90
+theme_override_font_sizes/bold_font_size = 71
+bbcode_enabled = true
+text = "[b]Result[/b]
+	it's not bad!
+"
+visible_characters = 0
+visible_ratio = 0.0
+
+[node name="SoySauce" type="Sprite2D" parent="Node2D/Result Scene"]
+position = Vector2(-38, -1635)
+texture = ExtResource("13_tncqk")
+
+[node name="PanLineArtOnly" type="Sprite2D" parent="Node2D/Result Scene"]
+position = Vector2(-206, -1216)
+texture = ExtResource("14_qm216")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -301,6 +485,19 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("13_3lq1v")
+
+[node name="LetterBoxing" type="TextureRect" parent="CanvasLayer"]
+visible = false
+texture_filter = 1
+material = SubResource("ShaderMaterial_1lh3a")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 0
+texture = ExtResource("19_3bhao")
+expand_mode = 1
 
 [node name="HUD" type="Control" parent="CanvasLayer"]
 layout_mode = 3
@@ -360,6 +557,32 @@ theme_override_fonts/font = ExtResource("10_hjo2k")
 theme_override_font_sizes/font_size = 40
 text = "My Kitchen Below"
 
+[node name="HoverArea3" type="Control" parent="CanvasLayer/HUD"]
+visible = false
+custom_minimum_size = Vector2(0, 81.13)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/HUD/HoverArea3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/HUD/HoverArea3/CenterContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("10_hjo2k")
+theme_override_font_sizes/font_size = 40
+text = "Next Page"
+
 [node name="RecipeManager" parent="." instance=ExtResource("11_bxixm")]
 
 [node name="InstantiationManager" parent="." instance=ExtResource("6_mkygc")]
@@ -399,4 +622,5 @@ autoplay = "Intro"
 [connection signal="mouse_exited" from="Node2D/Cooking Scene/Container2" to="Node2D/Cooking Scene/Container2" method="_on_mouse_exited"]
 [connection signal="mouse_entered" from="CanvasLayer/HUD/HoverArea" to="." method="_on_hover_area_mouse_entered"]
 [connection signal="mouse_entered" from="CanvasLayer/HUD/HoverArea2" to="." method="_on_hover_area_2_mouse_entered"]
+[connection signal="mouse_entered" from="CanvasLayer/HUD/HoverArea3" to="." method="_on_hover_area_3_mouse_entered"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
