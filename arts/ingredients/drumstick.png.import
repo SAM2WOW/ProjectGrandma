@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d20c43o5pavgo"
-path="res://.godot/imported/peppercorn v2.png-1c169922bc220d16f4b8ae03ce03cd06.ctex"
+uid="uid://7n8v3vrmu2v2"
+path="res://.godot/imported/drumstick.png-9a9b8a6e0dbea2fde2fb89f238557b56.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://arts/ingredients/peppercorn v2.png"
-dest_files=["res://.godot/imported/peppercorn v2.png-1c169922bc220d16f4b8ae03ce03cd06.ctex"]
+source_file="res://arts/ingredients/drumstick.png"
+dest_files=["res://.godot/imported/drumstick.png-9a9b8a6e0dbea2fde2fb89f238557b56.ctex"]
 
 [params]
 

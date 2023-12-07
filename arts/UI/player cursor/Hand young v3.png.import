@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c0vtw5cekns37"
-path="res://.godot/imported/bay leaf v2.png-2211e216dd253b10a3cc994aafe28250.ctex"
+uid="uid://8ikng8ievqhy"
+path="res://.godot/imported/Hand young v3.png-feb9571a753d978a49ee404e9ae34a78.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://arts/ingredients/bay leaf v2.png"
-dest_files=["res://.godot/imported/bay leaf v2.png-2211e216dd253b10a3cc994aafe28250.ctex"]
+source_file="res://arts/UI/player cursor/Hand young v3.png"
+dest_files=["res://.godot/imported/Hand young v3.png-feb9571a753d978a49ee404e9ae34a78.ctex"]
 
 [params]
 

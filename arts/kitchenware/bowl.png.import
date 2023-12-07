@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bu8w21mrma473"
-path="res://.godot/imported/vinegar v2.png-2576fb7550e54268baf4f365cfbf2e7d.ctex"
+uid="uid://d0jqhp5b15f4y"
+path="res://.godot/imported/bowl.png-65cee29ae952ff4f21386eca7cf076b4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://arts/ingredients/vinegar v2.png"
-dest_files=["res://.godot/imported/vinegar v2.png-2576fb7550e54268baf4f365cfbf2e7d.ctex"]
+source_file="res://arts/kitchenware/bowl.png"
+dest_files=["res://.godot/imported/bowl.png-65cee29ae952ff4f21386eca7cf076b4.ctex"]
 
 [params]
 

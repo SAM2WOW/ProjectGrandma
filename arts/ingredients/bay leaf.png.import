@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cdpeqf2eyluh7"
-path="res://.godot/imported/soy sauce v2.png-27f43ad8c71bbf3a47823d15287af235.ctex"
+uid="uid://c0vtw5cekns37"
+path="res://.godot/imported/bay leaf.png-e744b8b03f719ffa0f9aea2c084c8fae.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://arts/ingredients/soy sauce v2.png"
-dest_files=["res://.godot/imported/soy sauce v2.png-27f43ad8c71bbf3a47823d15287af235.ctex"]
+source_file="res://arts/ingredients/bay leaf.png"
+dest_files=["res://.godot/imported/bay leaf.png-e744b8b03f719ffa0f9aea2c084c8fae.ctex"]
 
 [params]
 

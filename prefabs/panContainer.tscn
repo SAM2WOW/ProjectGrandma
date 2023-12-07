@@ -22,9 +22,6 @@ height = 1054.0
 [node name="Pan" instance=ExtResource("1_ribvh")]
 collision_priority = 1000.0
 script = ExtResource("2_2j0dy")
-thickenCap = 3.0
-thickenHeatThreshold = 0.5
-thickenTimer = 10.0
 liquidThreshold = 20
 heatUpCoefficient = 0.5
 coolDownCoefficient = 0.3
@@ -94,7 +91,3 @@ position = Vector2(0, 0)
 [node name="CollisionShape2D" parent="InteractArea" index="0"]
 position = Vector2(-175, -21)
 shape = SubResource("CapsuleShape2D_xl3c2")
-
-[connection signal="input_event" from="." to="." method="_on_input_event"]
-[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

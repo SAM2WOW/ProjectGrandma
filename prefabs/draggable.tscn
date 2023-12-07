@@ -5,14 +5,14 @@
 [ext_resource type="Material" uid="uid://be65qpikd7xak" path="res://arts/UI/wiggleMaterial.tres" id="3_r48om"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_eqadk"]
-radius = 78.3425
-height = 444.548
+radius = 64.0
+height = 128.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_00g0w"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_io3f3"]
-radius = 82.0
-height = 554.0
+radius = 96.0
+height = 192.0
 
 [node name="Draggable" type="RigidBody2D"]
 visibility_layer = 2
