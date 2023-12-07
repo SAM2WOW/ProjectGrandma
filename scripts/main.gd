@@ -10,7 +10,7 @@ func _ready():
 	print("Main is ready")
 		#updateStage(GameManager.currentStage)
 		#GameManager.gameEnd.connect(onGameEnd())
-
+ 
 
 func _process(delta):
 	if Input.is_action_just_released("ui_accept"):
