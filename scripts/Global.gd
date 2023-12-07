@@ -2,10 +2,11 @@ extends Node
 
 enum LiquidType {SoySauce, Vinegar, AbodoSauce};
 
-@onready var recipeManager;
-@onready var gameManager;
-@onready var instantiationManager;
-@onready var textManager;
+@onready var recipeManager = $RecipeManager;
+@onready var gameManager = $gameManager;
+@onready var instantiationManager = $InstantiationManager;
+@onready var textManager = $TextManager;
+@onready var sceneManager =$SceneManager
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -13,8 +14,9 @@ func _ready():
 	gameManager = get_tree().get_first_node_in_group("GameManager");
 	instantiationManager = get_tree().get_first_node_in_group("InstantiationManager");
 	textManager = get_tree().get_first_node_in_group("TextManager");
-	print("Recipe Manager Size: ", recipeManager.recipe.size()); 
-
+	sceneManager = get_tree().get_first_node_in_group("SceneManager")
+	print("Recipe Manager Size: ", recipeManager.recipe.size());
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -30,3 +32,6 @@ func randv_circle(min_radius := 1.0, max_radius := 1.0) -> Vector2:
 	var r := sqrt(rng.randf() * (r2_max - r2_min) + r2_min)
 	var t := rng.randf() * TAU
 	return Vector2(r, 0).rotated(t)
+
+func LoadGameScene():
+	pass

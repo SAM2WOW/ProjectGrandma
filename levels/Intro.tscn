@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://b86qi7hdjitih"]
+
+[ext_resource type="Script" path="res://levels/Intro.gd" id="1_0eifs"]
+[ext_resource type="Texture2D" uid="uid://fbq7sb4cpaef" path="res://arts/UI/2471-normal.jpg" id="2_8oosf"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_u24ey"]
+font_size = 50
+
+[node name="Intro" type="Node"]
+script = ExtResource("1_0eifs")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TextureButton" type="TextureButton" parent="CanvasLayer"]
+modulate = Color(0.980392, 0.980392, 0.980392, 1)
+offset_right = 517.0
+offset_bottom = 224.0
+texture_normal = ExtResource("2_8oosf")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="CanvasLayer/TextureButton"]
+layout_mode = 0
+offset_left = 122.0
+offset_top = 68.0
+offset_right = 356.0
+offset_bottom = 137.0
+text = "Complete"
+label_settings = SubResource("LabelSettings_u24ey")
+horizontal_alignment = 1
+vertical_alignment = 1

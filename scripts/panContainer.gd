@@ -85,10 +85,12 @@ func UpdateFluids(delta):
 func _on_area_2d_body_shape_entered(body_rid, body, body_shape_index, local_shape_index):
 	super._on_area_2d_body_shape_entered(body_rid, body, body_shape_index, local_shape_index);
 	if body is Ingredient:
+		Global.gameManager.AddObjectToPan("Ingredient",body.ingredientType)
 		if !cookingObjects.keys().has(body.ingredientType): 
 			cookingObjects[body.ingredientType] = [];
 		if !cookingObjects[body.ingredientType].has(body):
 			cookingObjects[body.ingredientType].append(body);
+	
 
 
 func _on_area_2d_body_shape_exited(body_rid, body, body_shape_index, local_shape_index):
@@ -98,6 +100,7 @@ func _on_area_2d_body_shape_exited(body_rid, body, body_shape_index, local_shape
 
 func OnLiquidEnter(id, body_rid):
 	super.OnLiquidEnter(id, body_rid);
+	Global.gameManager.AddObjectToPan("Liquid",id)
 	if GetLiquidTotal() > liquidThreshold:
 		currentCookingState = IngredientState.CookingType.Boiled;
 	

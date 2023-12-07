@@ -8,35 +8,26 @@ const heatDescriptions = {
 	1.5: "Medium High",
 	2.0: "High"
 };
-var stageRecipes : Array =[]
-const RecipeInfos = {
-	"1": {
-		"ingredients" = ["Apple","Soysauce"],
-		"steps" = ["Cooking","Cooking"]
-	},
-	"2": {
-		"ingredients" = ["Beef","Soysauce"],
-		"steps" = ["Cooking","Quit"]
-	},
-	"3": {
-		"ingredients" = ["Chicken","Soysauce"],
-		"steps" = ["Cooking","Quit","Cooking"]
-	},
-	"4": {
-		"ingredients" = ["Shrimp","Soysauce"],
-		"steps" = ["Cooking"]
-	},
-}
-
 var points : float;
 var totalPoints : float;
-
+var allIngredients : Array
+var allLiquid : Array
 func _ready():
 	recipe.sort_custom(func(x, y): return x.step < y.step);
 	for component in recipe:
 		component._ready();
-		print(component.GetDescription());
-	
+		if component is IngredientComponent:
+			if(!allIngredients.has(component.ingredient)):
+				allIngredients.append(component.ingredient)
+		#print(component.GetDescription());
+		elif component is LiquidMixtureComponent:
+			for i:LiquidMixturePoints in component.liquidMixtureRecipe:
+				if(!allLiquid.has(i.liquidType)):
+					allLiquid.append(i.liquidType)
+
+				
+			
+	Global.recipeManager.CheckRecipePoints();
 	
 func CheckRecipePoints():
 	totalPoints = 0.0;
@@ -95,6 +86,13 @@ func _input(event):
 	if event is InputEventKey && event.keycode == KEY_D:
 		print("total: ", Global.instantiationManager.pan.GetLiquidTotal());
 		Global.recipeManager.CheckRecipePoints();
+		
+func GetCurrentRecipeIngredients():
+	for i in allIngredients:
+		print("Ingredients:",i)
+	for i in allLiquid:
+		print("Liquid:", i)
+
 # func CheckQuantity(quantityArr)
 #func initRecipes():
 	#print("Initialized Recipes")
