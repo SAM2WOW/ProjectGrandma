@@ -20,11 +20,17 @@ func _ready():
 func ObjectAction(event):
 	super.ObjectAction(event);
 	produceLiquid = event.pressed;
-	
 	if produceLiquid:
 		$Pouring.play()
 	else:
 		$Pouring.stop()
+
+func StopDrag():
+	if produceLiquid:
+		produceLiquid = false;
+		$Pouring.stop()
+	
+	super.StopDrag();
 
 func _physics_process(delta):
 	super._physics_process(delta);
@@ -43,10 +49,10 @@ func UpdateLiquidGeneration(delta):
 			$WaterGen.generate = true;
 		else:
 			$WaterGen.generate = false;
-	elif !produceLiquid && dragging:
+	elif !produceLiquid:
 		$WaterGen.generate = false;
-		rotation = lerp_angle(rotation, deg_to_rad(0), rotateSpeed*delta);
-
+		if dragging:
+			rotation = lerp_angle(rotation, deg_to_rad(0), rotateSpeed*delta);
 
 func _on_body_entered(body):
 	if not $AudioStreamPlayer2D.is_playing():

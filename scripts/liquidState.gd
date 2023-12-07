@@ -2,13 +2,13 @@ extends Resource;
 class_name LiquidState;
 
 @export var liquidType : Global.LiquidType;
-@export var maxThickenTimer : float = 30;
+@export var maxThickenTimer : float = 23;
 @export var consistencyCap: float = 3;
 @export var thickenHeatThreshold: float = 0.7;
 @export var unthickenHeatThreshold: float = 1.4;
 @export var minThickenHeatThreshold: float = 0.1;
 @export var maxFriction: float = 5;
-@export var maxMass: float = 0.15;
+@export var maxMass: float = 0.3;#0.15;
 @export var heatUpCoefficient: float = 0.2;
 @export var coolDownCoefficient: float = 0.1;
 
@@ -29,6 +29,7 @@ var velocityMultiplierCap = 2.0;
 var liquidComposition = {};
 var collidedLiquids = {};
 var pinRids = {};
+var currentVelocity : Vector2;
 
 func _init(type, body_rid : RID, render_rid: RID, _color: Color):
 	liquidType = type;
@@ -45,8 +46,9 @@ func _ready():
 	pass # Replace with function body.
 
 func Thicken(delta, heat):
-	var velocity = PhysicsServer2D.body_get_state(bodyRid, PhysicsServer2D.BODY_STATE_LINEAR_VELOCITY);
-	var velMagnitude = clamp(velocity.length(), 0, maxThickenVelocity);
+	currentVelocity = PhysicsServer2D.body_get_state(bodyRid, PhysicsServer2D.BODY_STATE_LINEAR_VELOCITY);
+	var velMagnitude = currentVelocity.length();
+	velMagnitude = clamp(velMagnitude, 0, maxThickenVelocity);
 	var velocityMultiplier = remap(velMagnitude, 0, maxThickenVelocity, minVelocityMultiplier, velocityMultiplierCap);
 	# print("vel: ", velocity.length());
 	# print("vel mult: ", velocityMultiplier);
@@ -54,7 +56,7 @@ func Thicken(delta, heat):
 		var thickenSpeed = Global.remap_range(heat, minThickenHeatThreshold, thickenHeatThreshold, 1, 0.2);
 		thickenTimer += delta * thickenSpeed * velocityMultiplier;
 	elif heat >= unthickenHeatThreshold:
-		thickenTimer -= delta * heat;
+		thickenTimer -= delta * heat * 0.3;
 	thickenTimer = clamp(thickenTimer, 0, maxThickenTimer);
 	consistency = ease(thickenTimer/maxThickenTimer, 3.0);
 	var friction = baseFriction+((maxFriction-baseFriction) * consistency);

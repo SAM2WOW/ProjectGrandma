@@ -1,16 +1,17 @@
-[gd_scene load_steps=9 format=3 uid="uid://c3iy54urrkxj8"]
+[gd_scene load_steps=10 format=3 uid="uid://c3iy54urrkxj8"]
 
 [ext_resource type="PackedScene" uid="uid://b5em8781rmds2" path="res://prefabs/ingredient.tscn" id="1_niybt"]
 [ext_resource type="Script" path="res://scripts/ingredientState.gd" id="2_bffmu"]
+[ext_resource type="Texture2D" uid="uid://c0vtw5cekns37" path="res://arts/ingredients/bay leaf.png" id="3_ejqvq"]
 
 [sub_resource type="Resource" id="Resource_54sm5"]
 resource_local_to_scene = true
 script = ExtResource("2_bffmu")
 state = 0
-cookTimer = 10.0
+cookTimer = 5.0
 typeInfluenceMultiplier = {
-0: 1.5,
-1: 0.5
+0: 1.0,
+1: 0.7
 }
 stateColor = Color(1, 1, 1, 1)
 
@@ -18,10 +19,10 @@ stateColor = Color(1, 1, 1, 1)
 resource_local_to_scene = true
 script = ExtResource("2_bffmu")
 state = 1
-cookTimer = 40.0
+cookTimer = 20.0
 typeInfluenceMultiplier = {
 0: 2.0,
-1: 0.2
+1: 0.5
 }
 stateColor = Color(0.94902, 0.776471, 0.4, 1)
 
@@ -29,10 +30,10 @@ stateColor = Color(0.94902, 0.776471, 0.4, 1)
 resource_local_to_scene = true
 script = ExtResource("2_bffmu")
 state = 2
-cookTimer = 30.0
+cookTimer = 15.0
 typeInfluenceMultiplier = {
 0: 2.0,
-1: 0.1
+1: 0.8
 }
 stateColor = Color(0.6, 0.443137, 0.101961, 1)
 
@@ -58,6 +59,7 @@ height = 248.0
 [node name="BayLeaf" instance=ExtResource("1_niybt")]
 ingredientType = 4
 ingredientStates = Array[ExtResource("2_bffmu")]([SubResource("Resource_54sm5"), SubResource("Resource_nrcvm"), SubResource("Resource_4btwd"), SubResource("Resource_6bdik")])
+lowVelocityMultiplier = 1.0
 
 [node name="Sprite2DShadow" parent="." index="0"]
 scale = Vector2(0.4, 0.4)
@@ -65,7 +67,7 @@ texture = null
 
 [node name="Sprite2D" parent="." index="1"]
 scale = Vector2(0.4, 0.4)
-texture = null
+texture = ExtResource("3_ejqvq")
 
 [node name="CollisionShape2D" parent="." index="2"]
 position = Vector2(0, 5)

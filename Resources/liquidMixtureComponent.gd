@@ -11,6 +11,7 @@ func _ready():
 		if !mixtureDict.keys().has(mixPoints.liquidType):
 			mixtureDict[mixPoints.liquidType] = [];
 		mixtureDict[mixPoints.liquidType].append(mixPoints);
+		
 	for arr in mixtureDict.values():
 		arr.sort_custom(func(x, y): return x.lessOrEqualRatio < y.lessOrEqualRatio);
 	
@@ -22,7 +23,7 @@ func _ready():
 		totalPoints += max;
 
 func GetDescription() -> String:
-	return description;
+	if !formatDescription: return description;
 	var parts = [];
 	for part : LiquidMixturePoints in liquidMixtureRecipe:
 		parts.append(Global.LiquidType.keys()[part.liquidType]);
@@ -30,8 +31,8 @@ func GetDescription() -> String:
 
 func CheckMixture(containedLiquid : Dictionary) -> Array:
 	var size = 0;
-	for i in containedLiquid:
-		size += containedLiquid.size();
+	for liqRids in containedLiquid.values(): # dict of RID : state
+		size += liqRids.keys().size();
 	var retArr = [];
 	var quantityPoints = GetQuantityPoints(size);
 	if liquidMixtureRecipe.size() <= 0: return [null, quantityPoints];
@@ -44,9 +45,9 @@ func CheckMixture(containedLiquid : Dictionary) -> Array:
 	for mixType in mixtureDict.keys():
 		var mixPoints = mixtureDict[mixType];
 		if !containedLiquid.keys().has(mixType): 
-			retArr.append(containedLiquid[0]);
+			retArr.append(mixPoints[0]);
 			continue;
-		var typeArr = containedLiquid[mixType];
+		var typeArr = containedLiquid[mixType].keys();
 		for mixPoint in mixPoints:
 			if float(typeArr.size())/size <= mixPoint.lessOrEqualRatio:
 				retArr.append(mixPoint);

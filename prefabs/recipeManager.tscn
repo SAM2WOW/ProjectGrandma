@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=3 uid="uid://w7pwgo4f8bvq"]
+[gd_scene load_steps=62 format=3 uid="uid://w7pwgo4f8bvq"]
 
 [ext_resource type="Script" path="res://scripts/RecipeManager.gd" id="1_bgt5p"]
 [ext_resource type="Script" path="res://Resources/recipeComponent.gd" id="2_6kl6y"]
@@ -60,13 +60,13 @@ description = "no sauce"
 
 [sub_resource type="Resource" id="Resource_dqhqo"]
 script = ExtResource("3_eufjj")
-belowOrEqualQuantity = 50
+belowOrEqualQuantity = 100
 quantityPoints = 1.0
 description = "not enough sauce"
 
 [sub_resource type="Resource" id="Resource_6rkxi"]
 script = ExtResource("3_eufjj")
-belowOrEqualQuantity = 200
+belowOrEqualQuantity = 300
 quantityPoints = 3.0
 description = "enough sauce"
 
@@ -82,24 +82,25 @@ targetLiquid = 2
 liquidMixtureRecipe = Array[ExtResource("6_6kdyy")]([SubResource("Resource_jeml7"), SubResource("Resource_4x1ep"), SubResource("Resource_0l17c"), SubResource("Resource_i8hd8"), SubResource("Resource_fl8sh"), SubResource("Resource_22652")])
 step = 0
 description = "Add 1/2 cup of Soy Sauce and 1/2 cup of Vinegar to a bowl and set it aside."
+formatDescription = false
 quantityPoints = Array[ExtResource("3_eufjj")]([SubResource("Resource_o8but"), SubResource("Resource_dqhqo"), SubResource("Resource_6rkxi"), SubResource("Resource_qqu8g")])
 
 [sub_resource type="Resource" id="Resource_7xp4x"]
 script = ExtResource("2_yyyyq")
 doneness = 0
-points = 0.0
+points = 1.0
 description = "ITS FUCKING RAW!!"
 
 [sub_resource type="Resource" id="Resource_koqgb"]
 script = ExtResource("2_yyyyq")
 doneness = 1
-points = 5.0
+points = 4.0
 description = "Fuck yeah that chicken is cooked."
 
 [sub_resource type="Resource" id="Resource_an53y"]
 script = ExtResource("2_yyyyq")
 doneness = 2
-points = 3.0
+points = 2.0
 description = "Chicken is lil smoky."
 
 [sub_resource type="Resource" id="Resource_j8isl"]
@@ -118,19 +119,19 @@ description = "no chicken?"
 script = ExtResource("3_eufjj")
 belowOrEqualQuantity = 3
 quantityPoints = 1.0
-description = ""
+description = "not enough chicken"
 
 [sub_resource type="Resource" id="Resource_dvlml"]
 script = ExtResource("3_eufjj")
 belowOrEqualQuantity = 10
 quantityPoints = 3.0
-description = ""
+description = "enough chicken"
 
 [sub_resource type="Resource" id="Resource_5tvxt"]
 script = ExtResource("3_eufjj")
 belowOrEqualQuantity = 20
 quantityPoints = 1.0
-description = ""
+description = "too much chicken"
 
 [sub_resource type="Resource" id="Resource_c5yxf"]
 script = ExtResource("2_ukelk")
@@ -139,6 +140,7 @@ donenessPoints = Array[ExtResource("2_yyyyq")]([SubResource("Resource_7xp4x"), S
 showName = true
 step = 1
 description = "Fry %d - %d pieces of %s over medium heat for around x seconds or until it browns."
+formatDescription = true
 quantityPoints = Array[ExtResource("3_eufjj")]([SubResource("Resource_2n77r"), SubResource("Resource_cabr1"), SubResource("Resource_dvlml"), SubResource("Resource_5tvxt")])
 
 [sub_resource type="Resource" id="Resource_qstk4"]
@@ -165,12 +167,13 @@ liquidType = 2
 consistencyPoints = Array[ExtResource("4_tnfeb")]([SubResource("Resource_qstk4"), SubResource("Resource_cguvo"), SubResource("Resource_yk3e1")])
 step = 2
 description = "Add your sauce mixture to the pan."
+formatDescription = false
 quantityPoints = Array[ExtResource("3_eufjj")]([])
 
 [sub_resource type="Resource" id="Resource_43lcn"]
 script = ExtResource("2_yyyyq")
 doneness = 0
-points = 1.0
+points = 2.0
 description = "Garlic undercooked."
 
 [sub_resource type="Resource" id="Resource_p6aen"]
@@ -192,28 +195,29 @@ points = 0.0
 description = "garlic is fucking gone."
 
 [sub_resource type="Resource" id="Resource_ukews"]
+resource_name = "no garlic"
 script = ExtResource("3_eufjj")
 belowOrEqualQuantity = 0
 quantityPoints = 0.0
-description = ""
+description = "no garlic"
 
 [sub_resource type="Resource" id="Resource_img4u"]
 script = ExtResource("3_eufjj")
 belowOrEqualQuantity = 5
 quantityPoints = 1.0
-description = ""
+description = "not enough garlic"
 
 [sub_resource type="Resource" id="Resource_oyhu0"]
 script = ExtResource("3_eufjj")
 belowOrEqualQuantity = 15
 quantityPoints = 2.0
-description = ""
+description = "enough garlic"
 
 [sub_resource type="Resource" id="Resource_ucp6o"]
 script = ExtResource("3_eufjj")
 belowOrEqualQuantity = 9999
 quantityPoints = 1.0
-description = ""
+description = "too much garlic"
 
 [sub_resource type="Resource" id="Resource_gqaa1"]
 script = ExtResource("2_ukelk")
@@ -222,6 +226,7 @@ donenessPoints = Array[ExtResource("2_yyyyq")]([SubResource("Resource_43lcn"), S
 showName = true
 step = 3
 description = "Add %d - %d bits of %s"
+formatDescription = true
 quantityPoints = Array[ExtResource("3_eufjj")]([SubResource("Resource_ukews"), SubResource("Resource_img4u"), SubResource("Resource_oyhu0"), SubResource("Resource_ucp6o")])
 
 [sub_resource type="Resource" id="Resource_tdh2h"]
@@ -233,13 +238,13 @@ description = "straight peppercorns bro?"
 [sub_resource type="Resource" id="Resource_vbgtq"]
 script = ExtResource("2_yyyyq")
 doneness = 1
-points = 3.0
+points = 2.0
 description = "nice peppercorns"
 
 [sub_resource type="Resource" id="Resource_rp744"]
 script = ExtResource("2_yyyyq")
 doneness = 2
-points = 2.0
+points = 1.0
 description = "not so nice peppercorns"
 
 [sub_resource type="Resource" id="Resource_jt160"]
@@ -252,25 +257,25 @@ description = "how the FUCK did you burn peppercorns."
 script = ExtResource("3_eufjj")
 belowOrEqualQuantity = 0
 quantityPoints = 0.0
-description = ""
+description = "no peppercorns"
 
 [sub_resource type="Resource" id="Resource_bqbhi"]
 script = ExtResource("3_eufjj")
-belowOrEqualQuantity = 6
+belowOrEqualQuantity = 5
 quantityPoints = 1.0
-description = ""
+description = "not enough peppercorns"
 
 [sub_resource type="Resource" id="Resource_l1j1g"]
 script = ExtResource("3_eufjj")
-belowOrEqualQuantity = 13
-quantityPoints = 2.0
-description = ""
+belowOrEqualQuantity = 15
+quantityPoints = 3.0
+description = "enough peppercorns"
 
 [sub_resource type="Resource" id="Resource_1o2jq"]
 script = ExtResource("3_eufjj")
 belowOrEqualQuantity = 9999
 quantityPoints = 1.0
-description = ""
+description = "too much peppercorns"
 
 [sub_resource type="Resource" id="Resource_gv8wc"]
 script = ExtResource("2_ukelk")
@@ -279,12 +284,13 @@ donenessPoints = Array[ExtResource("2_yyyyq")]([SubResource("Resource_tdh2h"), S
 showName = true
 step = 3
 description = "Add %d - %d %ss"
+formatDescription = true
 quantityPoints = Array[ExtResource("3_eufjj")]([SubResource("Resource_n74go"), SubResource("Resource_bqbhi"), SubResource("Resource_l1j1g"), SubResource("Resource_1o2jq")])
 
 [sub_resource type="Resource" id="Resource_et8wm"]
 script = ExtResource("2_yyyyq")
 doneness = 0
-points = 2.0
+points = 1.0
 description = "raw bay leaf? mmmmm"
 
 [sub_resource type="Resource" id="Resource_eeqc3"]
@@ -296,32 +302,32 @@ description = "can you even cook bay leafs?"
 [sub_resource type="Resource" id="Resource_45a1t"]
 script = ExtResource("2_yyyyq")
 doneness = 2
-points = 1.0
+points = 2.0
 description = "leaf is lil burnt."
 
 [sub_resource type="Resource" id="Resource_kqcul"]
 script = ExtResource("2_yyyyq")
 doneness = 3
-points = 4.0
+points = 0.0
 description = "leaf is burnt bro."
 
-[sub_resource type="Resource" id="Resource_b2ggp"]
+[sub_resource type="Resource" id="Resource_f5g0f"]
 script = ExtResource("3_eufjj")
 belowOrEqualQuantity = 0
 quantityPoints = 0.0
-description = ""
+description = "no bay leaves"
 
-[sub_resource type="Resource" id="Resource_ax0k2"]
+[sub_resource type="Resource" id="Resource_8bmu5"]
 script = ExtResource("3_eufjj")
 belowOrEqualQuantity = 3
 quantityPoints = 2.0
-description = ""
+description = "enough bay leaves"
 
-[sub_resource type="Resource" id="Resource_hivu6"]
+[sub_resource type="Resource" id="Resource_fky46"]
 script = ExtResource("3_eufjj")
 belowOrEqualQuantity = 999999
 quantityPoints = 1.0
-description = ""
+description = "too much bay leaves"
 
 [sub_resource type="Resource" id="Resource_3s2vj"]
 script = ExtResource("2_ukelk")
@@ -330,14 +336,23 @@ donenessPoints = Array[ExtResource("2_yyyyq")]([SubResource("Resource_et8wm"), S
 showName = false
 step = 3
 description = "Add %d Bay Leaves"
-quantityPoints = Array[ExtResource("3_eufjj")]([SubResource("Resource_b2ggp"), SubResource("Resource_ax0k2"), SubResource("Resource_hivu6")])
+formatDescription = true
+quantityPoints = Array[ExtResource("3_eufjj")]([SubResource("Resource_f5g0f"), SubResource("Resource_8bmu5"), SubResource("Resource_fky46")])
 
 [sub_resource type="Resource" id="Resource_lw685"]
 script = ExtResource("2_6kl6y")
 step = 4
 description = "Simmer on low heat for around x seconds or until the sauce thickens."
+formatDescription = false
+quantityPoints = Array[ExtResource("3_eufjj")]([])
+
+[sub_resource type="Resource" id="Resource_73juk"]
+script = ExtResource("2_6kl6y")
+step = 0
+description = ""
+formatDescription = true
 quantityPoints = Array[ExtResource("3_eufjj")]([])
 
 [node name="RecipeManager" type="Node2D" groups=["RecipeManager"]]
 script = ExtResource("1_bgt5p")
-recipe = Array[ExtResource("2_6kl6y")]([SubResource("Resource_t5c2e"), SubResource("Resource_c5yxf"), SubResource("Resource_6h8y0"), SubResource("Resource_gqaa1"), SubResource("Resource_gv8wc"), SubResource("Resource_3s2vj"), SubResource("Resource_lw685")])
+recipe = Array[ExtResource("2_6kl6y")]([SubResource("Resource_t5c2e"), SubResource("Resource_c5yxf"), SubResource("Resource_6h8y0"), SubResource("Resource_gqaa1"), SubResource("Resource_gv8wc"), SubResource("Resource_3s2vj"), SubResource("Resource_lw685"), SubResource("Resource_73juk")])
