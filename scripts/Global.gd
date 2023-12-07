@@ -12,13 +12,16 @@ var currentStage = 0;
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	print("Global is ready")
+	await get_tree().process_frame;
 	recipeManager = get_tree().get_first_node_in_group("RecipeManager");
 	gameManager = get_tree().get_first_node_in_group("GameManager");
 	instantiationManager = get_tree().get_first_node_in_group("InstantiationManager");
 	textManager = get_tree().get_first_node_in_group("TextManager");
-	sceneManager = get_tree().get_first_node_in_group("SceneManager")
-	print("Recipe Manager Size: ", recipeManager.recipe.size());
-	
+	sceneManager = get_tree().get_first_node_in_group("SceneManager");
+	instantiationManager.pan = get_tree().get_first_node_in_group("Pan");
+	# print("Recipe Manager Size: ", recipeManager.recipe.size());
+
+
 func Reset():
 	_ready()
 	

@@ -13,6 +13,10 @@ var totalPoints : float;
 var allIngredients : Array
 var allLiquid : Array
 func _ready():
+	await get_tree().process_frame;
+	call_deferred("init");
+
+func init():
 	recipe.sort_custom(func(x, y): return x.step < y.step);
 	for component in recipe:
 		component._ready();

@@ -3,8 +3,11 @@ extends Node
 var recipeMode = false
 
 func _ready():
+	await get_tree().process_frame;
+	call_deferred("init");
 	
-	print("Main is ready")
+
+func init():
 	Global.gameManager.stageComplete.connect(completeStage)
 	Global.gameManager.gameEnd.connect(onGameEnd)
 	$CanvasLayer/TestLevelText.text = "Level" + str(Global.currentStage+1)

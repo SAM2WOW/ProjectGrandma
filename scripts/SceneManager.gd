@@ -15,25 +15,29 @@ func _process(delta):
 	pass
 
 func SwitchScene(filePath):
+	# get_tree().change_scene_to_file(filePath)
 	call_deferred("DeferredSwitchScene", filePath)
 	#get_tree().change_scene_to_file(filePath)
 	
 func DeferredSwitchScene(filePath):
-	#currentScene.free()
 	root.remove_child(currentScene)
+	currentScene.free()
 	#print(root)
-	var scene = load(filePath)
+	var scene = ResourceLoader.load(filePath)
 	currentScene = scene.instantiate()
-	var gm = currentScene.get_node("gameManager")
-	var rm = currentScene.get_node("RecipeManager")
-	var tm = currentScene.get_node("TextManager")
-	var sm = currentScene.get_node("SceneManager")
-	var im = currentScene.get_node("InstantiationManager")
-	Global.gameManager = gm
-	Global.recipeManager = rm
-	Global.textManager = tm
-	Global.sceneManager = sm
-	Global.instantiationManager = im
+	
+	Global.gameManager = currentScene.get_node("gameManager")
+	Global.recipeManager = currentScene.get_node("RecipeManager")
+	Global.textManager = currentScene.get_node("TextManager")
+	Global.sceneManager = currentScene.get_node("SceneManager")
+	Global.instantiationManager = currentScene.get_node("InstantiationManager")
+	get_tree().root.add_child(currentScene)
+	#Global.gameManager = gm
+	#Global.recipeManager = rm
+	#Global.textManager = tm
+	#Global.sceneManager = sm
+	#Global.instantiationManager = im
+	
 	root.add_child(currentScene)
 	
 	#get_tree().current_scene = currentScene

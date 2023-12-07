@@ -19,7 +19,7 @@ var averageIngredientVelocity : float = 0;
 func _ready():
 	super._ready();
 	print("Pan is ready")
-	Global.instantiationManager.pan = self;
+	# Global.instantiationManager.pan = self;
 
 func ObjectAction(event):
 	super.ObjectAction(event);

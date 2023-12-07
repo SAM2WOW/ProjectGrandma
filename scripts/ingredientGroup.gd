@@ -8,6 +8,11 @@ var ingredients = [];
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	await get_tree().process_frame;
+	call_deferred("init");
+
+func init():
+	await get_tree().process_frame;
 	if ingredientPath == "": return;
 	for i in numIngredients:
 		var ingredient = load(ingredientPath).instantiate();

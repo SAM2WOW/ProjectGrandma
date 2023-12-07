@@ -20,7 +20,6 @@ var stageScenes: Array[String] = [
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	print("Game Manager is ready")
-	print("Recipe Manager Size: ", Global.recipeManager.recipe.size());
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
