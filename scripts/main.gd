@@ -63,3 +63,8 @@ func _on_hover_area_2_mouse_entered():
 	$CanvasLayer/HUD/HoverArea2.hide()
 	
 	$AnimationPlayer.play_backwards("Transition")
+
+
+func _on_animation_player_animation_finished(anim_name):
+	if anim_name == "Intro":
+		$CanvasLayer/HUD/HoverArea.show()

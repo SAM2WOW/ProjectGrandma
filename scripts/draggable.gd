@@ -2,6 +2,7 @@ extends RigidBody2D
 class_name Draggable
 
 var dragging = false;
+var hovering = false;
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -10,15 +11,11 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	$Sprite2DShadow.set_global_position(lerp($Sprite2DShadow.get_global_position(), $Sprite2D.get_global_position() + Vector2(12, 12) * int(hovering), 5 * delta))
+	$Sprite2DShadow.self_modulate.a = lerp($Sprite2DShadow.self_modulate.a, 0.5 * float(hovering), 5 * delta)
 
 func _physics_process(delta):
 	pass;
-
-func _on_input_event(viewport, event, shape_idx):
-	if !event is InputEventMouseButton: return;
-	if event.button_index == 1 && event.pressed:
-		Global.gameManager.BeginDragObject(self);
 
 func Drag(delta):
 	dragging = true;
@@ -52,8 +49,8 @@ func _on_interact_area_input_event(viewport, event, shape_idx):
 
 
 func _on_interact_area_mouse_entered():
-	pass # Replace with function body.
+	hovering = true
 
 
 func _on_interact_area_mouse_exited():
-	pass # Replace with function body.
+	hovering = false
