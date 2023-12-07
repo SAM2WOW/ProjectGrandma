@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=3 uid="uid://w7pwgo4f8bvq"]
+[gd_scene load_steps=62 format=3 uid="uid://w7pwgo4f8bvq"]
 
 [ext_resource type="Script" path="res://scripts/RecipeManager.gd" id="1_bgt5p"]
 [ext_resource type="Script" path="res://Resources/recipeComponent.gd" id="2_6kl6y"]
@@ -290,7 +290,7 @@ quantityPoints = Array[ExtResource("3_eufjj")]([SubResource("Resource_n74go"), S
 [sub_resource type="Resource" id="Resource_et8wm"]
 script = ExtResource("2_yyyyq")
 doneness = 0
-points = 2.0
+points = 1.0
 description = "raw bay leaf? mmmmm"
 
 [sub_resource type="Resource" id="Resource_eeqc3"]
@@ -302,28 +302,28 @@ description = "can you even cook bay leafs?"
 [sub_resource type="Resource" id="Resource_45a1t"]
 script = ExtResource("2_yyyyq")
 doneness = 2
-points = 1.0
+points = 2.0
 description = "leaf is lil burnt."
 
 [sub_resource type="Resource" id="Resource_kqcul"]
 script = ExtResource("2_yyyyq")
 doneness = 3
-points = 4.0
+points = 0.0
 description = "leaf is burnt bro."
 
-[sub_resource type="Resource" id="Resource_b2ggp"]
+[sub_resource type="Resource" id="Resource_f5g0f"]
 script = ExtResource("3_eufjj")
 belowOrEqualQuantity = 0
 quantityPoints = 0.0
 description = "no bay leaves"
 
-[sub_resource type="Resource" id="Resource_ax0k2"]
+[sub_resource type="Resource" id="Resource_8bmu5"]
 script = ExtResource("3_eufjj")
 belowOrEqualQuantity = 3
 quantityPoints = 2.0
 description = "enough bay leaves"
 
-[sub_resource type="Resource" id="Resource_hivu6"]
+[sub_resource type="Resource" id="Resource_fky46"]
 script = ExtResource("3_eufjj")
 belowOrEqualQuantity = 999999
 quantityPoints = 1.0
@@ -337,7 +337,7 @@ showName = false
 step = 3
 description = "Add %d Bay Leaves"
 formatDescription = true
-quantityPoints = Array[ExtResource("3_eufjj")]([SubResource("Resource_b2ggp"), SubResource("Resource_ax0k2"), SubResource("Resource_hivu6")])
+quantityPoints = Array[ExtResource("3_eufjj")]([SubResource("Resource_f5g0f"), SubResource("Resource_8bmu5"), SubResource("Resource_fky46")])
 
 [sub_resource type="Resource" id="Resource_lw685"]
 script = ExtResource("2_6kl6y")
@@ -346,6 +346,13 @@ description = "Simmer on low heat for around x seconds or until the sauce thicke
 formatDescription = false
 quantityPoints = Array[ExtResource("3_eufjj")]([])
 
+[sub_resource type="Resource" id="Resource_73juk"]
+script = ExtResource("2_6kl6y")
+step = 0
+description = ""
+formatDescription = true
+quantityPoints = Array[ExtResource("3_eufjj")]([])
+
 [node name="RecipeManager" type="Node2D" groups=["RecipeManager"]]
 script = ExtResource("1_bgt5p")
-recipe = Array[ExtResource("2_6kl6y")]([SubResource("Resource_t5c2e"), SubResource("Resource_c5yxf"), SubResource("Resource_6h8y0"), SubResource("Resource_gqaa1"), SubResource("Resource_gv8wc"), SubResource("Resource_3s2vj"), SubResource("Resource_lw685")])
+recipe = Array[ExtResource("2_6kl6y")]([SubResource("Resource_t5c2e"), SubResource("Resource_c5yxf"), SubResource("Resource_6h8y0"), SubResource("Resource_gqaa1"), SubResource("Resource_gv8wc"), SubResource("Resource_3s2vj"), SubResource("Resource_lw685"), SubResource("Resource_73juk")])
