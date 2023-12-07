@@ -6,11 +6,13 @@ enum IngredientType {
 }
 @export var ingredientType: IngredientType;
 @export var ingredientStates: Array[IngredientState] = [];
+@export var lowVelocityMultiplier: float = 1.0;
 @export var highVelocityMultiplier: float = 0.2;
 @export var cookingVelocityThresholds: float = 200;
 
 var currentStateIndex: int = 0;
 var cookingTimer: float = 0;
+var currentVelocityMult: float = lowVelocityMultiplier;
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -30,11 +32,24 @@ func _process(delta):
 
 func Cook(cookingType: IngredientState.CookingType, heatMultiplier, delta):
 	if currentStateIndex >= ingredientStates.size()-1: return;
-	var velocityMultiplier = 1.0;
-	if linear_velocity.length() > cookingVelocityThresholds:
-		velocityMultiplier = highVelocityMultiplier;
+	if cookingType == IngredientState.CookingType.Boiled:
+		var currMult = clamp(linear_velocity.length(), 0, cookingVelocityThresholds);
+		currMult = Global.remap_range(currMult, 0, cookingVelocityThresholds, lowVelocityMultiplier, highVelocityMultiplier);
+		if currMult < currentVelocityMult:
+			currentVelocityMult = currMult;
+		else:
+			currentVelocityMult += delta * 0.1;
+		currentVelocityMult = clamp(currentVelocityMult, highVelocityMultiplier, lowVelocityMultiplier);
+	else:
+		if linear_velocity.length() >= cookingVelocityThresholds:
+			currentVelocityMult = highVelocityMultiplier;
+		else:
+			currentVelocityMult = lowVelocityMultiplier;
+	# print("vel mult: ", currentVelocityMult);
+	print(IngredientState.CookingType.keys()[cookingType]);
+	# currentVelocityMult
 	# print("multiplier: ", GetCurrentState().typeInfluenceMultiplier[cookingType] * velocityMultiplier * heatMultiplier);
-	cookingTimer += delta * GetCurrentState().typeInfluenceMultiplier[cookingType] * velocityMultiplier * heatMultiplier;
+	cookingTimer += delta * GetCurrentState().typeInfluenceMultiplier[cookingType] * currentVelocityMult * heatMultiplier;
 	if cookingTimer >= GetCurrentState().cookTimer:
 		ChangeState(currentStateIndex+1);
 
