@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://dpg0gbpttdpy5"]
+[gd_scene load_steps=42 format=3 uid="uid://dpg0gbpttdpy5"]
 
 [ext_resource type="Texture2D" uid="uid://cmp4cxxq8yuat" path="res://arts/ivory-off-white-paper-texture.jpg" id="1_1jmmi"]
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_udxji"]
@@ -25,6 +25,7 @@
 [ext_resource type="Texture2D" uid="uid://dwxil1uon205v" path="res://arts/UI/frame-3541621_1280.png" id="19_3bhao"]
 [ext_resource type="Script" path="res://textEvent.gd" id="19_5tann"]
 [ext_resource type="PackedScene" uid="uid://v5qskld56om" path="res://prefabs/textManager.tscn" id="21_rjtit"]
+[ext_resource type="Script" path="res://scripts/SceneManager.gd" id="26_nryhn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_thd3q"]
 size = Vector2(5056, 1370)
@@ -61,6 +62,11 @@ shader = ExtResource("11_b5byl")
 shader_parameter/cutoff = 1.0
 shader_parameter/smooth_size = 0.125
 shader_parameter/mask = ExtResource("12_hwjn3")
+
+[sub_resource type="LabelSettings" id="LabelSettings_5i7dh"]
+font = ExtResource("11_ml1rf")
+font_size = 50
+font_color = Color(0.00392157, 0.00392157, 0.00392157, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_c5rhk"]
 font = ExtResource("10_hjo2k")
@@ -583,6 +589,12 @@ theme_override_fonts/font = ExtResource("10_hjo2k")
 theme_override_font_sizes/font_size = 40
 text = "Next Page"
 
+[node name="TestLevelText" type="Label" parent="CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Level"
+label_settings = SubResource("LabelSettings_5i7dh")
+
 [node name="RecipeManager" parent="." instance=ExtResource("11_bxixm")]
 
 [node name="InstantiationManager" parent="." instance=ExtResource("6_mkygc")]
@@ -599,6 +611,9 @@ offset_right = 40.0
 offset_bottom = 23.0
 text = "pain"
 label_settings = SubResource("LabelSettings_c5rhk")
+
+[node name="SceneManager" type="Node2D" parent="." groups=["SceneManager"]]
+script = ExtResource("26_nryhn")
 
 [node name="gameManager" parent="." instance=ExtResource("13_cncv6")]
 

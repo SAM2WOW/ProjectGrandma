@@ -1,6 +1,7 @@
-res://prefabs/recipeManager.tscn
+res://levels/main.tscn
 res://FluidSim2D/WaterGenPhysicsServer.gd
 res://Water_View_Shader.gdshader
+res://prefabs/recipeManager.tscn
 res://levels/cooking scene.tscn
 res://prefabs/instantiation_manager.tscn
 res://prefabs/gameManager.tscn
@@ -14,4 +15,4 @@ res://prefabs/stoveTop.tscn
 res://prefabs/textManager.tscn
 res://prefabs/water_gen.tscn
 res://prefabs/Ingredients/bayLeaf.tscn
-res://levels/main.tscn
+res://scripts/main.gd
