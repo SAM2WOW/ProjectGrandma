@@ -46,7 +46,7 @@ func Cook(cookingType: IngredientState.CookingType, heatMultiplier, delta):
 		else:
 			currentVelocityMult = lowVelocityMultiplier;
 	# print("vel mult: ", currentVelocityMult);
-	print(IngredientState.CookingType.keys()[cookingType]);
+	#print(IngredientState.CookingType.keys()[cookingType]);
 	# currentVelocityMult
 	# print("multiplier: ", GetCurrentState().typeInfluenceMultiplier[cookingType] * velocityMultiplier * heatMultiplier);
 	cookingTimer += delta * GetCurrentState().typeInfluenceMultiplier[cookingType] * currentVelocityMult * heatMultiplier;
@@ -58,6 +58,14 @@ func ChangeState(newIndex):
 	currentStateIndex = newIndex;
 	cookingTimer = 0;
 	print("new state ", IngredientState.CookingState.keys()[GetCurrentState().state]);
+	
+	match ingredientType:
+		IngredientType.Chicken:
+			match IngredientState.CookingState.keys()[GetCurrentState().state]:
+				IngredientState.CookingState.Cooked:
+					Global.TextManager.Activate("Chicken Cooked");
+				IngredientState.CookingState.Burnt:
+					Global.TextManager.Activate("Chicken Burnt");
 
 func UpdateColor(delta):
 	if currentStateIndex >= ingredientStates.size()-1: return;
