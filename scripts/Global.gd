@@ -13,7 +13,7 @@ func _ready():
 	gameManager = get_tree().get_first_node_in_group("GameManager");
 	instantiationManager = get_tree().get_first_node_in_group("InstantiationManager");
 	textManager = get_tree().get_first_node_in_group("TextManager");
-	print("Recipe Manager Size: ", recipeManager.recipe.size());
+	print("Recipe Manager Size: ", recipeManager.recipe.size()); 
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
