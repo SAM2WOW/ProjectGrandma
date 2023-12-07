@@ -8,7 +8,7 @@ class_name LiquidState;
 @export var unthickenHeatThreshold: float = 1.4;
 @export var minThickenHeatThreshold: float = 0.1;
 @export var maxFriction: float = 5;
-@export var maxMass: float = 0.3;#0.15;
+@export var maxMass: float = 0.15;
 @export var heatUpCoefficient: float = 0.2;
 @export var coolDownCoefficient: float = 0.1;
 
@@ -25,6 +25,7 @@ var targetHeat : float;
 var maxThickenVelocity = 200.0;
 var minVelocityMultiplier = 0.2;
 var velocityMultiplierCap = 2.0;
+var baseAlpha;
 
 var liquidComposition = {};
 var collidedLiquids = {};
@@ -39,6 +40,7 @@ func _init(type, body_rid : RID, render_rid: RID, _color: Color):
 	baseFriction = PhysicsServer2D.body_get_param(bodyRid, PhysicsServer2D.BODY_PARAM_FRICTION);
 	baseMass = PhysicsServer2D.body_get_param(bodyRid, PhysicsServer2D.BODY_PARAM_MASS);
 	color = _color;
+	baseAlpha = color.a;
 	# color = RenderingServer.self_m
 	thickenTimer = Global.remap_range(consistency,0,consistencyCap,0,maxThickenTimer);
 # Called when the node enters the scene tree for the first time.
@@ -59,6 +61,8 @@ func Thicken(delta, heat):
 		thickenTimer -= delta * heat * 0.3;
 	thickenTimer = clamp(thickenTimer, 0, maxThickenTimer);
 	consistency = ease(thickenTimer/maxThickenTimer, 3.0);
+	color.a = baseAlpha + ((255-baseAlpha) * consistency);
+	RenderingServer.canvas_item_set_self_modulate(renderRid, color);
 	var friction = baseFriction+((maxFriction-baseFriction) * consistency);
 	var mass = baseMass+((maxMass-baseMass) * consistency);
 	# print(friction, ", ", mass);

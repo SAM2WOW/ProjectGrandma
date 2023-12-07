@@ -31,13 +31,12 @@ position = Vector2(10, 10)
 scale = Vector2(1.2, 1.2)
 texture = ExtResource("3_k10yi")
 
-[node name="FrontSprite" parent="." index="1"]
-position = Vector2(5, 3)
-scale = Vector2(1.2, 1.2)
-texture = ExtResource("3_3boog")
-
-[node name="Collider" parent="." index="3"]
+[node name="Collider" parent="." index="2"]
 polygon = PackedVector2Array(-320, -96, -288, 32, -224, 96, 224, 96, 288, 32, 320, -96, 276, -148, 288, -96, 256, 0, 192, 64, -192, 64, -256, 0, -288, -96, -279, -151)
+
+[node name="CollisionPolygon2D2" parent="." index="3"]
+visible = false
+disabled = true
 
 [node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="." index="4"]
 position = Vector2(626, 0)
@@ -60,32 +59,33 @@ shape = SubResource("RectangleShape2D_ydxc7")
 position = Vector2(0, 80)
 shape = SubResource("RectangleShape2D_qih3h")
 
-[node name="CollisionPolygon2D2" parent="." index="9"]
+[node name="CollisionPolygon2D" parent="." index="9"]
 visible = false
 disabled = true
 
-[node name="CollisionPolygon2D" parent="." index="10"]
+[node name="CollisionShape2D4" parent="." index="10"]
 visible = false
 disabled = true
 
-[node name="CollisionShape2D4" parent="." index="11"]
+[node name="CollisionShape2D3" parent="." index="11"]
 visible = false
 disabled = true
 
-[node name="CollisionShape2D3" parent="." index="12"]
+[node name="CollisionShape2D2" parent="." index="12"]
 visible = false
 disabled = true
 
-[node name="CollisionShape2D2" parent="." index="13"]
-visible = false
-disabled = true
-
-[node name="Sprite2D" parent="." index="14"]
+[node name="Sprite2D" parent="." index="13"]
 position = Vector2(-182, -11)
 scale = Vector2(1.2, 1.2)
 texture = ExtResource("2_ksjrc")
 
-[node name="DragPoint" parent="." index="17"]
+[node name="FrontSprite" parent="Sprite2D" index="0"]
+position = Vector2(153.333, 10)
+scale = Vector2(1, 1)
+texture = ExtResource("3_3boog")
+
+[node name="DragPoint" parent="." index="16"]
 position = Vector2(0, 0)
 
 [node name="CollisionShape2D" parent="InteractArea" index="0"]

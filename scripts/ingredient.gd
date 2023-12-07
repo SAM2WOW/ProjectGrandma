@@ -70,8 +70,3 @@ func GetState(checkState: IngredientState.CookingState):
 
 func GetCurrentState():
 	return ingredientStates[currentStateIndex];
-
-func MultiplyScale(scaleMult: float):
-	$Sprite2D.scale *= scaleMult;
-	$Sprite2DShadow.set_scale($Sprite2D.get_scale())
-	$CollisionShape2D.scale *= scaleMult;
