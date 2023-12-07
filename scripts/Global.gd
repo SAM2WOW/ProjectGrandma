@@ -2,11 +2,11 @@ extends Node
 
 enum LiquidType {SoySauce, Vinegar, AbodoSauce};
 
-@onready var recipeManager = $RecipeManager;
-@onready var gameManager = $gameManager;
-@onready var instantiationManager = $InstantiationManager;
-@onready var textManager = $TextManager;
-@onready var sceneManager =$SceneManager
+var recipeManager;
+var gameManager;
+var instantiationManager;
+var textManager;
+var sceneManager;
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
