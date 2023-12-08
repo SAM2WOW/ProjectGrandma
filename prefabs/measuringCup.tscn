@@ -1,11 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://bvlk2bnpkqn8u"]
+[gd_scene load_steps=8 format=3 uid="uid://bvlk2bnpkqn8u"]
 
 [ext_resource type="PackedScene" uid="uid://drn5x3vivefyp" path="res://prefabs/liquidContainer.tscn" id="1_sbf78"]
 [ext_resource type="Texture2D" uid="uid://ci5i6sujtt1ry" path="res://arts/kitchenware/measuring cup line.png" id="2_seyaj"]
 [ext_resource type="Texture2D" uid="uid://t2ow6qe8g01o" path="res://arts/kitchenware/measuring cup color.png" id="3_psmt4"]
-[ext_resource type="AudioStream" uid="uid://dheapkl0gvtjg" path="res://sounds/Bottle1.wav" id="4_qrsbt"]
-[ext_resource type="AudioStream" uid="uid://5v4py7blxtfr" path="res://sounds/Bottle2.wav" id="5_jqom1"]
-[ext_resource type="AudioStream" uid="uid://2jcjncs56epu" path="res://sounds/Bottle3.wav" id="6_uu1j2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l4jx0"]
 size = Vector2(221.213, 35.2608)
@@ -20,18 +17,7 @@ size = Vector2(212, 28)
 radius = 177.0
 height = 370.0
 
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_7i6gk"]
-streams_count = 3
-stream_0/stream = ExtResource("4_qrsbt")
-stream_0/weight = 1.0
-stream_1/stream = ExtResource("5_jqom1")
-stream_1/weight = 1.0
-stream_2/stream = ExtResource("6_uu1j2")
-stream_2/weight = 1.0
-
 [node name="MeasuringCup" instance=ExtResource("1_sbf78")]
-max_contacts_reported = 1
-contact_monitor = true
 
 [node name="Sprite2DShadow" parent="." index="0"]
 scale = Vector2(0.8, 0.8)
@@ -85,9 +71,3 @@ texture = ExtResource("3_psmt4")
 visible = true
 position = Vector2(-1, -32)
 shape = SubResource("CapsuleShape2D_vs7ud")
-
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." index="15"]
-stream = SubResource("AudioStreamRandomizer_7i6gk")
-bus = &"SFX"
-
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
