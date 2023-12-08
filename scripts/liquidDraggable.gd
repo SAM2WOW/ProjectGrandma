@@ -16,19 +16,30 @@ func _ready():
 	var texture = load(bottleImage[liquidType])
 	$Sprite2D.set_texture(texture)
 	$Sprite2DShadow.set_texture(texture)
+	
+	match liquidType:
+		0:
+			$WaterGen/SplashParticle.set_modulate(Color("2f1300"))
+		1:
+			$WaterGen/SplashParticle.set_modulate(Color("ffd12b"))
+		2:
+			$WaterGen/SplashParticle.set_modulate(Color("2f1300"))
 
 func ObjectAction(event):
 	super.ObjectAction(event);
 	produceLiquid = event.pressed;
 	if produceLiquid:
 		$Pouring.play()
+		$WaterGen/SplashParticle.set_emitting(true)
 	else:
 		$Pouring.stop()
+		$WaterGen/SplashParticle.set_emitting(false)
 
 func StopDrag():
 	if produceLiquid:
 		produceLiquid = false;
 		$Pouring.stop()
+		$WaterGen/SplashParticle.set_emitting(false)
 	
 	super.StopDrag();
 
