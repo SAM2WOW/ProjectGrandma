@@ -97,6 +97,8 @@ func CheckRecipePoints():
 	print("scene score: ", Global.sceneScores[Global.currentStage])
 	# print("points: %.1f" % (points/totalPoints));
 	print("step text:\n", stepText);
+	
+	$EndNode/Smoke.set_emitting(true)
 
 func GetFinalGrade():
 	var score = float(points)/totalPoints
