@@ -114,8 +114,23 @@ func _on_complete_button_input_event(viewport, event, shape_idx):
 
 
 func _on_complete_button_mouse_entered():
-	$"Node2D/Cooking Scene/CompleteButton/Sprite".set_scale(Vector2(1.1, 1.1))
+	$"Node2D/Cooking Scene/CompleteButton/Sprite".set_scale(Vector2(1.05, 1.05))
 
 
 func _on_complete_button_mouse_exited():
 	$"Node2D/Cooking Scene/CompleteButton/Sprite".set_scale(Vector2(1, 1))
+
+
+func _on_restart_button_input_event(viewport, event, shape_idx):
+	if !event is InputEventMouseButton: return;
+	if event.button_index == 1 && event.pressed:
+		get_tree().reload_current_scene()
+
+
+func _on_restart_button_mouse_entered():
+	$"Node2D/Cooking Scene/RestartButton/Sprite".set_scale(Vector2(1.05, 1.05))
+	$"Node2D/Cooking Scene/RestartButton/SpriteShadow".show()
+
+func _on_restart_button_mouse_exited():
+	$"Node2D/Cooking Scene/RestartButton/Sprite".set_scale(Vector2(1, 1))
+	$"Node2D/Cooking Scene/RestartButton/SpriteShadow".hide()

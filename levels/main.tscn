@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://dpg0gbpttdpy5"]
+[gd_scene load_steps=48 format=3 uid="uid://dpg0gbpttdpy5"]
 
 [ext_resource type="Texture2D" uid="uid://cmp4cxxq8yuat" path="res://arts/ivory-off-white-paper-texture.jpg" id="1_1jmmi"]
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_udxji"]
@@ -23,6 +23,7 @@
 [ext_resource type="Texture2D" uid="uid://dxjkg2o64jyn4" path="res://arts/UI/Buttons/Complete Button.png" id="17_m74cn"]
 [ext_resource type="Material" uid="uid://be65qpikd7xak" path="res://arts/UI/wiggleMaterial.tres" id="17_rnnhh"]
 [ext_resource type="Script" path="res://textEvent.gd" id="19_5tann"]
+[ext_resource type="Texture2D" uid="uid://dtytl3pf8yl1v" path="res://arts/UI/Buttons/Restart button.jpg" id="19_8xmlg"]
 [ext_resource type="Texture2D" uid="uid://cfpcexdv1l3y4" path="res://arts/UI/IMG_0044.png" id="19_sp8nt"]
 [ext_resource type="PackedScene" uid="uid://v5qskld56om" path="res://prefabs/textManager.tscn" id="21_rjtit"]
 [ext_resource type="AudioStream" uid="uid://bwv3ngkmackai" path="res://sounds/CompleteSound.ogg" id="34_yowf1"]
@@ -39,6 +40,9 @@ size = Vector2(5056, 1370)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wjodo"]
 radius = 97.8132
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_60cbq"]
+size = Vector2(302.642, 147.933)
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_y2278"]
 frequency = 0.0698
@@ -418,6 +422,34 @@ label_settings = SubResource("LabelSettings_c5rhk")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Cooking Scene/CompleteButton"]
 shape = SubResource("CircleShape2D_wjodo")
 
+[node name="RestartButton" type="Area2D" parent="Node2D/Cooking Scene"]
+position = Vector2(-801, 765)
+scale = Vector2(2.01167, 2.01167)
+
+[node name="SpriteShadow" type="Sprite2D" parent="Node2D/Cooking Scene/RestartButton"]
+visible = false
+modulate = Color(0, 0, 0, 0.584314)
+position = Vector2(-1.4913, 20.3811)
+texture = ExtResource("19_8xmlg")
+
+[node name="Sprite" type="Sprite2D" parent="Node2D/Cooking Scene/RestartButton"]
+material = ExtResource("17_rnnhh")
+position = Vector2(9.53674e-07, 7.62939e-06)
+texture = ExtResource("19_8xmlg")
+
+[node name="Label" type="Label" parent="Node2D/Cooking Scene/RestartButton/Sprite"]
+offset_left = -64.3156
+offset_top = -37.0302
+offset_right = 161.684
+offset_bottom = 105.97
+scale = Vector2(0.754157, 0.754157)
+text = "Retry"
+label_settings = SubResource("LabelSettings_c5rhk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Cooking Scene/RestartButton"]
+position = Vector2(-1.12921, -1.12927)
+shape = SubResource("RectangleShape2D_60cbq")
+
 [node name="WaterColor" type="Sprite2D" parent="Node2D"]
 visible = false
 material = SubResource("ShaderMaterial_h723b")
@@ -591,6 +623,9 @@ volume_db = -5.0
 [connection signal="input_event" from="Node2D/Cooking Scene/CompleteButton" to="." method="_on_complete_button_input_event"]
 [connection signal="mouse_entered" from="Node2D/Cooking Scene/CompleteButton" to="." method="_on_complete_button_mouse_entered"]
 [connection signal="mouse_exited" from="Node2D/Cooking Scene/CompleteButton" to="." method="_on_complete_button_mouse_exited"]
+[connection signal="input_event" from="Node2D/Cooking Scene/RestartButton" to="." method="_on_restart_button_input_event"]
+[connection signal="mouse_entered" from="Node2D/Cooking Scene/RestartButton" to="." method="_on_restart_button_mouse_entered"]
+[connection signal="mouse_exited" from="Node2D/Cooking Scene/RestartButton" to="." method="_on_restart_button_mouse_exited"]
 [connection signal="mouse_entered" from="CanvasLayer/HUD/HoverArea" to="." method="_on_hover_area_mouse_entered"]
 [connection signal="mouse_entered" from="CanvasLayer/HUD/HoverArea2" to="." method="_on_hover_area_2_mouse_entered"]
 [connection signal="mouse_entered" from="CanvasLayer/HUD/HoverArea3" to="." method="_on_hover_area_3_mouse_entered"]
