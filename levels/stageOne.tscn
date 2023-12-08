@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://uetxp6v8gega"]
+[gd_scene load_steps=9 format=3 uid="uid://uetxp6v8gega"]
 
 [ext_resource type="PackedScene" uid="uid://dpg0gbpttdpy5" path="res://levels/main.tscn" id="1_y2kh4"]
 [ext_resource type="Script" path="res://levels/stageOne.gd" id="2_3n783"]
@@ -7,6 +7,16 @@
 [ext_resource type="FontFile" uid="uid://ds8uy6wtxnlvu" path="res://arts/fonts/Zeyada-Regular.ttf" id="3_wy54e"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_c5rhk"]
+font = ExtResource("3_wy54e")
+font_size = 90
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_6u130"]
+font = ExtResource("3_wy54e")
+font_size = 80
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_73rwe"]
 font = ExtResource("3_wy54e")
 font_size = 90
 font_color = Color(0, 0, 0, 1)
@@ -25,6 +35,9 @@ texture = ExtResource("3_eq81a")
 
 [node name="Recipe Scene" parent="Node2D" index="3"]
 visible = false
+
+[node name="ColorRect" parent="CanvasLayer" index="0"]
+visible = true
 
 [node name="CompeletLevelButton" parent="CanvasLayer/HUD" index="4"]
 offset_left = 1366.0
@@ -99,3 +112,31 @@ offset_right = 575.086
 offset_bottom = 83.3694
 text = "Should I measure it first?"
 label_settings = SubResource("LabelSettings_c5rhk")
+
+[node name="Adobo Ready" type="Node2D" parent="TextManager" index="6"]
+position = Vector2(0, -75)
+script = ExtResource("2_3ui8n")
+dissapearTimer = 5.0
+
+[node name="Label" type="Label" parent="TextManager/Adobo Ready" index="0"]
+offset_left = 658.49
+offset_top = -380.267
+offset_right = 1525.49
+offset_bottom = -221.267
+text = "Great! Sauce looks ready"
+label_settings = SubResource("LabelSettings_6u130")
+
+[node name="All Ingredients" type="Node2D" parent="TextManager" index="7"]
+position = Vector2(0, -75)
+rotation = 0.0436332
+script = ExtResource("2_3ui8n")
+playOnce = false
+
+[node name="Label" type="Label" parent="TextManager/All Ingredients" index="0"]
+offset_left = -406.836
+offset_top = -808.718
+offset_right = 687.164
+offset_bottom = -519.718
+text = "That's all the ingredients in the pan! Now they just need to cook"
+label_settings = SubResource("LabelSettings_73rwe")
+autowrap_mode = 2
