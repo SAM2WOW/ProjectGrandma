@@ -1,8 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://dcdllixbqh58h"]
+[gd_scene load_steps=14 format=3 uid="uid://dcdllixbqh58h"]
 
 [ext_resource type="PackedScene" uid="uid://c3gtn7dcgsaa0" path="res://prefabs/draggable.tscn" id="1_6ia7r"]
 [ext_resource type="Script" path="res://scripts/mixingSpoon.gd" id="2_lmuof"]
 [ext_resource type="AudioStream" uid="uid://bvnntyidr4bjj" path="res://sounds/Impact2.wav" id="3_86le3"]
+[ext_resource type="Texture2D" uid="uid://c0q31qcxhg2wu" path="res://arts/kitchenware/spatula.png" id="3_bvbf8"]
 [ext_resource type="AudioStream" uid="uid://cmc2mhscfc4am" path="res://sounds/Impact3.wav" id="4_i3626"]
 [ext_resource type="AudioStream" uid="uid://d1fimxj74503o" path="res://sounds/Impact5.wav" id="5_7svpn"]
 [ext_resource type="AudioStream" uid="uid://c0d2nx1rafyhd" path="res://sounds/Impact1.wav" id="6_sxugj"]
@@ -41,9 +42,15 @@ contact_monitor = true
 script = ExtResource("2_lmuof")
 rotateSpeed = 100.0
 
+[node name="Sprite2DShadow" parent="." index="0"]
+position = Vector2(11.75, 4.99999)
+scale = Vector2(0.819565, 0.842604)
+texture = ExtResource("3_bvbf8")
+
 [node name="Sprite2D" parent="." index="1"]
-position = Vector2(0, 1.81899e-12)
-scale = Vector2(0.75, 5)
+position = Vector2(6.375, 4.00002)
+scale = Vector2(0.805435, 0.835503)
+texture = ExtResource("3_bvbf8")
 
 [node name="CollisionShape2D" parent="." index="2"]
 rotation = 0.0
@@ -52,6 +59,7 @@ shape = SubResource("CapsuleShape2D_jo5k7")
 [node name="CollisionShape2D" parent="InteractArea" index="0"]
 rotation = 0.0
 shape = SubResource("CapsuleShape2D_g0hsb")
+metadata/_edit_lock_ = true
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." index="6"]
 stream = SubResource("AudioStreamRandomizer_t4ijv")
