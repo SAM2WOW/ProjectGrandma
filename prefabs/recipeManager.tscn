@@ -1,4 +1,4 @@
-[gd_scene load_steps=66 format=3 uid="uid://w7pwgo4f8bvq"]
+[gd_scene load_steps=67 format=3 uid="uid://w7pwgo4f8bvq"]
 
 [ext_resource type="Script" path="res://scripts/RecipeManager.gd" id="1_bgt5p"]
 [ext_resource type="Script" path="res://Resources/recipeComponent.gd" id="2_6kl6y"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://Resources/liquidPoints.gd" id="4_tnfeb"]
 [ext_resource type="Script" path="res://Resources/liquidMixturePoints.gd" id="6_6kdyy"]
 [ext_resource type="Script" path="res://Resources/liquidMixtureComponent.gd" id="7_6786d"]
+[ext_resource type="Script" path="res://Resources/resultText.gd" id="10_2f4t1"]
 [ext_resource type="FontFile" uid="uid://ds8uy6wtxnlvu" path="res://arts/fonts/Zeyada-Regular.ttf" id="10_lxgpf"]
 [ext_resource type="FontFile" uid="uid://lf3j1njjt8sb" path="res://arts/fonts/RockSalt-Regular.ttf" id="11_3jbcm"]
 [ext_resource type="Texture2D" uid="uid://xepks47i42bx" path="res://arts/ingredients/chickenAdobo.png" id="12_rjpox"]
@@ -25,7 +26,7 @@ description = "there's not enough soy sauce"
 script = ExtResource("6_6kdyy")
 liquidType = 0
 lessOrEqualRatio = 0.65
-points = 2.0
+points = 1.0
 description = "there's enough soy sauce."
 
 [sub_resource type="Resource" id="Resource_0l17c"]
@@ -46,7 +47,7 @@ description = "there's too little vinegar"
 script = ExtResource("6_6kdyy")
 liquidType = 1
 lessOrEqualRatio = 0.65
-points = 2.0
+points = 1.0
 description = "there's enough vinegar"
 
 [sub_resource type="Resource" id="Resource_22652"]
@@ -71,13 +72,13 @@ description = "there's not enough sauce"
 [sub_resource type="Resource" id="Resource_6rkxi"]
 script = ExtResource("3_eufjj")
 belowOrEqualQuantity = 250
-quantityPoints = 3.0
+quantityPoints = 2.0
 description = "there's enough sauce"
 
 [sub_resource type="Resource" id="Resource_qqu8g"]
 script = ExtResource("3_eufjj")
 belowOrEqualQuantity = 100000000
-quantityPoints = 1.0
+quantityPoints = 0.0
 description = "there's too much sauce"
 
 [sub_resource type="Resource" id="Resource_t5c2e"]
@@ -92,7 +93,7 @@ quantityPoints = Array[ExtResource("3_eufjj")]([SubResource("Resource_o8but"), S
 [sub_resource type="Resource" id="Resource_7xp4x"]
 script = ExtResource("2_yyyyq")
 doneness = 0
-points = 1.0
+points = 0.0
 description = "the chicken is undercooked"
 
 [sub_resource type="Resource" id="Resource_koqgb"]
@@ -128,13 +129,13 @@ description = "there's not enough chicken"
 [sub_resource type="Resource" id="Resource_dvlml"]
 script = ExtResource("3_eufjj")
 belowOrEqualQuantity = 10
-quantityPoints = 3.0
+quantityPoints = 2.0
 description = "there's a good amount of chicken"
 
 [sub_resource type="Resource" id="Resource_5tvxt"]
 script = ExtResource("3_eufjj")
 belowOrEqualQuantity = 20
-quantityPoints = 1.0
+quantityPoints = 0.0
 description = "there's too much chicken"
 
 [sub_resource type="Resource" id="Resource_c5yxf"]
@@ -177,7 +178,7 @@ quantityPoints = Array[ExtResource("3_eufjj")]([])
 [sub_resource type="Resource" id="Resource_43lcn"]
 script = ExtResource("2_yyyyq")
 doneness = 0
-points = 2.0
+points = 1.0
 description = "The garlic is undercooked."
 
 [sub_resource type="Resource" id="Resource_p6aen"]
@@ -242,13 +243,13 @@ description = "the peppercorn isn't cooked enough"
 [sub_resource type="Resource" id="Resource_vbgtq"]
 script = ExtResource("2_yyyyq")
 doneness = 1
-points = 2.0
+points = 3.0
 description = "the peppercorns were cooked well"
 
 [sub_resource type="Resource" id="Resource_rp744"]
 script = ExtResource("2_yyyyq")
 doneness = 2
-points = 1.0
+points = 2.0
 description = "the peppercorns are too strong"
 
 [sub_resource type="Resource" id="Resource_jt160"]
@@ -272,7 +273,7 @@ description = "there's not enough peppercorns"
 [sub_resource type="Resource" id="Resource_l1j1g"]
 script = ExtResource("3_eufjj")
 belowOrEqualQuantity = 15
-quantityPoints = 3.0
+quantityPoints = 2.0
 description = "there's enough peppercorns"
 
 [sub_resource type="Resource" id="Resource_1o2jq"]
@@ -300,7 +301,7 @@ description = "the bay leaves weren't cooked enough"
 [sub_resource type="Resource" id="Resource_eeqc3"]
 script = ExtResource("2_yyyyq")
 doneness = 1
-points = 3.0
+points = 4.0
 description = "the bay leaves were cooked enough"
 
 [sub_resource type="Resource" id="Resource_45a1t"]
@@ -324,13 +325,13 @@ description = "there's no bay leaves"
 [sub_resource type="Resource" id="Resource_8bmu5"]
 script = ExtResource("3_eufjj")
 belowOrEqualQuantity = 3
-quantityPoints = 2.0
+quantityPoints = 1.0
 description = "there's a good amount of bay leaves"
 
 [sub_resource type="Resource" id="Resource_fky46"]
 script = ExtResource("3_eufjj")
 belowOrEqualQuantity = 999999
-quantityPoints = 1.0
+quantityPoints = 0.0
 description = "there's too much bay leaves"
 
 [sub_resource type="Resource" id="Resource_3s2vj"]
@@ -350,6 +351,15 @@ description = "Simmer on low heat for around 30 seconds while mixing constantly 
 formatDescription = false
 quantityPoints = Array[ExtResource("3_eufjj")]([])
 
+[sub_resource type="Resource" id="Resource_w23gh"]
+script = ExtResource("10_2f4t1")
+result = 0
+resultText = "My first attempt ended up pretty awful. It tasted nothing like how my grandma made it; as a matter of fact i'm not sure it was edible at all. Hopefully its only up from here."
+
+[sub_resource type="Resource" id="Resource_57hos"]
+script = ExtResource("10_2f4t1")
+result = 1
+resultText = ""
 [sub_resource type="Gradient" id="Gradient_ev7pv"]
 offsets = PackedFloat32Array(0, 0.0580645, 1)
 colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0)
@@ -357,6 +367,9 @@ colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0)
 [node name="RecipeManager" type="Node2D" groups=["RecipeManager"]]
 script = ExtResource("1_bgt5p")
 recipe = Array[ExtResource("2_6kl6y")]([SubResource("Resource_t5c2e"), SubResource("Resource_c5yxf"), SubResource("Resource_6h8y0"), SubResource("Resource_gqaa1"), SubResource("Resource_gv8wc"), SubResource("Resource_3s2vj"), SubResource("Resource_lw685")])
+resultText = Array[ExtResource("10_2f4t1")]([SubResource("Resource_w23gh"), SubResource("Resource_57hos")])
+badFood = "res://arts/end states/bad adobo v2.png"
+goodFood = "res://arts/end states/good adobo.png"
 
 [node name="RecipeNode" type="Node2D" parent="."]
 
@@ -432,7 +445,7 @@ text = "[b]Result[/b]
 "
 scroll_active = false
 
-[node name="EndText2" type="RichTextLabel" parent="EndNode"]
+[node name="NoteText" type="RichTextLabel" parent="EndNode"]
 offset_left = 415.0
 offset_top = -2481.0
 offset_right = 1496.0

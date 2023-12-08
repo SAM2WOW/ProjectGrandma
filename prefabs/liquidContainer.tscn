@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://drn5x3vivefyp"]
+[gd_scene load_steps=11 format=3 uid="uid://drn5x3vivefyp"]
 
 [ext_resource type="PackedScene" uid="uid://c3gtn7dcgsaa0" path="res://prefabs/draggable.tscn" id="1_rj0oe"]
 [ext_resource type="Script" path="res://scripts/liquidContainer.gd" id="2_o3842"]
-[ext_resource type="Texture2D" uid="uid://d0jqhp5b15f4y" path="res://arts/kitchenware/bowl.png" id="3_dot4d"]
+[ext_resource type="Texture2D" uid="uid://c7f28hs2s1iuh" path="res://arts/kitchenware/bowl line art.png" id="4_6vp68"]
+[ext_resource type="Texture2D" uid="uid://cpje0kha7ens0" path="res://arts/kitchenware/bowl color.png" id="5_iu8dq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c3qqw"]
 size = Vector2(127.561, 35.2608)
@@ -35,9 +36,9 @@ liquidMix = {
 }
 
 [node name="Sprite2DShadow" parent="." index="0"]
-position = Vector2(-1.99999, -28.5)
-scale = Vector2(0.77037, 0.656481)
-texture = ExtResource("3_dot4d")
+position = Vector2(2, -24)
+scale = Vector2(0.901887, 0.763533)
+texture = ExtResource("4_6vp68")
 
 [node name="EnterArea" type="Area2D" parent="." index="1"]
 collision_layer = 3
@@ -45,6 +46,7 @@ collision_mask = 3
 
 [node name="EnterBox" type="CollisionPolygon2D" parent="EnterArea" index="0"]
 polygon = PackedVector2Array(-224, -128, -186, 7, -160, 96, 160, 96, 186, 10, 224, -128)
+metadata/_edit_lock_ = true
 
 [node name="Collider" type="CollisionPolygon2D" parent="." index="2"]
 visible = false
@@ -86,14 +88,15 @@ position = Vector2(-18, 60)
 shape = SubResource("RectangleShape2D_waguf")
 
 [node name="Sprite2D" parent="." index="10"]
-position = Vector2(0, -31.5)
-scale = Vector2(0.77037, 0.673148)
-texture = ExtResource("3_dot4d")
+position = Vector2(-5.49998, -26.5687)
+scale = Vector2(0.903774, 0.766773)
+texture = ExtResource("4_6vp68")
 
 [node name="FrontSprite" type="Sprite2D" parent="Sprite2D" index="0"]
 visibility_layer = 4
 z_index = 3
-position = Vector2(0, 46.795)
+position = Vector2(0, -2.97112)
+texture = ExtResource("5_iu8dq")
 
 [node name="CollisionShape2D" parent="." index="11"]
 visible = false

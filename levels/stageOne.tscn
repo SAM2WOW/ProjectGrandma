@@ -147,9 +147,3 @@ text = "Don't forget to turn on the fire
 
                    < Right Here"
 label_settings = SubResource("LabelSettings_c5rhk")
-
-[connection signal="on_mouse_hovering" from="Node2D/Cooking Scene/LiquidDraggable" to="." method="_on_liquid_draggable_on_mouse_hovering"]
-[connection signal="on_grabbed" from="Node2D/Cooking Scene/LiquidDraggable2" to="." method="_on_liquid_draggable_2_on_grabbed"]
-[connection signal="on_mouse_hovering" from="Node2D/Cooking Scene/Pan" to="." method="_on_pan_on_mouse_hovering"]
-[connection signal="on_grabbed" from="Node2D/Cooking Scene/Container" to="." method="_on_container_on_grabbed"]
-[connection signal="on_grabbed" from="Node2D/Cooking Scene/Container2" to="." method="_on_container_2_on_grabbed"]
