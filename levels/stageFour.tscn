@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dqw0mk26gtjwj" path="res://arts/main scene/Day3.jpg" id="2_a1s42"]
 [ext_resource type="Texture2D" uid="uid://c4tba3sk7bjuc" path="res://arts/main scene/IMG_0050.png" id="2_casjv"]
 
-[node name="Main" instance=ExtResource("1_c1vov")]
+[node name="Main4" instance=ExtResource("1_c1vov")]
 
 [node name="ParallaxLayer" parent="ParallaxBackground" index="0"]
 motion_mirroring = Vector2(3840, 2160)
@@ -22,26 +22,3 @@ self_modulate = Color(1, 1, 1, 0.301961)
 position = Vector2(-561, 145)
 scale = Vector2(0.514732, 0.514732)
 texture = ExtResource("2_casjv")
-
-[node name="RichTextLabel" parent="Node2D/Recipe Scene" index="0"]
-text = "[b]Ingredients[/b]
-	* 1/2 pounds chicken thighs
-	* 1/2 cup white vinegar
-	* 1/2 cup soy sauce
-	* 2 cloves garlic, chopped
-	* 1 teaspoon black peppercorns
-	* 1 bay leaves
-	* Steamed rice, for serving
-
-
-[b]Steps[/b]
-	1. Combine the chicken thighs, vinegar, soy sauce, garlic, peppercorns and bay leaves in a large pot. Cover and marinate the chicken in the refrigerator for 1 to 3 hours. 
-	2. Brown the chicken thighs in a pan with oil. Add crushed garlic to cook slightly with chicken
-		a. Optional - add chopped onions to pan
-	3. Add marinade to pot with chicken
-	4. Add a splash of fish sauce to the pot and stir
-	5. Bring to a boil then let simmer for 30-40mins with cover on
-	6. Flip chicken thighs half way through and stir the sauce
-	7. Serve over rice!
-
-"
