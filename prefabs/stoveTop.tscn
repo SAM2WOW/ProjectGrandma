@@ -27,7 +27,7 @@ texture = ExtResource("2_34qb8")
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
-scale = Vector2(4.02867, 0.92562)
+scale = Vector2(2.62805, 1.89179)
 polygon = PackedVector2Array(-128, -128, -128, -32, 128, -32, 128, -128)
 
 [node name="Smoke" type="CPUParticles2D" parent="."]
