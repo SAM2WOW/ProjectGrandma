@@ -27,7 +27,10 @@ func _process(delta):
 	
 func completeStage():
 	#print('Stage Complete')
-	$CanvasLayer/HUD/CompeletLevelButton.modulate.a = 1	
+	$CanvasLayer/HUD/CompeletLevelButton.modulate.a = 1
+	
+	var tween = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
+	tween.tween_property($"Node2D/Cooking Scene/CompleteButton", "position", Vector2(-1398, 816), 1)
 	
 
 func _input(ev):
@@ -80,7 +83,7 @@ func _on_animation_player_animation_finished(anim_name):
 	elif anim_name == "Final":
 		$CanvasLayer/HUD/HoverArea3.show()
 	if anim_name == "Exit":
-		get_tree().reload_current_scene()
+		Global.gameManager.OnCompleteStage()
 
 
 func _on_compelet_level_button_pressed():
@@ -95,9 +98,24 @@ func _on_compelet_level_button_pressed():
 	$CanvasLayer/HUD/RestartButton.hide()
 	$CanvasLayer/HUD/CompeletLevelButton.hide()
 	MusicPlayer.fade_out(true)
+	
+	await get_tree().create_timer(1).timeout
 	$Sounds/CompleteSound.play()
-	await get_tree().create_timer(3).timeout
-	Global.gameManager.OnCompleteStage()
+
 
 func _on_restart_button_pressed():
 	get_tree().reload_current_scene()
+
+
+func _on_complete_button_input_event(viewport, event, shape_idx):
+	if !event is InputEventMouseButton: return;
+	if event.button_index == 1 && event.pressed:
+		_on_compelet_level_button_pressed()
+
+
+func _on_complete_button_mouse_entered():
+	$"Node2D/Cooking Scene/CompleteButton/Sprite".set_scale(Vector2(1.1, 1.1))
+
+
+func _on_complete_button_mouse_exited():
+	$"Node2D/Cooking Scene/CompleteButton/Sprite".set_scale(Vector2(1, 1))
