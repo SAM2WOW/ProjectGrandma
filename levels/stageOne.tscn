@@ -130,6 +130,7 @@ label_settings = SubResource("LabelSettings_6u130")
 position = Vector2(0, -75)
 rotation = 0.0436332
 script = ExtResource("2_3ui8n")
+dissapearTimer = 5.0
 playOnce = false
 
 [node name="Label" type="Label" parent="TextManager/All Ingredients" index="0"]
@@ -137,6 +138,6 @@ offset_left = -406.836
 offset_top = -808.718
 offset_right = 687.164
 offset_bottom = -519.718
-text = "That's all the ingredients in the pan! Now they just need to cook"
+text = "That's all the ingredients in the pan! Now they just need to cook."
 label_settings = SubResource("LabelSettings_73rwe")
 autowrap_mode = 2
