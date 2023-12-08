@@ -1,0 +1,318 @@
+[gd_scene load_steps=22 format=3 uid="uid://bqwwcxspfiwuf"]
+
+[ext_resource type="Script" path="res://scripts/menu.gd" id="1_35sua"]
+[ext_resource type="FontFile" uid="uid://ds8uy6wtxnlvu" path="res://arts/fonts/Zeyada-Regular.ttf" id="6_y4lxk"]
+[ext_resource type="Texture2D" uid="uid://eu58chmihkcv" path="res://arts/main scene/Day1.jpg" id="11_ulvm6"]
+[ext_resource type="Shader" path="res://arts/UI/transition.gdshader" id="22_e765r"]
+[ext_resource type="Texture2D" uid="uid://c6dw2f176slrg" path="res://arts/UI/transition.jpg" id="23_5u25k"]
+[ext_resource type="Texture2D" uid="uid://y0x4wmm0704m" path="res://arts/UI/black.png" id="24_lb4qe"]
+[ext_resource type="Texture2D" uid="uid://cfpcexdv1l3y4" path="res://arts/UI/IMG_0044.png" id="25_vqwnu"]
+[ext_resource type="FontFile" uid="uid://lf3j1njjt8sb" path="res://arts/fonts/RockSalt-Regular.ttf" id="26_j0370"]
+[ext_resource type="AudioStream" uid="uid://bwv3ngkmackai" path="res://sounds/CompleteSound.ogg" id="27_6g3j1"]
+[ext_resource type="AudioStream" uid="uid://ml0deg4pqvk1" path="res://sounds/Slide1.wav" id="28_e46lx"]
+[ext_resource type="AudioStream" uid="uid://gcr1455oig1v" path="res://sounds/Slide2.wav" id="29_xt4v3"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kbxna"]
+shader = ExtResource("22_e765r")
+shader_parameter/cutoff = 0.0
+shader_parameter/smooth_size = 0.125
+shader_parameter/mask = ExtResource("23_5u25k")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1lh3a"]
+shader = ExtResource("22_e765r")
+shader_parameter/cutoff = 1.0
+shader_parameter/smooth_size = 0.125
+shader_parameter/mask = ExtResource("23_5u25k")
+
+[sub_resource type="GDScript" id="GDScript_eekhh"]
+script/source = "extends Button
+
+var canPress:bool = false
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+
+
+func _on_pressed():
+	if !canPress: return
+	
+	pass # Replace with function body.
+"
+
+[sub_resource type="Animation" id="Animation_jsi21"]
+resource_name = "Exit"
+length = 2.0
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/ColorRect:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.51, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [true, true, false, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/ColorRect:material:shader_parameter/cutoff")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.51, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 1.0, 1.0]
+}
+
+[sub_resource type="Animation" id="Animation_hn1si"]
+resource_name = "Final"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/LetterBoxing:material:shader_parameter/cutoff")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1.4, 2.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/LetterBoxing:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_ksgmm"]
+resource_name = "Intro"
+length = 0.6
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/ColorRect:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.51, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [true, true, false, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/ColorRect:material:shader_parameter/cutoff")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.51, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 1.0, 1.0]
+}
+
+[sub_resource type="Animation" id="Animation_na2py"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/ColorRect:material:shader_parameter/cutoff")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/LetterBoxing:material:shader_parameter/cutoff")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+
+[sub_resource type="Animation" id="Animation_qwj85"]
+resource_name = "Transition"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_uv4j4"]
+_data = {
+"Exit": SubResource("Animation_jsi21"),
+"Final": SubResource("Animation_hn1si"),
+"Intro": SubResource("Animation_ksgmm"),
+"RESET": SubResource("Animation_na2py"),
+"Transition": SubResource("Animation_qwj85")
+}
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_ygqxs"]
+streams_count = 2
+stream_0/stream = ExtResource("28_e46lx")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("29_xt4v3")
+stream_1/weight = 1.0
+
+[node name="Menu" type="Node"]
+script = ExtResource("1_35sua")
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="Camera2D" type="Camera2D" parent="Node2D"]
+position = Vector2(0, -16)
+zoom = Vector2(0.5, 0.5)
+
+[node name="Cooking Scene" type="Node2D" parent="Node2D"]
+
+[node name="EndText" type="RichTextLabel" parent="Node2D/Cooking Scene"]
+offset_left = -544.0
+offset_top = -187.0
+offset_right = 537.0
+offset_bottom = 1738.0
+rotation = -0.0488692
+scale = Vector2(2.16475, 2.16475)
+mouse_filter = 1
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("6_y4lxk")
+theme_override_fonts/bold_font = ExtResource("26_j0370")
+theme_override_font_sizes/normal_font_size = 60
+theme_override_font_sizes/bold_font_size = 71
+bbcode_enabled = true
+text = "[b]My Recipes[/b]"
+scroll_active = false
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="TextureRect" parent="CanvasLayer"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_kbxna")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("24_lb4qe")
+
+[node name="LetterBoxing" type="TextureRect" parent="CanvasLayer"]
+visible = false
+texture_filter = 1
+material = SubResource("ShaderMaterial_1lh3a")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("25_vqwnu")
+expand_mode = 1
+
+[node name="HUD" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="HoverArea3" type="Control" parent="CanvasLayer/HUD"]
+custom_minimum_size = Vector2(0, 81.13)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -195.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/HUD/HoverArea3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/HUD/HoverArea3/CenterContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_y4lxk")
+theme_override_font_sizes/font_size = 40
+text = "Move Here To Continue"
+
+[node name="RestartButton" type="Button" parent="CanvasLayer/HUD"]
+visible = false
+layout_mode = 0
+offset_left = 1120.0
+offset_top = 885.0
+offset_right = 1324.0
+offset_bottom = 981.0
+text = "Restart"
+script = SubResource("GDScript_eekhh")
+
+[node name="CompeletLevelButton" type="Button" parent="CanvasLayer/HUD"]
+visible = false
+layout_mode = 0
+offset_left = 1411.0
+offset_top = 884.0
+offset_right = 1615.0
+offset_bottom = 980.0
+text = "Complete"
+script = SubResource("GDScript_eekhh")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_uv4j4")
+}
+autoplay = "Intro"
+
+[node name="Sounds" type="Node" parent="."]
+
+[node name="CompleteSound" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("27_6g3j1")
+volume_db = -5.0
+
+[node name="SlideSound" type="AudioStreamPlayer" parent="Sounds"]
+stream = SubResource("AudioStreamRandomizer_ygqxs")
+volume_db = -5.0
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.1, 0.1)
+motion_mirroring = Vector2(3840, 2160)
+
+[node name="BG" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+show_behind_parent = true
+z_index = -10
+position = Vector2(1920, 1080)
+scale = Vector2(2, 2)
+texture = ExtResource("11_ulvm6")
+
+[connection signal="mouse_entered" from="CanvasLayer/HUD/HoverArea3" to="." method="_on_hover_area_3_mouse_entered"]
+[connection signal="pressed" from="CanvasLayer/HUD/RestartButton" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/HUD/CompeletLevelButton" to="." method="_on_compelet_level_button_pressed"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
