@@ -1,9 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://4rupeebm31op"]
+[gd_scene load_steps=4 format=3 uid="uid://4rupeebm31op"]
 
 [ext_resource type="PackedScene" uid="uid://dpg0gbpttdpy5" path="res://levels/main.tscn" id="1_a8jge"]
+[ext_resource type="Texture2D" uid="uid://ctc85ci7t7dfj" path="res://arts/main scene/Day2.jpg" id="2_i2w18"]
 [ext_resource type="Texture2D" uid="uid://ed50ld8jg5ks" path="res://arts/main scene/IMG_0049.png" id="2_x6dbl"]
 
 [node name="Main" instance=ExtResource("1_a8jge")]
+
+[node name="ParallaxLayer" parent="ParallaxBackground" index="0"]
+motion_mirroring = Vector2(3840, 2160)
+
+[node name="BG" parent="ParallaxBackground/ParallaxLayer" index="0"]
+position = Vector2(1920, 1080)
+scale = Vector2(2, 2)
+texture = ExtResource("2_i2w18")
 
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground" index="1"]
 motion_scale = Vector2(0.8, 0.8)
