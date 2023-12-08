@@ -128,3 +128,10 @@ func OnLiquidExit(id, body_rid):
 	super.OnLiquidExit(id, body_rid);
 	if GetLiquidTotal() < liquidThreshold:
 		currentCookingState = IngredientState.CookingType.Fried;
+
+func GetCookingSize() -> int:
+	var total = 0;
+	for i in cookingObjects.values():
+		total+= i.size();
+	# print("total: ", total);
+	return total;

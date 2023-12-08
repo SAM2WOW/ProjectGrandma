@@ -71,10 +71,10 @@ stream_2/stream = ExtResource("6_1bcbd")
 stream_2/weight = 1.0
 
 [node name="Chicken" instance=ExtResource("1_56ysr")]
+mass = 4.0
 max_contacts_reported = 1
 contact_monitor = true
 ingredientStates = Array[ExtResource("2_t4qnj")]([SubResource("Resource_onfv7"), SubResource("Resource_atocn"), SubResource("Resource_hxhva"), SubResource("Resource_gd71g")])
-lowVelocityMultiplier = 1.0
 
 [node name="Sprite2DShadow" parent="." index="0"]
 scale = Vector2(0.233, 0.233)

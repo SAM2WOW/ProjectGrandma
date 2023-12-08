@@ -21,17 +21,8 @@ size = Vector2(160, 48)
 size = Vector2(448, 32)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xl3c2"]
-radius = 128.0
-height = 1054.0
-
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_6upfq"]
-streams_count = 3
-stream_0/stream = ExtResource("6_gq0qs")
-stream_0/weight = 1.0
-stream_1/stream = ExtResource("7_xwidv")
-stream_1/weight = 1.0
-stream_2/stream = ExtResource("8_et1v3")
-stream_2/weight = 1.0
+radius = 144.0
+height = 710.0
 
 [node name="Pan" instance=ExtResource("1_ribvh")]
 collision_priority = 1000.0
@@ -41,17 +32,19 @@ heatUpCoefficient = 0.2
 coolDownCoefficient = 0.2
 
 [node name="Sprite2DShadow" parent="." index="0"]
-position = Vector2(10, 10)
+position = Vector2(-182, -9)
 scale = Vector2(1.2, 1.2)
 texture = ExtResource("3_k10yi")
 
-[node name="FrontSprite" parent="." index="1"]
-position = Vector2(5, 3)
-scale = Vector2(1.2, 1.2)
-texture = ExtResource("3_3boog")
+[node name="EnterBox" parent="EnterArea" index="0"]
+polygon = PackedVector2Array(-328, -128, -272, 39, -160, 84, 161, 93, 279, 46, 350, -130)
 
-[node name="Collider" parent="." index="3"]
+[node name="Collider" parent="." index="2"]
 polygon = PackedVector2Array(-320, -96, -288, 32, -224, 96, 224, 96, 288, 32, 320, -96, 276, -148, 288, -96, 256, 0, 192, 64, -192, 64, -256, 0, -288, -96, -279, -151)
+
+[node name="CollisionPolygon2D2" parent="." index="3"]
+visible = false
+disabled = true
 
 [node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="." index="4"]
 position = Vector2(626, 0)
@@ -60,50 +53,58 @@ polygon = PackedVector2Array(-336, -16, -290, -16, -311, -93)
 [node name="CollisionPolygon2D4" type="CollisionPolygon2D" parent="." index="5"]
 polygon = PackedVector2Array(-336, -16, -290, -16, -308, -93)
 
-[node name="CollisionShape2D6" type="CollisionShape2D" parent="." index="6"]
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="." index="6"]
 position = Vector2(-263, 24)
 rotation = -2.35619
 shape = SubResource("RectangleShape2D_2c82j")
 
-[node name="CollisionShape2D5" type="CollisionShape2D" parent="." index="7"]
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="." index="7"]
 position = Vector2(263.431, 24.5685)
 rotation = -0.785397
 shape = SubResource("RectangleShape2D_ydxc7")
 
-[node name="CollisionShape2D7" type="CollisionShape2D" parent="." index="8"]
+[node name="CollisionShape2D9" type="CollisionShape2D" parent="." index="8"]
 position = Vector2(0, 80)
 shape = SubResource("RectangleShape2D_qih3h")
 
-[node name="CollisionPolygon2D2" parent="." index="9"]
+[node name="CollisionPolygon2D" parent="." index="9"]
 visible = false
 disabled = true
 
-[node name="CollisionPolygon2D" parent="." index="10"]
+[node name="CollisionShape2D4" parent="." index="10"]
 visible = false
 disabled = true
 
-[node name="CollisionShape2D4" parent="." index="11"]
+[node name="CollisionShape2D5" parent="." index="11"]
 visible = false
 disabled = true
 
-[node name="CollisionShape2D3" parent="." index="12"]
+[node name="CollisionShape2D6" parent="." index="12"]
 visible = false
 disabled = true
 
-[node name="CollisionShape2D2" parent="." index="13"]
+[node name="CollisionShape2D3" parent="." index="13"]
 visible = false
 disabled = true
 
-[node name="Sprite2D" parent="." index="14"]
+[node name="CollisionShape2D2" parent="." index="14"]
+visible = false
+disabled = true
+
+[node name="Sprite2D" parent="." index="15"]
 position = Vector2(-182, -11)
 scale = Vector2(1.2, 1.2)
 texture = ExtResource("2_ksjrc")
 
-[node name="DragPoint" parent="." index="17"]
+[node name="FrontSprite" parent="Sprite2D" index="0"]
+position = Vector2(156.667, 10)
+texture = ExtResource("3_3boog")
+
+[node name="DragPoint" parent="." index="18"]
 position = Vector2(0, 0)
 
 [node name="CollisionShape2D" parent="InteractArea" index="0"]
-position = Vector2(-175, -21)
+position = Vector2(0, -20)
 shape = SubResource("CapsuleShape2D_xl3c2")
 
 [node name="AudioStreamPlayer2D" parent="." index="19"]
