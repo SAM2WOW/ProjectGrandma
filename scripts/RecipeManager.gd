@@ -1,7 +1,8 @@
 extends Node2D
 
 @export var recipe : Array[RecipeComponent] = [];
-@export var note : Array[ResultText] = [];
+@export var resultText : Array[ResultText] = [];
+@export var progressText : Array[ProgressText] = [];
 
 @export_file var badFood : String;
 @export_file var goodFood : String;
@@ -110,6 +111,14 @@ func GetFinalGrade():
 		avgScore += i;
 	avgScore /= Global.sceneScores.size();
 	
+	if score <= 0.5:
+		print("really bad");
+	elif score <= 0.75:
+		print("ok")
+	elif score <= 0.95:
+		print("good");
+	else:
+		print("perfect");
 	
 	Global.sceneScores[Global.currentStage] = score;
 	

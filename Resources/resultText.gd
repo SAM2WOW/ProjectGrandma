@@ -1,8 +1,7 @@
 extends Resource
 class_name ResultText;
 
-enum FoodGrade {Bad, Average, Good, Perfect};
+enum FoodResult {Bad, Average, Good, Perfect};
 
-@export var grade : FoodGrade;
-# @export var progress : Progress;
-@export var description : String;
+@export var result : FoodResult;
+@export var resultText : String;
