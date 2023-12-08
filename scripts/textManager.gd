@@ -6,6 +6,8 @@ extends Node2D
 func _ready():
 	for child in get_children():
 		child.visible = false;
+		
+		child.get_child(0).set_visible_ratio(0)
 	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -25,11 +27,19 @@ func Activate(id : String):
 	child.hasPlayed = true;
 	child.active = true;
 	
+	var tween = create_tween().set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN_OUT)
+	tween.tween_property(child.get_child(0), "visible_ratio", 1, 1)
+	
 	if (child.dissapearTimer != 0):
 		child.AwaitDissapear();
 	
 func Deactivate(id : String):
 	var child = find_child(id);
+	
+	var tween = create_tween().set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN_OUT)
+	tween.tween_property(child.get_child(0), "visible_ratio", 0, 1)
+	
+	await get_tree().create_timer(1).timeout;
 	
 	child.visible = false;
 	child.active = false;
