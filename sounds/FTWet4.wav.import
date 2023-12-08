@@ -2,13 +2,13 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://38kap31d6i36"
-path="res://.godot/imported/Box3.wav-baeb457271272de731ec48a421e46ebf.sample"
+uid="uid://bbqnyw7rmhlp1"
+path="res://.godot/imported/FTWet4.wav-4abc95ddeccc70b317652eecdd32a529.sample"
 
 [deps]
 
-source_file="res://sounds/Box3.wav"
-dest_files=["res://.godot/imported/Box3.wav-baeb457271272de731ec48a421e46ebf.sample"]
+source_file="res://sounds/FTWet4.wav"
+dest_files=["res://.godot/imported/FTWet4.wav-4abc95ddeccc70b317652eecdd32a529.sample"]
 
 [params]
 
