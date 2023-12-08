@@ -12,6 +12,7 @@ func _process(delta):
 
 func _on_hover_area_3_mouse_entered():
 	$AnimationPlayer.play_backwards("Intro")
+	$CanvasLayer/HUD/HoverArea3.hide()
 	
 	await get_tree().create_timer(0.6).timeout
 	
