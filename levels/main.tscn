@@ -1,4 +1,4 @@
-[gd_scene load_steps=104 format=3 uid="uid://dpg0gbpttdpy5"]
+[gd_scene load_steps=105 format=3 uid="uid://dpg0gbpttdpy5"]
 
 [ext_resource type="Texture2D" uid="uid://cmp4cxxq8yuat" path="res://arts/ivory-off-white-paper-texture.jpg" id="1_1jmmi"]
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_udxji"]
@@ -970,6 +970,7 @@ theme_override_font_sizes/font_size = 40
 text = "Next Page"
 
 [node name="CompeletLevelButton" type="Button" parent="CanvasLayer/HUD"]
+layout_mode = 0
 offset_left = 1569.0
 offset_top = 222.0
 offset_right = 1773.0

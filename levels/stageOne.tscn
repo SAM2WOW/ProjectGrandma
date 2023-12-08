@@ -6,3 +6,10 @@
 
 [node name="Recipe Scene" parent="Node2D" index="3"]
 visible = false
+
+[node name="CompeletLevelButton" parent="CanvasLayer/HUD" index="3"]
+layout_mode = 0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 204.0
+offset_bottom = 96.0
