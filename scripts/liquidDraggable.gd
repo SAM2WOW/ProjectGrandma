@@ -58,11 +58,16 @@ func UpdateLiquidGeneration(delta):
 		produceLiquid = false;
 	if produceLiquid:
 		rotation = lerp_angle(rotation, deg_to_rad(-135), rotateSpeed*delta);
+		if $WaterGen.current_particle_count >= $WaterGen.max_water_particles:
+			$Pouring.stop()
+			$WaterGen/SplashParticle.set_emitting(false)
 		if rotation < deg_to_rad(-90) || rotation > deg_to_rad(90):
 			$WaterGen.generate = true;
 		else:
 			$WaterGen.generate = false;
 	elif !produceLiquid:
+		$Pouring.stop()
+		$WaterGen/SplashParticle.set_emitting(false)
 		$WaterGen.generate = false;
 		if dragging:
 			rotation = lerp_angle(rotation, deg_to_rad(0), rotateSpeed*delta);
