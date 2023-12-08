@@ -12,7 +12,7 @@
 [ext_resource type="AudioStream" uid="uid://qt5xnbvjptbt" path="res://sounds/Impact7.wav" id="9_bqyqs"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jo5k7"]
-radius = 32.0
+radius = 8.0
 height = 640.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g0hsb"]

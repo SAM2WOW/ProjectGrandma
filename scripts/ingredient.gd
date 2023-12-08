@@ -2,7 +2,7 @@ extends Draggable
 class_name Ingredient
 
 enum IngredientType {
-	Chicken, Garlic, Onion, Peppercorn, BayLeaf
+	Chicken, Garlic, Onion, Peppercorn, BayLeaf, Pepper, Mushroom, Broccoli
 }
 @export var ingredientType: IngredientType;
 @export var ingredientStates: Array[IngredientState] = [];

@@ -1,0 +1,63 @@
+[gd_scene load_steps=7 format=3 uid="uid://dx5ta564ps4td"]
+
+[ext_resource type="PackedScene" uid="uid://drn5x3vivefyp" path="res://prefabs/liquidContainer.tscn" id="1_d5hwr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yiopj"]
+size = Vector2(61.579, 27.1479)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2dp3w"]
+size = Vector2(102.855, 23.9714)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_834lp"]
+size = Vector2(74.5465, 30.4052)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e5ic8"]
+size = Vector2(93.0843, 30.4186)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_he1eg"]
+size = Vector2(248, 30)
+
+[node name="Container" instance=ExtResource("1_d5hwr")]
+
+[node name="Sprite2DShadow" parent="." index="0"]
+position = Vector2(2, 4)
+scale = Vector2(0.901887, 0.367521)
+
+[node name="EnterBox" parent="EnterArea" index="0"]
+polygon = PackedVector2Array(-240, -67, -214, 7, -104, 64, 79, 65, 186, 10, 228, -68)
+
+[node name="Collider" parent="." index="2"]
+disabled = true
+
+[node name="CollisionPolygon2D2" parent="." index="3"]
+position = Vector2(533, -38)
+
+[node name="CollisionPolygon2D" parent="." index="4"]
+position = Vector2(73, 14)
+polygon = PackedVector2Array(-330.536, -16.3082, -290, -16, -305.909, -57.5212)
+
+[node name="CollisionShape2D4" parent="." index="5"]
+position = Vector2(-221.357, -12.9352)
+rotation = -2.0533
+shape = SubResource("RectangleShape2D_yiopj")
+
+[node name="CollisionShape2D5" parent="." index="6"]
+position = Vector2(-172.308, 30.6206)
+shape = SubResource("RectangleShape2D_2dp3w")
+
+[node name="CollisionShape2D6" parent="." index="7"]
+position = Vector2(192.786, -12.5797)
+rotation = -1.1091
+shape = SubResource("RectangleShape2D_834lp")
+
+[node name="CollisionShape2D3" parent="." index="8"]
+position = Vector2(144.833, 31.5885)
+shape = SubResource("RectangleShape2D_e5ic8")
+
+[node name="CollisionShape2D2" parent="." index="9"]
+position = Vector2(-13, 51)
+shape = SubResource("RectangleShape2D_he1eg")
+
+[node name="Sprite2D" parent="." index="10"]
+position = Vector2(-5.49998, 1)
+scale = Vector2(0.903774, 0.382158)

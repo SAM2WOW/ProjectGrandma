@@ -76,7 +76,6 @@ metadata/_edit_use_anchors_ = true
 [node name="3" type="Node2D" parent="TextManager" index="3"]
 position = Vector2(-627.793, -97.9262)
 rotation = 0.0553048
-scale = Vector2(1, 1)
 script = ExtResource("2_3ui8n")
 dissapearTimer = 7.0
 
@@ -229,4 +228,3 @@ offset_bottom = 982.0
 [connection signal="on_grabbed" from="Node2D/Cooking Scene/LiquidDraggable2" to="." method="_on_liquid_draggable_2_on_grabbed"]
 [connection signal="on_mouse_hovering" from="Node2D/Cooking Scene/Pan" to="." method="_on_pan_on_mouse_hovering"]
 [connection signal="on_grabbed" from="Node2D/Cooking Scene/Container" to="." method="_on_container_on_grabbed"]
-[connection signal="on_grabbed" from="Node2D/Cooking Scene/Container2" to="." method="_on_container_2_on_grabbed"]
