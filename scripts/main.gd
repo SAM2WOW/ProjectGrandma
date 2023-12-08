@@ -13,6 +13,7 @@ func _ready():
 	
 	MusicPlayer.fade_in() 
 	MusicPlayer.play_music()
+	Global.gameManager.ToggleCursor('normal')
 
 func _process(delta):
 	# offset the camera base on the mouse position to the center

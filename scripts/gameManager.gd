@@ -1,6 +1,6 @@
 extends Node2D
 
-
+@export var cursorState= {}
 var canCompleteStage = false
 # @onready var recipeManager = preload("res://scripts/RecipeManager.gd").new()
 
@@ -17,10 +17,32 @@ var stageScenes: Array[String] = [
 "res://levels/stageFour.tscn",
 "res://levels/endStageScene.tscn"
 ]
+
+var cursors = {
+	"normal": [
+		"res://arts/UI/player cursor/Hand young v3.png",
+		"res://arts/UI/player cursor/hand married v3.png",
+		"res://arts/UI/player cursor/hand old v3.png"
+	],
+	"grab": [
+		"res://arts/UI/player cursor/grab young hand.png",
+		"res://arts/UI/player cursor/grab married hand.png",
+		"res://arts/UI/player cursor/grab old hand.png"
+	]
+}
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	print("Game Manager is ready")
-
+	if Global.currentStage == 0 || Global.currentStage == 4:
+		cursorState['normal'] = cursors['normal'][0]
+		cursorState['grab'] = cursors['grab'][0]
+	elif Global.currentStage == 3:
+		cursorState['normal'] = cursors['normal'][2]
+		cursorState['grab'] = cursors['grab'][2]
+	else:
+		cursorState['normal'] = cursors['normal'][1]
+		cursorState['grab'] = cursors['grab'][1]
+		
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -37,15 +59,22 @@ func _input(event):
 			draggedObject.ObjectAction(event);
 	if event is InputEventKey and event.keycode == KEY_SPACE and draggedObject:
 		draggedObject.ObjectAction(event);
-
+		
+func ToggleCursor(state:String):
+	var cursorPath = cursorState[state]
+	print("cursor:",cursorPath)
+	Input.set_custom_mouse_cursor(load(cursorPath))
+	
 func BeginDragObject(object : Draggable):
 	if draggedObject: DropObject();
 	draggedObject = object;
 	draggedObject.UnHover()
+	ToggleCursor('grab')
 	
 func DropObject():
 	if !draggedObject: return;
 	draggedObject.StopDrag();
+	ToggleCursor('normal')
 	
 func DragObject(delta):
 	if !draggedObject: return;
