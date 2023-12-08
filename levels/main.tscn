@@ -1,4 +1,4 @@
-[gd_scene load_steps=102 format=3 uid="uid://dpg0gbpttdpy5"]
+[gd_scene load_steps=104 format=3 uid="uid://dpg0gbpttdpy5"]
 
 [ext_resource type="Texture2D" uid="uid://cmp4cxxq8yuat" path="res://arts/ivory-off-white-paper-texture.jpg" id="1_1jmmi"]
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_udxji"]
@@ -35,6 +35,8 @@
 [ext_resource type="Script" path="res://Resources/liquidComponent.gd" id="27_qhic2"]
 [ext_resource type="Script" path="res://Resources/recipeComponent.gd" id="28_evxnv"]
 [ext_resource type="AudioStream" uid="uid://bwv3ngkmackai" path="res://sounds/CompleteSound.ogg" id="34_yowf1"]
+[ext_resource type="AudioStream" uid="uid://ml0deg4pqvk1" path="res://sounds/Slide1.wav" id="35_36j26"]
+[ext_resource type="AudioStream" uid="uid://gcr1455oig1v" path="res://sounds/Slide2.wav" id="36_0ahhm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_thd3q"]
 size = Vector2(5056, 1370)
@@ -56,6 +58,18 @@ shader_parameter/water_color = Color(0, 0.462745, 1, 1)
 shader_parameter/bubble_color = Color(1, 1, 1, 1)
 shader_parameter/noise = SubResource("4")
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kbxna"]
+shader = ExtResource("11_b5byl")
+shader_parameter/cutoff = 0.0
+shader_parameter/smooth_size = 0.125
+shader_parameter/mask = ExtResource("12_hwjn3")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1lh3a"]
+shader = ExtResource("11_b5byl")
+shader_parameter/cutoff = 1.0
+shader_parameter/smooth_size = 0.125
+shader_parameter/mask = ExtResource("12_hwjn3")
+
 [sub_resource type="GDScript" id="GDScript_eekhh"]
 script/source = "extends Button
 
@@ -75,18 +89,6 @@ func _on_pressed():
 	
 	pass # Replace with function body.
 "
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_kbxna"]
-shader = ExtResource("11_b5byl")
-shader_parameter/cutoff = 0.0
-shader_parameter/smooth_size = 0.125
-shader_parameter/mask = ExtResource("12_hwjn3")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_1lh3a"]
-shader = ExtResource("11_b5byl")
-shader_parameter/cutoff = 1.0
-shader_parameter/smooth_size = 0.125
-shader_parameter/mask = ExtResource("12_hwjn3")
 
 [sub_resource type="LabelSettings" id="LabelSettings_5i7dh"]
 font = ExtResource("11_ml1rf")
@@ -603,6 +605,18 @@ tracks/2/keys = {
 "update": 0,
 "values": [Vector2(0, -3000), Vector2(0, 0)]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Node2D/Recipe Scene/RichTextLabel:visible_ratio")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
 
 [sub_resource type="Animation" id="Animation_na2py"]
 length = 0.001
@@ -642,6 +656,18 @@ tracks/2/keys = {
 "update": 0,
 "values": [1.0]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Node2D/Recipe Scene/RichTextLabel:visible_ratio")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
 
 [sub_resource type="Animation" id="Animation_qwj85"]
 resource_name = "Transition"
@@ -666,6 +692,13 @@ _data = {
 "RESET": SubResource("Animation_na2py"),
 "Transition": SubResource("Animation_qwj85")
 }
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_ygqxs"]
+streams_count = 2
+stream_0/stream = ExtResource("35_36j26")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("36_0ahhm")
+stream_1/weight = 1.0
 
 [node name="Main2" type="Node"]
 script = ExtResource("1_udxji")
@@ -775,6 +808,7 @@ offset_top = -2618.0
 offset_right = 1233.0
 offset_bottom = -426.0
 rotation = -0.0488692
+mouse_filter = 1
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_fonts/normal_font = ExtResource("10_hjo2k")
 theme_override_fonts/bold_font = ExtResource("11_ml1rf")
@@ -793,8 +827,8 @@ text = "[b]Ingredients[/b]
 	3. Bring to a boil then let simmer for 30-40mins with cover on
 	4. Serve over rice!
 "
-visible_characters = 74
-visible_ratio = 0.2
+visible_characters = 0
+visible_ratio = 0.0
 
 [node name="Result Scene" type="Node2D" parent="Node2D"]
 modulate = Color(1, 1, 1, 0)
@@ -805,6 +839,7 @@ offset_top = -2179.0
 offset_right = -521.0
 offset_bottom = -1795.0
 rotation = -0.0488692
+mouse_filter = 1
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_fonts/normal_font = ExtResource("10_hjo2k")
 theme_override_fonts/bold_font = ExtResource("11_ml1rf")
@@ -826,17 +861,6 @@ position = Vector2(-206, -1216)
 texture = ExtResource("14_qm216")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="CompeletLevelButton" type="Button" parent="CanvasLayer"]
-modulate = Color(0.027451, 0, 0.0117647, 1)
-offset_left = 1569.0
-offset_top = 222.0
-offset_right = 1773.0
-offset_bottom = 318.0
-mouse_filter = 2
-mouse_default_cursor_shape = 2
-text = "Complete"
-script = SubResource("GDScript_eekhh")
 
 [node name="ColorRect" type="TextureRect" parent="CanvasLayer"]
 visible = false
@@ -945,6 +969,15 @@ theme_override_fonts/font = ExtResource("10_hjo2k")
 theme_override_font_sizes/font_size = 40
 text = "Next Page"
 
+[node name="CompeletLevelButton" type="Button" parent="CanvasLayer/HUD"]
+offset_left = 1569.0
+offset_top = 222.0
+offset_right = 1773.0
+offset_bottom = 318.0
+mouse_default_cursor_shape = 2
+text = "Complete"
+script = SubResource("GDScript_eekhh")
+
 [node name="TestLevelText" type="Label" parent="CanvasLayer"]
 offset_right = 40.0
 offset_bottom = 23.0
@@ -981,8 +1014,14 @@ libraries = {
 }
 autoplay = "Intro"
 
-[node name="CompleteSound" type="AudioStreamPlayer" parent="."]
+[node name="Sounds" type="Node" parent="."]
+
+[node name="CompleteSound" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource("34_yowf1")
+volume_db = -5.0
+
+[node name="SlideSound" type="AudioStreamPlayer" parent="Sounds"]
+stream = SubResource("AudioStreamRandomizer_ygqxs")
 volume_db = -5.0
 
 [connection signal="input_event" from="Node2D/Cooking Scene/LiquidDraggable" to="Node2D/Cooking Scene/LiquidDraggable" method="_on_input_event"]
@@ -997,8 +1036,8 @@ volume_db = -5.0
 [connection signal="input_event" from="Node2D/Cooking Scene/Container2" to="Node2D/Cooking Scene/Container2" method="_on_input_event"]
 [connection signal="mouse_entered" from="Node2D/Cooking Scene/Container2" to="Node2D/Cooking Scene/Container2" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Node2D/Cooking Scene/Container2" to="Node2D/Cooking Scene/Container2" method="_on_mouse_exited"]
-[connection signal="pressed" from="CanvasLayer/CompeletLevelButton" to="." method="_on_compelet_level_button_pressed"]
 [connection signal="mouse_entered" from="CanvasLayer/HUD/HoverArea" to="." method="_on_hover_area_mouse_entered"]
 [connection signal="mouse_entered" from="CanvasLayer/HUD/HoverArea2" to="." method="_on_hover_area_2_mouse_entered"]
 [connection signal="mouse_entered" from="CanvasLayer/HUD/HoverArea3" to="." method="_on_hover_area_3_mouse_entered"]
+[connection signal="pressed" from="CanvasLayer/HUD/CompeletLevelButton" to="." method="_on_compelet_level_button_pressed"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
