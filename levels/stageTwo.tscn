@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://dpg0gbpttdpy5" path="res://levels/main.tscn" id="1_a8jge"]
 [ext_resource type="Texture2D" uid="uid://ctc85ci7t7dfj" path="res://arts/main scene/Day2.jpg" id="2_i2w18"]
-[ext_resource type="Texture2D" uid="uid://ed50ld8jg5ks" path="res://arts/main scene/IMG_0049.png" id="2_x6dbl"]
+[ext_resource type="Texture2D" uid="uid://k5360gn0msjs" path="res://arts/main scene/IMG_0054.png" id="3_34lly"]
 
 [node name="Main" instance=ExtResource("1_a8jge")]
 
@@ -21,7 +21,4 @@ motion_scale = Vector2(0.8, 0.8)
 self_modulate = Color(1, 1, 1, 0.301961)
 position = Vector2(-561, 145)
 scale = Vector2(0.514732, 0.514732)
-texture = ExtResource("2_x6dbl")
-
-[node name="ColorRect" parent="CanvasLayer" index="0"]
-visible = true
+texture = ExtResource("3_34lly")
