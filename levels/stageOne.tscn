@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://uetxp6v8gega"]
+[gd_scene load_steps=8 format=3 uid="uid://uetxp6v8gega"]
 
 [ext_resource type="PackedScene" uid="uid://dpg0gbpttdpy5" path="res://levels/main.tscn" id="1_y2kh4"]
 [ext_resource type="Script" path="res://levels/stageOne.gd" id="2_3n783"]
 [ext_resource type="Script" path="res://textEvent.gd" id="2_3ui8n"]
+[ext_resource type="Texture2D" uid="uid://eu58chmihkcv" path="res://arts/main scene/Day1.jpg" id="3_cluy4"]
 [ext_resource type="Texture2D" uid="uid://ed50ld8jg5ks" path="res://arts/main scene/IMG_0049.png" id="3_eq81a"]
 [ext_resource type="FontFile" uid="uid://ds8uy6wtxnlvu" path="res://arts/fonts/Zeyada-Regular.ttf" id="3_wy54e"]
 
@@ -13,6 +14,14 @@ font_color = Color(0, 0, 0, 1)
 
 [node name="Main2" instance=ExtResource("1_y2kh4")]
 script = ExtResource("2_3n783")
+
+[node name="ParallaxLayer" parent="ParallaxBackground" index="0"]
+motion_mirroring = Vector2(3840, 2160)
+
+[node name="BG" parent="ParallaxBackground/ParallaxLayer" index="0"]
+position = Vector2(1920, 1080)
+scale = Vector2(2, 2)
+texture = ExtResource("3_cluy4")
 
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground" index="1"]
 motion_scale = Vector2(0.8, 0.8)
