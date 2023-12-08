@@ -9,7 +9,7 @@ func _ready():
 	Global.gameManager.gameEnd.connect(onGameEnd)
 	$CanvasLayer/TestLevelText.text = "Level" + str(Global.gameManager.currentStage+1)
 	Global.recipeManager.GetCurrentRecipeIngredients()
-	$CanvasLayer/CompeletLevelButton.modulate.a = 0.1
+	$CanvasLayer/HUD/CompeletLevelButton.modulate.a = 0.1
 	
 	MusicPlayer.fade_in() 
 	MusicPlayer.play_music()
@@ -26,7 +26,7 @@ func _process(delta):
 	
 func completeStage():
 	#print('Stage Complete')
-	$CanvasLayer/CompeletLevelButton.modulate.a = 1	
+	$CanvasLayer/HUD/CompeletLevelButton.modulate.a = 1	
 
 func _input(ev):
 	if ev is InputEventKey and ev.keycode == KEY_K:
