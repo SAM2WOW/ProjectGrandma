@@ -1,0 +1,50 @@
+[gd_scene load_steps=8 format=3 uid="uid://bnnp1hg4d66h0"]
+
+[ext_resource type="PackedScene" uid="uid://c3gtn7dcgsaa0" path="res://prefabs/draggable.tscn" id="1_tcoxv"]
+[ext_resource type="Texture2D" uid="uid://cxwxxsuqqb0y0" path="res://arts/decors/BabyBottle.png" id="2_1agiq"]
+[ext_resource type="Script" path="res://prefabs/Decors/baby_bottle.gd" id="2_k6wux"]
+[ext_resource type="AudioStream" uid="uid://dheapkl0gvtjg" path="res://sounds/Bottle1.wav" id="3_jymre"]
+[ext_resource type="AudioStream" uid="uid://5v4py7blxtfr" path="res://sounds/Bottle2.wav" id="4_ab7xl"]
+[ext_resource type="AudioStream" uid="uid://2jcjncs56epu" path="res://sounds/Bottle3.wav" id="5_a1nqy"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_ofxtt"]
+streams_count = 3
+stream_0/stream = ExtResource("3_jymre")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("4_ab7xl")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("5_a1nqy")
+stream_2/weight = 1.0
+
+[node name="BabyBottle" instance=ExtResource("1_tcoxv")]
+mass = 50.0
+max_contacts_reported = 1
+contact_monitor = true
+script = ExtResource("2_k6wux")
+
+[node name="Sprite2DShadow" parent="." index="0"]
+scale = Vector2(0.316, 0.316)
+texture = ExtResource("2_1agiq")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." index="1"]
+scale = Vector2(0.315962, 0.315962)
+polygon = PackedVector2Array(-3.16494, -458.916, -170.907, -132.927, -199.391, 6.32988, -202.556, 474.741, 193.061, 477.906, 205.721, 414.607, 199.391, -18.9896, 158.247, -208.886)
+
+[node name="Sprite2D" parent="." index="2"]
+scale = Vector2(0.315962, 0.315962)
+texture = ExtResource("2_1agiq")
+
+[node name="CollisionShape2D" parent="." index="3"]
+visible = false
+rotation = 3.14159
+scale = Vector2(1.07426, 1.07426)
+disabled = true
+
+[node name="CollisionShape2D" parent="InteractArea" index="0"]
+rotation = 3.14159
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." index="7"]
+stream = SubResource("AudioStreamRandomizer_ofxtt")
+bus = &"SFX"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
