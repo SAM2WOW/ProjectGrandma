@@ -89,11 +89,7 @@ func CheckRecipePoints():
 			CheckLiquidMixture(recipeStep);
 	var resultsText = "[b]Results:\t%.0f / %.0f Points[/b]" % [points, totalPoints];
 	stepText = resultsText + '\n' + stepText;
-	
 	GetFinalGrade();
-	
-	$EndNode/NoteText.clear();
-	$EndNode/NoteText.append_text(noteText);
 	print("scene score: ", Global.sceneScores[Global.currentStage])
 	# print("points: %.1f" % (points/totalPoints));
 	print("step text:\n", stepText);
@@ -101,6 +97,8 @@ func CheckRecipePoints():
 	$EndNode/Smoke.set_emitting(true)
 
 func GetFinalGrade():
+	$EndNode/NoteText.clear();
+	noteText = "[b]Result[/b]\n";
 	var score = float(points)/totalPoints
 	$EndNode/EndText.append_text(stepText);
 	if points/totalPoints <= 0.5:
@@ -113,15 +111,30 @@ func GetFinalGrade():
 		avgScore += i;
 	avgScore /= Global.sceneScores.size();
 	
+	var result : ResultText.FoodResult;
 	if score <= 0.5:
-		print("really bad");
+		result = ResultText.FoodResult.Bad;
 	elif score <= 0.75:
-		print("ok")
+		result = ResultText.FoodResult.Average;
 	elif score <= 0.95:
-		print("good");
+		result = ResultText.FoodResult.Good;
 	else:
-		print("perfect");
+		result = ResultText.FoodResult.Perfect;
+	var progress : ProgressText.Progress;
+	if score <= avgScore - 0.1:
+		progress = ProgressText.Progress.Washed;
+	elif score >= avgScore-0.1 && score <= avgScore+0.1:
+		progress = ProgressText.Progress.Constant;
+	else:
+		progress = ProgressText.Progress.Improving;
+	for r in resultText:
+		if r.result != result: continue;
+		noteText += r.resultText + "\n\n";
+	for p in progressText:
+		noteText += p.resultText;
+		if p.progress != progress: continue;
 	
+	$EndNode/NoteText.append_text(noteText);
 	Global.sceneScores[Global.currentStage] = score;
 	
 func CheckIngredients(recipeStep : IngredientComponent) -> float:

@@ -460,6 +460,7 @@ texture = ExtResource("3_u1ivw")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="ColorRect" type="TextureRect" parent="CanvasLayer"]
+visible = false
 texture_filter = 1
 material = SubResource("ShaderMaterial_kbxna")
 anchors_preset = 15

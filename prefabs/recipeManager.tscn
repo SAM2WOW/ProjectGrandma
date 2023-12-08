@@ -1,4 +1,4 @@
-[gd_scene load_steps=67 format=3 uid="uid://w7pwgo4f8bvq"]
+[gd_scene load_steps=69 format=3 uid="uid://w7pwgo4f8bvq"]
 
 [ext_resource type="Script" path="res://scripts/RecipeManager.gd" id="1_bgt5p"]
 [ext_resource type="Script" path="res://Resources/recipeComponent.gd" id="2_6kl6y"]
@@ -20,42 +20,42 @@ script = ExtResource("6_6kdyy")
 liquidType = 0
 lessOrEqualRatio = 0.35
 points = 0.0
-description = "there's not enough soy sauce"
+description = "Incorrect Soy Sauce Ratio"
 
 [sub_resource type="Resource" id="Resource_4x1ep"]
 script = ExtResource("6_6kdyy")
 liquidType = 0
 lessOrEqualRatio = 0.65
 points = 1.0
-description = "there's enough soy sauce."
+description = "correct Soy Sauce Ratio"
 
 [sub_resource type="Resource" id="Resource_0l17c"]
 script = ExtResource("6_6kdyy")
 liquidType = 0
 lessOrEqualRatio = 1.0
 points = 0.0
-description = "there's too much soy sauce"
+description = "Soy Sauce Ratio too High"
 
 [sub_resource type="Resource" id="Resource_i8hd8"]
 script = ExtResource("6_6kdyy")
 liquidType = 1
 lessOrEqualRatio = 0.35
 points = 0.0
-description = "there's too little vinegar"
+description = "incorrect Vinegar ratio"
 
 [sub_resource type="Resource" id="Resource_fl8sh"]
 script = ExtResource("6_6kdyy")
 liquidType = 1
 lessOrEqualRatio = 0.65
 points = 1.0
-description = "there's enough vinegar"
+description = "correct vinegar ratio"
 
 [sub_resource type="Resource" id="Resource_22652"]
 script = ExtResource("6_6kdyy")
 liquidType = 1
 lessOrEqualRatio = 1.0
 points = 0.0
-description = "there's too much vinegar"
+description = "incorrect vinegar ratio"
 
 [sub_resource type="Resource" id="Resource_o8but"]
 script = ExtResource("3_eufjj")
@@ -360,6 +360,7 @@ resultText = "My first attempt ended up pretty awful. It tasted nothing like how
 script = ExtResource("10_2f4t1")
 result = 1
 resultText = ""
+
 [sub_resource type="Gradient" id="Gradient_ev7pv"]
 offsets = PackedFloat32Array(0, 0.0580645, 1)
 colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0)
