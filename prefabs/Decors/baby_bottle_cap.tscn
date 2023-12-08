@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=3 uid="uid://b1vd7f8me6fey"]
+
+[ext_resource type="PackedScene" uid="uid://c3gtn7dcgsaa0" path="res://prefabs/draggable.tscn" id="1_qfvhg"]
+[ext_resource type="Texture2D" uid="uid://b55bpy7dh0hvv" path="res://arts/decors/BabyBottleCap.png" id="3_eipds"]
+
+[node name="BabyBottleCap" instance=ExtResource("1_qfvhg")]
+mass = 20.0
+max_contacts_reported = 1
+contact_monitor = true
+
+[node name="Sprite2DShadow" parent="." index="0"]
+scale = Vector2(0.316, 0.316)
+texture = ExtResource("3_eipds")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." index="1"]
+scale = Vector2(0.315962, 0.315962)
+polygon = PackedVector2Array(-6.32988, -148.752, -142.422, 34.8143, -88.6183, 120.268, 94.9481, 120.268, 132.927, 34.8143)
+
+[node name="Sprite2D" parent="." index="2"]
+scale = Vector2(0.315962, 0.315962)
+texture = ExtResource("3_eipds")
+
+[node name="CollisionShape2D" parent="." index="3"]
+visible = false
+rotation = 3.14159
+scale = Vector2(1.07426, 1.07426)
+disabled = true
+
+[node name="CollisionShape2D" parent="InteractArea" index="0"]
+rotation = 3.14159
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

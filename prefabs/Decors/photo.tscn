@@ -1,0 +1,62 @@
+[gd_scene load_steps=12 format=3 uid="uid://d0unpm168scpi"]
+
+[ext_resource type="PackedScene" uid="uid://c3gtn7dcgsaa0" path="res://prefabs/draggable.tscn" id="1_mwukt"]
+[ext_resource type="Script" path="res://prefabs/Decors/baby_bottle.gd" id="2_pef3b"]
+[ext_resource type="Texture2D" uid="uid://cegicisgddefm" path="res://arts/decors/MarriagePhoto.png" id="3_jx2s0"]
+[ext_resource type="AudioStream" uid="uid://bvnntyidr4bjj" path="res://sounds/Impact2.wav" id="4_kj3br"]
+[ext_resource type="AudioStream" uid="uid://cmc2mhscfc4am" path="res://sounds/Impact3.wav" id="5_2dj0k"]
+[ext_resource type="AudioStream" uid="uid://d1fimxj74503o" path="res://sounds/Impact5.wav" id="6_yyhb0"]
+[ext_resource type="AudioStream" uid="uid://c0d2nx1rafyhd" path="res://sounds/Impact1.wav" id="7_4irf5"]
+[ext_resource type="AudioStream" uid="uid://cw4wi1e2536hj" path="res://sounds/Impact4.wav" id="8_ofija"]
+[ext_resource type="AudioStream" uid="uid://0m5vtnxc3wex" path="res://sounds/Impact6.wav" id="9_ury8d"]
+[ext_resource type="AudioStream" uid="uid://qt5xnbvjptbt" path="res://sounds/Impact7.wav" id="10_q6gyi"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_flm5b"]
+streams_count = 7
+stream_0/stream = ExtResource("4_kj3br")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("5_2dj0k")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("6_yyhb0")
+stream_2/weight = 1.0
+stream_3/stream = ExtResource("7_4irf5")
+stream_3/weight = 1.0
+stream_4/stream = ExtResource("8_ofija")
+stream_4/weight = 1.0
+stream_5/stream = ExtResource("9_ury8d")
+stream_5/weight = 1.0
+stream_6/stream = ExtResource("10_q6gyi")
+stream_6/weight = 1.0
+
+[node name="Photo" instance=ExtResource("1_mwukt")]
+mass = 50.0
+max_contacts_reported = 1
+contact_monitor = true
+script = ExtResource("2_pef3b")
+
+[node name="Sprite2DShadow" parent="." index="0"]
+scale = Vector2(0.316, 0.316)
+texture = ExtResource("3_jx2s0")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." index="1"]
+scale = Vector2(0.315962, 0.315962)
+polygon = PackedVector2Array(-500.06, -325.989, -632.988, 386.122, 579.184, 376.628, 503.225, 161.412, 661.472, -316.494, 636.152, -348.143)
+
+[node name="Sprite2D" parent="." index="2"]
+scale = Vector2(0.315962, 0.315962)
+texture = ExtResource("3_jx2s0")
+
+[node name="CollisionShape2D" parent="." index="3"]
+visible = false
+rotation = 3.14159
+scale = Vector2(1.07426, 1.07426)
+disabled = true
+
+[node name="CollisionShape2D" parent="InteractArea" index="0"]
+scale = Vector2(1.03929, 1.03929)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." index="7"]
+stream = SubResource("AudioStreamRandomizer_flm5b")
+bus = &"SFX"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

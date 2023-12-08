@@ -188,10 +188,10 @@ zoom = Vector2(0.5, 0.5)
 [node name="Cooking Scene" type="Node2D" parent="Node2D"]
 
 [node name="EndText" type="RichTextLabel" parent="Node2D/Cooking Scene"]
-offset_left = -544.0
-offset_top = -187.0
-offset_right = 537.0
-offset_bottom = 1738.0
+offset_left = -1496.0
+offset_top = 3.05176e-05
+offset_right = -415.0
+offset_bottom = 1925.0
 rotation = -0.0488692
 scale = Vector2(2.16475, 2.16475)
 mouse_filter = 1
@@ -201,7 +201,8 @@ theme_override_fonts/bold_font = ExtResource("26_j0370")
 theme_override_font_sizes/normal_font_size = 60
 theme_override_font_sizes/bold_font_size = 71
 bbcode_enabled = true
-text = "[b]My Recipes[/b]"
+text = "[b]My Recipes Book[/b]
+"
 scroll_active = false
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
