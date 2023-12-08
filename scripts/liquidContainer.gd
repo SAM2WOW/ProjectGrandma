@@ -22,7 +22,10 @@ func _physics_process(delta):
 	
 func UpdatePouring(delta):
 	if pouring:
-		rotation = lerp_angle(rotation, deg_to_rad(135), rotateSpeed*delta);
+		var angle = 135;
+		if Global.instantiationManager.pan.global_position.x < global_position.x:
+			angle *= -1;
+		rotation = lerp_angle(rotation, deg_to_rad(angle), rotateSpeed*delta);
 	else:
 		rotation = lerp_angle(rotation, deg_to_rad(0), rotateSpeed*2*delta);
 
@@ -45,6 +48,7 @@ func _on_area_2d_body_shape_exited(body_rid, body, body_shape_index, local_shape
 func OnLiquidEnter(id, body_rid):
 	if !containedLiquid.keys().has(id): containedLiquid[id] = {};
 	containedLiquid[id][body_rid] = Global.instantiationManager.liquidParticles[id][body_rid];
+	# print("amt: ", containedLiquid[id].keys().size())
 
 func OnLiquidExit(id, body_rid):
 	if !containedLiquid.keys().has(id): return;

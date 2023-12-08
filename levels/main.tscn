@@ -1,4 +1,4 @@
-[gd_scene load_steps=101 format=3 uid="uid://dpg0gbpttdpy5"]
+[gd_scene load_steps=102 format=3 uid="uid://dpg0gbpttdpy5"]
 
 [ext_resource type="Texture2D" uid="uid://cmp4cxxq8yuat" path="res://arts/ivory-off-white-paper-texture.jpg" id="1_1jmmi"]
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_udxji"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://dnle2jjcpad0l" path="res://arts/main scene/kitchen scene.png" id="8_ocn02"]
 [ext_resource type="PackedScene" uid="uid://dcdllixbqh58h" path="res://prefabs/mixingSpoon.tscn" id="9_vpwpm"]
 [ext_resource type="FontFile" uid="uid://ds8uy6wtxnlvu" path="res://arts/fonts/Zeyada-Regular.ttf" id="10_hjo2k"]
+[ext_resource type="PackedScene" uid="uid://bvlk2bnpkqn8u" path="res://prefabs/measuringCup.tscn" id="10_vgqss"]
 [ext_resource type="Shader" path="res://arts/UI/transition.gdshader" id="11_b5byl"]
 [ext_resource type="PackedScene" uid="uid://w7pwgo4f8bvq" path="res://prefabs/recipeManager.tscn" id="11_bxixm"]
 [ext_resource type="FontFile" uid="uid://lf3j1njjt8sb" path="res://arts/fonts/RockSalt-Regular.ttf" id="11_ml1rf"]
@@ -756,6 +757,9 @@ shape = SubResource("RectangleShape2D_thd3q")
 [node name="MixingSpoon" parent="Node2D/Cooking Scene" instance=ExtResource("9_vpwpm")]
 position = Vector2(1408, -96)
 
+[node name="MeasuringCup" parent="Node2D/Cooking Scene" instance=ExtResource("10_vgqss")]
+position = Vector2(1073, 400)
+
 [node name="WaterColor" type="Sprite2D" parent="Node2D"]
 visible = false
 material = SubResource("ShaderMaterial_h723b")
@@ -835,6 +839,7 @@ text = "Complete"
 script = SubResource("GDScript_eekhh")
 
 [node name="ColorRect" type="TextureRect" parent="CanvasLayer"]
+visible = false
 texture_filter = 1
 material = SubResource("ShaderMaterial_kbxna")
 anchors_preset = 15

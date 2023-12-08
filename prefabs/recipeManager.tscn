@@ -15,14 +15,14 @@
 [sub_resource type="Resource" id="Resource_jeml7"]
 script = ExtResource("6_6kdyy")
 liquidType = 0
-lessOrEqualRatio = 0.39
+lessOrEqualRatio = 0.35
 points = 0.0
 description = "not enough soy sauce"
 
 [sub_resource type="Resource" id="Resource_4x1ep"]
 script = ExtResource("6_6kdyy")
 liquidType = 0
-lessOrEqualRatio = 0.6
+lessOrEqualRatio = 0.65
 points = 2.0
 description = "enough soy sauce."
 
@@ -36,14 +36,14 @@ description = "too much soy sauce"
 [sub_resource type="Resource" id="Resource_i8hd8"]
 script = ExtResource("6_6kdyy")
 liquidType = 1
-lessOrEqualRatio = 0.39
+lessOrEqualRatio = 0.35
 points = 0.0
 description = "too little vinegar"
 
 [sub_resource type="Resource" id="Resource_fl8sh"]
 script = ExtResource("6_6kdyy")
 liquidType = 1
-lessOrEqualRatio = 0.6
+lessOrEqualRatio = 0.65
 points = 2.0
 description = "enough vinegar"
 
@@ -68,7 +68,7 @@ description = "not enough sauce"
 
 [sub_resource type="Resource" id="Resource_6rkxi"]
 script = ExtResource("3_eufjj")
-belowOrEqualQuantity = 300
+belowOrEqualQuantity = 250
 quantityPoints = 3.0
 description = "enough sauce"
 

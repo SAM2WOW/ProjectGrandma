@@ -66,7 +66,7 @@ func UnHover():
 	#var twn2 : Tween = create_tween();
 	create_tween().tween_property($Sprite2DShadow, "scale", shadowBaseScale, 0.3).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUINT)
 	create_tween().tween_property($Sprite2D, "scale", spriteBaseScale, 0.3).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUINT);
-	print("unhover scale: ", spriteBaseScale);
+	# print("unhover scale: ", spriteBaseScale);
 
 func _on_interact_area_mouse_entered():
 	if Global.gameManager.hoveredObject: Global.gameManager.hoveredObject.UnHover();
@@ -74,7 +74,7 @@ func _on_interact_area_mouse_entered():
 	hovering = true;
 	create_tween().tween_property($Sprite2D, "scale", spriteBaseScale*1.1, 0.3).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUINT);
 	create_tween().tween_property($Sprite2DShadow, "scale", shadowBaseScale*1.1, 0.3).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUINT);
-	print("hover scale: ", spriteBaseScale*1.2);
+	# print("hover scale: ", spriteBaseScale*1.2);
 
 
 func MultiplyScale(scaleMult: float):
@@ -85,5 +85,5 @@ func MultiplyScale(scaleMult: float):
 	shadowBaseScale = $Sprite2DShadow.get_scale();
 
 func _on_interact_area_mouse_exited():
-	print("un hover")
+	# print("un hover")
 	UnHover();
