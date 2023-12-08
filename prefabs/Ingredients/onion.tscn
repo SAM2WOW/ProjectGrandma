@@ -24,7 +24,7 @@ typeInfluenceMultiplier = {
 0: 1.0,
 1: 0.5
 }
-stateColor = Color(0.94902, 0.776471, 0.4, 1)
+stateColor = Color(0.980392, 0.87451, 0.65098, 1)
 
 [sub_resource type="Resource" id="Resource_e3ioq"]
 resource_local_to_scene = true
@@ -35,7 +35,7 @@ typeInfluenceMultiplier = {
 0: 1.5,
 1: 0.1
 }
-stateColor = Color(0.6, 0.443137, 0.101961, 1)
+stateColor = Color(0.909804, 0.631373, 0.462745, 1)
 
 [sub_resource type="Resource" id="Resource_h5afh"]
 resource_local_to_scene = true
@@ -49,25 +49,29 @@ typeInfluenceMultiplier = {
 stateColor = Color(0.231373, 0.164706, 0.0196078, 1)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_52n1s"]
-radius = 14.0
-height = 128.0
+radius = 7.72583
+height = 63.3386
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4snw1"]
-radius = 96.0
-height = 312.0
+radius = 40.0
+height = 138.0
 
 [node name="Onion" instance=ExtResource("1_ydvrm")]
 ingredientType = 2
 ingredientStates = Array[ExtResource("2_twddl")]([SubResource("Resource_vt8ak"), SubResource("Resource_8dycj"), SubResource("Resource_e3ioq"), SubResource("Resource_h5afh")])
 
 [node name="Sprite2DShadow" parent="." index="0"]
+visible = false
+scale = Vector2(0.421, 0.421)
 texture = ExtResource("3_rfmg0")
 
 [node name="Sprite2D" parent="." index="1"]
+position = Vector2(0, -1)
+scale = Vector2(0.420732, 0.420732)
 texture = ExtResource("3_rfmg0")
 
 [node name="CollisionShape2D" parent="." index="2"]
-position = Vector2(-42, -40)
+position = Vector2(-19, -17)
 rotation = 1.15654
 shape = SubResource("CapsuleShape2D_52n1s")
 

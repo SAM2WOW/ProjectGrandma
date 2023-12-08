@@ -4,11 +4,12 @@ extends Node2D
 @export_file var ingredientPath: String;
 @export var numIngredients: int;
 @export var sizeVarianceMultiplier: float = 0.2;
+@export var enable = true;
 var ingredients = [];
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	if ingredientPath == "": return;
+	if ingredientPath == "" || !enable: return;
 	for i in numIngredients:
 		var ingredient = load(ingredientPath).instantiate();
 		var randPos = Global.randv_circle(0, $Area2D/CollisionShape2D.shape.radius);

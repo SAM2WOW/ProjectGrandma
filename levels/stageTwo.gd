@@ -2,7 +2,18 @@ extends "res://scripts/main.gd"
 
 func _ready():
 	super._ready()
+	MusicPlayer.PlayBaby();
+	Global.currentStage = 1;
+	await get_tree().create_timer(3).timeout
 	
+	Global.textManager.Activate("0")
+	
+	await get_tree().create_timer(7).timeout
+	
+	Global.textManager.Activate("1")
+	await get_tree().create_timer(6).timeout
+	Global.finishSeqText = true;
+	# await get_tree().create_timer(25).timeout
 	#await get_tree().create_timer(2).timeout
 	#
 	#Global.textManager.Activate("Kids")

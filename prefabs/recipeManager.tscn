@@ -267,13 +267,13 @@ description = "there's no peppercorns"
 
 [sub_resource type="Resource" id="Resource_bqbhi"]
 script = ExtResource("3_eufjj")
-belowOrEqualQuantity = 5
+belowOrEqualQuantity = 3
 quantityPoints = 1.0
 description = "there's not enough peppercorns"
 
 [sub_resource type="Resource" id="Resource_l1j1g"]
 script = ExtResource("3_eufjj")
-belowOrEqualQuantity = 15
+belowOrEqualQuantity = 7
 quantityPoints = 2.0
 description = "there's enough peppercorns"
 
@@ -397,7 +397,7 @@ scroll_active = false
 [node name="RecipeText" type="RichTextLabel" parent="RecipeNode"]
 offset_left = -248.0
 offset_top = -2520.0
-offset_right = 1139.0
+offset_right = 1298.0
 offset_bottom = -520.0
 rotation = -0.0488692
 theme_override_colors/default_color = Color(0, 0, 0, 1)

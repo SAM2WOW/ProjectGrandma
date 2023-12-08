@@ -5,8 +5,8 @@
 [ext_resource type="Script" path="res://textEvent.gd" id="2_3ui8n"]
 [ext_resource type="Script" path="res://Resources/resultText.gd" id="3_8kcoe"]
 [ext_resource type="Texture2D" uid="uid://eu58chmihkcv" path="res://arts/main scene/Day1.jpg" id="3_cluy4"]
-[ext_resource type="Texture2D" uid="uid://ed50ld8jg5ks" path="res://arts/main scene/IMG_0049.png" id="3_eq81a"]
 [ext_resource type="FontFile" uid="uid://ds8uy6wtxnlvu" path="res://arts/fonts/Zeyada-Regular.ttf" id="3_wy54e"]
+[ext_resource type="Texture2D" uid="uid://k5360gn0msjs" path="res://arts/main scene/IMG_0054.png" id="7_uluv3"]
 
 [sub_resource type="Resource" id="Resource_w23gh"]
 script = ExtResource("3_8kcoe")
@@ -95,10 +95,10 @@ script = ExtResource("2_3ui8n")
 dissapearTimer = 10.0
 
 [node name="Label" type="Label" parent="TextManager/Sauce" index="0"]
-offset_left = -418.914
-offset_top = -59.6306
-offset_right = 575.086
-offset_bottom = 83.3694
+offset_left = -450.84
+offset_top = -61.8073
+offset_right = 543.16
+offset_bottom = 81.1927
 text = "Right Click to Pour Sauce"
 label_settings = SubResource("LabelSettings_c5rhk")
 metadata/_edit_use_anchors_ = true
@@ -109,10 +109,10 @@ script = ExtResource("2_3ui8n")
 dissapearTimer = 5.0
 
 [node name="Label" type="Label" parent="TextManager/OnBoil" index="0"]
-offset_left = -418.914
-offset_top = -59.6306
-offset_right = 575.086
-offset_bottom = 83.3694
+offset_left = -650.854
+offset_top = -112.529
+offset_right = 702.146
+offset_bottom = 30.4714
 text = "Occasionally stir to stop things from burning"
 label_settings = SubResource("LabelSettings_c5rhk")
 
@@ -122,10 +122,10 @@ script = ExtResource("2_3ui8n")
 dissapearTimer = 5.0
 
 [node name="Label" type="Label" parent="TextManager/Item" index="0"]
-offset_left = -435.739
-offset_top = -62.7823
-offset_right = 558.261
-offset_bottom = 80.2177
+offset_left = -201.352
+offset_top = -89.9031
+offset_right = 792.648
+offset_bottom = 53.0969
 text = "Click to Drag"
 label_settings = SubResource("LabelSettings_c5rhk")
 
@@ -135,36 +135,36 @@ script = ExtResource("2_3ui8n")
 dissapearTimer = 5.0
 
 [node name="Label" type="Label" parent="TextManager/Item2" index="0"]
-offset_left = -758.444
-offset_top = -4.59637
-offset_right = 297.559
-offset_bottom = 138.404
+offset_left = -482.585
+offset_top = -96.0455
+offset_right = 573.418
+offset_bottom = 46.9549
 text = "move to the pan to cook it"
 label_settings = SubResource("LabelSettings_c5rhk")
 
 [node name="ContainerDrag" type="Node2D" parent="TextManager" index="8"]
-position = Vector2(-425.279, 768.855)
+position = Vector2(-739.626, -221.82)
 script = ExtResource("2_3ui8n")
 dissapearTimer = 10.0
 
 [node name="Label" type="Label" parent="TextManager/ContainerDrag" index="0"]
-offset_left = -418.914
-offset_top = -59.6306
-offset_right = 575.086
-offset_bottom = 83.3694
+offset_left = -470.501
+offset_top = -302.702
+offset_right = 523.499
+offset_bottom = -159.702
 text = "Right Click to Pour Contents"
 label_settings = SubResource("LabelSettings_c5rhk")
 
 [node name="LiquidDrag" type="Node2D" parent="TextManager" index="9"]
-position = Vector2(-212.639, 384.427)
+position = Vector2(-391.887, -206.132)
 script = ExtResource("2_3ui8n")
 dissapearTimer = 10.0
 
 [node name="Label" type="Label" parent="TextManager/LiquidDrag" index="0"]
-offset_left = -418.914
-offset_top = -59.6306
-offset_right = 575.086
-offset_bottom = 83.3694
+offset_left = -486.351
+offset_top = -334.855
+offset_right = 507.649
+offset_bottom = -191.855
 text = "Right Click to Pour Liquid"
 label_settings = SubResource("LabelSettings_c5rhk")
 
@@ -216,7 +216,7 @@ motion_scale = Vector2(0.8, 0.8)
 self_modulate = Color(1, 1, 1, 0.301961)
 position = Vector2(-561, 145)
 scale = Vector2(0.514732, 0.514732)
-texture = ExtResource("3_eq81a")
+texture = ExtResource("7_uluv3")
 
 [node name="CompeletLevelButton" parent="CanvasLayer/HUD" index="4"]
 offset_left = 1366.0

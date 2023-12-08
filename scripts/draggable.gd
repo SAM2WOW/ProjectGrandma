@@ -54,7 +54,10 @@ func Drag(delta):
 	# dragObj = $DragPoint;
 	var mousePos: Vector2 = get_global_mouse_position();
 	var massMult = clamp(1.0/mass, 0.1, 1.0);
-	var speed: float = massMult * dragObj.global_position.distance_to(mousePos) / delta;
+	var stageMult = 1.0;
+	if Global.currentStage == 2:
+		stageMult = 0.2;
+	var speed: float = stageMult * massMult * dragObj.global_position.distance_to(mousePos) / delta;
 	var raycast = PhysicsRayQueryParameters2D.create(dragObj.global_position, mousePos);
 	if get_world_2d().direct_space_state.intersect_ray(raycast):
 		speed = clamp(speed, 0, 8000);

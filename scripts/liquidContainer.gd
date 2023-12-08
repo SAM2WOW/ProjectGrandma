@@ -32,8 +32,8 @@ func UpdatePouring(delta):
 func _on_area_2d_body_shape_entered(body_rid, body, body_shape_index, local_shape_index):
 	if !body_rid: return;
 	var id = PhysicsServer2D.body_get_object_instance_id(body_rid);
-	if Global.currentStage == 1:
-		Global.textManager.Activate("Tofu");
+	#if Global.currentStage == 1:
+		#Global.textManager.Activate("Tofu");
 	if Global.LiquidType.values().has(id):
 		OnLiquidEnter(id, body_rid);
 

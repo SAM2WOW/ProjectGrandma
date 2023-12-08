@@ -61,13 +61,25 @@ func ChangeState(newIndex):
 	currentStateIndex = newIndex;
 	cookingTimer = 0;
 	print("new state ", IngredientState.CookingState.keys()[GetCurrentState().state]);
-	if GetCurrentState().state == IngredientState.CookingState.Cooked && Global.currentStage == 0:
-		Global.textManager.Activate("3")
+	if GetCurrentState().state == IngredientState.CookingState.Cooked:
+		if Global.currentStage == 0:
+			Global.textManager.Activate("3")
+		elif Global.currentStage == 1 && Global.finishSeqText:
+			Global.textManager.Activate("Kids")
+		elif Global.currentStage == 2 && Global.finishSeqText:
+			Global.textManager.Activate("4")
+		elif Global.currentStage == 3 && Global.finishSeqText:
+			Global.textManager.Activate("final");
+		elif Global.currentStage == 4 && Global.finishSeqText:
+			Global.textManager.Activate("cook");
+	
 
 func UpdateColor(delta):
 	if currentStateIndex >= ingredientStates.size()-1: return;
 	var timerRatio = ease(cookingTimer / GetCurrentState().cookTimer, 4.8);
 	$Sprite2D.modulate = GetCurrentState().stateColor.lerp(ingredientStates[currentStateIndex+1].stateColor, timerRatio);
+	#if timerRatio > 0:
+		#print($Sprite2D.modulate)
 
 func GetState(checkState: IngredientState.CookingState):
 	for ingState in ingredientStates:
@@ -82,6 +94,18 @@ func StartDrag():
 	super.StartDrag();
 	if Global.currentStage == 0:
 		var c = Global.textManager.Activate("Item2");
+		followText = c;
+	elif Global.currentStage == 1 && Global.finishSeqText && ingredientType == IngredientType.Peppercorn:
+		var c = Global.textManager.Activate("Peppercorns");
+		followText = c;
+	elif Global.currentStage == 2 && Global.finishSeqText && ingredientType == IngredientType.Onion:
+		var c = Global.textManager.Activate("Onions");
+		followText = c;
+	elif Global.currentStage == 3 && Global.finishSeqText && (ingredientType == IngredientType.Pepper || ingredientType == IngredientType.Garlic):
+		var c = Global.textManager.Activate("Spicy");
+		followText = c;
+	elif Global.currentStage == 4 && Global.finishSeqText && (ingredientType == IngredientType.Pepper || ingredientType == IngredientType.Broccoli):
+		var c = Global.textManager.Activate("pepper");
 		followText = c;
 
 func OnHover():

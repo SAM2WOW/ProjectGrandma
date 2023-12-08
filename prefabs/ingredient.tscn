@@ -61,5 +61,8 @@ lowVelocityMultiplier = 1.0
 highVelocityMultiplier = 0.2
 cookingVelocityThresholds = 200.0
 
+[node name="Sprite2D" parent="." index="1"]
+material = null
+
 [node name="CollisionShape2D" parent="." index="2"]
 shape = SubResource("CapsuleShape2D_i27ke")

@@ -1,0 +1,78 @@
+[gd_scene load_steps=10 format=3 uid="uid://ci6u4a5whdbpd"]
+
+[ext_resource type="PackedScene" uid="uid://b5em8781rmds2" path="res://prefabs/ingredient.tscn" id="1_xesj3"]
+[ext_resource type="Texture2D" uid="uid://c24snspjvomum" path="res://arts/ingredients/pepper.png" id="2_2vj6q"]
+[ext_resource type="Script" path="res://scripts/ingredientState.gd" id="2_orvd0"]
+
+[sub_resource type="Resource" id="Resource_uf362"]
+resource_local_to_scene = true
+script = ExtResource("2_orvd0")
+state = 0
+cookTimer = 15.0
+typeInfluenceMultiplier = {
+0: 1.0,
+1: 0.2
+}
+stateColor = Color(1, 1, 1, 1)
+
+[sub_resource type="Resource" id="Resource_ojaaw"]
+resource_local_to_scene = true
+script = ExtResource("2_orvd0")
+state = 1
+cookTimer = 30.0
+typeInfluenceMultiplier = {
+0: 1.4,
+1: 0.6
+}
+stateColor = Color(0.94902, 0.776471, 0.4, 1)
+
+[sub_resource type="Resource" id="Resource_ngk5b"]
+resource_local_to_scene = true
+script = ExtResource("2_orvd0")
+state = 2
+cookTimer = 25.0
+typeInfluenceMultiplier = {
+0: 1.5,
+1: 0.7
+}
+stateColor = Color(0.6, 0.443137, 0.101961, 1)
+
+[sub_resource type="Resource" id="Resource_j8afd"]
+resource_local_to_scene = true
+script = ExtResource("2_orvd0")
+state = 3
+cookTimer = 0.0
+typeInfluenceMultiplier = {
+0: 1.0,
+1: 1.0
+}
+stateColor = Color(0.231373, 0.164706, 0.0196078, 1)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tudou"]
+radius = 16.0
+height = 32.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sx7gc"]
+radius = 31.0
+height = 61.9999
+
+[node name="RedPepper" instance=ExtResource("1_xesj3")]
+ingredientType = 5
+ingredientStates = Array[ExtResource("2_orvd0")]([SubResource("Resource_uf362"), SubResource("Resource_ojaaw"), SubResource("Resource_ngk5b"), SubResource("Resource_j8afd")])
+
+[node name="Sprite2DShadow" parent="." index="0"]
+scale = Vector2(0.021, 0.021)
+texture = ExtResource("2_2vj6q")
+
+[node name="Sprite2D" parent="." index="1"]
+position = Vector2(-1, 0)
+scale = Vector2(0.0209961, 0.0209961)
+texture = ExtResource("2_2vj6q")
+
+[node name="CollisionShape2D" parent="." index="2"]
+position = Vector2(0, -2)
+shape = SubResource("CapsuleShape2D_tudou")
+
+[node name="CollisionShape2D" parent="InteractArea" index="0"]
+position = Vector2(-1, -2)
+shape = SubResource("CapsuleShape2D_sx7gc")

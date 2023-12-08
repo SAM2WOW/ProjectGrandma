@@ -1,11 +1,446 @@
-[gd_scene load_steps=8 format=3 uid="uid://cb4wk485lvoro"]
+[gd_scene load_steps=86 format=3 uid="uid://cb4wk485lvoro"]
 
 [ext_resource type="PackedScene" uid="uid://dpg0gbpttdpy5" path="res://levels/main.tscn" id="1_ltxbc"]
 [ext_resource type="Texture2D" uid="uid://cbw6pn1hn727d" path="res://arts/main scene/Day4.jpg" id="2_ba254"]
 [ext_resource type="Texture2D" uid="uid://ed50ld8jg5ks" path="res://arts/main scene/IMG_0049.png" id="2_e81cw"]
 [ext_resource type="Script" path="res://levels/stageThree.gd" id="2_lnvq8"]
 [ext_resource type="Script" path="res://textEvent.gd" id="3_ijpwm"]
+[ext_resource type="Script" path="res://Resources/liquidMixturePoints.gd" id="3_rf6lu"]
 [ext_resource type="FontFile" uid="uid://ds8uy6wtxnlvu" path="res://arts/fonts/Zeyada-Regular.ttf" id="4_jy5is"]
+[ext_resource type="Script" path="res://Resources/recipeQuantity.gd" id="4_qr1kw"]
+[ext_resource type="Script" path="res://Resources/liquidMixtureComponent.gd" id="5_jrbkf"]
+[ext_resource type="Script" path="res://Resources/ingredientPoints.gd" id="6_d26yw"]
+[ext_resource type="Script" path="res://Resources/ingredientComponent.gd" id="7_ctlct"]
+[ext_resource type="Script" path="res://Resources/liquidPoints.gd" id="8_ij7ap"]
+[ext_resource type="Script" path="res://Resources/liquidComponent.gd" id="9_odllu"]
+[ext_resource type="Script" path="res://Resources/recipeComponent.gd" id="10_st8xe"]
+[ext_resource type="Script" path="res://Resources/resultText.gd" id="11_dds3w"]
+[ext_resource type="Script" path="res://Resources/progressText.gd" id="12_kjj4k"]
+[ext_resource type="PackedScene" uid="uid://p10wedylbibp" path="res://prefabs/shelf.tscn" id="15_0p7or"]
+[ext_resource type="PackedScene" uid="uid://g218crvxx0hm" path="res://prefabs/ingredientGroup.tscn" id="15_a1pe6"]
+
+[sub_resource type="Resource" id="Resource_jeml7"]
+script = ExtResource("3_rf6lu")
+liquidType = 0
+lessOrEqualRatio = 0.35
+points = 0.0
+description = "Incorrect Soy Sauce Ratio"
+
+[sub_resource type="Resource" id="Resource_4x1ep"]
+script = ExtResource("3_rf6lu")
+liquidType = 0
+lessOrEqualRatio = 0.65
+points = 1.0
+description = "correct Soy Sauce Ratio"
+
+[sub_resource type="Resource" id="Resource_0l17c"]
+script = ExtResource("3_rf6lu")
+liquidType = 0
+lessOrEqualRatio = 1.0
+points = 0.0
+description = "Soy Sauce Ratio too High"
+
+[sub_resource type="Resource" id="Resource_i8hd8"]
+script = ExtResource("3_rf6lu")
+liquidType = 1
+lessOrEqualRatio = 0.35
+points = 0.0
+description = "incorrect Vinegar ratio"
+
+[sub_resource type="Resource" id="Resource_fl8sh"]
+script = ExtResource("3_rf6lu")
+liquidType = 1
+lessOrEqualRatio = 0.65
+points = 1.0
+description = "correct vinegar ratio"
+
+[sub_resource type="Resource" id="Resource_22652"]
+script = ExtResource("3_rf6lu")
+liquidType = 1
+lessOrEqualRatio = 1.0
+points = 0.0
+description = "incorrect vinegar ratio"
+
+[sub_resource type="Resource" id="Resource_o8but"]
+script = ExtResource("4_qr1kw")
+belowOrEqualQuantity = 0
+quantityPoints = 0.0
+description = "there's no sauce"
+
+[sub_resource type="Resource" id="Resource_dqhqo"]
+script = ExtResource("4_qr1kw")
+belowOrEqualQuantity = 100
+quantityPoints = 1.0
+description = "there's not enough sauce"
+
+[sub_resource type="Resource" id="Resource_6rkxi"]
+script = ExtResource("4_qr1kw")
+belowOrEqualQuantity = 250
+quantityPoints = 2.0
+description = "there's enough sauce"
+
+[sub_resource type="Resource" id="Resource_qqu8g"]
+script = ExtResource("4_qr1kw")
+belowOrEqualQuantity = 100000000
+quantityPoints = 0.0
+description = "there's too much sauce"
+
+[sub_resource type="Resource" id="Resource_t5c2e"]
+script = ExtResource("5_jrbkf")
+targetLiquid = 2
+liquidMixtureRecipe = Array[ExtResource("3_rf6lu")]([SubResource("Resource_jeml7"), SubResource("Resource_4x1ep"), SubResource("Resource_0l17c"), SubResource("Resource_i8hd8"), SubResource("Resource_fl8sh"), SubResource("Resource_22652")])
+step = 0
+description = "Add Soy Sauce and Vinegar to a bowl and set it aside."
+formatDescription = false
+quantityPoints = Array[ExtResource("4_qr1kw")]([SubResource("Resource_o8but"), SubResource("Resource_dqhqo"), SubResource("Resource_6rkxi"), SubResource("Resource_qqu8g")])
+
+[sub_resource type="Resource" id="Resource_7xp4x"]
+script = ExtResource("6_d26yw")
+doneness = 0
+points = -2.0
+description = "the chicken is undercooked"
+
+[sub_resource type="Resource" id="Resource_koqgb"]
+script = ExtResource("6_d26yw")
+doneness = 1
+points = 4.0
+description = "the chicken is cooked perfectly"
+
+[sub_resource type="Resource" id="Resource_an53y"]
+script = ExtResource("6_d26yw")
+doneness = 2
+points = 2.0
+description = "the chicken is overcooked"
+
+[sub_resource type="Resource" id="Resource_j8isl"]
+script = ExtResource("6_d26yw")
+doneness = 3
+points = 0.0
+description = "the chicken is burnt"
+
+[sub_resource type="Resource" id="Resource_2n77r"]
+script = ExtResource("4_qr1kw")
+belowOrEqualQuantity = 0
+quantityPoints = 0.0
+description = "there's no chicken"
+
+[sub_resource type="Resource" id="Resource_cabr1"]
+script = ExtResource("4_qr1kw")
+belowOrEqualQuantity = 2
+quantityPoints = 1.0
+description = "there's not enough chicken"
+
+[sub_resource type="Resource" id="Resource_dvlml"]
+script = ExtResource("4_qr1kw")
+belowOrEqualQuantity = 10
+quantityPoints = 2.0
+description = "there's a good amount of chicken"
+
+[sub_resource type="Resource" id="Resource_5tvxt"]
+script = ExtResource("4_qr1kw")
+belowOrEqualQuantity = 20
+quantityPoints = 0.0
+description = "there's too much chicken"
+
+[sub_resource type="Resource" id="Resource_c5yxf"]
+script = ExtResource("7_ctlct")
+ingredient = 0
+donenessPoints = Array[ExtResource("6_d26yw")]([SubResource("Resource_7xp4x"), SubResource("Resource_koqgb"), SubResource("Resource_an53y"), SubResource("Resource_j8isl")])
+showName = true
+step = 1
+description = "Fry Chicken over medium heat until it begins to browns."
+formatDescription = false
+quantityPoints = Array[ExtResource("4_qr1kw")]([SubResource("Resource_2n77r"), SubResource("Resource_cabr1"), SubResource("Resource_dvlml"), SubResource("Resource_5tvxt")])
+
+[sub_resource type="Resource" id="Resource_qstk4"]
+script = ExtResource("8_ij7ap")
+belowEqualConsistency = 0.2
+points = 0.0
+description = "the sauce hasn't thickened at all."
+
+[sub_resource type="Resource" id="Resource_cguvo"]
+script = ExtResource("8_ij7ap")
+belowEqualConsistency = 0.6
+points = 2.0
+description = "the sauce is somewhat thickened."
+
+[sub_resource type="Resource" id="Resource_yk3e1"]
+script = ExtResource("8_ij7ap")
+belowEqualConsistency = 1.0
+points = 5.0
+description = "the sauce has perfectly thickened."
+
+[sub_resource type="Resource" id="Resource_6h8y0"]
+script = ExtResource("9_odllu")
+liquidType = 2
+consistencyPoints = Array[ExtResource("8_ij7ap")]([SubResource("Resource_qstk4"), SubResource("Resource_cguvo"), SubResource("Resource_yk3e1")])
+step = 2
+description = "Add your sauce mixture to the pan."
+formatDescription = false
+quantityPoints = Array[ExtResource("4_qr1kw")]([])
+
+[sub_resource type="Resource" id="Resource_43lcn"]
+script = ExtResource("6_d26yw")
+doneness = 0
+points = 1.0
+description = "The garlic is undercooked."
+
+[sub_resource type="Resource" id="Resource_p6aen"]
+script = ExtResource("6_d26yw")
+doneness = 1
+points = 4.0
+description = "the garlic is cooked right"
+
+[sub_resource type="Resource" id="Resource_3moy0"]
+script = ExtResource("6_d26yw")
+doneness = 2
+points = 2.0
+description = "the garlic is overcooked"
+
+[sub_resource type="Resource" id="Resource_oarsa"]
+script = ExtResource("6_d26yw")
+doneness = 3
+points = 0.0
+description = "the garlic is burnt"
+
+[sub_resource type="Resource" id="Resource_ukews"]
+resource_name = "no garlic"
+script = ExtResource("4_qr1kw")
+belowOrEqualQuantity = 0
+quantityPoints = 0.0
+description = "there's no garlic"
+
+[sub_resource type="Resource" id="Resource_img4u"]
+script = ExtResource("4_qr1kw")
+belowOrEqualQuantity = 5
+quantityPoints = 1.0
+description = "there's not enough garlic"
+
+[sub_resource type="Resource" id="Resource_oyhu0"]
+script = ExtResource("4_qr1kw")
+belowOrEqualQuantity = 15
+quantityPoints = 2.0
+description = "there's enough garlic"
+
+[sub_resource type="Resource" id="Resource_ucp6o"]
+script = ExtResource("4_qr1kw")
+belowOrEqualQuantity = 9999
+quantityPoints = 1.0
+description = "there's too much garlic"
+
+[sub_resource type="Resource" id="Resource_gqaa1"]
+script = ExtResource("7_ctlct")
+ingredient = 1
+donenessPoints = Array[ExtResource("6_d26yw")]([SubResource("Resource_43lcn"), SubResource("Resource_p6aen"), SubResource("Resource_3moy0"), SubResource("Resource_oarsa")])
+showName = true
+step = 3
+description = "Add Garlic"
+formatDescription = false
+quantityPoints = Array[ExtResource("4_qr1kw")]([SubResource("Resource_ukews"), SubResource("Resource_img4u"), SubResource("Resource_oyhu0"), SubResource("Resource_ucp6o")])
+
+[sub_resource type="Resource" id="Resource_tdh2h"]
+script = ExtResource("6_d26yw")
+doneness = 0
+points = 1.0
+description = "the peppercorn isn't cooked enough"
+
+[sub_resource type="Resource" id="Resource_vbgtq"]
+script = ExtResource("6_d26yw")
+doneness = 1
+points = 3.0
+description = "the peppercorns were cooked well"
+
+[sub_resource type="Resource" id="Resource_rp744"]
+script = ExtResource("6_d26yw")
+doneness = 2
+points = 2.0
+description = "the peppercorns are too strong"
+
+[sub_resource type="Resource" id="Resource_jt160"]
+script = ExtResource("6_d26yw")
+doneness = 3
+points = 0.0
+description = "the peppercorns were burnt"
+
+[sub_resource type="Resource" id="Resource_n74go"]
+script = ExtResource("4_qr1kw")
+belowOrEqualQuantity = 0
+quantityPoints = 0.0
+description = "there's no peppercorns"
+
+[sub_resource type="Resource" id="Resource_bqbhi"]
+script = ExtResource("4_qr1kw")
+belowOrEqualQuantity = 3
+quantityPoints = 1.0
+description = "there's not enough peppercorns"
+
+[sub_resource type="Resource" id="Resource_l1j1g"]
+script = ExtResource("4_qr1kw")
+belowOrEqualQuantity = 7
+quantityPoints = 2.0
+description = "there's enough peppercorns"
+
+[sub_resource type="Resource" id="Resource_1o2jq"]
+script = ExtResource("4_qr1kw")
+belowOrEqualQuantity = 9999
+quantityPoints = 1.0
+description = "there's too much peppercorns"
+
+[sub_resource type="Resource" id="Resource_gv8wc"]
+script = ExtResource("7_ctlct")
+ingredient = 3
+donenessPoints = Array[ExtResource("6_d26yw")]([SubResource("Resource_tdh2h"), SubResource("Resource_vbgtq"), SubResource("Resource_rp744"), SubResource("Resource_jt160")])
+showName = true
+step = 3
+description = "Add Peppercorns."
+formatDescription = false
+quantityPoints = Array[ExtResource("4_qr1kw")]([SubResource("Resource_n74go"), SubResource("Resource_bqbhi"), SubResource("Resource_l1j1g"), SubResource("Resource_1o2jq")])
+
+[sub_resource type="Resource" id="Resource_et8wm"]
+script = ExtResource("6_d26yw")
+doneness = 0
+points = 1.0
+description = "the bay leaves weren't cooked enough"
+
+[sub_resource type="Resource" id="Resource_eeqc3"]
+script = ExtResource("6_d26yw")
+doneness = 1
+points = 4.0
+description = "the bay leaves were cooked enough"
+
+[sub_resource type="Resource" id="Resource_45a1t"]
+script = ExtResource("6_d26yw")
+doneness = 2
+points = 2.0
+description = "the bay leaves are overcooked"
+
+[sub_resource type="Resource" id="Resource_kqcul"]
+script = ExtResource("6_d26yw")
+doneness = 3
+points = 0.0
+description = "the bay leaves are burnt"
+
+[sub_resource type="Resource" id="Resource_f5g0f"]
+script = ExtResource("4_qr1kw")
+belowOrEqualQuantity = 0
+quantityPoints = 0.0
+description = "there's no bay leaves"
+
+[sub_resource type="Resource" id="Resource_8bmu5"]
+script = ExtResource("4_qr1kw")
+belowOrEqualQuantity = 3
+quantityPoints = 1.0
+description = "there's a good amount of bay leaves"
+
+[sub_resource type="Resource" id="Resource_fky46"]
+script = ExtResource("4_qr1kw")
+belowOrEqualQuantity = 999999
+quantityPoints = 0.0
+description = "there's too much bay leaves"
+
+[sub_resource type="Resource" id="Resource_3s2vj"]
+script = ExtResource("7_ctlct")
+ingredient = 4
+donenessPoints = Array[ExtResource("6_d26yw")]([SubResource("Resource_et8wm"), SubResource("Resource_eeqc3"), SubResource("Resource_45a1t"), SubResource("Resource_kqcul")])
+showName = false
+step = 3
+description = "Add Bay Leaves"
+formatDescription = false
+quantityPoints = Array[ExtResource("4_qr1kw")]([SubResource("Resource_f5g0f"), SubResource("Resource_8bmu5"), SubResource("Resource_fky46")])
+
+[sub_resource type="Resource" id="Resource_lw685"]
+script = ExtResource("10_st8xe")
+step = 4
+description = "Simmer on low heat for around 30 seconds while mixing constantly until the sauce thickens."
+formatDescription = false
+quantityPoints = Array[ExtResource("4_qr1kw")]([])
+
+[sub_resource type="Resource" id="Resource_keep2"]
+script = ExtResource("6_d26yw")
+doneness = 0
+points = 0.0
+description = "Onions undercooked"
+
+[sub_resource type="Resource" id="Resource_jrtmn"]
+script = ExtResource("6_d26yw")
+doneness = 1
+points = 4.0
+description = "Onions cooked to perfection."
+
+[sub_resource type="Resource" id="Resource_af4om"]
+script = ExtResource("6_d26yw")
+doneness = 2
+points = 0.0
+description = "Onions overcooked"
+
+[sub_resource type="Resource" id="Resource_4xo1m"]
+script = ExtResource("6_d26yw")
+doneness = 3
+points = 0.0
+description = "Onions burnt"
+
+[sub_resource type="Resource" id="Resource_x8hjl"]
+script = ExtResource("4_qr1kw")
+belowOrEqualQuantity = 3
+quantityPoints = 0.0
+description = "Not enough onions"
+
+[sub_resource type="Resource" id="Resource_4mvde"]
+script = ExtResource("4_qr1kw")
+belowOrEqualQuantity = 8
+quantityPoints = 0.0
+description = "Enough onions"
+
+[sub_resource type="Resource" id="Resource_na2xg"]
+script = ExtResource("4_qr1kw")
+belowOrEqualQuantity = 999999
+quantityPoints = 0.0
+description = "Too many onions"
+
+[sub_resource type="Resource" id="Resource_533ay"]
+script = ExtResource("7_ctlct")
+ingredient = 2
+donenessPoints = Array[ExtResource("6_d26yw")]([SubResource("Resource_keep2"), SubResource("Resource_jrtmn"), SubResource("Resource_af4om"), SubResource("Resource_4xo1m")])
+showName = false
+step = 1
+description = "Fry Onions until browned."
+formatDescription = false
+quantityPoints = Array[ExtResource("4_qr1kw")]([SubResource("Resource_x8hjl"), SubResource("Resource_4mvde"), SubResource("Resource_na2xg")])
+
+[sub_resource type="Resource" id="Resource_duyec"]
+script = ExtResource("11_dds3w")
+result = 0
+resultText = "Maybe I was too caught up in my memories. Either way, the dish ended up terrible and tasted nothing like what Lola would cook for me. If only she could see how I've botched her recipe... She would probably laugh honestly."
+
+[sub_resource type="Resource" id="Resource_neo8q"]
+script = ExtResource("11_dds3w")
+result = 1
+resultText = "The dish ended up alright. Nothing like how Lola would make it, but I suppose I wasn't aiming for anything special with this one."
+
+[sub_resource type="Resource" id="Resource_fcu8g"]
+script = ExtResource("11_dds3w")
+result = 2
+resultText = "It tastes similar to how my Lola would make it. It's lacking in a few places, but even Lola's cooking wasn't perfect."
+
+[sub_resource type="Resource" id="Resource_qprn5"]
+script = ExtResource("11_dds3w")
+result = 3
+resultText = "Maybe my memories of my Lola gave me the extra push to turn this dish into something special. If only she could see me now."
+
+[sub_resource type="Resource" id="Resource_hg22e"]
+script = ExtResource("12_kjj4k")
+progress = 2
+progressText = "I guess cooking in my mood didn't help my skills becauser this was worse than what I'm used to."
+
+[sub_resource type="Resource" id="Resource_aih2x"]
+script = ExtResource("12_kjj4k")
+progress = 0
+progressText = "I suppose my mood doesn't affect my skills much."
+
+[sub_resource type="Resource" id="Resource_0f4c8"]
+script = ExtResource("12_kjj4k")
+progress = 1
+progressText = "This turned out better than what I'm used to. I'll keep improving my Lola's recipe to pass onto the future"
 
 [sub_resource type="LabelSettings" id="LabelSettings_c5rhk"]
 font = ExtResource("4_jy5is")
@@ -14,6 +449,11 @@ font_color = Color(0, 0, 0, 1)
 
 [node name="Main4" instance=ExtResource("1_ltxbc")]
 script = ExtResource("2_lnvq8")
+
+[node name="RecipeManager" parent="." index="0"]
+recipe = Array[ExtResource("10_st8xe")]([SubResource("Resource_t5c2e"), SubResource("Resource_c5yxf"), SubResource("Resource_6h8y0"), SubResource("Resource_gqaa1"), SubResource("Resource_gv8wc"), SubResource("Resource_3s2vj"), SubResource("Resource_lw685"), SubResource("Resource_533ay")])
+resultText = Array[ExtResource("11_dds3w")]([SubResource("Resource_duyec"), SubResource("Resource_neo8q"), SubResource("Resource_fcu8g"), SubResource("Resource_qprn5")])
+progressText = Array[ExtResource("12_kjj4k")]([SubResource("Resource_hg22e"), SubResource("Resource_aih2x"), SubResource("Resource_0f4c8")])
 
 [node name="1" type="Node2D" parent="TextManager" index="1"]
 position = Vector2(0, -75)
@@ -25,12 +465,13 @@ offset_left = -690.0
 offset_top = -345.0
 offset_right = 823.0
 offset_bottom = -56.0
-text = "The other week, I received the news that my Lola h
+text = "The other week, I received the news that my Lola
 had passed away."
 label_settings = SubResource("LabelSettings_c5rhk")
 
 [node name="2" type="Node2D" parent="TextManager" index="2"]
-position = Vector2(0, -75)
+position = Vector2(-292, -32)
+rotation = 0.0174873
 script = ExtResource("3_ijpwm")
 dissapearTimer = 5.0
 
@@ -51,10 +492,10 @@ script = ExtResource("3_ijpwm")
 dissapearTimer = 5.0
 
 [node name="Label" type="Label" parent="TextManager/3" index="0"]
-offset_left = 75.0
-offset_top = -386.0
-offset_right = 1651.0
-offset_bottom = -97.0
+offset_left = 193.646
+offset_top = -352.043
+offset_right = 1906.65
+offset_bottom = -63.0432
 rotation = 0.151215
 text = "I couldn't bring even bring myself to make this dish.
 The memories made the pain of losing her feel so real."
@@ -64,17 +505,48 @@ label_settings = SubResource("LabelSettings_c5rhk")
 position = Vector2(-755, 59)
 rotation = -0.144135
 script = ExtResource("3_ijpwm")
-dissapearTimer = 5.0
+dissapearTimer = 4.0
 
 [node name="Label" type="Label" parent="TextManager/4" index="0"]
-offset_left = 75.0
-offset_top = -386.0
-offset_right = 1651.0
-offset_bottom = -97.0
+offset_left = -117.295
+offset_top = -417.174
+offset_right = 1882.71
+offset_bottom = 17.8262
 rotation = 0.151215
-text = "I couldn't bring even bring myself to make this dish.
-The memories made the pain of losing her feel so real."
+text = "As I made the dish, it struck me. My Lola wasn't truly gone."
 label_settings = SubResource("LabelSettings_c5rhk")
+
+[node name="5" type="Node2D" parent="TextManager" index="5"]
+position = Vector2(-755, 59)
+rotation = -0.144135
+script = ExtResource("3_ijpwm")
+dissapearTimer = 8.0
+
+[node name="Label" type="Label" parent="TextManager/5" index="0"]
+offset_left = -115.14
+offset_top = -432.018
+offset_right = 1884.86
+offset_bottom = 2.98181
+rotation = 0.151215
+text = "This dish imbues her love for her family. The memories it
+conveys will live in me forever, and I will make sure it lives on."
+label_settings = SubResource("LabelSettings_c5rhk")
+
+[node name="Onions" type="Node2D" parent="TextManager" index="6"]
+position = Vector2(-755, 59)
+rotation = -0.144135
+script = ExtResource("3_ijpwm")
+dissapearTimer = 8.0
+
+[node name="Label" type="Label" parent="TextManager/Onions" index="0"]
+offset_left = -929.0
+offset_top = -355.0
+offset_right = 682.0
+offset_bottom = -41.0
+rotation = 0.151215
+text = "Lola always loved onions. she didn't add them to her recipe because she knew I wasn't a big fan of them."
+label_settings = SubResource("LabelSettings_c5rhk")
+autowrap_mode = 3
 
 [node name="ParallaxLayer" parent="ParallaxBackground" index="0"]
 motion_mirroring = Vector2(3840, 2160)
@@ -96,3 +568,15 @@ texture = ExtResource("2_e81cw")
 [node name="filter" parent="." index="5"]
 visible = true
 self_modulate = Color(0.0470588, 0.192157, 0.560784, 1)
+
+[node name="IngredientGroup3" parent="Node2D/Cooking Scene/Container" index="17" instance=ExtResource("15_a1pe6")]
+position = Vector2(8, -130)
+scale = Vector2(-6.59748, -6.59748)
+ingredientPath = "res://prefabs/Ingredients/onion.tscn"
+numIngredients = 7
+
+[node name="MixingSpoon" parent="Node2D/Cooking Scene" index="7"]
+position = Vector2(1536, 164)
+
+[node name="Shelf" parent="Node2D/Cooking Scene" index="11" instance=ExtResource("15_0p7or")]
+position = Vector2(1529, -261)

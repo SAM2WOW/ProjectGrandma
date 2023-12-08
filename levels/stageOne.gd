@@ -2,16 +2,18 @@ extends "res://scripts/main.gd"
 
 func _ready():
 	super._ready()
-	
+	Global.currentStage = 0;
 	await get_tree().create_timer(3).timeout
 	
 	Global.textManager.Activate("1")
 	
-	await get_tree().create_timer(10).timeout
+	await get_tree().create_timer(7).timeout
 	
 	Global.textManager.Activate("2")
 	
-	await get_tree().create_timer(25).timeout
+	await get_tree().create_timer(7).timeout
+	
+	Global.finishSeqText = true;
 	
 	# Global.textManager.Activate("3")
 #
