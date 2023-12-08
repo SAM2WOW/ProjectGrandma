@@ -975,7 +975,6 @@ offset_left = 1120.0
 offset_top = 885.0
 offset_right = 1324.0
 offset_bottom = 981.0
-mouse_default_cursor_shape = 2
 text = "Restart"
 script = SubResource("GDScript_eekhh")
 
@@ -985,7 +984,6 @@ offset_left = 1411.0
 offset_top = 884.0
 offset_right = 1615.0
 offset_bottom = 980.0
-mouse_default_cursor_shape = 2
 text = "Complete"
 script = SubResource("GDScript_eekhh")
 
