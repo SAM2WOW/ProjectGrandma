@@ -23,5 +23,5 @@ position = Vector2(-561, 145)
 scale = Vector2(0.514732, 0.514732)
 texture = ExtResource("2_x6dbl")
 
-[node name="ColorRect" parent="CanvasLayer" index="0"]
+[node name="LetterBoxing" parent="CanvasLayer" index="1"]
 visible = true

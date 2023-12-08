@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cbw6pn1hn727d" path="res://arts/main scene/Day4.jpg" id="2_ba254"]
 [ext_resource type="Texture2D" uid="uid://ed50ld8jg5ks" path="res://arts/main scene/IMG_0049.png" id="2_e81cw"]
 
-[node name="Main" instance=ExtResource("1_ltxbc")]
+[node name="Main4" instance=ExtResource("1_ltxbc")]
 
 [node name="ParallaxLayer" parent="ParallaxBackground" index="0"]
 motion_mirroring = Vector2(3840, 2160)
@@ -22,19 +22,3 @@ self_modulate = Color(1, 1, 1, 0.301961)
 position = Vector2(-561, 145)
 scale = Vector2(0.514732, 0.514732)
 texture = ExtResource("2_e81cw")
-
-[node name="RichTextLabel" parent="Node2D/Recipe Scene" index="0"]
-text = "[b]Ingredients[/b]
-	* 2 pounds chicken thighs
-	* 1/2 cup white vinegar
-	* 1/2 cup soy sauce
-	* 4 cloves garlic, chopped
-	* Steamed rice, for serving
-
-
-[b]Steps[/b]
-	1. Combine vinegar, soy sauce, bay leaves, and peppercorns. Add to pot with chicken
-	2. Bring to a boil then let simmer for 30-40mins with cover on
-	3. Serve over rice!
-
-"
