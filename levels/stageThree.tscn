@@ -1,10 +1,218 @@
-[gd_scene load_steps=4 format=3 uid="uid://cb4wk485lvoro"]
+[gd_scene load_steps=41 format=3 uid="uid://cb4wk485lvoro"]
 
 [ext_resource type="PackedScene" uid="uid://dpg0gbpttdpy5" path="res://levels/main.tscn" id="1_ltxbc"]
+[ext_resource type="Script" path="res://Resources/liquidMixtureComponent.gd" id="2_4jaw6"]
 [ext_resource type="Texture2D" uid="uid://cbw6pn1hn727d" path="res://arts/main scene/Day4.jpg" id="2_ba254"]
 [ext_resource type="Texture2D" uid="uid://ed50ld8jg5ks" path="res://arts/main scene/IMG_0049.png" id="2_e81cw"]
+[ext_resource type="Script" path="res://Resources/recipeQuantity.gd" id="2_gu8tk"]
+[ext_resource type="Script" path="res://Resources/liquidMixturePoints.gd" id="2_rkilg"]
+[ext_resource type="Script" path="res://Resources/ingredientPoints.gd" id="4_gslw4"]
+[ext_resource type="Script" path="res://Resources/ingredientComponent.gd" id="5_vx8hv"]
+[ext_resource type="Script" path="res://Resources/recipeComponent.gd" id="6_ormnj"]
+[ext_resource type="PackedScene" uid="uid://g218crvxx0hm" path="res://prefabs/ingredientGroup.tscn" id="10_fq7un"]
+
+[sub_resource type="Resource" id="Resource_fve8x"]
+script = ExtResource("2_rkilg")
+liquidType = 0
+lessOrEqualRatio = 0.35
+points = 0.0
+description = "not enough soy sauce"
+
+[sub_resource type="Resource" id="Resource_i6g62"]
+script = ExtResource("2_rkilg")
+liquidType = 0
+lessOrEqualRatio = 0.65
+points = 1.0
+description = "enough soy sauce"
+
+[sub_resource type="Resource" id="Resource_rk106"]
+script = ExtResource("2_rkilg")
+liquidType = 0
+lessOrEqualRatio = 1.0
+points = 0.0
+description = "too much soy sauce"
+
+[sub_resource type="Resource" id="Resource_wxw74"]
+script = ExtResource("2_rkilg")
+liquidType = 1
+lessOrEqualRatio = 0.35
+points = 0.0
+description = "too little vinegar"
+
+[sub_resource type="Resource" id="Resource_snd1b"]
+script = ExtResource("2_rkilg")
+liquidType = 1
+lessOrEqualRatio = 0.65
+points = 1.0
+description = "enough vinegar"
+
+[sub_resource type="Resource" id="Resource_y8hgm"]
+script = ExtResource("2_rkilg")
+liquidType = 1
+lessOrEqualRatio = 1.0
+points = 0.0
+description = "too much vinegar"
+
+[sub_resource type="Resource" id="Resource_myx2r"]
+script = ExtResource("2_gu8tk")
+belowOrEqualQuantity = 0
+quantityPoints = 0.0
+description = "no sauce"
+
+[sub_resource type="Resource" id="Resource_gnmed"]
+script = ExtResource("2_gu8tk")
+belowOrEqualQuantity = 100
+quantityPoints = 1.0
+description = "not enough sauce"
+
+[sub_resource type="Resource" id="Resource_tw06s"]
+script = ExtResource("2_gu8tk")
+belowOrEqualQuantity = 250
+quantityPoints = 3.0
+description = "enough sauce"
+
+[sub_resource type="Resource" id="Resource_8oomw"]
+script = ExtResource("2_gu8tk")
+belowOrEqualQuantity = 1000000000
+quantityPoints = 1.0
+description = "too much sauce"
+
+[sub_resource type="Resource" id="Resource_g5ppi"]
+script = ExtResource("2_4jaw6")
+targetLiquid = 2
+liquidMixtureRecipe = Array[ExtResource("2_rkilg")]([SubResource("Resource_fve8x"), SubResource("Resource_i6g62"), SubResource("Resource_rk106"), SubResource("Resource_wxw74"), SubResource("Resource_snd1b"), SubResource("Resource_y8hgm")])
+step = 0
+description = "Combine vinegar, soy sauce,"
+formatDescription = false
+quantityPoints = Array[ExtResource("2_gu8tk")]([SubResource("Resource_myx2r"), SubResource("Resource_gnmed"), SubResource("Resource_tw06s"), SubResource("Resource_8oomw")])
+
+[sub_resource type="Resource" id="Resource_uh6p8"]
+script = ExtResource("4_gslw4")
+doneness = 0
+points = 0.0
+description = "garlic is raw"
+
+[sub_resource type="Resource" id="Resource_fro0p"]
+script = ExtResource("4_gslw4")
+doneness = 1
+points = 2.0
+description = "garlic is just right"
+
+[sub_resource type="Resource" id="Resource_ahp7h"]
+script = ExtResource("4_gslw4")
+doneness = 2
+points = 1.0
+description = "garlic is overcooked"
+
+[sub_resource type="Resource" id="Resource_pbkqc"]
+script = ExtResource("4_gslw4")
+doneness = 3
+points = 0.0
+description = "garlic is burnt"
+
+[sub_resource type="Resource" id="Resource_lxv6p"]
+script = ExtResource("2_gu8tk")
+belowOrEqualQuantity = 0
+quantityPoints = 1.0
+description = "no garlic"
+
+[sub_resource type="Resource" id="Resource_j8yj5"]
+script = ExtResource("2_gu8tk")
+belowOrEqualQuantity = 4
+quantityPoints = 1.0
+description = "too little garlic"
+
+[sub_resource type="Resource" id="Resource_plstr"]
+script = ExtResource("2_gu8tk")
+belowOrEqualQuantity = 15
+quantityPoints = 5.0
+description = "enough garlic"
+
+[sub_resource type="Resource" id="Resource_5owar"]
+script = ExtResource("2_gu8tk")
+belowOrEqualQuantity = 9999
+quantityPoints = 1.0
+description = "too much garlic"
+
+[sub_resource type="Resource" id="Resource_nhefc"]
+script = ExtResource("5_vx8hv")
+ingredient = 1
+donenessPoints = Array[ExtResource("4_gslw4")]([SubResource("Resource_uh6p8"), SubResource("Resource_fro0p"), SubResource("Resource_ahp7h"), SubResource("Resource_pbkqc")])
+showName = false
+step = 0
+description = "garlic"
+formatDescription = false
+quantityPoints = Array[ExtResource("2_gu8tk")]([SubResource("Resource_lxv6p"), SubResource("Resource_j8yj5"), SubResource("Resource_plstr"), SubResource("Resource_5owar")])
+
+[sub_resource type="Resource" id="Resource_6oxdg"]
+script = ExtResource("4_gslw4")
+doneness = 0
+points = 1.0
+description = "chicken is raw"
+
+[sub_resource type="Resource" id="Resource_2exyd"]
+script = ExtResource("4_gslw4")
+doneness = 1
+points = 4.0
+description = "good chicken"
+
+[sub_resource type="Resource" id="Resource_cxnih"]
+script = ExtResource("4_gslw4")
+doneness = 2
+points = 2.0
+description = "chicken is a overcooked"
+
+[sub_resource type="Resource" id="Resource_1240y"]
+script = ExtResource("4_gslw4")
+doneness = 3
+points = 0.0
+description = "chicken is burnt"
+
+[sub_resource type="Resource" id="Resource_en8dt"]
+script = ExtResource("2_gu8tk")
+belowOrEqualQuantity = 0
+quantityPoints = 0.0
+description = "no chicken"
+
+[sub_resource type="Resource" id="Resource_k1skw"]
+script = ExtResource("2_gu8tk")
+belowOrEqualQuantity = 3
+quantityPoints = 1.0
+description = "too little chicken"
+
+[sub_resource type="Resource" id="Resource_8504j"]
+script = ExtResource("2_gu8tk")
+belowOrEqualQuantity = 10
+quantityPoints = 3.0
+description = "enough chicken"
+
+[sub_resource type="Resource" id="Resource_qa1cx"]
+script = ExtResource("2_gu8tk")
+belowOrEqualQuantity = 20
+quantityPoints = 1.0
+description = "too much chicken"
+
+[sub_resource type="Resource" id="Resource_r804r"]
+script = ExtResource("5_vx8hv")
+ingredient = 0
+donenessPoints = Array[ExtResource("4_gslw4")]([SubResource("Resource_6oxdg"), SubResource("Resource_2exyd"), SubResource("Resource_cxnih"), SubResource("Resource_1240y")])
+showName = false
+step = 1
+description = " Add to pot with chicken"
+formatDescription = false
+quantityPoints = Array[ExtResource("2_gu8tk")]([SubResource("Resource_en8dt"), SubResource("Resource_k1skw"), SubResource("Resource_8504j"), SubResource("Resource_qa1cx")])
+
+[sub_resource type="Resource" id="Resource_3gdms"]
+script = ExtResource("6_ormnj")
+step = 2
+description = "Bring to a boil then let simmer for 30-40mins with cover on"
+formatDescription = false
+quantityPoints = Array[ExtResource("2_gu8tk")]([])
 
 [node name="Main4" instance=ExtResource("1_ltxbc")]
+
+[node name="RecipeManager" parent="." index="0"]
+recipe = Array[ExtResource("6_ormnj")]([SubResource("Resource_g5ppi"), SubResource("Resource_nhefc"), SubResource("Resource_r804r"), SubResource("Resource_3gdms")])
 
 [node name="ParallaxLayer" parent="ParallaxBackground" index="0"]
 motion_mirroring = Vector2(3840, 2160)
@@ -22,3 +230,20 @@ self_modulate = Color(1, 1, 1, 0.301961)
 position = Vector2(-561, 145)
 scale = Vector2(0.514732, 0.514732)
 texture = ExtResource("2_e81cw")
+
+[node name="Container2" parent="Node2D/Cooking Scene" index="5"]
+visible = false
+
+[node name="IngredientGroup" parent="Node2D/Cooking Scene/Container2" index="15"]
+visible = false
+numIngredients = 0
+
+[node name="IngredientGroup2" parent="Node2D/Cooking Scene/Container2" index="16"]
+visible = false
+numIngredients = 0
+
+[node name="IngredientGroup3" parent="Node2D/Cooking Scene/Container2" index="17" instance=ExtResource("10_fq7un")]
+visible = false
+position = Vector2(0, -305)
+scale = Vector2(-6.59748, -6.59748)
+ingredientPath = "res://prefabs/Ingredients/bayLeaf.tscn"
