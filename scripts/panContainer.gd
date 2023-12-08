@@ -44,7 +44,9 @@ func _process(delta):
 		$Frying.set_volume_db(linear_to_db((1 - boiledWeight) * heatWeight))
 		
 		var deepWaterWeight = clamp(GetLiquidTotal() / 400.0, 0.0, 1.0)
-		$Boiling.set_pitch_scale(lerp(1.0, 0.76, deepWaterWeight))
+		var vel = clamp(averageLiquidVelocity, 0, 250);
+		vel = remap(vel, 0, 250, 0, 1);
+		$Boiling.set_pitch_scale(lerp(1.0, 0.76, vel))
 		#$Smoke.set_amount(lerp(1, 8, heatWeight))
 	else:
 		if $Boiling.is_playing():
