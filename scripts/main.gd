@@ -31,11 +31,11 @@ func completeStage():
 func _input(ev):
 	if ev is InputEventKey and ev.keycode == KEY_K:
 		onGameEnd()
-	if ev is InputEventKey and ev.keycode == KEY_ENTER:
-		if Global.gameManager.canCompleteStage:
-			Global.gameManager.OnCompleteStage()
-	if ev is InputEventKey and ev.keycode == KEY_S:
-		Global.gameManager.UpdateStage()
+	#if ev is InputEventKey and ev.keycode == KEY_ENTER:
+		#if Global.gameManager.canCompleteStage:
+			#Global.gameManager.OnCompleteStage()
+	#if ev is InputEventKey and ev.keycode == KEY_S:
+		#Global.gameManager.UpdateStage()
 
 
 func onGameEnd():
@@ -46,7 +46,8 @@ func onGameEnd():
 	Global.recipeManager.ToggleText(false);
 	$AnimationPlayer.play("Final")
 	$Sounds/SlideSound.play()
-	
+	$CanvasLayer/HUD/RestartButton.hide()
+	$CanvasLayer/HUD/CompeletLevelButton.hide()
 	MusicPlayer.fade_out(true)
 	
 	$Sounds/CompleteSound.play()
