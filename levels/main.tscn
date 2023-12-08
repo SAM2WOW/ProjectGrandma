@@ -12,7 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://dnle2jjcpad0l" path="res://arts/main scene/kitchen scene.png" id="8_ocn02"]
 [ext_resource type="PackedScene" uid="uid://dcdllixbqh58h" path="res://prefabs/mixingSpoon.tscn" id="9_vpwpm"]
 [ext_resource type="FontFile" uid="uid://ds8uy6wtxnlvu" path="res://arts/fonts/Zeyada-Regular.ttf" id="10_hjo2k"]
-[ext_resource type="PackedScene" path="res://prefabs/measuringCup.tscn" id="10_vgqss"]
+[ext_resource type="PackedScene" uid="uid://bvlk2bnpkqn8u" path="res://prefabs/measuringCup.tscn" id="10_vgqss"]
 [ext_resource type="Shader" path="res://arts/UI/transition.gdshader" id="11_b5byl"]
 [ext_resource type="PackedScene" uid="uid://w7pwgo4f8bvq" path="res://prefabs/recipeManager.tscn" id="11_bxixm"]
 [ext_resource type="FontFile" uid="uid://lf3j1njjt8sb" path="res://arts/fonts/RockSalt-Regular.ttf" id="11_ml1rf"]
@@ -35,8 +35,8 @@
 [ext_resource type="Script" path="res://Resources/liquidComponent.gd" id="27_qhic2"]
 [ext_resource type="Script" path="res://Resources/recipeComponent.gd" id="28_evxnv"]
 [ext_resource type="AudioStream" uid="uid://bwv3ngkmackai" path="res://sounds/CompleteSound.ogg" id="34_yowf1"]
-[ext_resource type="AudioStream" path="res://sounds/Slide1.wav" id="35_36j26"]
-[ext_resource type="AudioStream" path="res://sounds/Slide2.wav" id="36_0ahhm"]
+[ext_resource type="AudioStream" uid="uid://ml0deg4pqvk1" path="res://sounds/Slide1.wav" id="35_36j26"]
+[ext_resource type="AudioStream" uid="uid://gcr1455oig1v" path="res://sounds/Slide2.wav" id="36_0ahhm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_thd3q"]
 size = Vector2(5056, 1370)
@@ -970,6 +970,7 @@ theme_override_font_sizes/font_size = 40
 text = "Next Page"
 
 [node name="RestartButton" type="Button" parent="CanvasLayer/HUD"]
+layout_mode = 0
 offset_left = 1120.0
 offset_top = 885.0
 offset_right = 1324.0

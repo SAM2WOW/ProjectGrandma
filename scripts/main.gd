@@ -7,7 +7,7 @@ func _ready():
 	print("Main is ready")
 	Global.gameManager.stageComplete.connect(completeStage)
 	Global.gameManager.gameEnd.connect(onGameEnd)
-	$CanvasLayer/TestLevelText.text = "Level" + str(Global.gameManager.currentStage+1)
+	$CanvasLayer/TestLevelText.text = "Level" + str(Global.currentStage+1)
 	Global.recipeManager.GetCurrentRecipeIngredients()
 	$CanvasLayer/HUD/CompeletLevelButton.modulate.a = 0.1
 	

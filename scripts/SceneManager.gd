@@ -26,6 +26,16 @@ func DeferredSwitchScene(filePath):
 	print(root)
 	var scene = load(filePath)
 	currentScene = scene.instantiate()
+	var gm = currentScene.get_node("gameManager")
+	var rm = currentScene.get_node("RecipeManager")
+	var tm = currentScene.get_node("TextManager")
+	var sm = currentScene.get_node("SceneManager")
+	var im = currentScene.get_node("InstantiationManager")
+	Global.gameManager = gm
+	Global.recipeManager = rm
+	Global.textManager = tm
+	Global.sceneManager = sm
+	Global.instantiationManager = im
 	root.add_child(currentScene)
 	#get_tree().current_scene = currentScene
 	
