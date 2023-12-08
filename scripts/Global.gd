@@ -9,6 +9,7 @@ var gameManager;
 var instantiationManager;
 var textManager;
 var sceneManager;
+var finishSeqText = false;
 
 # Called when the node enters the scene tree for the first time.
 #func _ready():

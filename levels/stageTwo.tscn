@@ -385,13 +385,13 @@ description = "Mushrooms are burnt"
 
 [sub_resource type="Resource" id="Resource_wpjab"]
 script = ExtResource("4_1fpi6")
-belowOrEqualQuantity = 3
+belowOrEqualQuantity = 2
 quantityPoints = 0.0
 description = "Not enough Mushrooms"
 
 [sub_resource type="Resource" id="Resource_k5cic"]
 script = ExtResource("4_1fpi6")
-belowOrEqualQuantity = 0
+belowOrEqualQuantity = 7
 quantityPoints = 1.0
 description = "Enough Mushrooms"
 

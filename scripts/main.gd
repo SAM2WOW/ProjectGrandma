@@ -3,7 +3,7 @@ extends Node
 var recipeMode = false
 
 func _ready():
-	
+	Global.finishSeqText = false;
 	print("Main is ready")
 	Global.gameManager.stageComplete.connect(completeStage)
 	Global.gameManager.gameEnd.connect(onGameEnd)

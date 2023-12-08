@@ -15,7 +15,7 @@ var stageScenes: Array[String] = [
 "res://levels/stageTwo.tscn",
 "res://levels/stageThree.tscn",
 "res://levels/stageFour.tscn",
-"res://levels/endStageScene.tscn"
+"res://levels/stageFive.tscn"
 ]
 
 var cursors = {
@@ -115,7 +115,7 @@ func AddObjectToPan(type,id):
 		Global.textManager.Activate("All Ingredients")
 
 func ArraysAreEqual(array1,array2):
-	print(array1, array2);
+	# print(array1, array2);
 	if array1.size() != array2.size() : return false
 	for e in array1:
 		if !array2.has(e):

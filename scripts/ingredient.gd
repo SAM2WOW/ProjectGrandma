@@ -64,10 +64,14 @@ func ChangeState(newIndex):
 	if GetCurrentState().state == IngredientState.CookingState.Cooked:
 		if Global.currentStage == 0:
 			Global.textManager.Activate("3")
-		elif Global.currentStage == 1:
+		elif Global.currentStage == 1 && Global.finishSeqText:
 			Global.textManager.Activate("Kids")
-		elif Global.currentStage == 2:
+		elif Global.currentStage == 2 && Global.finishSeqText:
 			Global.textManager.Activate("4")
+		elif Global.currentStage == 3 && Global.finishSeqText:
+			Global.textManager.Activate("final");
+		elif Global.currentStage == 4 && Global.finishSeqText:
+			Global.textManager.Activate("cook");
 	
 
 func UpdateColor(delta):
@@ -91,11 +95,17 @@ func StartDrag():
 	if Global.currentStage == 0:
 		var c = Global.textManager.Activate("Item2");
 		followText = c;
-	elif Global.currentStage == 1:
+	elif Global.currentStage == 1 && Global.finishSeqText && ingredientType == IngredientType.Peppercorn:
 		var c = Global.textManager.Activate("Peppercorns");
 		followText = c;
-	elif Global.currentStage == 2:
+	elif Global.currentStage == 2 && Global.finishSeqText && ingredientType == IngredientType.Onion:
 		var c = Global.textManager.Activate("Onions");
+		followText = c;
+	elif Global.currentStage == 3 && Global.finishSeqText && (ingredientType == IngredientType.Pepper || ingredientType == IngredientType.Garlic):
+		var c = Global.textManager.Activate("Spicy");
+		followText = c;
+	elif Global.currentStage == 4 && Global.finishSeqText && (ingredientType == IngredientType.Pepper || ingredientType == IngredientType.Broccoli):
+		var c = Global.textManager.Activate("pepper");
 		followText = c;
 
 func OnHover():

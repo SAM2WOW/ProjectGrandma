@@ -7,11 +7,13 @@ func _ready():
 	
 	Global.textManager.Activate("1")
 	
-	await get_tree().create_timer(10).timeout
+	await get_tree().create_timer(7).timeout
 	
 	Global.textManager.Activate("2")
 	
-	await get_tree().create_timer(25).timeout
+	await get_tree().create_timer(7).timeout
+	
+	Global.finishSeqText = true;
 	
 	# Global.textManager.Activate("3")
 #

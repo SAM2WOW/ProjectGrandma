@@ -1,4 +1,4 @@
-[gd_scene load_steps=77 format=3 uid="uid://cb4wk485lvoro"]
+[gd_scene load_steps=86 format=3 uid="uid://cb4wk485lvoro"]
 
 [ext_resource type="PackedScene" uid="uid://dpg0gbpttdpy5" path="res://levels/main.tscn" id="1_ltxbc"]
 [ext_resource type="Texture2D" uid="uid://cbw6pn1hn727d" path="res://arts/main scene/Day4.jpg" id="2_ba254"]
@@ -14,6 +14,8 @@
 [ext_resource type="Script" path="res://Resources/liquidPoints.gd" id="8_ij7ap"]
 [ext_resource type="Script" path="res://Resources/liquidComponent.gd" id="9_odllu"]
 [ext_resource type="Script" path="res://Resources/recipeComponent.gd" id="10_st8xe"]
+[ext_resource type="Script" path="res://Resources/resultText.gd" id="11_dds3w"]
+[ext_resource type="Script" path="res://Resources/progressText.gd" id="12_kjj4k"]
 [ext_resource type="PackedScene" uid="uid://p10wedylbibp" path="res://prefabs/shelf.tscn" id="15_0p7or"]
 [ext_resource type="PackedScene" uid="uid://g218crvxx0hm" path="res://prefabs/ingredientGroup.tscn" id="15_a1pe6"]
 
@@ -405,6 +407,41 @@ description = "Fry Onions until browned."
 formatDescription = false
 quantityPoints = Array[ExtResource("4_qr1kw")]([SubResource("Resource_x8hjl"), SubResource("Resource_4mvde"), SubResource("Resource_na2xg")])
 
+[sub_resource type="Resource" id="Resource_duyec"]
+script = ExtResource("11_dds3w")
+result = 0
+resultText = "Maybe I was too caught up in my memories. Either way, the dish ended up terrible and tasted nothing like what Lola would cook for me. If only she could see how I've botched her recipe... She would probably laugh honestly."
+
+[sub_resource type="Resource" id="Resource_neo8q"]
+script = ExtResource("11_dds3w")
+result = 1
+resultText = "The dish ended up alright. Nothing like how Lola would make it, but I suppose I wasn't aiming for anything special with this one."
+
+[sub_resource type="Resource" id="Resource_fcu8g"]
+script = ExtResource("11_dds3w")
+result = 2
+resultText = "It tastes similar to how my Lola would make it. It's lacking in a few places, but even Lola's cooking wasn't perfect."
+
+[sub_resource type="Resource" id="Resource_qprn5"]
+script = ExtResource("11_dds3w")
+result = 3
+resultText = "Maybe my memories of my Lola gave me the extra push to turn this dish into something special. If only she could see me now."
+
+[sub_resource type="Resource" id="Resource_hg22e"]
+script = ExtResource("12_kjj4k")
+progress = 2
+progressText = "I guess cooking in my mood didn't help my skills becauser this was worse than what I'm used to."
+
+[sub_resource type="Resource" id="Resource_aih2x"]
+script = ExtResource("12_kjj4k")
+progress = 0
+progressText = "I suppose my mood doesn't affect my skills much."
+
+[sub_resource type="Resource" id="Resource_0f4c8"]
+script = ExtResource("12_kjj4k")
+progress = 1
+progressText = "This turned out better than what I'm used to. I'll keep improving my Lola's recipe to pass onto the future"
+
 [sub_resource type="LabelSettings" id="LabelSettings_c5rhk"]
 font = ExtResource("4_jy5is")
 font_size = 90
@@ -415,6 +452,8 @@ script = ExtResource("2_lnvq8")
 
 [node name="RecipeManager" parent="." index="0"]
 recipe = Array[ExtResource("10_st8xe")]([SubResource("Resource_t5c2e"), SubResource("Resource_c5yxf"), SubResource("Resource_6h8y0"), SubResource("Resource_gqaa1"), SubResource("Resource_gv8wc"), SubResource("Resource_3s2vj"), SubResource("Resource_lw685"), SubResource("Resource_533ay")])
+resultText = Array[ExtResource("11_dds3w")]([SubResource("Resource_duyec"), SubResource("Resource_neo8q"), SubResource("Resource_fcu8g"), SubResource("Resource_qprn5")])
+progressText = Array[ExtResource("12_kjj4k")]([SubResource("Resource_hg22e"), SubResource("Resource_aih2x"), SubResource("Resource_0f4c8")])
 
 [node name="1" type="Node2D" parent="TextManager" index="1"]
 position = Vector2(0, -75)
