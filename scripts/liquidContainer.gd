@@ -52,6 +52,13 @@ func OnLiquidEnter(id, body_rid):
 	containedLiquid[id][body_rid] = Global.instantiationManager.liquidParticles[id][body_rid];
 	# print("amt: ", containedLiquid[id].keys().size())
 
+func StartDrag():
+	super.StartDrag();
+	if Global.currentStage == 0:
+		var c = Global.textManager.Activate("Item");
+		if c.firstTime:
+			followText = c;
+
 func OnLiquidExit(id, body_rid):
 	if !containedLiquid.keys().has(id): return;
 	containedLiquid[id].erase(body_rid);

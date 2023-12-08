@@ -18,7 +18,7 @@ func _ready():
 	textManager = get_tree().get_first_node_in_group("TextManager");
 	sceneManager = get_tree().get_first_node_in_group("SceneManager")
 	print("Recipe Manager Size: ", recipeManager.recipe.size());
-	
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

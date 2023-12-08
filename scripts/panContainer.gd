@@ -23,6 +23,12 @@ func _ready():
 func ObjectAction(event):
 	super.ObjectAction(event);
 	pouring=false;
+	
+func _on_interact_area_mouse_entered():
+	super._on_interact_area_mouse_entered();
+	if Global.currentStage == 0:
+		var c = Global.textManager.Activate("PanHover");
+			# c.global_position = Vector2(global_position.x, global_position.y-50);
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

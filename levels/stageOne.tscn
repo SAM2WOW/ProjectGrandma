@@ -15,30 +15,7 @@ font_color = Color(0, 0, 0, 1)
 [node name="Main2" instance=ExtResource("1_y2kh4")]
 script = ExtResource("2_3n783")
 
-[node name="ParallaxLayer" parent="ParallaxBackground" index="0"]
-motion_mirroring = Vector2(3840, 2160)
-
-[node name="BG" parent="ParallaxBackground/ParallaxLayer" index="0"]
-position = Vector2(1920, 1080)
-scale = Vector2(2, 2)
-texture = ExtResource("3_cluy4")
-
-[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground" index="1"]
-motion_scale = Vector2(0.8, 0.8)
-
-[node name="Img0049" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2" index="0"]
-self_modulate = Color(1, 1, 1, 0.301961)
-position = Vector2(-561, 145)
-scale = Vector2(0.514732, 0.514732)
-texture = ExtResource("3_eq81a")
-
-[node name="CompeletLevelButton" parent="CanvasLayer/HUD" index="4"]
-offset_left = 1366.0
-offset_top = 886.0
-offset_right = 1570.0
-offset_bottom = 982.0
-
-[node name="TextManager" parent="." index="5"]
+[node name="TextManager" parent="." index="2"]
 rotation = -0.0680678
 
 [node name="Hungry" type="Node2D" parent="TextManager" index="1"]
@@ -90,20 +67,20 @@ offset_left = -418.914
 offset_top = -59.6306
 offset_right = 575.086
 offset_bottom = 83.3694
-text = "How much sauce to put in the pan?"
+text = "Right Click to Pour Sauce"
 label_settings = SubResource("LabelSettings_c5rhk")
 
-[node name="Sauce2" type="Node2D" parent="TextManager" index="5"]
+[node name="OnBoil" type="Node2D" parent="TextManager" index="5"]
 position = Vector2(921.519, -64.4719)
 script = ExtResource("2_3ui8n")
 dissapearTimer = 5.0
 
-[node name="Label" type="Label" parent="TextManager/Sauce2" index="0"]
+[node name="Label" type="Label" parent="TextManager/OnBoil" index="0"]
 offset_left = -418.914
 offset_top = -59.6306
 offset_right = 575.086
 offset_bottom = 83.3694
-text = "Should I measure it first?"
+text = "Occasionally stir to stop things from burning"
 label_settings = SubResource("LabelSettings_c5rhk")
 
 [node name="Item" type="Node2D" parent="TextManager" index="6"]
@@ -116,7 +93,7 @@ offset_left = -435.739
 offset_top = -62.7823
 offset_right = 558.261
 offset_bottom = 80.2177
-text = "It’s time to add the chicken!"
+text = "Click to Drag"
 label_settings = SubResource("LabelSettings_c5rhk")
 
 [node name="Item2" type="Node2D" parent="TextManager" index="7"]
@@ -125,14 +102,41 @@ script = ExtResource("2_3ui8n")
 dissapearTimer = 5.0
 
 [node name="Label" type="Label" parent="TextManager/Item2" index="0"]
-offset_left = -1158.2
-offset_top = 66.3787
-offset_right = -102.197
-offset_bottom = 209.379
-text = "What seasonings should I add?"
+offset_left = -758.444
+offset_top = -4.59637
+offset_right = 297.559
+offset_bottom = 138.404
+text = "move to the pan to cook it"
 label_settings = SubResource("LabelSettings_c5rhk")
 
-[node name="Fire" type="Node2D" parent="TextManager" index="8"]
+[node name="ContainerDrag" type="Node2D" parent="TextManager" index="8"]
+position = Vector2(-425.279, 768.855)
+script = ExtResource("2_3ui8n")
+dissapearTimer = 10.0
+
+[node name="Label" type="Label" parent="TextManager/ContainerDrag" index="0"]
+offset_left = -418.914
+offset_top = -59.6306
+offset_right = 575.086
+offset_bottom = 83.3694
+text = "Right Click to Pour Contents"
+label_settings = SubResource("LabelSettings_c5rhk")
+
+[node name="LiquidDrag" type="Node2D" parent="TextManager" index="9"]
+position = Vector2(-212.639, 384.427)
+script = ExtResource("2_3ui8n")
+dissapearTimer = 10.0
+
+[node name="Label" type="Label" parent="TextManager/LiquidDrag" index="0"]
+offset_left = -418.914
+offset_top = -59.6306
+offset_right = 575.086
+offset_bottom = 83.3694
+text = "Right Click to Pour Liquid"
+label_settings = SubResource("LabelSettings_c5rhk")
+
+[node name="Fire" type="Node2D" parent="TextManager" index="10"]
+visible = false
 position = Vector2(-112.51, 194.799)
 script = ExtResource("2_3ui8n")
 dissapearTimer = 10.0
@@ -147,6 +151,45 @@ text = "Don't forget to turn on the fire
 
                    < Right Here"
 label_settings = SubResource("LabelSettings_c5rhk")
+
+[node name="PanHover" type="Node2D" parent="TextManager" index="11"]
+position = Vector2(-106.32, 192.214)
+script = ExtResource("2_3ui8n")
+dissapearTimer = 10.0
+
+[node name="Label" type="Label" parent="TextManager/PanHover" index="0"]
+offset_left = -418.914
+offset_top = -59.6306
+offset_right = 575.086
+offset_bottom = 83.3694
+text = "Turn on the heat to cook ingredients in the pan
+
+
+                   < Turn this dial to increase the heat"
+label_settings = SubResource("LabelSettings_c5rhk")
+
+[node name="ParallaxLayer" parent="ParallaxBackground" index="0"]
+motion_mirroring = Vector2(3840, 2160)
+
+[node name="BG" parent="ParallaxBackground/ParallaxLayer" index="0"]
+position = Vector2(1920, 1080)
+scale = Vector2(2, 2)
+texture = ExtResource("3_cluy4")
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground" index="1"]
+motion_scale = Vector2(0.8, 0.8)
+
+[node name="Img0049" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2" index="0"]
+self_modulate = Color(1, 1, 1, 0.301961)
+position = Vector2(-561, 145)
+scale = Vector2(0.514732, 0.514732)
+texture = ExtResource("3_eq81a")
+
+[node name="CompeletLevelButton" parent="CanvasLayer/HUD" index="4"]
+offset_left = 1366.0
+offset_top = 886.0
+offset_right = 1570.0
+offset_bottom = 982.0
 
 [connection signal="on_mouse_hovering" from="Node2D/Cooking Scene/LiquidDraggable" to="." method="_on_liquid_draggable_on_mouse_hovering"]
 [connection signal="on_grabbed" from="Node2D/Cooking Scene/LiquidDraggable2" to="." method="_on_liquid_draggable_2_on_grabbed"]

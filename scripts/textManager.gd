@@ -19,21 +19,23 @@ func _process(delta):
 #func AddTextEvent(id : String, text : String, disTime : float):
 	#pass
 	
-func Activate(id : String):
+func Activate(id : String) -> Node2D:
 	var child = find_child(id);
-	
+	child.firstTime = false;
+	if !child.hasPlayed: child.firstTime = true;
 	if ((child.playOnce == true && child.hasPlayed == true) || child.active == true):
-		return;
-		
+		return child;
 	child.visible = true;
 	child.hasPlayed = true;
 	child.active = true;
+	
 	
 	var tween = create_tween().set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN_OUT)
 	tween.tween_property(child.get_child(0), "visible_ratio", 1, 1)
 	
 	if (child.dissapearTimer != 0):
 		child.AwaitDissapear();
+	return child;
 	
 func Deactivate(id : String):
 	var child = find_child(id);

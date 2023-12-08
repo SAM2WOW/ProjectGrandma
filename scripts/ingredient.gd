@@ -33,6 +33,9 @@ func _process(delta):
 func Cook(cookingType: IngredientState.CookingType, heatMultiplier, delta):
 	if currentStateIndex >= ingredientStates.size()-1: return;
 	if cookingType == IngredientState.CookingType.Boiled:
+		if Global.currentStage == 0:
+			var c = Global.textManager.Activate("OnBoil");
+			followText = c;
 		var currMult = clamp(linear_velocity.length(), 0, cookingVelocityThresholds);
 		currMult = Global.remap_range(currMult, 0, cookingVelocityThresholds, lowVelocityMultiplier, highVelocityMultiplier);
 		if currMult < currentVelocityMult:
@@ -71,6 +74,28 @@ func GetState(checkState: IngredientState.CookingState):
 func GetCurrentState():
 	return ingredientStates[currentStateIndex];
 
+func StartDrag():
+	super.StartDrag();
+	if Global.currentStage == 0:
+		var c = Global.textManager.Activate("Item2");
+		followText = c;
+
+func OnHover():
+	super.OnHover();
+	if Global.currentStage == 0:
+		var c = Global.textManager.Activate("Item");
+		if c.firstTime:
+			followText = c;
+
+func _on_interact_area_mouse_entered():
+	super._on_interact_area_mouse_entered();
+	if Global.currentStage == 0:
+		var c = Global.textManager.Activate("Item");
+		if c.firstTime:
+			followText = c;
+			# c.set_position(Vector2(global_position.x, global_position.y-50))
+			
+			
 
 func _on_body_entered(body):
 	if not $AudioStreamPlayer2D.is_playing():

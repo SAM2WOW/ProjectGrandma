@@ -13,6 +13,8 @@ var hovering = false;
 var spriteBaseScale : Vector2;
 var shadowBaseScale : Vector2;
 
+var followText : TextEvent = null;
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	spriteBaseScale = $Sprite2D.get_scale();
@@ -20,6 +22,8 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if followText:
+		followText.global_position = Vector2(global_position.x-50, global_position.y-50);
 	$Sprite2DShadow.set_global_position(lerp($Sprite2DShadow.get_global_position(), $Sprite2D.get_global_position() + Vector2(12, 12) * int(hovering), 5 * delta))
 	$Sprite2DShadow.self_modulate.a = lerp($Sprite2DShadow.self_modulate.a, 0.5 * float(hovering), 5 * delta)
 
@@ -29,6 +33,20 @@ func _physics_process(delta):
 		linear_velocity = Vector2(0, 0);
 		global_position = Vector2(0,0);
 	pass;
+
+func StartDrag():
+	Global.gameManager.BeginDragObject(self);
+
+func OnHover():
+	if Global.gameManager.hoveredObject: Global.gameManager.hoveredObject.UnHover();
+		
+	Global.gameManager.hoveredObject = self;
+	hovering = true;
+	create_tween().tween_property($Sprite2D, "scale", spriteBaseScale*1.1, 0.3).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUINT);
+	create_tween().tween_property($Sprite2DShadow, "scale", shadowBaseScale*1.1, 0.3).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUINT);
+	# print("hover scale: ", spriteBaseScale*1.2);
+	
+	emit_signal("on_mouse_hovering")
 
 func Drag(delta):
 	dragging = true;
@@ -65,8 +83,7 @@ func AirDrag(delta):
 func _on_interact_area_input_event(viewport, event, shape_idx):
 	if !event is InputEventMouseButton: return;
 	if event.button_index == 1 && event.pressed:
-		Global.gameManager.BeginDragObject(self);
-		
+		StartDrag();
 		emit_signal("on_grabbed")
 
 func UnHover():
@@ -80,14 +97,7 @@ func UnHover():
 	# print("unhover scale: ", spriteBaseScale);
 
 func _on_interact_area_mouse_entered():
-	if Global.gameManager.hoveredObject: Global.gameManager.hoveredObject.UnHover();
-	Global.gameManager.hoveredObject = self;
-	hovering = true;
-	create_tween().tween_property($Sprite2D, "scale", spriteBaseScale*1.1, 0.3).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUINT);
-	create_tween().tween_property($Sprite2DShadow, "scale", shadowBaseScale*1.1, 0.3).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUINT);
-	# print("hover scale: ", spriteBaseScale*1.2);
-	
-	emit_signal("on_mouse_hovering")
+	OnHover();
 
 
 func MultiplyScale(scaleMult: float):
