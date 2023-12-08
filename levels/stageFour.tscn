@@ -1,10 +1,75 @@
-[gd_scene load_steps=4 format=3 uid="uid://dqth671mnxptw"]
+[gd_scene load_steps=8 format=3 uid="uid://dqth671mnxptw"]
 
 [ext_resource type="PackedScene" uid="uid://dpg0gbpttdpy5" path="res://levels/main.tscn" id="1_c1vov"]
 [ext_resource type="Texture2D" uid="uid://dqw0mk26gtjwj" path="res://arts/main scene/Day3.jpg" id="2_a1s42"]
 [ext_resource type="Texture2D" uid="uid://c4tba3sk7bjuc" path="res://arts/main scene/IMG_0050.png" id="2_casjv"]
+[ext_resource type="Script" path="res://levels/stageFour.gd" id="2_of76d"]
+[ext_resource type="Script" path="res://textEvent.gd" id="3_om76x"]
+[ext_resource type="FontFile" uid="uid://ds8uy6wtxnlvu" path="res://arts/fonts/Zeyada-Regular.ttf" id="4_mxl24"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_c5rhk"]
+font = ExtResource("4_mxl24")
+font_size = 90
+font_color = Color(0, 0, 0, 1)
 
 [node name="Main4" instance=ExtResource("1_c1vov")]
+script = ExtResource("2_of76d")
+
+[node name="1" type="Node2D" parent="TextManager" index="1"]
+position = Vector2(0, -75)
+script = ExtResource("3_om76x")
+dissapearTimer = 7.0
+
+[node name="Label" type="Label" parent="TextManager/1" index="0"]
+offset_left = -260.0
+offset_top = -197.0
+offset_right = 440.0
+offset_bottom = 92.0
+text = "The house is so full of energy nowadays."
+label_settings = SubResource("LabelSettings_c5rhk")
+autowrap_mode = 2
+
+[node name="2" type="Node2D" parent="TextManager" index="2"]
+position = Vector2(0, -75)
+script = ExtResource("3_om76x")
+dissapearTimer = 7.0
+
+[node name="Label" type="Label" parent="TextManager/2" index="0"]
+offset_left = -466.0
+offset_top = -305.0
+offset_right = 520.0
+offset_bottom = 130.0
+text = "My grandkids are bouncing all over the place, just like my anak when they were little."
+label_settings = SubResource("LabelSettings_c5rhk")
+autowrap_mode = 2
+
+[node name="3" type="Node2D" parent="TextManager" index="3"]
+position = Vector2(0, -75)
+script = ExtResource("3_om76x")
+dissapearTimer = 7.0
+
+[node name="Label" type="Label" parent="TextManager/3" index="0"]
+offset_left = -343.0
+offset_top = -305.0
+offset_right = 567.0
+offset_bottom = 130.0
+text = "My Lola used to make this same adobo for me, and now I've made it for my apo."
+label_settings = SubResource("LabelSettings_c5rhk")
+autowrap_mode = 2
+
+[node name="4" type="Node2D" parent="TextManager" index="4"]
+position = Vector2(0, -75)
+script = ExtResource("3_om76x")
+dissapearTimer = 15.0
+
+[node name="Label" type="Label" parent="TextManager/4" index="0"]
+offset_left = -543.0
+offset_top = -346.0
+offset_right = 687.0
+offset_bottom = 89.0
+text = "I realized that I'm not the best at telling my kids I love them, but I hope I can at least show them through this dish."
+label_settings = SubResource("LabelSettings_c5rhk")
+autowrap_mode = 2
 
 [node name="ParallaxLayer" parent="ParallaxBackground" index="0"]
 motion_mirroring = Vector2(3840, 2160)
