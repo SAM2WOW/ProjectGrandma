@@ -28,6 +28,7 @@ func UpdatePouring(delta):
 		rotation = lerp_angle(rotation, deg_to_rad(0), rotateSpeed*2*delta);
 
 func _on_area_2d_body_shape_entered(body_rid, body, body_shape_index, local_shape_index):
+	if(Global.isShifting): return
 	if !body_rid: return;
 	var id = PhysicsServer2D.body_get_object_instance_id(body_rid);
 	if Global.LiquidType.values().has(id):
@@ -38,6 +39,7 @@ func ObjectAction(event):
 	pouring = event.pressed;
 
 func _on_area_2d_body_shape_exited(body_rid, body, body_shape_index, local_shape_index):
+	if(Global.isShifting): return
 	if !body_rid: return;
 	var id = PhysicsServer2D.body_get_object_instance_id(body_rid);
 	if Global.LiquidType.values().has(id):
@@ -45,6 +47,7 @@ func _on_area_2d_body_shape_exited(body_rid, body, body_shape_index, local_shape
 
 func OnLiquidEnter(id, body_rid):
 	if !containedLiquid.keys().has(id): containedLiquid[id] = {};
+	print("Liquid id:",id,",Body_rid: ",body_rid)
 	containedLiquid[id][body_rid] = Global.instantiationManager.liquidParticles[id][body_rid];
 
 func OnLiquidExit(id, body_rid):

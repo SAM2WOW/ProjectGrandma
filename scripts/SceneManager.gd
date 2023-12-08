@@ -21,6 +21,7 @@ func SwitchScene(filePath):
 func DeferredSwitchScene(filePath):
 	#currentScene.free()
 	root.remove_child(currentScene)
+
 	#print(root)
 	var scene = load(filePath)
 	currentScene = scene.instantiate()
@@ -36,5 +37,7 @@ func DeferredSwitchScene(filePath):
 	Global.instantiationManager = im
 	root.add_child(currentScene)
 	
-	#get_tree().current_scene = currentScene
-	
+func ReloadCurrentScene():
+	var scenePath = Global.gameManager.stageScenes[Global.currentStage]
+	#print(scenePath)
+	SwitchScene(scenePath)

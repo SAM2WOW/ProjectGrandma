@@ -9,6 +9,8 @@ var textManager;
 var sceneManager;
 var stageNumbers = 4;
 var currentStage = 0;
+
+var isShifting = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	print("Global is ready")

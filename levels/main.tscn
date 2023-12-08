@@ -1,4 +1,4 @@
-[gd_scene load_steps=101 format=3 uid="uid://dpg0gbpttdpy5"]
+[gd_scene load_steps=42 format=3 uid="uid://dpg0gbpttdpy5"]
 
 [ext_resource type="Texture2D" uid="uid://cmp4cxxq8yuat" path="res://arts/ivory-off-white-paper-texture.jpg" id="1_1jmmi"]
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_udxji"]
@@ -23,11 +23,8 @@
 [ext_resource type="Texture2D" uid="uid://diyloqr1ltoak" path="res://arts/kitchenware/pan line art only.png" id="14_qm216"]
 [ext_resource type="Script" path="res://textEvent.gd" id="19_5tann"]
 [ext_resource type="Texture2D" uid="uid://cfpcexdv1l3y4" path="res://arts/UI/IMG_0044.png" id="19_sp8nt"]
-[ext_resource type="Script" path="res://Resources/liquidMixturePoints.gd" id="21_klbst"]
 [ext_resource type="PackedScene" uid="uid://v5qskld56om" path="res://prefabs/textManager.tscn" id="21_rjtit"]
 [ext_resource type="Script" path="res://scripts/SceneManager.gd" id="26_nryhn"]
-[ext_resource type="Script" path="res://Resources/liquidComponent.gd" id="27_qhic2"]
-[ext_resource type="Script" path="res://Resources/recipeComponent.gd" id="28_evxnv"]
 [ext_resource type="AudioStream" uid="uid://bwv3ngkmackai" path="res://sounds/CompleteSound.ogg" id="34_yowf1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_thd3q"]
@@ -50,6 +47,18 @@ shader_parameter/water_color = Color(0, 0.462745, 1, 1)
 shader_parameter/bubble_color = Color(1, 1, 1, 1)
 shader_parameter/noise = SubResource("4")
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kbxna"]
+shader = ExtResource("11_b5byl")
+shader_parameter/cutoff = 0.0
+shader_parameter/smooth_size = 0.125
+shader_parameter/mask = ExtResource("12_hwjn3")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1lh3a"]
+shader = ExtResource("11_b5byl")
+shader_parameter/cutoff = 1.0
+shader_parameter/smooth_size = 0.125
+shader_parameter/mask = ExtResource("12_hwjn3")
+
 [sub_resource type="GDScript" id="GDScript_eekhh"]
 script/source = "extends Button
 
@@ -69,18 +78,6 @@ func _on_pressed():
 	
 	pass # Replace with function body.
 "
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_kbxna"]
-shader = ExtResource("11_b5byl")
-shader_parameter/cutoff = 0.0
-shader_parameter/smooth_size = 0.125
-shader_parameter/mask = ExtResource("12_hwjn3")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_1lh3a"]
-shader = ExtResource("11_b5byl")
-shader_parameter/cutoff = 1.0
-shader_parameter/smooth_size = 0.125
-shader_parameter/mask = ExtResource("12_hwjn3")
 
 [sub_resource type="LabelSettings" id="LabelSettings_5i7dh"]
 font = ExtResource("11_ml1rf")
@@ -482,17 +479,6 @@ texture = ExtResource("14_qm216")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="CompeletLevelButton" type="Button" parent="CanvasLayer"]
-modulate = Color(0.027451, 0, 0.0117647, 1)
-offset_left = 1569.0
-offset_top = 222.0
-offset_right = 1773.0
-offset_bottom = 318.0
-mouse_filter = 2
-mouse_default_cursor_shape = 2
-text = "Complete"
-script = SubResource("GDScript_eekhh")
-
 [node name="ColorRect" type="TextureRect" parent="CanvasLayer"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_kbxna")
@@ -599,6 +585,24 @@ theme_override_fonts/font = ExtResource("10_hjo2k")
 theme_override_font_sizes/font_size = 40
 text = "Next Page"
 
+[node name="CompeletLevelButton" type="Button" parent="CanvasLayer"]
+modulate = Color(0.027451, 0, 0.0117647, 1)
+offset_left = 1658.0
+offset_top = 838.0
+offset_right = 1862.0
+offset_bottom = 934.0
+mouse_filter = 2
+mouse_default_cursor_shape = 2
+text = "Complete"
+script = SubResource("GDScript_eekhh")
+
+[node name="RestartButton" type="Button" parent="CanvasLayer"]
+offset_left = 1386.0
+offset_top = 853.0
+offset_right = 1590.0
+offset_bottom = 949.0
+text = "Restart"
+
 [node name="TestLevelText" type="Label" parent="CanvasLayer"]
 offset_right = 40.0
 offset_bottom = 23.0
@@ -650,8 +654,9 @@ volume_db = -5.0
 [connection signal="input_event" from="Node2D/Cooking Scene/Container2" to="Node2D/Cooking Scene/Container2" method="_on_input_event"]
 [connection signal="mouse_entered" from="Node2D/Cooking Scene/Container2" to="Node2D/Cooking Scene/Container2" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Node2D/Cooking Scene/Container2" to="Node2D/Cooking Scene/Container2" method="_on_mouse_exited"]
-[connection signal="pressed" from="CanvasLayer/CompeletLevelButton" to="." method="_on_compelet_level_button_pressed"]
 [connection signal="mouse_entered" from="CanvasLayer/HUD/HoverArea" to="." method="_on_hover_area_mouse_entered"]
 [connection signal="mouse_entered" from="CanvasLayer/HUD/HoverArea2" to="." method="_on_hover_area_2_mouse_entered"]
 [connection signal="mouse_entered" from="CanvasLayer/HUD/HoverArea3" to="." method="_on_hover_area_3_mouse_entered"]
+[connection signal="pressed" from="CanvasLayer/CompeletLevelButton" to="." method="_on_compelet_level_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/RestartButton" to="." method="_on_restart_button_pressed"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

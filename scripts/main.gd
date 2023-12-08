@@ -88,3 +88,8 @@ func _on_compelet_level_button_pressed():
 	if !Global.gameManager.canCompleteStage:
 		return
 	Global.gameManager.OnCompleteStage()
+
+
+func _on_restart_button_pressed():
+	Global.sceneManager.ReloadCurrentScene()
+	pass # Replace with function body.
