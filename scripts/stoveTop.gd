@@ -32,6 +32,12 @@ func _on_knob_turned_knob(analog):
 	heatMultiplier = remap(analog, 0, 1, 0, 2);
 	if panRef:
 		panRef.targetHeat = heatMultiplier;
+	
+	$Smoke.set_emitting(heatMultiplier > 0)
+	#$Smoke2.set_emitting(heatMultiplier > 0)
+	
+	#$Smoke.set_amount(heatMultiplier * 2)
+	#$Smoke2.set_amount(heatMultiplier * 2)
 
 
 func _on_area_2d_area_entered(area):

@@ -1,8 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://dsppfnoxh56xm"]
+[gd_scene load_steps=6 format=3 uid="uid://dsppfnoxh56xm"]
 
 [ext_resource type="Script" path="res://scripts/stoveTop.gd" id="1_1055t"]
 [ext_resource type="Texture2D" uid="uid://cxt1od4epjtpf" path="res://icon.svg" id="2_34qb8"]
 [ext_resource type="PackedScene" uid="uid://besfnnu5msblc" path="res://prefabs/Knob/Knob.tscn" id="2_fay6n"]
+[ext_resource type="Texture2D" uid="uid://dcpiwjlrhu6a" path="res://arts/main scene/fire.png" id="4_ciwt8"]
+
+[sub_resource type="Gradient" id="Gradient_2dk6w"]
+offsets = PackedFloat32Array(0, 0.0580645, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0)
 
 [node name="StoveTop" type="StaticBody2D"]
 position = Vector2(352, 256)
@@ -24,6 +29,22 @@ texture = ExtResource("2_34qb8")
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
 scale = Vector2(4.02867, 0.92562)
 polygon = PackedVector2Array(-128, -128, -128, -32, 128, -32, 128, -128)
+
+[node name="Smoke" type="CPUParticles2D" parent="."]
+z_index = 10
+position = Vector2(1, -164)
+amount = 3
+lifetime = 2.0
+randomness = 0.34
+lifetime_randomness = 0.39
+texture = ExtResource("4_ciwt8")
+emission_shape = 3
+emission_rect_extents = Vector2(50, 1)
+spread = 77.18
+gravity = Vector2(0, -10)
+scale_amount_max = 1.2
+color = Color(1, 1, 1, 0.85098)
+color_ramp = SubResource("Gradient_2dk6w")
 
 [connection signal="turnedKnob" from="Knob" to="." method="_on_knob_turned_knob"]
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
