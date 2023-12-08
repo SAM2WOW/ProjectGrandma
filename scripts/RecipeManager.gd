@@ -12,10 +12,15 @@ var points : float;
 var totalPoints : float;
 var allIngredients : Array
 var allLiquid : Array
+var stepText : String = "";
 func _ready():
+	InitRecipeText();
+
+func InitRecipeText():
 	recipe.sort_custom(func(x, y): return x.step < y.step);
-	$RecipeText.clear();
-	$IngredientText.clear();
+	$RecipeNode/RecipeText.clear();
+	$RecipeNode/IngredientText.clear();
+	$EndNode.visible = false;
 	var recipeText : String = "[b]Steps[/b]";
 	var ingredientsText : String = "[b]Ingredients[/b]\n";
 	var prevStep = -1;
@@ -49,17 +54,21 @@ func _ready():
 					allLiquid.append(i.liquidType)
 		prevStep = component.step;
 	
-	print("recipe text:\n", ingredientsText+recipeText);
-	$RecipeText.append_text(recipeText);
-	$IngredientText.append_text(ingredientsText)
+	# print("recipe text:\n", ingredientsText+recipeText);
+	$RecipeNode/RecipeText.append_text(recipeText);
+	$RecipeNode/IngredientText.append_text(ingredientsText)
 	
-func ToggleText(hide : bool):
+func ToggleRecipeText(hide : bool):
 	var a = 0;
 	if hide: a = 1;
-	create_tween().tween_property(self, "modulate", Color(1,1,1,a), 0.5).set_ease(Tween.EASE_OUT);
+	create_tween().tween_property($RecipeNode, "modulate", Color(1,1,1,a), 0.5).set_ease(Tween.EASE_OUT);
 	# visible = false;
 	
 func CheckRecipePoints():
+	stepText = "";
+	ToggleRecipeText(false);
+	$EndNode/EndText.clear();
+	$EndNode.visible = true;
 	totalPoints = 0.0;
 	points = 0.0;
 	for recipeStep in recipe:
@@ -70,7 +79,13 @@ func CheckRecipePoints():
 			CheckLiquids(recipeStep);
 		elif recipeStep is LiquidMixtureComponent:
 			CheckLiquidMixture(recipeStep);
-	print("points: ", points, "/", totalPoints)
+	var resultsText = "[b]Results:\t%.0f / %.0f Points[/b]" % [points, totalPoints];
+	stepText = resultsText + '\n' + stepText;
+	$EndNode/EndText.append_text(stepText);
+	Global.sceneScores[Global.currentStage] = float(points)/totalPoints;
+	print("scene score: ", Global.sceneScores[Global.currentStage])
+	# print("points: %.1f" % (points/totalPoints));
+	print("step text:\n", stepText);
 
 func CheckIngredients(recipeStep : IngredientComponent) -> float:
 	if !Global.instantiationManager.pan.cookingObjects.keys().has(recipeStep.ingredient):
@@ -79,13 +94,20 @@ func CheckIngredients(recipeStep : IngredientComponent) -> float:
 	var ingPoints = recipeStep.CheckIngredients(objs);
 	var stepPoints = 0.0;
 	totalPoints += recipeStep.totalPoints;
+	var textArr = [];
 	for point in ingPoints:
 		if !point: continue;
 		if point is RecipePoints && objs.size() > 0:
+			textArr.append(point.description.capitalize());
 			stepPoints += point.points;
 		elif point is RecipeQuantity:
+			textArr.append(point.description.capitalize());
 			stepPoints += point.quantityPoints;
 		print(stepPoints,"/",recipeStep.totalPoints,": ",point.description);
+	if textArr.size() > 0: stepText += "* ";
+	for t in textArr:
+		stepText += t + ". ";
+	stepText += "\n";
 	points += stepPoints;
 	return stepPoints;
 
@@ -94,21 +116,29 @@ func CheckLiquids(recipeStep : LiquidComponent) -> float:
 	totalPoints += recipeStep.totalPoints;
 	var stepPoints = consPoints.points;
 	points += stepPoints;
+	stepText += "* " + consPoints.description.capitalize() + '\n';
 	print(stepPoints,"/",recipeStep.totalPoints,": ",consPoints.description);
 	return stepPoints;
 
 func CheckLiquidMixture(recipeStep : LiquidMixtureComponent) -> float:
 	print("check liquid mixture");
+	var textArr = [];
 	var mixPoints = recipeStep.CheckMixture(Global.instantiationManager.pan.containedLiquid);
 	var stepPoints = 0.0;
 	totalPoints += recipeStep.totalPoints;
 	for point in mixPoints:
 		if !point: continue;
 		if point is RecipePoints && Global.instantiationManager.pan.GetLiquidTotal() > 0:
+			textArr.append(point.description.capitalize());
 			stepPoints+= point.points;
 		elif point is RecipeQuantity:
+			textArr.append(point.description.capitalize());
 			stepPoints += point.quantityPoints;
 		print(stepPoints,"/",recipeStep.totalPoints,": ",point.description);
+	if textArr.size() > 0: stepText += "* ";
+	for t in textArr:
+		stepText += t + ". ";
+	stepText += "\n";
 	points += stepPoints;
 	return stepPoints;
 

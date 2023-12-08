@@ -3,26 +3,3 @@
 [ext_resource type="PackedScene" uid="uid://dpg0gbpttdpy5" path="res://levels/main.tscn" id="1_c1vov"]
 
 [node name="Main" instance=ExtResource("1_c1vov")]
-
-[node name="RichTextLabel" parent="Node2D/Recipe Scene" index="0"]
-text = "[b]Ingredients[/b]
-	* 1/2 pounds chicken thighs
-	* 1/2 cup white vinegar
-	* 1/2 cup soy sauce
-	* 2 cloves garlic, chopped
-	* 1 teaspoon black peppercorns
-	* 1 bay leaves
-	* Steamed rice, for serving
-
-
-[b]Steps[/b]
-	1. Combine the chicken thighs, vinegar, soy sauce, garlic, peppercorns and bay leaves in a large pot. Cover and marinate the chicken in the refrigerator for 1 to 3 hours. 
-	2. Brown the chicken thighs in a pan with oil. Add crushed garlic to cook slightly with chicken
-		a. Optional - add chopped onions to pan
-	3. Add marinade to pot with chicken
-	4. Add a splash of fish sauce to the pot and stir
-	5. Bring to a boil then let simmer for 30-40mins with cover on
-	6. Flip chicken thighs half way through and stir the sauce
-	7. Serve over rice!
-
-"

@@ -43,10 +43,9 @@ func onGameEnd():
 	
 	$CanvasLayer/HUD/HoverArea.hide()
 	$CanvasLayer/HUD/HoverArea2.hide()
-	Global.recipeManager.ToggleText(false);
 	$AnimationPlayer.play("Final")
 	$Sounds/SlideSound.play()
-	
+	Global.recipeManager.CheckRecipePoints();
 	MusicPlayer.fade_out(true)
 	
 	$Sounds/CompleteSound.play()
@@ -54,7 +53,7 @@ func onGameEnd():
 
 func _on_hover_area_mouse_entered():
 	recipeMode = true
-	Global.recipeManager.ToggleText(true);
+	Global.recipeManager.ToggleRecipeText(true);
 	$CanvasLayer/HUD/HoverArea.hide()
 	$CanvasLayer/HUD/HoverArea2.show()
 	
@@ -64,7 +63,7 @@ func _on_hover_area_mouse_entered():
 
 func _on_hover_area_2_mouse_entered():
 	recipeMode = false
-	Global.recipeManager.ToggleText(false);
+	Global.recipeManager.ToggleRecipeText(false);
 	$CanvasLayer/HUD/HoverArea.show()
 	$CanvasLayer/HUD/HoverArea2.hide()
 	
@@ -82,7 +81,7 @@ func _on_hover_area_3_mouse_entered():
 func _on_animation_player_animation_finished(anim_name):
 	if anim_name == "Intro":
 		$CanvasLayer/HUD/HoverArea.show()
-		Global.recipeManager.ToggleText(false);
+		Global.recipeManager.ToggleRecipeText(false);
 	elif anim_name == "Final":
 		$CanvasLayer/HUD/HoverArea3.show()
 	if anim_name == "Exit":
