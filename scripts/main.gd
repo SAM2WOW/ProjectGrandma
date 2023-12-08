@@ -7,8 +7,9 @@ func _ready():
 	print("Main is ready")
 	Global.gameManager.stageComplete.connect(completeStage)
 	Global.gameManager.gameEnd.connect(onGameEnd)
-	$CanvasLayer/TestLevelText.text = "Level" + str(Global.currentStage+1)
-	$CanvasLayer/CompeletLevelButton.modulate.a = 0.1
+	$CanvasLayer/TestLevelText.text = "Level" + str(Global.gameManager.currentStage+1)
+	Global.recipeManager.GetCurrentRecipeIngredients()
+	$CanvasLayer/HUD/CompeletLevelButton.modulate.a = 0.1
 	
 	MusicPlayer.fade_in() 
 	MusicPlayer.play_music()
@@ -25,7 +26,7 @@ func _process(delta):
 	
 func completeStage():
 	#print('Stage Complete')
-	$CanvasLayer/CompeletLevelButton.modulate.a = 1	
+	$CanvasLayer/HUD/CompeletLevelButton.modulate.a = 1	
 
 func _input(ev):
 	if ev is InputEventKey and ev.keycode == KEY_K:
@@ -45,10 +46,11 @@ func onGameEnd():
 	$CanvasLayer/HUD/HoverArea2.hide()
 	
 	$AnimationPlayer.play("Final")
+	$Sounds/SlideSound.play()
 	
 	MusicPlayer.fade_out(true)
 	
-	$CompleteSound.play()
+	$Sounds/CompleteSound.play()
 	
 
 func _on_hover_area_mouse_entered():
@@ -58,6 +60,7 @@ func _on_hover_area_mouse_entered():
 	$CanvasLayer/HUD/HoverArea2.show()
 	
 	$AnimationPlayer.play("Transition")
+	$Sounds/SlideSound.play()
 
 
 func _on_hover_area_2_mouse_entered():
@@ -67,12 +70,14 @@ func _on_hover_area_2_mouse_entered():
 	$CanvasLayer/HUD/HoverArea2.hide()
 	
 	$AnimationPlayer.play_backwards("Transition")
+	$Sounds/SlideSound.play()
 
 
 func _on_hover_area_3_mouse_entered():
 	$CanvasLayer/HUD/HoverArea3.hide()
 	
 	$AnimationPlayer.play_backwards("Exit")
+	$Sounds/SlideSound.play()
 
 
 func _on_animation_player_animation_finished(anim_name):
