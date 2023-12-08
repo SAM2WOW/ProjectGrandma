@@ -4,7 +4,7 @@ var currentScene = null
 var root
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	 # Replace with function body.
+	Global.sceneManager = self
 	print("Scene Manager is ready")
 	root = get_tree().root
 	currentScene = root.get_child(root.get_child_count()-1)

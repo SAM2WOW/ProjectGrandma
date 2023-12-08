@@ -13,7 +13,9 @@ var totalPoints : float;
 var allIngredients : Array
 var allLiquid : Array
 var stepText : String = "";
+
 func _ready():
+	Global.recipeManager = self
 	InitRecipeText();
 
 func InitRecipeText():

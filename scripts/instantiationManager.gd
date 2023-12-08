@@ -10,6 +10,7 @@ var numParticles = 0;
 var maxNumParticles = 500;
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	Global.instantiationManager = self
 	print("instantiation manager ready");
 	pass # Replace with function body.
 
