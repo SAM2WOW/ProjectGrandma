@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cityj1wrrlofm"
-path="res://.godot/imported/Hand married.png-bd901625830a7eae431aec4a552862c1.ctex"
+path="res://.godot/imported/Hand married.png-4982d3de6a4331cb73076e8cc5e73f36.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://arts/UI/player cursor/Hand married.png"
-dest_files=["res://.godot/imported/Hand married.png-bd901625830a7eae431aec4a552862c1.ctex"]
+source_file="res://arts/archive/Hand married.png"
+dest_files=["res://.godot/imported/Hand married.png-4982d3de6a4331cb73076e8cc5e73f36.ctex"]
 
 [params]
 

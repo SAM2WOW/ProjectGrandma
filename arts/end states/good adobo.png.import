@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://wytpay3v2bjn"
-path="res://.godot/imported/Hand young.png-0faa5a70c630608954f16732924e2174.ctex"
+uid="uid://bvwwtmpmw3grl"
+path="res://.godot/imported/good adobo.png-6d6ab9226a98c7382aadaea7efabae91.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://arts/UI/player cursor/Hand young.png"
-dest_files=["res://.godot/imported/Hand young.png-0faa5a70c630608954f16732924e2174.ctex"]
+source_file="res://arts/end states/good adobo.png"
+dest_files=["res://.godot/imported/good adobo.png-6d6ab9226a98c7382aadaea7efabae91.ctex"]
 
 [params]
 

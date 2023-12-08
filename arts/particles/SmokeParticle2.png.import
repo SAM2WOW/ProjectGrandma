@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cb5akvyceomdt"
-path="res://.godot/imported/Hand old.png-1611d695385011204eb2f2da8205a09a.ctex"
+uid="uid://0kshcgoxxdbg"
+path="res://.godot/imported/SmokeParticle2.png-e7a922a68666de22fca981e81fbe5660.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://arts/UI/player cursor/Hand old.png"
-dest_files=["res://.godot/imported/Hand old.png-1611d695385011204eb2f2da8205a09a.ctex"]
+source_file="res://arts/particles/SmokeParticle2.png"
+dest_files=["res://.godot/imported/SmokeParticle2.png-e7a922a68666de22fca981e81fbe5660.ctex"]
 
 [params]
 

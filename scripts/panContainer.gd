@@ -36,6 +36,7 @@ func _process(delta):
 		if not $Boiling.is_playing():
 			$Boiling.play()
 			$Frying.play()
+			$Smoke.set_emitting(true)
 			
 		var heatWeight =  (cookingHeat / 2)
 		var boiledWeight = clamp(GetLiquidTotal() / liquidThreshold, 0.0, 1.0)
@@ -44,10 +45,12 @@ func _process(delta):
 		
 		var deepWaterWeight = clamp(GetLiquidTotal() / 400.0, 0.0, 1.0)
 		$Boiling.set_pitch_scale(lerp(1.0, 0.76, deepWaterWeight))
+		#$Smoke.set_amount(lerp(1, 8, heatWeight))
 	else:
 		if $Boiling.is_playing():
 			$Boiling.stop()
 			$Frying.stop()
+			$Smoke.set_emitting(false)
 
 func _physics_process(delta):
 	super._physics_process(delta);
