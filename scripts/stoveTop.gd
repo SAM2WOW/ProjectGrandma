@@ -34,6 +34,9 @@ func _on_knob_turned_knob(analog):
 		panRef.targetHeat = heatMultiplier;
 	
 	$Smoke.set_emitting(heatMultiplier > 0)
+	
+	#$Smoke.set_param_max(CPUParticles2D.PARAM_SCALE, heatMultiplier)
+	#$Smoke.set_param_max(CPUParticles2D.PARAM_SCALE, heatMultiplier)
 	#$Smoke2.set_emitting(heatMultiplier > 0)
 	
 	#$Smoke.set_amount(heatMultiplier * 2)
