@@ -90,7 +90,6 @@ func _on_animation_player_animation_finished(anim_name):
 func _on_compelet_level_button_pressed():
 	if !Global.gameManager.canCompleteStage:
 		return
-	#
 	$CanvasLayer/HUD/HoverArea.hide()
 	$CanvasLayer/HUD/HoverArea2.hide()
 	$AnimationPlayer.play("Final")

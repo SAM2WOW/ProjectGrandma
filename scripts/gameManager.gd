@@ -8,8 +8,8 @@ signal gameEnd
 signal stageComplete
 var draggedObject : Draggable;
 var hoveredObject : Draggable;
-var ingredientsInPan: Array
-var liquidInPan: Array
+@export var ingredientsInPan: Array
+@export var liquidInPan: Array
 var stageScenes: Array[String] = [
 "res://levels/stageOne.tscn",
 "res://levels/stageTwo.tscn",
@@ -107,8 +107,6 @@ func AddObjectToPan(type,id):
 		if !liquidInPan.has(id):
 			print("Add ",type,": ",id)
 			liquidInPan.append(id)
-	print("liquids:\n");
-	ArraysAreEqual(Global.recipeManager.allLiquid,liquidInPan)
 	if ArraysAreEqual(Global.recipeManager.allIngredients,ingredientsInPan) and ArraysAreEqual(Global.recipeManager.allLiquid,liquidInPan):
 		canCompleteStage = true
 		stageComplete.emit()

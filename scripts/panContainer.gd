@@ -116,10 +116,10 @@ func _on_area_2d_body_shape_entered(body_rid, body, body_shape_index, local_shap
 	if body is Ingredient:
 		if Global.currentStage == 0:
 			var c = Global.textManager.Activate("PanHover");
-		Global.gameManager.AddObjectToPan("Ingredient",body.ingredientType)
 		if !cookingObjects.keys().has(body.ingredientType): 
 			cookingObjects[body.ingredientType] = [];
 		if !cookingObjects[body.ingredientType].has(body):
+			Global.gameManager.AddObjectToPan("Ingredient",body.ingredientType)
 			cookingObjects[body.ingredientType].append(body);
 			#if Global.currentStage == 1:
 				#if (body.ingredientType == body.IngredientType.Garlic):

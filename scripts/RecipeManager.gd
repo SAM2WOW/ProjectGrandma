@@ -16,8 +16,8 @@ const heatDescriptions = {
 };
 var points : float;
 var totalPoints : float;
-var allIngredients : Array
-var allLiquid : Array
+@export var allIngredients : Array
+@export var allLiquid : Array
 var stepText : String = "";
 var noteText : String = "";
 func _ready():
