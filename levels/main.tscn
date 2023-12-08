@@ -753,7 +753,7 @@ ingredientPath = "res://prefabs/Ingredients/chicken.tscn"
 numIngredients = 3
 
 [node name="StoveTop" parent="Node2D/Cooking Scene" instance=ExtResource("8_fma0h")]
-position = Vector2(0, 478)
+position = Vector2(59, 640)
 
 [node name="Container2" parent="Node2D/Cooking Scene" instance=ExtResource("7_wm87n")]
 position = Vector2(-1280, 446)
