@@ -38,8 +38,9 @@ func _process(delta):
 			$Frying.play()
 			$Smoke.set_emitting(true)
 			
-		var heatWeight =  (cookingHeat / 2)
+		var heatWeight =  (averageLiquidHeat / 2)
 		var boiledWeight = clamp(GetLiquidTotal() / liquidThreshold, 0.0, 1.0)
+		# var boilTemp = remap(averageLiquidHeat, 0, 2, 0, 1);
 		$Boiling.set_volume_db(linear_to_db(boiledWeight * heatWeight))
 		$Frying.set_volume_db(linear_to_db((1 - boiledWeight) * heatWeight))
 		
