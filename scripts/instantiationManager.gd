@@ -6,6 +6,8 @@ var pan;
 @export var liquidColors = {
 	0: Color.WHITE
 }
+var numParticles = 0;
+var maxNumParticles = 500;
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	print("instantiation manager ready");
@@ -30,11 +32,7 @@ func UpdateRender(state, trans) -> bool:
 	trans.origin = trans.origin - Global.instantiationManager.global_position;
 	RenderingServer.canvas_item_set_transform(state.renderRid,trans)
 	if trans.origin.y > 1500:
-		#remove RIDs
-		PhysicsServer2D.free_rid(state.bodyRid)
-		RenderingServer.free_rid(state.renderRid)
-		#remove reference
-		liquidParticles[state.liquidType].erase(state.bodyRid);
+		DeleteParticle(state);
 		return false;
 	return true;
 
@@ -55,6 +53,7 @@ func OnParticleCollision(colState, colTwo):
 	colState.MixLiquid(collTwoState);
 
 func DeleteParticle(state : LiquidState):
+	numParticles-=1;
 	PhysicsServer2D.free_rid(state.bodyRid);
 	RenderingServer.free_rid(state.renderRid);
 	liquidParticles[state.liquidType].erase(state.bodyRid);

@@ -969,13 +969,21 @@ theme_override_fonts/font = ExtResource("10_hjo2k")
 theme_override_font_sizes/font_size = 40
 text = "Next Page"
 
+[node name="RestartButton" type="Button" parent="CanvasLayer/HUD"]
+layout_mode = 0
+offset_left = 1120.0
+offset_top = 885.0
+offset_right = 1324.0
+offset_bottom = 981.0
+text = "Restart"
+script = SubResource("GDScript_eekhh")
+
 [node name="CompeletLevelButton" type="Button" parent="CanvasLayer/HUD"]
 layout_mode = 0
-offset_left = 1569.0
-offset_top = 222.0
-offset_right = 1773.0
-offset_bottom = 318.0
-mouse_default_cursor_shape = 2
+offset_left = 1411.0
+offset_top = 884.0
+offset_right = 1615.0
+offset_bottom = 980.0
 text = "Complete"
 script = SubResource("GDScript_eekhh")
 
@@ -1040,5 +1048,6 @@ volume_db = -5.0
 [connection signal="mouse_entered" from="CanvasLayer/HUD/HoverArea" to="." method="_on_hover_area_mouse_entered"]
 [connection signal="mouse_entered" from="CanvasLayer/HUD/HoverArea2" to="." method="_on_hover_area_2_mouse_entered"]
 [connection signal="mouse_entered" from="CanvasLayer/HUD/HoverArea3" to="." method="_on_hover_area_3_mouse_entered"]
+[connection signal="pressed" from="CanvasLayer/HUD/RestartButton" to="." method="_on_restart_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/HUD/CompeletLevelButton" to="." method="_on_compelet_level_button_pressed"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://h7fkjxle4fr2"]
+[gd_scene load_steps=12 format=3 uid="uid://h7fkjxle4fr2"]
 
 [ext_resource type="PackedScene" uid="uid://drn5x3vivefyp" path="res://prefabs/liquidContainer.tscn" id="1_ribvh"]
 [ext_resource type="Script" path="res://scripts/panContainer.gd" id="2_2j0dy"]
 [ext_resource type="Texture2D" uid="uid://dqy1ywdlmbisa" path="res://arts/kitchenware/pan with handle.png" id="2_ksjrc"]
 [ext_resource type="Texture2D" uid="uid://diyloqr1ltoak" path="res://arts/kitchenware/pan line art only.png" id="3_k10yi"]
+[ext_resource type="Texture2D" uid="uid://b6nr0o5mal2iv" path="res://arts/kitchenware/pan watercolor only.png" id="5_tki2m"]
 [ext_resource type="AudioStream" uid="uid://bl2fotgrfpwkd" path="res://sounds/Boiling.ogg" id="9_cbi0f"]
 [ext_resource type="AudioStream" uid="uid://b82q7jpr6qms4" path="res://sounds/Frying.ogg" id="10_8lyt6"]
 
@@ -32,8 +33,12 @@ position = Vector2(10, 10)
 scale = Vector2(1.2, 1.2)
 texture = ExtResource("3_k10yi")
 
+[node name="EnterBox" parent="EnterArea" index="0"]
+polygon = PackedVector2Array(-308, -97, -307, -41, -184, 80, 187, 81, 309, -39, 318, -92)
+
 [node name="Collider" parent="." index="2"]
 polygon = PackedVector2Array(-320, -96, -288, 32, -224, 96, 224, 96, 288, 32, 320, -96, 276, -148, 288, -96, 256, 0, 192, 64, -192, 64, -256, 0, -288, -96, -279, -151)
+disabled = true
 
 [node name="CollisionPolygon2D2" parent="." index="3"]
 visible = false
@@ -70,9 +75,11 @@ disabled = true
 
 [node name="CollisionShape2D5" parent="." index="11"]
 visible = false
+disabled = true
 
 [node name="CollisionShape2D6" parent="." index="12"]
 visible = false
+disabled = true
 
 [node name="CollisionShape2D3" parent="." index="13"]
 visible = false
@@ -86,6 +93,10 @@ disabled = true
 position = Vector2(-182, -11)
 scale = Vector2(1.2, 1.2)
 texture = ExtResource("2_ksjrc")
+
+[node name="FrontSprite" parent="Sprite2D" index="0"]
+position = Vector2(155, 11.6667)
+texture = ExtResource("5_tki2m")
 
 [node name="DragPoint" parent="." index="18"]
 position = Vector2(0, 0)
