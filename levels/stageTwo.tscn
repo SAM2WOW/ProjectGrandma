@@ -3,3 +3,26 @@
 [ext_resource type="PackedScene" uid="uid://dpg0gbpttdpy5" path="res://levels/main.tscn" id="1_a8jge"]
 
 [node name="Main" instance=ExtResource("1_a8jge")]
+
+[node name="RichTextLabel" parent="Node2D/Recipe Scene" index="0"]
+text = "[b]Ingredients[/b]
+	* 2 pounds chicken thighs
+	* 1/2 cup white vinegar
+	* 1/2 cup soy sauce
+	* 4 cloves garlic, chopped
+	* 1 teaspoon black peppercorns
+	* 3 bay leaves
+	* Steamed rice, for serving
+
+
+[b]Steps[/b]
+	1. Brown the chicken thighs in a pan with oil. Add crushed garlic to cook slightly with chicken
+	2. Combine vinegar, soy sauce, bay leaves, and peppercorns. Add to pot with chicken
+	3. Bring to a boil then let simmer for 30-40mins with cover on
+	4. Flip chicken thighs half way through
+	5. Serve over rice!
+
+"
+
+[node name="ColorRect" parent="CanvasLayer" index="1"]
+visible = true
