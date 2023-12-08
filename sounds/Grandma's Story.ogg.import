@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cjv4pri81usfv"
+path="res://.godot/imported/Grandma's Story.ogg-e30e3a905e89d4868b54d62b9b08c127.oggvorbisstr"
+
+[deps]
+
+source_file="res://sounds/Grandma's Story.ogg"
+dest_files=["res://.godot/imported/Grandma's Story.ogg-e30e3a905e89d4868b54d62b9b08c127.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
