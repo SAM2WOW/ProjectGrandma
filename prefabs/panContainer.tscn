@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://h7fkjxle4fr2"]
+[gd_scene load_steps=11 format=3 uid="uid://h7fkjxle4fr2"]
 
 [ext_resource type="PackedScene" uid="uid://drn5x3vivefyp" path="res://prefabs/liquidContainer.tscn" id="1_ribvh"]
 [ext_resource type="Script" path="res://scripts/panContainer.gd" id="2_2j0dy"]
 [ext_resource type="Texture2D" uid="uid://dqy1ywdlmbisa" path="res://arts/kitchenware/pan with handle.png" id="2_ksjrc"]
-[ext_resource type="Texture2D" uid="uid://b6nr0o5mal2iv" path="res://arts/kitchenware/pan watercolor only.png" id="3_3boog"]
 [ext_resource type="Texture2D" uid="uid://diyloqr1ltoak" path="res://arts/kitchenware/pan line art only.png" id="3_k10yi"]
+[ext_resource type="AudioStream" uid="uid://bl2fotgrfpwkd" path="res://sounds/Boiling.ogg" id="9_cbi0f"]
+[ext_resource type="AudioStream" uid="uid://b82q7jpr6qms4" path="res://sounds/Frying.ogg" id="10_8lyt6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2c82j"]
 size = Vector2(160, 48)
@@ -16,8 +17,8 @@ size = Vector2(160, 48)
 size = Vector2(448, 32)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xl3c2"]
-radius = 144.0
-height = 710.0
+radius = 128.0
+height = 1054.0
 
 [node name="Pan" instance=ExtResource("1_ribvh")]
 collision_priority = 1000.0
@@ -27,12 +28,12 @@ heatUpCoefficient = 0.2
 coolDownCoefficient = 0.2
 
 [node name="Sprite2DShadow" parent="." index="0"]
-position = Vector2(-182, -9)
+position = Vector2(10, 10)
 scale = Vector2(1.2, 1.2)
 texture = ExtResource("3_k10yi")
 
 [node name="EnterBox" parent="EnterArea" index="0"]
-polygon = PackedVector2Array(-328, -128, -272, 39, -160, 84, 161, 93, 279, 46, 350, -130)
+polygon = PackedVector2Array(-308, -97, -307, -41, -184, 80, 187, 81, 309, -39, 318, -92)
 
 [node name="Collider" parent="." index="2"]
 polygon = PackedVector2Array(-320, -96, -288, 32, -224, 96, 224, 96, 288, 32, 320, -96, 276, -148, 288, -96, 256, 0, 192, 64, -192, 64, -256, 0, -288, -96, -279, -151)
@@ -72,11 +73,9 @@ disabled = true
 
 [node name="CollisionShape2D5" parent="." index="11"]
 visible = false
-disabled = true
 
 [node name="CollisionShape2D6" parent="." index="12"]
 visible = false
-disabled = true
 
 [node name="CollisionShape2D3" parent="." index="13"]
 visible = false
@@ -91,13 +90,15 @@ position = Vector2(-182, -11)
 scale = Vector2(1.2, 1.2)
 texture = ExtResource("2_ksjrc")
 
-[node name="FrontSprite" parent="Sprite2D" index="0"]
-position = Vector2(156.667, 10)
-texture = ExtResource("3_3boog")
-
 [node name="DragPoint" parent="." index="18"]
 position = Vector2(0, 0)
 
 [node name="CollisionShape2D" parent="InteractArea" index="0"]
-position = Vector2(0, -20)
+position = Vector2(-175, -21)
 shape = SubResource("CapsuleShape2D_xl3c2")
+
+[node name="Boiling" type="AudioStreamPlayer2D" parent="." index="20"]
+stream = ExtResource("9_cbi0f")
+
+[node name="Frying" type="AudioStreamPlayer2D" parent="." index="21"]
+stream = ExtResource("10_8lyt6")
