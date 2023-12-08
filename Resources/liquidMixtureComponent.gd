@@ -4,6 +4,7 @@ class_name LiquidMixtureComponent;
 @export var targetLiquid : Global.LiquidType;
 @export var liquidMixtureRecipe : Array[LiquidMixturePoints] = [];
 var mixtureDict = {};
+var mixtureQuantityRange = {};
 
 func _ready():
 	super._ready();
@@ -14,6 +15,7 @@ func _ready():
 		
 	for arr in mixtureDict.values():
 		arr.sort_custom(func(x, y): return x.lessOrEqualRatio < y.lessOrEqualRatio);
+		
 	
 	for typePoints in mixtureDict.values():
 		var max = 0.0;

@@ -4,10 +4,13 @@ class_name Draggable
 var dragging = false;
 var hovering = false;
 
+var spriteBaseScale : Vector2;
+var shadowBaseScale : Vector2;
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
-
+	spriteBaseScale = $Sprite2D.get_scale();
+	shadowBaseScale = $Sprite2DShadow.get_scale();
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -55,10 +58,32 @@ func _on_interact_area_input_event(viewport, event, shape_idx):
 	if event.button_index == 1 && event.pressed:
 		Global.gameManager.BeginDragObject(self);
 
+func UnHover():
+	if Global.gameManager.hoveredObject == self:
+		Global.gameManager.hoveredObject = null;
+	hovering = false
+	#var twn1 : Tween = create_tween();
+	#var twn2 : Tween = create_tween();
+	create_tween().tween_property($Sprite2DShadow, "scale", shadowBaseScale, 0.3).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUINT)
+	create_tween().tween_property($Sprite2D, "scale", spriteBaseScale, 0.3).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUINT);
+	# print("unhover scale: ", spriteBaseScale);
 
 func _on_interact_area_mouse_entered():
-	Global.gameManager
+	if Global.gameManager.hoveredObject: Global.gameManager.hoveredObject.UnHover();
+	Global.gameManager.hoveredObject = self;
+	hovering = true;
+	create_tween().tween_property($Sprite2D, "scale", spriteBaseScale*1.1, 0.3).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUINT);
+	create_tween().tween_property($Sprite2DShadow, "scale", shadowBaseScale*1.1, 0.3).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUINT);
+	# print("hover scale: ", spriteBaseScale*1.2);
 
+
+func MultiplyScale(scaleMult: float):
+	$Sprite2D.scale *= scaleMult;
+	$Sprite2DShadow.set_scale($Sprite2D.get_scale())
+	$CollisionShape2D.scale *= scaleMult;
+	spriteBaseScale = $Sprite2D.get_scale();
+	shadowBaseScale = $Sprite2DShadow.get_scale();
 
 func _on_interact_area_mouse_exited():
-	hovering = false
+	# print("un hover")
+	UnHover();
