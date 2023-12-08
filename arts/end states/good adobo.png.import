@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cityj1wrrlofm"
-path="res://.godot/imported/Hand married.png-bd901625830a7eae431aec4a552862c1.ctex"
+uid="uid://bvwwtmpmw3grl"
+path="res://.godot/imported/good adobo.png-6d6ab9226a98c7382aadaea7efabae91.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://arts/UI/player cursor/Hand married.png"
-dest_files=["res://.godot/imported/Hand married.png-bd901625830a7eae431aec4a552862c1.ctex"]
+source_file="res://arts/end states/good adobo.png"
+dest_files=["res://.godot/imported/good adobo.png-6d6ab9226a98c7382aadaea7efabae91.ctex"]
 
 [params]
 
