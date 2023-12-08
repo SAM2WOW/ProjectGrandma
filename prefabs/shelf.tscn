@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://p10wedylbibp"]
+
+[ext_resource type="Texture2D" uid="uid://be4mxgxk5f7um" path="res://arts/kitchenware/shelf.png" id="1_ynoha"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lbrud"]
+size = Vector2(1047, 113)
+
+[node name="Shelf" type="StaticBody2D"]
+collision_layer = 7
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-382.25, 0)
+scale = Vector2(0.59052, 1)
+texture = ExtResource("1_ynoha")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-377.5, 1.5)
+shape = SubResource("RectangleShape2D_lbrud")

@@ -1,0 +1,71 @@
+[gd_scene load_steps=9 format=3 uid="uid://dw6i7ilt6cqb2"]
+
+[ext_resource type="PackedScene" uid="uid://b5em8781rmds2" path="res://prefabs/ingredient.tscn" id="1_b2lcu"]
+[ext_resource type="Script" path="res://scripts/ingredientState.gd" id="2_mdq0b"]
+[ext_resource type="Texture2D" uid="uid://cv6scsnd7aelr" path="res://arts/ingredients/broccoli.png" id="2_v5yws"]
+
+[sub_resource type="Resource" id="Resource_7evdm"]
+resource_local_to_scene = true
+script = ExtResource("2_mdq0b")
+state = 0
+cookTimer = 15.0
+typeInfluenceMultiplier = {
+0: 1.0,
+1: 0.7
+}
+stateColor = Color(1, 1, 1, 1)
+
+[sub_resource type="Resource" id="Resource_ojaaw"]
+resource_local_to_scene = true
+script = ExtResource("2_mdq0b")
+state = 1
+cookTimer = 30.0
+typeInfluenceMultiplier = {
+0: 1.4,
+1: 0.6
+}
+stateColor = Color(0.94902, 0.776471, 0.4, 1)
+
+[sub_resource type="Resource" id="Resource_lff46"]
+resource_local_to_scene = true
+script = ExtResource("2_mdq0b")
+state = 2
+cookTimer = 20.0
+typeInfluenceMultiplier = {
+0: 1.5,
+1: 0.7
+}
+stateColor = Color(0.6, 0.443137, 0.101961, 1)
+
+[sub_resource type="Resource" id="Resource_j8afd"]
+resource_local_to_scene = true
+script = ExtResource("2_mdq0b")
+state = 3
+cookTimer = 0.0
+typeInfluenceMultiplier = {
+0: 1.0,
+1: 1.0
+}
+stateColor = Color(0.231373, 0.164706, 0.0196078, 1)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pkfm3"]
+radius = 23.0
+height = 76.0
+
+[node name="Broccoli" instance=ExtResource("1_b2lcu")]
+ingredientType = 7
+ingredientStates = Array[ExtResource("2_mdq0b")]([SubResource("Resource_7evdm"), SubResource("Resource_ojaaw"), SubResource("Resource_lff46"), SubResource("Resource_j8afd")])
+
+[node name="Sprite2DShadow" parent="." index="0"]
+scale = Vector2(0.074, 0.074)
+texture = ExtResource("2_v5yws")
+
+[node name="Sprite2D" parent="." index="1"]
+position = Vector2(1, -6)
+scale = Vector2(0.0637207, 0.0637207)
+texture = ExtResource("2_v5yws")
+
+[node name="CollisionShape2D" parent="." index="2"]
+position = Vector2(0, -8)
+rotation = 0.0
+shape = SubResource("CapsuleShape2D_pkfm3")

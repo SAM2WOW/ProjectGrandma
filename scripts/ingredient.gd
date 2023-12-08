@@ -64,6 +64,8 @@ func ChangeState(newIndex):
 	if GetCurrentState().state == IngredientState.CookingState.Cooked:
 		if Global.currentStage == 0:
 			Global.textManager.Activate("3")
+		elif Global.currentStage == 1:
+			Global.textManager.Activate("Kids")
 		elif Global.currentStage == 2:
 			Global.textManager.Activate("4")
 	
@@ -72,6 +74,8 @@ func UpdateColor(delta):
 	if currentStateIndex >= ingredientStates.size()-1: return;
 	var timerRatio = ease(cookingTimer / GetCurrentState().cookTimer, 4.8);
 	$Sprite2D.modulate = GetCurrentState().stateColor.lerp(ingredientStates[currentStateIndex+1].stateColor, timerRatio);
+	#if timerRatio > 0:
+		#print($Sprite2D.modulate)
 
 func GetState(checkState: IngredientState.CookingState):
 	for ingState in ingredientStates:
@@ -86,6 +90,12 @@ func StartDrag():
 	super.StartDrag();
 	if Global.currentStage == 0:
 		var c = Global.textManager.Activate("Item2");
+		followText = c;
+	elif Global.currentStage == 1:
+		var c = Global.textManager.Activate("Peppercorns");
+		followText = c;
+	elif Global.currentStage == 2:
+		var c = Global.textManager.Activate("Onions");
 		followText = c;
 
 func OnHover():

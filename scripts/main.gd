@@ -14,6 +14,7 @@ func _ready():
 	MusicPlayer.fade_in() 
 	MusicPlayer.play_music()
 	Global.gameManager.ToggleCursor('normal')
+	MusicPlayer.set_pitch(1);
 
 func _process(delta):
 	# offset the camera base on the mouse position to the center
@@ -101,7 +102,6 @@ func _on_compelet_level_button_pressed():
 	
 	await get_tree().create_timer(1).timeout
 	$Sounds/CompleteSound.play()
-
 
 func _on_restart_button_pressed():
 	get_tree().reload_current_scene()

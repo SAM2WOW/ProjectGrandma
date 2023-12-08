@@ -34,6 +34,8 @@ var cursors = {
 func _ready():
 	Global.gameManager = self
 	print("Game Manager is ready")
+	liquidInPan.clear();
+	ingredientsInPan.clear();
 	if Global.currentStage == 0 || Global.currentStage == 4:
 		cursorState['normal'] = cursors['normal'][0]
 		cursorState['grab'] = cursors['grab'][0]
@@ -63,7 +65,7 @@ func _input(event):
 		
 func ToggleCursor(state:String):
 	var cursorPath = cursorState[state]
-	print("cursor:",cursorPath)
+	# print("cursor:",cursorPath)
 	Input.set_custom_mouse_cursor(load(cursorPath))
 	
 func BeginDragObject(object : Draggable):
@@ -105,17 +107,21 @@ func AddObjectToPan(type,id):
 		if !liquidInPan.has(id):
 			print("Add ",type,": ",id)
 			liquidInPan.append(id)
+	print("liquids:\n");
+	ArraysAreEqual(Global.recipeManager.allLiquid,liquidInPan)
 	if ArraysAreEqual(Global.recipeManager.allIngredients,ingredientsInPan) and ArraysAreEqual(Global.recipeManager.allLiquid,liquidInPan):
 		canCompleteStage = true
 		stageComplete.emit()
 		Global.textManager.Activate("All Ingredients")
 
 func ArraysAreEqual(array1,array2):
+	print(array1, array2);
 	if array1.size() != array2.size() : return false
 	for e in array1:
 		if !array2.has(e):
 			return false;
 	return true
+
 func OnCompleteStage():
 	if CheckGameEnd():
 		print("Complete last stage, game ends")

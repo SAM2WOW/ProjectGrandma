@@ -40,7 +40,7 @@ func play_music():
 		$BGM.play()
 
 func set_pitch(ptch):
-	$BGM.pitch_scale = 0.8;
+	$BGM.pitch_scale = ptch;
 
 func stop_music():
 	$BGM.stop();

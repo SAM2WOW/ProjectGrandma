@@ -2,7 +2,7 @@ extends "res://scripts/main.gd"
 
 func _ready():
 	super._ready()
-	
+	Global.currentStage = 0;
 	await get_tree().create_timer(3).timeout
 	
 	Global.textManager.Activate("1")

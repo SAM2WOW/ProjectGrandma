@@ -1,0 +1,77 @@
+[gd_scene load_steps=10 format=3 uid="uid://dcfwa2qftpgxm"]
+
+[ext_resource type="PackedScene" uid="uid://b5em8781rmds2" path="res://prefabs/ingredient.tscn" id="1_cbsst"]
+[ext_resource type="Script" path="res://scripts/ingredientState.gd" id="2_2qig7"]
+[ext_resource type="Texture2D" uid="uid://qvc26udrf7dn" path="res://arts/ingredients/mushroom.png" id="2_jnq1l"]
+
+[sub_resource type="Resource" id="Resource_gkq4r"]
+resource_local_to_scene = true
+script = ExtResource("2_2qig7")
+state = 0
+cookTimer = 15.0
+typeInfluenceMultiplier = {
+0: 1.0,
+1: 0.3
+}
+stateColor = Color(1, 1, 1, 1)
+
+[sub_resource type="Resource" id="Resource_ojaaw"]
+resource_local_to_scene = true
+script = ExtResource("2_2qig7")
+state = 1
+cookTimer = 25.0
+typeInfluenceMultiplier = {
+0: 1.0,
+1: 0.4
+}
+stateColor = Color(0.94902, 0.776471, 0.4, 1)
+
+[sub_resource type="Resource" id="Resource_wka5m"]
+resource_local_to_scene = true
+script = ExtResource("2_2qig7")
+state = 2
+cookTimer = 20.0
+typeInfluenceMultiplier = {
+0: 1.4,
+1: 0.5
+}
+stateColor = Color(0.6, 0.443137, 0.101961, 1)
+
+[sub_resource type="Resource" id="Resource_j8afd"]
+resource_local_to_scene = true
+script = ExtResource("2_2qig7")
+state = 3
+cookTimer = 0.0
+typeInfluenceMultiplier = {
+0: 1.0,
+1: 1.0
+}
+stateColor = Color(0.231373, 0.164706, 0.0196078, 1)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qy62o"]
+radius = 22.0
+height = 88.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ltdi8"]
+radius = 71.0
+height = 142.0
+
+[node name="Mushroom" instance=ExtResource("1_cbsst")]
+ingredientType = 6
+ingredientStates = Array[ExtResource("2_2qig7")]([SubResource("Resource_gkq4r"), SubResource("Resource_ojaaw"), SubResource("Resource_wka5m"), SubResource("Resource_j8afd")])
+
+[node name="Sprite2DShadow" parent="." index="0"]
+scale = Vector2(0.073, 0.073)
+texture = ExtResource("2_jnq1l")
+
+[node name="Sprite2D" parent="." index="1"]
+position = Vector2(1.90735e-06, -5)
+scale = Vector2(0.0571899, 0.0571899)
+texture = ExtResource("2_jnq1l")
+
+[node name="CollisionShape2D" parent="." index="2"]
+position = Vector2(0, -3)
+shape = SubResource("CapsuleShape2D_qy62o")
+
+[node name="CollisionShape2D" parent="InteractArea" index="0"]
+shape = SubResource("CapsuleShape2D_ltdi8")

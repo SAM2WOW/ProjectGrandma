@@ -22,6 +22,8 @@ var stepText : String = "";
 var noteText : String = "";
 func _ready():
 	Global.recipeManager = self
+	allLiquid.clear();
+	allIngredients.clear();
 	InitRecipeText();
 
 func InitRecipeText():
@@ -35,6 +37,8 @@ func InitRecipeText():
 	for component in recipe:
 		component._ready();
 		var desc = component.GetDescription().strip_edges(true,true);
+		if desc.length() == 0: continue;
+		if desc[desc.length()-1] == '.': desc = desc.left(desc.length()-1);
 		print(prevStep, " vs ", component.step)
 		if component.step >= 0 && component.step != prevStep:
 			recipeText += "\n* " +desc + '. ';
@@ -44,6 +48,7 @@ func InitRecipeText():
 		print(desc);
 		if component is IngredientComponent:
 			var quantRange = component.GetQuantityRange(component.quantityPoints);
+			if quantRange.size() == 0: continue;
 			var quantityText : String = str(quantRange[0].belowOrEqualQuantity+1);
 			if quantRange.size() > 1: 
 				quantityText += " - " + str(quantRange[1].belowOrEqualQuantity);
@@ -112,14 +117,18 @@ func GetFinalGrade():
 	var result : ResultText.FoodResult;
 	if score <= 0.5:
 		$EndNode/Smoke2.set_emitting(true)
+		get_parent().get_node("Sounds/CompleteSound").pitch_scale = 0.3;
 		result = ResultText.FoodResult.Bad;
 	elif score <= 0.75:
 		$EndNode/Smoke.set_emitting(true)
+		get_parent().get_node("Sounds/CompleteSound").pitch_scale = 0.7;
 		result = ResultText.FoodResult.Average;
 	elif score <= 0.95:
 		$EndNode/Smoke.set_emitting(true)
+		get_parent().get_node("Sounds/CompleteSound").pitch_scale = 1.0;
 		result = ResultText.FoodResult.Good;
 	else:
+		get_parent().get_node("Sounds/CompleteSound").pitch_scale = 1.3;
 		$EndNode/Smoke.set_emitting(true)
 		$EndNode/Perfect.set_emitting(true)
 		result = ResultText.FoodResult.Perfect;
@@ -135,7 +144,7 @@ func GetFinalGrade():
 		noteText += r.resultText + "\n\n";
 	for p in progressText:
 		if p.progress != progress: continue;
-		noteText += p.resultText;
+		noteText += p.progressText;
 	
 	$EndNode/NoteText.append_text(noteText);
 	Global.sceneScores[Global.currentStage] = clamp(score, 0, 1);
