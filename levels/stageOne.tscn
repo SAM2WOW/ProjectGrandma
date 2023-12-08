@@ -32,9 +32,6 @@ position = Vector2(-561, 145)
 scale = Vector2(0.514732, 0.514732)
 texture = ExtResource("3_eq81a")
 
-[node name="Recipe Scene" parent="Node2D" index="3"]
-visible = false
-
 [node name="CompeletLevelButton" parent="CanvasLayer/HUD" index="4"]
 offset_left = 1366.0
 offset_top = 886.0

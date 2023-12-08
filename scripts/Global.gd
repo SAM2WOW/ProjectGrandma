@@ -1,6 +1,7 @@
 extends Node
 
 enum LiquidType {SoySauce, Vinegar, AbodoSauce};
+static var sceneScores = {};
 var stageNumbers = 4;
 var currentStage = 0;
 var recipeManager;
