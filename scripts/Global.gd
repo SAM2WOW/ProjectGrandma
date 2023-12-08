@@ -11,14 +11,14 @@ var textManager;
 var sceneManager;
 
 # Called when the node enters the scene tree for the first time.
-func _ready():
-	recipeManager = get_tree().get_first_node_in_group("RecipeManager");
-	gameManager = get_tree().get_first_node_in_group("GameManager");
-	instantiationManager = get_tree().get_first_node_in_group("InstantiationManager");
-	textManager = get_tree().get_first_node_in_group("TextManager");
-	sceneManager = get_tree().get_first_node_in_group("SceneManager")
-	print("Recipe Manager Size: ", recipeManager.recipe.size());
-
+#func _ready():
+	#recipeManager = get_tree().get_first_node_in_group("RecipeManager");
+	#gameManager = get_tree().get_first_node_in_group("GameManager");
+	#instantiationManager = get_tree().get_first_node_in_group("InstantiationManager");
+	#textManager = get_tree().get_first_node_in_group("TextManager");
+	#sceneManager = get_tree().get_first_node_in_group("SceneManager")
+	#print("Recipe Manager Size: ", recipeManager.recipe.size());
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

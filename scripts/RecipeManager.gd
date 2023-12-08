@@ -93,8 +93,6 @@ func CheckRecipePoints():
 	print("scene score: ", Global.sceneScores[Global.currentStage])
 	# print("points: %.1f" % (points/totalPoints));
 	print("step text:\n", stepText);
-	
-	$EndNode/Smoke.set_emitting(true)
 
 func GetFinalGrade():
 	$EndNode/NoteText.clear();
@@ -133,6 +131,18 @@ func GetFinalGrade():
 	for p in progressText:
 		noteText += p.resultText;
 		if p.progress != progress: continue;
+		print("really bad");
+		$EndNode/Smoke2.set_emitting(true)
+	elif score <= 0.75:
+		print("ok")
+		$EndNode/Smoke.set_emitting(true)
+	elif score <= 0.95:
+		print("good");
+		$EndNode/Smoke.set_emitting(true)
+	else:
+		print("perfect");
+		$EndNode/Smoke.set_emitting(true)
+		$EndNode/Perfect.set_emitting(true)
 	
 	$EndNode/NoteText.append_text(noteText);
 	Global.sceneScores[Global.currentStage] = score;

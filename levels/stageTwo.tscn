@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://dpg0gbpttdpy5" path="res://levels/main.tscn" id="1_a8jge"]
 [ext_resource type="Texture2D" uid="uid://ctc85ci7t7dfj" path="res://arts/main scene/Day2.jpg" id="2_i2w18"]
-[ext_resource type="Texture2D" uid="uid://ed50ld8jg5ks" path="res://arts/main scene/IMG_0049.png" id="2_x6dbl"]
+[ext_resource type="Texture2D" uid="uid://k5360gn0msjs" path="res://arts/main scene/IMG_0054.png" id="3_34lly"]
 
 [node name="Main" instance=ExtResource("1_a8jge")]
 
@@ -21,27 +21,4 @@ motion_scale = Vector2(0.8, 0.8)
 self_modulate = Color(1, 1, 1, 0.301961)
 position = Vector2(-561, 145)
 scale = Vector2(0.514732, 0.514732)
-texture = ExtResource("2_x6dbl")
-
-[node name="RichTextLabel" parent="Node2D/Recipe Scene" index="0"]
-text = "[b]Ingredients[/b]
-	* 2 pounds chicken thighs
-	* 1/2 cup white vinegar
-	* 1/2 cup soy sauce
-	* 4 cloves garlic, chopped
-	* 1 teaspoon black peppercorns
-	* 3 bay leaves
-	* Steamed rice, for serving
-
-
-[b]Steps[/b]
-	1. Brown the chicken thighs in a pan with oil. Add crushed garlic to cook slightly with chicken
-	2. Combine vinegar, soy sauce, bay leaves, and peppercorns. Add to pot with chicken
-	3. Bring to a boil then let simmer for 30-40mins with cover on
-	4. Flip chicken thighs half way through
-	5. Serve over rice!
-
-"
-
-[node name="ColorRect" parent="CanvasLayer" index="0"]
-visible = true
+texture = ExtResource("3_34lly")

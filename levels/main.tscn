@@ -47,7 +47,7 @@ size = Vector2(302.642, 147.933)
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_y2278"]
 frequency = 0.0698
 
-[sub_resource type="NoiseTexture2D" id="4"]
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_b05w7"]
 seamless = true
 seamless_blend_skirt = 0.516
 noise = SubResource("FastNoiseLite_y2278")
@@ -59,7 +59,7 @@ shader_parameter/color_detect_threshold = 0.8
 shader_parameter/water_dev_color = Color(1, 0, 1, 1)
 shader_parameter/water_color = Color(0, 0.462745, 1, 1)
 shader_parameter/bubble_color = Color(1, 1, 1, 1)
-shader_parameter/noise = SubResource("4")
+shader_parameter/noise = SubResource("NoiseTexture2D_b05w7")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_kbxna"]
 shader = ExtResource("11_b5byl")
