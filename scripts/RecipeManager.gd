@@ -133,12 +133,20 @@ func GetFinalGrade():
 		$EndNode/Perfect.set_emitting(true)
 		result = ResultText.FoodResult.Perfect;
 	var progress : ProgressText.Progress;
-	if score <= avgScore - 0.1:
-		progress = ProgressText.Progress.Washed;
-	elif score >= avgScore-0.1 && score <= avgScore+0.1:
-		progress = ProgressText.Progress.Constant;
+	if Global.currentStage != 4:
+		if score <= avgScore - 0.1:
+			progress = ProgressText.Progress.Washed;
+		elif score >= avgScore-0.1 && score <= avgScore+0.1:
+			progress = ProgressText.Progress.Constant;
+		else:
+			progress = ProgressText.Progress.Improving;
 	else:
-		progress = ProgressText.Progress.Improving;
+		if avgScore <= 0.4:
+			progress = ProgressText.Progress.Washed;
+		elif avgScore <= 0.7:
+			progress = ProgressText.Progress.Constant;
+		else:
+			progress = ProgressText.Progress.Improving;
 	for r in resultText:
 		if r.result != result: continue;
 		noteText += r.resultText + "\n\n";
