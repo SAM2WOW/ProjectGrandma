@@ -111,12 +111,17 @@ func GetFinalGrade():
 	
 	var result : ResultText.FoodResult;
 	if score <= 0.5:
+		$EndNode/Smoke2.set_emitting(true)
 		result = ResultText.FoodResult.Bad;
 	elif score <= 0.75:
+		$EndNode/Smoke.set_emitting(true)
 		result = ResultText.FoodResult.Average;
 	elif score <= 0.95:
+		$EndNode/Smoke.set_emitting(true)
 		result = ResultText.FoodResult.Good;
 	else:
+		$EndNode/Smoke.set_emitting(true)
+		$EndNode/Perfect.set_emitting(true)
 		result = ResultText.FoodResult.Perfect;
 	var progress : ProgressText.Progress;
 	if score <= avgScore - 0.1:
@@ -129,20 +134,8 @@ func GetFinalGrade():
 		if r.result != result: continue;
 		noteText += r.resultText + "\n\n";
 	for p in progressText:
-		noteText += p.resultText;
 		if p.progress != progress: continue;
-		print("really bad");
-		$EndNode/Smoke2.set_emitting(true)
-	elif score <= 0.75:
-		print("ok")
-		$EndNode/Smoke.set_emitting(true)
-	elif score <= 0.95:
-		print("good");
-		$EndNode/Smoke.set_emitting(true)
-	else:
-		print("perfect");
-		$EndNode/Smoke.set_emitting(true)
-		$EndNode/Perfect.set_emitting(true)
+		noteText += p.resultText;
 	
 	$EndNode/NoteText.append_text(noteText);
 	Global.sceneScores[Global.currentStage] = score;
