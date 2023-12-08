@@ -119,6 +119,11 @@ func _on_area_2d_body_shape_entered(body_rid, body, body_shape_index, local_shap
 			cookingObjects[body.ingredientType] = [];
 		if !cookingObjects[body.ingredientType].has(body):
 			cookingObjects[body.ingredientType].append(body);
+			if Global.currentStage == 1:
+				if (body.ingredientType == body.IngredientType.Garlic):
+					Global.textManager.Activate("Garlic");
+				if (body.ingredientType == body.IngredientType.Peppercorn):
+					Global.textManager.Activate("Peppercorns");
 	
 
 
@@ -126,6 +131,8 @@ func _on_area_2d_body_shape_exited(body_rid, body, body_shape_index, local_shape
 	super._on_area_2d_body_shape_exited(body_rid, body, body_shape_index, local_shape_index);
 	if body is Ingredient:
 		cookingObjects[body.ingredientType].erase(body);
+		if Global.currentStage == 1:
+			Global.textManager.Activate("Cooking");
 
 func OnLiquidEnter(id, body_rid):
 	super.OnLiquidEnter(id, body_rid);

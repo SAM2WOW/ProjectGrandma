@@ -21,6 +21,11 @@ func _process(delta):
 	
 func Activate(id : String) -> Node2D:
 	var child = find_child(id);
+	
+	if (child == null):
+		print("Can't find textEvent with name ", id);
+		return;
+	
 	child.firstTime = false;
 	if !child.hasPlayed: child.firstTime = true;
 	if ((child.playOnce == true && child.hasPlayed == true) || child.active == true):
@@ -39,6 +44,10 @@ func Activate(id : String) -> Node2D:
 	
 func Deactivate(id : String):
 	var child = find_child(id);
+	
+	if (child == null):
+		print("Can't find textEvent with name ", id);
+		return;
 	
 	var tween = create_tween().set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN_OUT)
 	tween.tween_property(child.get_child(0), "visible_ratio", 0, 1)

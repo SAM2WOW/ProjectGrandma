@@ -108,6 +108,7 @@ func AddObjectToPan(type,id):
 	if ArraysAreEqual(Global.recipeManager.allIngredients,ingredientsInPan) and ArraysAreEqual(Global.recipeManager.allLiquid,liquidInPan):
 		canCompleteStage = true
 		stageComplete.emit()
+		Global.textManager.Activate("All Ingredients")
 
 func ArraysAreEqual(array1,array2):
 	if array1.size() != array2.size() : return false
