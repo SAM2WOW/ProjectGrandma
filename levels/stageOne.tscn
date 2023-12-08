@@ -1,11 +1,155 @@
-[gd_scene load_steps=2 format=3 uid="uid://uetxp6v8gega"]
+[gd_scene load_steps=8 format=3 uid="uid://uetxp6v8gega"]
 
 [ext_resource type="PackedScene" uid="uid://dpg0gbpttdpy5" path="res://levels/main.tscn" id="1_y2kh4"]
+[ext_resource type="Script" path="res://levels/stageOne.gd" id="2_3n783"]
+[ext_resource type="Script" path="res://textEvent.gd" id="2_3ui8n"]
+[ext_resource type="Texture2D" uid="uid://eu58chmihkcv" path="res://arts/main scene/Day1.jpg" id="3_cluy4"]
+[ext_resource type="Texture2D" uid="uid://ed50ld8jg5ks" path="res://arts/main scene/IMG_0049.png" id="3_eq81a"]
+[ext_resource type="FontFile" uid="uid://ds8uy6wtxnlvu" path="res://arts/fonts/Zeyada-Regular.ttf" id="3_wy54e"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_c5rhk"]
+font = ExtResource("3_wy54e")
+font_size = 90
+font_color = Color(0, 0, 0, 1)
 
 [node name="Main2" instance=ExtResource("1_y2kh4")]
+script = ExtResource("2_3n783")
+
+[node name="ParallaxLayer" parent="ParallaxBackground" index="0"]
+motion_mirroring = Vector2(3840, 2160)
+
+[node name="BG" parent="ParallaxBackground/ParallaxLayer" index="0"]
+position = Vector2(1920, 1080)
+scale = Vector2(2, 2)
+texture = ExtResource("3_cluy4")
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground" index="1"]
+motion_scale = Vector2(0.8, 0.8)
+
+[node name="Img0049" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2" index="0"]
+self_modulate = Color(1, 1, 1, 0.301961)
+position = Vector2(-561, 145)
+scale = Vector2(0.514732, 0.514732)
+texture = ExtResource("3_eq81a")
 
 [node name="CompeletLevelButton" parent="CanvasLayer/HUD" index="4"]
 offset_left = 1366.0
 offset_top = 886.0
 offset_right = 1570.0
 offset_bottom = 982.0
+
+[node name="TextManager" parent="." index="5"]
+rotation = -0.0680678
+
+[node name="Hungry" type="Node2D" parent="TextManager" index="1"]
+position = Vector2(-519, -600)
+script = ExtResource("2_3ui8n")
+dissapearTimer = 10.0
+
+[node name="Label" type="Label" parent="TextManager/Hungry" index="0"]
+offset_left = -153.0
+offset_top = -170.0
+offset_right = 100.0
+offset_bottom = -27.0
+text = "I’m so hungry… I should cook something."
+label_settings = SubResource("LabelSettings_c5rhk")
+
+[node name="Adobo" type="Node2D" parent="TextManager" index="2"]
+position = Vector2(-132.288, -456.054)
+script = ExtResource("2_3ui8n")
+dissapearTimer = 10.0
+
+[node name="Label" type="Label" parent="TextManager/Adobo" index="0"]
+offset_left = 272.185
+offset_top = -169.881
+offset_right = 1031.18
+offset_bottom = -26.8807
+text = "Gonna try making Adobo tonight."
+label_settings = SubResource("LabelSettings_c5rhk")
+
+[node name="Adobo1" type="Node2D" parent="TextManager" index="3"]
+position = Vector2(-1249.85, -206.487)
+script = ExtResource("2_3ui8n")
+dissapearTimer = 10.0
+
+[node name="Label" type="Label" parent="TextManager/Adobo1" index="0"]
+offset_left = -418.914
+offset_top = -59.6306
+offset_right = 575.086
+offset_bottom = 83.3694
+text = "What ingredients do I need?"
+label_settings = SubResource("LabelSettings_c5rhk")
+
+[node name="Sauce" type="Node2D" parent="TextManager" index="4"]
+position = Vector2(609.333, -234.098)
+script = ExtResource("2_3ui8n")
+dissapearTimer = 10.0
+
+[node name="Label" type="Label" parent="TextManager/Sauce" index="0"]
+offset_left = -418.914
+offset_top = -59.6306
+offset_right = 575.086
+offset_bottom = 83.3694
+text = "How much sauce to put in the pan?"
+label_settings = SubResource("LabelSettings_c5rhk")
+
+[node name="Sauce2" type="Node2D" parent="TextManager" index="5"]
+position = Vector2(921.519, -64.4719)
+script = ExtResource("2_3ui8n")
+dissapearTimer = 5.0
+
+[node name="Label" type="Label" parent="TextManager/Sauce2" index="0"]
+offset_left = -418.914
+offset_top = -59.6306
+offset_right = 575.086
+offset_bottom = 83.3694
+text = "Should I measure it first?"
+label_settings = SubResource("LabelSettings_c5rhk")
+
+[node name="Item" type="Node2D" parent="TextManager" index="6"]
+position = Vector2(-645.705, 3.08932)
+script = ExtResource("2_3ui8n")
+dissapearTimer = 5.0
+
+[node name="Label" type="Label" parent="TextManager/Item" index="0"]
+offset_left = -435.739
+offset_top = -62.7823
+offset_right = 558.261
+offset_bottom = 80.2177
+text = "It’s time to add the chicken!"
+label_settings = SubResource("LabelSettings_c5rhk")
+
+[node name="Item2" type="Node2D" parent="TextManager" index="7"]
+position = Vector2(-645.705, 3.08932)
+script = ExtResource("2_3ui8n")
+dissapearTimer = 5.0
+
+[node name="Label" type="Label" parent="TextManager/Item2" index="0"]
+offset_left = -1158.2
+offset_top = 66.3787
+offset_right = -102.197
+offset_bottom = 209.379
+text = "What seasonings should I add?"
+label_settings = SubResource("LabelSettings_c5rhk")
+
+[node name="Fire" type="Node2D" parent="TextManager" index="8"]
+position = Vector2(-112.51, 194.799)
+script = ExtResource("2_3ui8n")
+dissapearTimer = 10.0
+
+[node name="Label" type="Label" parent="TextManager/Fire" index="0"]
+offset_left = -418.914
+offset_top = -59.6306
+offset_right = 575.086
+offset_bottom = 83.3694
+text = "Don't forget to turn on the fire
+
+
+                   < Right Here"
+label_settings = SubResource("LabelSettings_c5rhk")
+
+[connection signal="on_mouse_hovering" from="Node2D/Cooking Scene/LiquidDraggable" to="." method="_on_liquid_draggable_on_mouse_hovering"]
+[connection signal="on_grabbed" from="Node2D/Cooking Scene/LiquidDraggable2" to="." method="_on_liquid_draggable_2_on_grabbed"]
+[connection signal="on_mouse_hovering" from="Node2D/Cooking Scene/Pan" to="." method="_on_pan_on_mouse_hovering"]
+[connection signal="on_grabbed" from="Node2D/Cooking Scene/Container" to="." method="_on_container_on_grabbed"]
+[connection signal="on_grabbed" from="Node2D/Cooking Scene/Container2" to="." method="_on_container_2_on_grabbed"]

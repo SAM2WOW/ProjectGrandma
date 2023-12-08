@@ -6,6 +6,7 @@ class_name TextEvent;
 @export var playOnce : bool = true;
 var hasPlayed : bool = false;
 var active : bool = false;
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -17,5 +18,11 @@ func _process(delta):
 	
 func AwaitDissapear():
 	await get_tree().create_timer(dissapearTimer).timeout;
+	
+	var tween = create_tween().set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN_OUT)
+	tween.tween_property(get_child(0), "visible_ratio", 0, 1)
+	
+	await get_tree().create_timer(1).timeout;
+	
 	self.visible = false;
 	self.active = false;

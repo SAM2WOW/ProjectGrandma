@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://h7fkjxle4fr2"]
+[gd_scene load_steps=14 format=3 uid="uid://h7fkjxle4fr2"]
 
 [ext_resource type="PackedScene" uid="uid://drn5x3vivefyp" path="res://prefabs/liquidContainer.tscn" id="1_ribvh"]
 [ext_resource type="Script" path="res://scripts/panContainer.gd" id="2_2j0dy"]
 [ext_resource type="Texture2D" uid="uid://dqy1ywdlmbisa" path="res://arts/kitchenware/pan with handle.png" id="2_ksjrc"]
 [ext_resource type="Texture2D" uid="uid://diyloqr1ltoak" path="res://arts/kitchenware/pan line art only.png" id="3_k10yi"]
 [ext_resource type="Texture2D" uid="uid://b6nr0o5mal2iv" path="res://arts/kitchenware/pan watercolor only.png" id="5_tki2m"]
+[ext_resource type="Texture2D" uid="uid://dppis8ot18uwq" path="res://arts/particles/SmokeParticle3.png" id="8_basl4"]
 [ext_resource type="AudioStream" uid="uid://bl2fotgrfpwkd" path="res://sounds/Boiling.ogg" id="9_cbi0f"]
 [ext_resource type="AudioStream" uid="uid://b82q7jpr6qms4" path="res://sounds/Frying.ogg" id="10_8lyt6"]
 
@@ -20,6 +21,10 @@ size = Vector2(448, 32)
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xl3c2"]
 radius = 128.0
 height = 1054.0
+
+[sub_resource type="Gradient" id="Gradient_l41xf"]
+offsets = PackedFloat32Array(0, 0.0580645, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0)
 
 [node name="Pan" instance=ExtResource("1_ribvh")]
 collision_priority = 1000.0
@@ -110,3 +115,20 @@ stream = ExtResource("9_cbi0f")
 
 [node name="Frying" type="AudioStreamPlayer2D" parent="." index="21"]
 stream = ExtResource("10_8lyt6")
+
+[node name="Smoke" type="CPUParticles2D" parent="." index="22"]
+z_index = 10
+emitting = false
+lifetime = 2.0
+randomness = 0.34
+lifetime_randomness = 0.39
+texture = ExtResource("8_basl4")
+spread = 77.18
+gravity = Vector2(0, -980)
+initial_velocity_max = 16.76
+angular_velocity_min = -72.4
+angular_velocity_max = 88.49
+angle_max = 563.1
+scale_amount_max = 2.0
+color = Color(0.752941, 0.752941, 0.752941, 1)
+color_ramp = SubResource("Gradient_l41xf")

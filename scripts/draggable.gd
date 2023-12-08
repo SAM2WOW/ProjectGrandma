@@ -1,6 +1,12 @@
 extends RigidBody2D
 class_name Draggable
 
+signal on_mouse_hovering
+signal on_mouse_exit
+signal on_grabbed
+signal on_action
+signal on_released
+
 var dragging = false;
 var hovering = false;
 
@@ -41,8 +47,11 @@ func Drag(delta):
 func StopDrag():
 	dragging = false;
 	Global.gameManager.draggedObject = null;
+	
+	emit_signal("on_released")
 
 func ObjectAction(event):
+	emit_signal("on_action")
 	pass;
 
 func AirDrag(delta):
@@ -57,6 +66,8 @@ func _on_interact_area_input_event(viewport, event, shape_idx):
 	if !event is InputEventMouseButton: return;
 	if event.button_index == 1 && event.pressed:
 		Global.gameManager.BeginDragObject(self);
+		
+		emit_signal("on_grabbed")
 
 func UnHover():
 	if Global.gameManager.hoveredObject == self:
@@ -75,6 +86,8 @@ func _on_interact_area_mouse_entered():
 	create_tween().tween_property($Sprite2D, "scale", spriteBaseScale*1.1, 0.3).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUINT);
 	create_tween().tween_property($Sprite2DShadow, "scale", shadowBaseScale*1.1, 0.3).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUINT);
 	# print("hover scale: ", spriteBaseScale*1.2);
+	
+	emit_signal("on_mouse_hovering")
 
 
 func MultiplyScale(scaleMult: float):
@@ -87,3 +100,4 @@ func MultiplyScale(scaleMult: float):
 func _on_interact_area_mouse_exited():
 	# print("un hover")
 	UnHover();
+	emit_signal("on_mouse_exit")
