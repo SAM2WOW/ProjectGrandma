@@ -10,11 +10,13 @@ class_name RecipeComponent;
 var inPot : bool = false;
 
 var totalPoints : float = 0.0;
+var totalQuantityPoints : float = 0.0;
 
 func _ready():
 	for quantity in quantityPoints:
 		if quantity.quantityPoints > totalPoints:
-			totalPoints = quantity.quantityPoints;
+			totalQuantityPoints = quantity.quantityPoints;
+	totalPoints = totalQuantityPoints;
 
 func GetQuantityRange(quantArr : Array[RecipeQuantity]) -> Array[RecipeQuantity]:
 	if quantArr.size() == 0: return [];

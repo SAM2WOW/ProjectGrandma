@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://wytpay3v2bjn"
-path="res://.godot/imported/Hand young.png-0faa5a70c630608954f16732924e2174.ctex"
+uid="uid://xepks47i42bx"
+path="res://.godot/imported/chickenAdobo.png-959fc14e5b8d18f1b2f8c641210d93a6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://arts/UI/player cursor/Hand young.png"
-dest_files=["res://.godot/imported/Hand young.png-0faa5a70c630608954f16732924e2174.ctex"]
+source_file="res://arts/ingredients/chickenAdobo.png"
+dest_files=["res://.godot/imported/chickenAdobo.png-959fc14e5b8d18f1b2f8c641210d93a6.ctex"]
 
 [params]
 

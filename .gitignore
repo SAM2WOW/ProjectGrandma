@@ -9,3 +9,14 @@ export_presets.cfg
 # Mono-specific ignores
 .mono/
 data_*/
+.godot/editor/editor_layout.cfg
+.godot/editor/editor_layout.cfg
+.godot/editor/filesystem_update4
+.godot/editor/project_metadata.cfg
+.godot/editor/stageFour.tscn-editstate-bd79b713fde6ad724607dc726e29eb93.cfg
+.godot/editor/stageFour.tscn-folding-bd79b713fde6ad724607dc726e29eb93.cfg
+.godot/editor/editor_layout.cfg
+.godot/editor/main.tscn-editstate-46339cfc876de426022a7fde78e090b6.cfg
+.godot/editor/main.tscn-folding-46339cfc876de426022a7fde78e090b6.cfg
+.godot/editor/project_metadata.cfg
+.godot/editor/stageOne.tscn-editstate-f877c5a32070a10b6e3e4d3c2dfdf39a.cfg
