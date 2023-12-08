@@ -18,6 +18,8 @@ var stageScenes: Array[String] = [
 "res://levels/stageFive.tscn"
 ]
 
+var menu = "res://levels/menu.tscn";
+
 var cursors = {
 	"normal": [
 		"res://arts/UI/player cursor/Hand young v3.png",
@@ -124,6 +126,7 @@ func ArraysAreEqual(array1,array2):
 
 func OnCompleteStage():
 	if CheckGameEnd():
+		get_tree().change_scene_to_file(menu)
 		print("Complete last stage, game ends")
 		gameEnd.emit()
 	else:

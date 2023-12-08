@@ -1,4 +1,4 @@
-[gd_scene load_steps=88 format=3 uid="uid://gsv6vap2dyly"]
+[gd_scene load_steps=94 format=3 uid="uid://gsv6vap2dyly"]
 
 [ext_resource type="PackedScene" uid="uid://dpg0gbpttdpy5" path="res://levels/main.tscn" id="1_572cr"]
 [ext_resource type="Script" path="res://levels/stageFive.gd" id="2_eg751"]
@@ -16,6 +16,8 @@
 [ext_resource type="Script" path="res://Resources/liquidComponent.gd" id="9_4gwrt"]
 [ext_resource type="Script" path="res://Resources/recipeComponent.gd" id="10_t5lxn"]
 [ext_resource type="Script" path="res://Resources/resultText.gd" id="11_eygw8"]
+[ext_resource type="Script" path="res://Resources/progressText.gd" id="12_l0wop"]
+[ext_resource type="Texture2D" uid="uid://k5360gn0msjs" path="res://arts/main scene/IMG_0054.png" id="15_gepa0"]
 
 [sub_resource type="Resource" id="Resource_jeml7"]
 script = ExtResource("3_fxykp")
@@ -470,7 +472,27 @@ resultText = "Not bad, not great. I sure hope my Lola isn't too dissapointed."
 [sub_resource type="Resource" id="Resource_dbh8l"]
 script = ExtResource("11_eygw8")
 result = 2
-resultText = ""
+resultText = "Pretty good if I say so my self! Maybe its nostaligia but tastes like how my lola used to make it."
+
+[sub_resource type="Resource" id="Resource_7nfb7"]
+script = ExtResource("11_eygw8")
+result = 3
+resultText = "I managed to nail my Lola's recipe on the first try! I'm sure my Lola would be proud of me!"
+
+[sub_resource type="Resource" id="Resource_vetin"]
+script = ExtResource("12_l0wop")
+progress = 2
+progressText = "My lola wasn't a great cook, but I can still feel the effort she put into this recipe. I'll try to improve on her shortcomings!"
+
+[sub_resource type="Resource" id="Resource_c1nj8"]
+script = ExtResource("12_l0wop")
+progress = 0
+progressText = "My Lola wasn't the best chef, but her meals were still delicious. I hope I can be like her!"
+
+[sub_resource type="Resource" id="Resource_7xyyx"]
+script = ExtResource("12_l0wop")
+progress = 1
+progressText = "My Lola was an incredible chef! I'll do my best to keep up with her expectations when she passed me this dish!"
 
 [sub_resource type="LabelSettings" id="LabelSettings_c5rhk"]
 font = ExtResource("4_4qt5k")
@@ -482,7 +504,8 @@ script = ExtResource("2_eg751")
 
 [node name="RecipeManager" parent="." index="0"]
 recipe = Array[ExtResource("10_t5lxn")]([SubResource("Resource_t5c2e"), SubResource("Resource_c5yxf"), SubResource("Resource_6h8y0"), SubResource("Resource_gqaa1"), SubResource("Resource_gv8wc"), SubResource("Resource_3s2vj"), SubResource("Resource_lw685"), SubResource("Resource_lmr8d"), SubResource("Resource_jqgl4")])
-resultText = Array[ExtResource("11_eygw8")]([SubResource("Resource_eln0s"), SubResource("Resource_vrkkq"), SubResource("Resource_dbh8l")])
+resultText = Array[ExtResource("11_eygw8")]([SubResource("Resource_eln0s"), SubResource("Resource_vrkkq"), SubResource("Resource_dbh8l"), SubResource("Resource_7nfb7")])
+progressText = Array[ExtResource("12_l0wop")]([SubResource("Resource_vetin"), SubResource("Resource_c1nj8"), SubResource("Resource_7xyyx")])
 
 [node name="0" type="Node2D" parent="TextManager" index="1"]
 position = Vector2(0, -75)
@@ -581,6 +604,15 @@ text = " She said it was her grandmas recipe. So my Lola's Lola's love exists no
 label_settings = SubResource("LabelSettings_c5rhk")
 autowrap_mode = 3
 
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground" index="1"]
+motion_scale = Vector2(0.8, 0.8)
+
+[node name="Img0049" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2" index="0"]
+self_modulate = Color(1, 1, 1, 0.301961)
+position = Vector2(-561, 145)
+scale = Vector2(0.514732, 0.514732)
+texture = ExtResource("15_gepa0")
+
 [node name="MixingSpoon" parent="Node2D/Cooking Scene" index="7"]
 position = Vector2(1487, 170)
 
@@ -601,3 +633,6 @@ position = Vector2(-2.00024, -133)
 scale = Vector2(-6.59748, -6.59748)
 ingredientPath = "res://prefabs/Ingredients/broccoli.tscn"
 numIngredients = 6
+
+[node name="Label" parent="CanvasLayer/HUD/HoverArea3/CenterContainer" index="0"]
+text = "The End"
