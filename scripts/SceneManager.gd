@@ -29,3 +29,7 @@ func DeferredSwitchScene(filePath):
 	root.add_child(currentScene)
 	#get_tree().current_scene = currentScene
 	
+func ReloadCurrentScene():
+	var scenePath = Global.gameManager.stageScenes[Global.currentStage]
+	#print(scenePath)
+	SwitchScene(scenePath)
