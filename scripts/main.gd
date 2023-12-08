@@ -45,10 +45,11 @@ func onGameEnd():
 	$CanvasLayer/HUD/HoverArea2.hide()
 	
 	$AnimationPlayer.play("Final")
+	$Sounds/SlideSound.play()
 	
 	MusicPlayer.fade_out(true)
 	
-	$CompleteSound.play()
+	$Sounds/CompleteSound.play()
 	
 
 func _on_hover_area_mouse_entered():
@@ -58,6 +59,7 @@ func _on_hover_area_mouse_entered():
 	$CanvasLayer/HUD/HoverArea2.show()
 	
 	$AnimationPlayer.play("Transition")
+	$Sounds/SlideSound.play()
 
 
 func _on_hover_area_2_mouse_entered():
@@ -67,12 +69,14 @@ func _on_hover_area_2_mouse_entered():
 	$CanvasLayer/HUD/HoverArea2.hide()
 	
 	$AnimationPlayer.play_backwards("Transition")
+	$Sounds/SlideSound.play()
 
 
 func _on_hover_area_3_mouse_entered():
 	$CanvasLayer/HUD/HoverArea3.hide()
 	
 	$AnimationPlayer.play_backwards("Exit")
+	$Sounds/SlideSound.play()
 
 
 func _on_animation_player_animation_finished(anim_name):
