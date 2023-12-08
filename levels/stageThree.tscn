@@ -25,12 +25,13 @@ offset_left = -690.0
 offset_top = -345.0
 offset_right = 823.0
 offset_bottom = -56.0
-text = "The other week, I received the news that my Lola h
+text = "The other week, I received the news that my Lola
 had passed away."
 label_settings = SubResource("LabelSettings_c5rhk")
 
 [node name="2" type="Node2D" parent="TextManager" index="2"]
-position = Vector2(0, -75)
+position = Vector2(-292, -32)
+rotation = 0.0174873
 script = ExtResource("3_ijpwm")
 dissapearTimer = 5.0
 
@@ -51,10 +52,10 @@ script = ExtResource("3_ijpwm")
 dissapearTimer = 5.0
 
 [node name="Label" type="Label" parent="TextManager/3" index="0"]
-offset_left = 75.0
-offset_top = -386.0
-offset_right = 1651.0
-offset_bottom = -97.0
+offset_left = 193.646
+offset_top = -352.043
+offset_right = 1906.65
+offset_bottom = -63.0432
 rotation = 0.151215
 text = "I couldn't bring even bring myself to make this dish.
 The memories made the pain of losing her feel so real."
@@ -64,16 +65,31 @@ label_settings = SubResource("LabelSettings_c5rhk")
 position = Vector2(-755, 59)
 rotation = -0.144135
 script = ExtResource("3_ijpwm")
-dissapearTimer = 5.0
+dissapearTimer = 4.0
 
 [node name="Label" type="Label" parent="TextManager/4" index="0"]
-offset_left = 75.0
-offset_top = -386.0
-offset_right = 1651.0
-offset_bottom = -97.0
+offset_left = -117.295
+offset_top = -417.174
+offset_right = 1882.71
+offset_bottom = 17.8262
 rotation = 0.151215
-text = "I couldn't bring even bring myself to make this dish.
-The memories made the pain of losing her feel so real."
+text = "As I made the dish, it struck me. My Lola wasn't truly gone."
+label_settings = SubResource("LabelSettings_c5rhk")
+
+[node name="5" type="Node2D" parent="TextManager" index="5"]
+position = Vector2(-755, 59)
+rotation = -0.144135
+script = ExtResource("3_ijpwm")
+dissapearTimer = 8.0
+
+[node name="Label" type="Label" parent="TextManager/5" index="0"]
+offset_left = -115.14
+offset_top = -432.018
+offset_right = 1884.86
+offset_bottom = 2.98181
+rotation = 0.151215
+text = "This dish imbues her love for her family. The memories it
+conveys will live in me forever, and I will make sure it lives on."
 label_settings = SubResource("LabelSettings_c5rhk")
 
 [node name="ParallaxLayer" parent="ParallaxBackground" index="0"]
