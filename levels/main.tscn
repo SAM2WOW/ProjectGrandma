@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://dpg0gbpttdpy5"]
+[gd_scene load_steps=101 format=3 uid="uid://dpg0gbpttdpy5"]
 
 [ext_resource type="Texture2D" uid="uid://cmp4cxxq8yuat" path="res://arts/ivory-off-white-paper-texture.jpg" id="1_1jmmi"]
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_udxji"]
@@ -21,10 +21,14 @@
 [ext_resource type="PackedScene" uid="uid://bt4diyeaca8l0" path="res://prefabs/gameManager.tscn" id="13_cncv6"]
 [ext_resource type="Texture2D" uid="uid://cdpeqf2eyluh7" path="res://arts/ingredients/soy sauce.png" id="13_tncqk"]
 [ext_resource type="Texture2D" uid="uid://diyloqr1ltoak" path="res://arts/kitchenware/pan line art only.png" id="14_qm216"]
-[ext_resource type="Texture2D" uid="uid://dwxil1uon205v" path="res://arts/UI/frame-3541621_1280.png" id="19_3bhao"]
 [ext_resource type="Script" path="res://textEvent.gd" id="19_5tann"]
+[ext_resource type="Texture2D" uid="uid://cfpcexdv1l3y4" path="res://arts/UI/IMG_0044.png" id="19_sp8nt"]
+[ext_resource type="Script" path="res://Resources/liquidMixturePoints.gd" id="21_klbst"]
 [ext_resource type="PackedScene" uid="uid://v5qskld56om" path="res://prefabs/textManager.tscn" id="21_rjtit"]
 [ext_resource type="Script" path="res://scripts/SceneManager.gd" id="26_nryhn"]
+[ext_resource type="Script" path="res://Resources/liquidComponent.gd" id="27_qhic2"]
+[ext_resource type="Script" path="res://Resources/recipeComponent.gd" id="28_evxnv"]
+[ext_resource type="AudioStream" uid="uid://bwv3ngkmackai" path="res://sounds/CompleteSound.ogg" id="34_yowf1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_thd3q"]
 size = Vector2(5056, 1370)
@@ -508,7 +512,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("19_3bhao")
+texture = ExtResource("19_sp8nt")
 expand_mode = 1
 
 [node name="HUD" type="Control" parent="CanvasLayer"]
@@ -629,6 +633,10 @@ libraries = {
 "": SubResource("AnimationLibrary_uv4j4")
 }
 autoplay = "Intro"
+
+[node name="CompleteSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("34_yowf1")
+volume_db = -5.0
 
 [connection signal="input_event" from="Node2D/Cooking Scene/LiquidDraggable" to="Node2D/Cooking Scene/LiquidDraggable" method="_on_input_event"]
 [connection signal="mouse_entered" from="Node2D/Cooking Scene/LiquidDraggable" to="Node2D/Cooking Scene/LiquidDraggable" method="_on_mouse_entered"]
