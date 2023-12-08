@@ -1,10 +1,120 @@
-[gd_scene load_steps=4 format=3 uid="uid://4rupeebm31op"]
+[gd_scene load_steps=7 format=3 uid="uid://4rupeebm31op"]
 
 [ext_resource type="PackedScene" uid="uid://dpg0gbpttdpy5" path="res://levels/main.tscn" id="1_a8jge"]
 [ext_resource type="Texture2D" uid="uid://ctc85ci7t7dfj" path="res://arts/main scene/Day2.jpg" id="2_i2w18"]
-[ext_resource type="Texture2D" uid="uid://k5360gn0msjs" path="res://arts/main scene/IMG_0054.png" id="3_34lly"]
+[ext_resource type="Script" path="res://textEvent.gd" id="2_wpnyr"]
+[ext_resource type="Texture2D" uid="uid://ed50ld8jg5ks" path="res://arts/main scene/IMG_0049.png" id="2_x6dbl"]
+[ext_resource type="FontFile" uid="uid://ds8uy6wtxnlvu" path="res://arts/fonts/Zeyada-Regular.ttf" id="3_bjmo5"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_c5rhk"]
+font = ExtResource("3_bjmo5")
+font_size = 90
+font_color = Color(0, 0, 0, 1)
 
 [node name="Main" instance=ExtResource("1_a8jge")]
+
+[node name="Tofu" type="Node2D" parent="TextManager" index="1"]
+position = Vector2(0, -75)
+rotation = -0.0523599
+script = ExtResource("2_wpnyr")
+dissapearTimer = 3.0
+
+[node name="Label" type="Label" parent="TextManager/Tofu" index="0"]
+offset_left = -1444.98
+offset_top = -401.174
+offset_right = -449.984
+offset_bottom = -112.174
+text = "Since my anak is still small, use tofu so it's easier to eat."
+label_settings = SubResource("LabelSettings_c5rhk")
+autowrap_mode = 3
+
+[node name="Vegetables" type="Node2D" parent="TextManager" index="2"]
+position = Vector2(0, -75)
+rotation = -0.0523599
+script = ExtResource("2_wpnyr")
+dissapearTimer = 3.0
+
+[node name="Label" type="Label" parent="TextManager/Vegetables" index="0"]
+offset_left = -1594.89
+offset_top = -693.421
+offset_right = -599.895
+offset_bottom = -404.421
+text = "Add vegetables to make the adobo healthier."
+label_settings = SubResource("LabelSettings_c5rhk")
+autowrap_mode = 3
+
+[node name="Peppercorns" type="Node2D" parent="TextManager" index="3"]
+position = Vector2(0, -75)
+rotation = -0.0523599
+script = ExtResource("2_wpnyr")
+dissapearTimer = 3.0
+
+[node name="Label" type="Label" parent="TextManager/Peppercorns" index="0"]
+offset_left = 769.812
+offset_top = -549.464
+offset_right = 2055.81
+offset_bottom = -260.464
+text = "Use only a few peppercorns if cooking a meal for anak."
+label_settings = SubResource("LabelSettings_c5rhk")
+autowrap_mode = 3
+
+[node name="Kids" type="Node2D" parent="TextManager" index="4"]
+position = Vector2(0, -75)
+script = ExtResource("2_wpnyr")
+dissapearTimer = 3.0
+
+[node name="Label" type="Label" parent="TextManager/Kids" index="0"]
+offset_left = -514.0
+offset_top = -222.0
+offset_right = 859.0
+offset_bottom = 67.0
+text = "The kids might be tough sometimes, but they make the house so lively! I much prefer this."
+label_settings = SubResource("LabelSettings_c5rhk")
+autowrap_mode = 3
+
+[node name="Mahal" type="Node2D" parent="TextManager" index="5"]
+position = Vector2(0, -75)
+rotation = 0.0872665
+script = ExtResource("2_wpnyr")
+dissapearTimer = 3.0
+
+[node name="Label" type="Label" parent="TextManager/Mahal" index="0"]
+offset_left = 892.0
+offset_top = -872.0
+offset_right = 2265.0
+offset_bottom = -583.0
+text = "I miss my mahal while he's at work..."
+label_settings = SubResource("LabelSettings_c5rhk")
+autowrap_mode = 3
+
+[node name="Garlic" type="Node2D" parent="TextManager" index="6"]
+position = Vector2(0, -75)
+rotation = -0.0523599
+script = ExtResource("2_wpnyr")
+dissapearTimer = 3.0
+
+[node name="Label" type="Label" parent="TextManager/Garlic" index="0"]
+offset_left = -1538.73
+offset_top = -83.6456
+offset_right = -165.731
+offset_bottom = 205.354
+text = "Add more garlic if cooking adobo for mahal. "
+label_settings = SubResource("LabelSettings_c5rhk")
+autowrap_mode = 3
+
+[node name="Cooking" type="Node2D" parent="TextManager" index="7"]
+position = Vector2(0, -75)
+script = ExtResource("2_wpnyr")
+dissapearTimer = 3.0
+
+[node name="Label" type="Label" parent="TextManager/Cooking" index="0"]
+offset_left = -321.927
+offset_top = -487.516
+offset_right = 1051.07
+offset_bottom = -52.5164
+text = "If you ever get tired of cooking, just remember how nice it feels to cook for family."
+label_settings = SubResource("LabelSettings_c5rhk")
+autowrap_mode = 3
 
 [node name="ParallaxLayer" parent="ParallaxBackground" index="0"]
 motion_mirroring = Vector2(3840, 2160)
@@ -21,4 +131,4 @@ motion_scale = Vector2(0.8, 0.8)
 self_modulate = Color(1, 1, 1, 0.301961)
 position = Vector2(-561, 145)
 scale = Vector2(0.514732, 0.514732)
-texture = ExtResource("3_34lly")
+texture = ExtResource("2_x6dbl")
