@@ -123,6 +123,7 @@ func GetCurrentRecipeIngredients():
 	for i in allLiquid:
 		print("Liquid:", i)
 
+
 # func CheckQuantity(quantityArr)
 #func initRecipes():
 	#print("Initialized Recipes")

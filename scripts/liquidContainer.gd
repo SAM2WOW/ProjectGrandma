@@ -14,7 +14,7 @@ var rotateSpeed : float = 4.0;
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	super._ready();
-
+	containedLiquid.clear()
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
 	super._physics_process(delta);
@@ -47,6 +47,8 @@ func _on_area_2d_body_shape_exited(body_rid, body, body_shape_index, local_shape
 
 func OnLiquidEnter(id, body_rid):
 	if !containedLiquid.keys().has(id): containedLiquid[id] = {};
+	if !Global.instantiationManager.liquidParticles.has(id) || !Global.instantiationManager.liquidParticles[id].has(body_rid):
+		return
 	containedLiquid[id][body_rid] = Global.instantiationManager.liquidParticles[id][body_rid];
 	# print("amt: ", containedLiquid[id].keys().size())
 
