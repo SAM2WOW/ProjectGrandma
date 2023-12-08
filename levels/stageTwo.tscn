@@ -354,25 +354,9 @@ quantityPoints = Array[ExtResource("3_iyrxu")]([])
 
 [node name="Main" instance=ExtResource("1_a8jge")]
 
-[node name="RichTextLabel" parent="Node2D/Recipe Scene" index="0"]
-text = "[b]Ingredients[/b]
-	* 2 pounds chicken thighs
-	* 1/2 cup white vinegar
-	* 1/2 cup soy sauce
-	* 4 cloves garlic, chopped
-	* 1 teaspoon black peppercorns
-	* 3 bay leaves
-	* Steamed rice, for serving
+[node name="Pan" parent="Node2D/Cooking Scene" index="2"]
+heatUpCoefficient = 0.2
+coolDownCoefficient = 0.2
 
-
-[b]Steps[/b]
-	1. Brown the chicken thighs in a pan with oil. Add crushed garlic to cook slightly with chicken
-	2. Combine vinegar, soy sauce, bay leaves, and peppercorns. Add to pot with chicken
-	3. Bring to a boil then let simmer for 30-40mins with cover on
-	4. Flip chicken thighs half way through
-	5. Serve over rice!
-
-"
-
-[node name="ColorRect" parent="CanvasLayer" index="1"]
-visible = true
+[node name="RecipeManager" parent="." index="3"]
+recipe = Array[ExtResource("9_mt45p")]([SubResource("Resource_t5c2e"), SubResource("Resource_c5yxf"), SubResource("Resource_6h8y0"), SubResource("Resource_gqaa1"), SubResource("Resource_gv8wc"), SubResource("Resource_3s2vj"), SubResource("Resource_lw685"), SubResource("Resource_1wt8a")])

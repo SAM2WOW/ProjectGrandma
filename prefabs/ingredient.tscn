@@ -57,7 +57,6 @@ gravity_scale = 2.0
 script = ExtResource("2_ukt0v")
 ingredientType = 0
 ingredientStates = Array[ExtResource("3_8mfa3")]([SubResource("Resource_qvnah"), SubResource("Resource_ojaaw"), SubResource("Resource_wka5m"), SubResource("Resource_j8afd")])
-lowVelocityMultiplier = 1.0
 highVelocityMultiplier = 0.2
 cookingVelocityThresholds = 200.0
 

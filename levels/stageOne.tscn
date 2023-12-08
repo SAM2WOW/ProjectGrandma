@@ -2,7 +2,13 @@
 
 [ext_resource type="PackedScene" uid="uid://dpg0gbpttdpy5" path="res://levels/main.tscn" id="1_y2kh4"]
 
-[node name="Main2" instance=ExtResource("1_y2kh4")]
+[node name="Main4" instance=ExtResource("1_y2kh4")]
 
-[node name="Recipe Scene" parent="Node2D" index="3"]
-visible = false
+[node name="Container" parent="Node2D/Cooking Scene" index="3"]
+position = Vector2(1725, 438)
+
+[node name="Container2" parent="Node2D/Cooking Scene" index="5"]
+position = Vector2(1085, 438)
+
+[node name="CompeletLevelButton" parent="CanvasLayer" index="0"]
+mouse_filter = 0

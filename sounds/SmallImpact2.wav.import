@@ -2,13 +2,13 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://gcr1455oig1v"
-path="res://.godot/imported/Slide2.wav-29c1a094cd73089bb6ae63b4b633a507.sample"
+uid="uid://bx110kly8mlfu"
+path="res://.godot/imported/SmallImpact2.wav-91440c1d74a95772c7ccbff9ff718c5a.sample"
 
 [deps]
 
-source_file="res://sounds/Slide2.wav"
-dest_files=["res://.godot/imported/Slide2.wav-29c1a094cd73089bb6ae63b4b633a507.sample"]
+source_file="res://sounds/SmallImpact2.wav"
+dest_files=["res://.godot/imported/SmallImpact2.wav-91440c1d74a95772c7ccbff9ff718c5a.sample"]
 
 [params]
 
