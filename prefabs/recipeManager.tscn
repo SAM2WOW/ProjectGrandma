@@ -1,4 +1,4 @@
-[gd_scene load_steps=69 format=3 uid="uid://w7pwgo4f8bvq"]
+[gd_scene load_steps=71 format=3 uid="uid://w7pwgo4f8bvq"]
 
 [ext_resource type="Script" path="res://scripts/RecipeManager.gd" id="1_bgt5p"]
 [ext_resource type="Script" path="res://Resources/recipeComponent.gd" id="2_6kl6y"]
@@ -14,6 +14,7 @@
 [ext_resource type="FontFile" uid="uid://lf3j1njjt8sb" path="res://arts/fonts/RockSalt-Regular.ttf" id="11_3jbcm"]
 [ext_resource type="Texture2D" uid="uid://xepks47i42bx" path="res://arts/ingredients/chickenAdobo.png" id="12_rjpox"]
 [ext_resource type="Texture2D" uid="uid://dppis8ot18uwq" path="res://arts/particles/SmokeParticle3.png" id="13_3j4ke"]
+[ext_resource type="Texture2D" uid="uid://0kshcgoxxdbg" path="res://arts/particles/SmokeParticle2.png" id="15_ajpeq"]
 
 [sub_resource type="Resource" id="Resource_jeml7"]
 script = ExtResource("6_6kdyy")
@@ -93,7 +94,7 @@ quantityPoints = Array[ExtResource("3_eufjj")]([SubResource("Resource_o8but"), S
 [sub_resource type="Resource" id="Resource_7xp4x"]
 script = ExtResource("2_yyyyq")
 doneness = 0
-points = 0.0
+points = -2.0
 description = "the chicken is undercooked"
 
 [sub_resource type="Resource" id="Resource_koqgb"]
@@ -365,6 +366,11 @@ resultText = ""
 offsets = PackedFloat32Array(0, 0.0580645, 1)
 colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0)
 
+[sub_resource type="Curve" id="Curve_opxqo"]
+min_value = -1.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, -1), -0.536812, 0.0, 0, 0]
+point_count = 2
+
 [node name="RecipeManager" type="Node2D" groups=["RecipeManager"]]
 script = ExtResource("1_bgt5p")
 recipe = Array[ExtResource("2_6kl6y")]([SubResource("Resource_t5c2e"), SubResource("Resource_c5yxf"), SubResource("Resource_6h8y0"), SubResource("Resource_gqaa1"), SubResource("Resource_gv8wc"), SubResource("Resource_3s2vj"), SubResource("Resource_lw685")])
@@ -386,18 +392,6 @@ theme_override_fonts/bold_font = ExtResource("11_3jbcm")
 theme_override_font_sizes/normal_font_size = 90
 theme_override_font_sizes/bold_font_size = 71
 bbcode_enabled = true
-text = "[b]Ingredients[/b]
-	* 1/2 pounds chicken thighs
-	* 1/4 cup white vinegar
-	* 1/4 cup soy sauce
-	* Steamed rice, for serving
-
-[b]Steps[/b]
-	1. Brown the chicken thighs in a small pan with oil. Add crushed garlic to cook slightly with chicken
-	2. Combine vinegar and soy sauce. Add to pot with chicken
-	3. Bring to a boil then let simmer for 30-40mins with cover on
-	4. Serve over rice!
-"
 scroll_active = false
 
 [node name="RecipeText" type="RichTextLabel" parent="RecipeNode"]
@@ -412,18 +406,6 @@ theme_override_fonts/bold_font = ExtResource("11_3jbcm")
 theme_override_font_sizes/normal_font_size = 90
 theme_override_font_sizes/bold_font_size = 71
 bbcode_enabled = true
-text = "[b]Ingredients[/b]
-	* 1/2 pounds chicken thighs
-	* 1/4 cup white vinegar
-	* 1/4 cup soy sauce
-	* Steamed rice, for serving
-
-[b]Steps[/b]
-	1. Brown the chicken thighs in a small pan with oil. Add crushed garlic to cook slightly with chicken
-	2. Combine vinegar and soy sauce. Add to pot with chicken
-	3. Bring to a boil then let simmer for 30-40mins with cover on
-	4. Serve over rice!
-"
 scroll_active = false
 
 [node name="EndNode" type="Node2D" parent="."]
@@ -484,3 +466,45 @@ angle_max = 563.1
 scale_amount_max = 3.0
 color = Color(0.917647, 0.917647, 0.917647, 1)
 color_ramp = SubResource("Gradient_ev7pv")
+
+[node name="Smoke2" type="CPUParticles2D" parent="EndNode"]
+z_index = 10
+position = Vector2(6, -1553)
+emitting = false
+amount = 5
+lifetime = 3.0
+randomness = 0.34
+lifetime_randomness = 0.39
+texture = ExtResource("13_3j4ke")
+spread = 77.18
+gravity = Vector2(0, -300)
+initial_velocity_max = 16.76
+angular_velocity_min = -72.4
+angular_velocity_max = 88.49
+angle_max = 563.1
+scale_amount_max = 3.0
+color = Color(0.0823529, 0.0823529, 0.0823529, 1)
+color_ramp = SubResource("Gradient_ev7pv")
+
+[node name="Perfect" type="CPUParticles2D" parent="EndNode"]
+z_index = -1
+position = Vector2(-1, -1611)
+emitting = false
+amount = 9
+lifetime = 3.0
+randomness = 0.34
+lifetime_randomness = 0.39
+texture = ExtResource("15_ajpeq")
+direction = Vector2(0, 0)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 94.98
+initial_velocity_max = 547.48
+angular_velocity_min = -72.4
+angular_velocity_max = 88.49
+angle_max = 563.1
+scale_amount_max = 2.0
+color_ramp = SubResource("Gradient_ev7pv")
+hue_variation_min = 1.0
+hue_variation_max = 1.0
+hue_variation_curve = SubResource("Curve_opxqo")

@@ -59,6 +59,8 @@ func ChangeState(newIndex):
 	currentStateIndex = newIndex;
 	cookingTimer = 0;
 	print("new state ", IngredientState.CookingState.keys()[GetCurrentState().state]);
+	if GetCurrentState().state == IngredientState.CookingState.Cooked && Global.currentStage == 0:
+		Global.textManager.Activate("3")
 
 func UpdateColor(delta):
 	if currentStateIndex >= ingredientStates.size()-1: return;

@@ -138,7 +138,7 @@ func GetFinalGrade():
 		noteText += p.resultText;
 	
 	$EndNode/NoteText.append_text(noteText);
-	Global.sceneScores[Global.currentStage] = score;
+	Global.sceneScores[Global.currentStage] = clamp(score, 0, 1);
 	
 func CheckIngredients(recipeStep : IngredientComponent) -> float:
 	if !Global.instantiationManager.pan.cookingObjects.keys().has(recipeStep.ingredient):
@@ -196,9 +196,10 @@ func CheckLiquidMixture(recipeStep : LiquidMixtureComponent) -> float:
 	return stepPoints;
 
 func _input(event):
-	if event is InputEventKey && event.keycode == KEY_D:
-		print("total: ", Global.instantiationManager.pan.GetLiquidTotal());
-		Global.recipeManager.CheckRecipePoints();
+	#if event is InputEventKey && event.keycode == KEY_D:
+		#print("total: ", Global.instantiationManager.pan.GetLiquidTotal());
+		#Global.recipeManager.CheckRecipePoints();
+	pass;
 		
 func GetCurrentRecipeIngredients():
 	for i in allIngredients:

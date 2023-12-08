@@ -26,9 +26,6 @@ func ObjectAction(event):
 	
 func _on_interact_area_mouse_entered():
 	super._on_interact_area_mouse_entered();
-	if Global.currentStage == 0:
-		var c = Global.textManager.Activate("PanHover");
-			# c.global_position = Vector2(global_position.x, global_position.y-50);
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -115,6 +112,8 @@ func UpdateFluids(delta):
 func _on_area_2d_body_shape_entered(body_rid, body, body_shape_index, local_shape_index):
 	super._on_area_2d_body_shape_entered(body_rid, body, body_shape_index, local_shape_index);
 	if body is Ingredient:
+		if Global.currentStage == 0:
+			var c = Global.textManager.Activate("PanHover");
 		Global.gameManager.AddObjectToPan("Ingredient",body.ingredientType)
 		if !cookingObjects.keys().has(body.ingredientType): 
 			cookingObjects[body.ingredientType] = [];

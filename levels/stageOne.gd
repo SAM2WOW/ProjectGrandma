@@ -2,18 +2,18 @@ extends "res://scripts/main.gd"
 
 func _ready():
 	super._ready()
-	#
-	#await get_tree().create_timer(2).timeout
-	#
-	#Global.textManager.Activate("Hungry")
-	#
-	#await get_tree().create_timer(1).timeout
-	#
-	#Global.textManager.Activate("Adobo")
-	#
-	#await get_tree().create_timer(2).timeout
-	#
-	#Global.textManager.Activate("Adobo1")
+	
+	await get_tree().create_timer(3).timeout
+	
+	Global.textManager.Activate("1")
+	
+	await get_tree().create_timer(10).timeout
+	
+	Global.textManager.Activate("2")
+	
+	await get_tree().create_timer(25).timeout
+	
+	# Global.textManager.Activate("3")
 #
 #
 #func _on_liquid_draggable_on_mouse_hovering():
