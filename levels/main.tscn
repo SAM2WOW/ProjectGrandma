@@ -433,7 +433,7 @@ quantityPoints = Array[ExtResource("22_yrowc")]([])
 
 [sub_resource type="LabelSettings" id="LabelSettings_c5rhk"]
 font = ExtResource("10_hjo2k")
-font_size = 50
+font_size = 90
 font_color = Color(0, 0, 0, 1)
 
 [sub_resource type="Animation" id="Animation_jsi21"]
