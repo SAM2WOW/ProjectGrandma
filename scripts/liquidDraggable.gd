@@ -43,6 +43,8 @@ func _process(delta):
 	super._process(delta);
 
 func UpdateLiquidGeneration(delta):
+	if Global.instantiationManager.numParticles >= Global.instantiationManager.maxNumParticles:
+		produceLiquid = false;
 	if produceLiquid:
 		rotation = lerp_angle(rotation, deg_to_rad(-135), rotateSpeed*delta);
 		if rotation < deg_to_rad(-90) || rotation > deg_to_rad(90):

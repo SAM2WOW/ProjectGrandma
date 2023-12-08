@@ -53,7 +53,11 @@ func _ready():
 	$RecipeText.append_text(recipeText);
 	$IngredientText.append_text(ingredientsText)
 	
-	
+func ToggleText(hide : bool):
+	var a = 0;
+	if hide: a = 1;
+	create_tween().tween_property(self, "modulate", Color(1,1,1,a), 0.5).set_ease(Tween.EASE_OUT);
+	# visible = false;
 	
 func CheckRecipePoints():
 	totalPoints = 0.0;
