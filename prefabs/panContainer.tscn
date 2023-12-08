@@ -1,10 +1,15 @@
-[gd_scene load_steps=10 format=3 uid="uid://h7fkjxle4fr2"]
+[gd_scene load_steps=16 format=3 uid="uid://h7fkjxle4fr2"]
 
 [ext_resource type="PackedScene" uid="uid://drn5x3vivefyp" path="res://prefabs/liquidContainer.tscn" id="1_ribvh"]
 [ext_resource type="Script" path="res://scripts/panContainer.gd" id="2_2j0dy"]
 [ext_resource type="Texture2D" uid="uid://dqy1ywdlmbisa" path="res://arts/kitchenware/pan with handle.png" id="2_ksjrc"]
 [ext_resource type="Texture2D" uid="uid://b6nr0o5mal2iv" path="res://arts/kitchenware/pan watercolor only.png" id="3_3boog"]
 [ext_resource type="Texture2D" uid="uid://diyloqr1ltoak" path="res://arts/kitchenware/pan line art only.png" id="3_k10yi"]
+[ext_resource type="AudioStream" uid="uid://d13e5rwaividr" path="res://sounds/Pan1.wav" id="6_gq0qs"]
+[ext_resource type="AudioStream" uid="uid://ch6xu4y77lnk5" path="res://sounds/Pan2.wav" id="7_xwidv"]
+[ext_resource type="AudioStream" uid="uid://bq0gnic7ujbke" path="res://sounds/Pan3.wav" id="8_et1v3"]
+[ext_resource type="AudioStream" uid="uid://bl2fotgrfpwkd" path="res://sounds/Boiling.ogg" id="9_cbi0f"]
+[ext_resource type="AudioStream" uid="uid://b82q7jpr6qms4" path="res://sounds/Frying.ogg" id="10_8lyt6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2c82j"]
 size = Vector2(160, 48)
@@ -101,3 +106,12 @@ position = Vector2(0, 0)
 [node name="CollisionShape2D" parent="InteractArea" index="0"]
 position = Vector2(0, -20)
 shape = SubResource("CapsuleShape2D_xl3c2")
+
+[node name="AudioStreamPlayer2D" parent="." index="19"]
+stream = SubResource("AudioStreamRandomizer_6upfq")
+
+[node name="Boiling" type="AudioStreamPlayer2D" parent="." index="20"]
+stream = ExtResource("9_cbi0f")
+
+[node name="Frying" type="AudioStreamPlayer2D" parent="." index="21"]
+stream = ExtResource("10_8lyt6")
