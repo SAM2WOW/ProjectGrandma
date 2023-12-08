@@ -1,4 +1,4 @@
-[gd_scene load_steps=64 format=3 uid="uid://w7pwgo4f8bvq"]
+[gd_scene load_steps=66 format=3 uid="uid://w7pwgo4f8bvq"]
 
 [ext_resource type="Script" path="res://scripts/RecipeManager.gd" id="1_bgt5p"]
 [ext_resource type="Script" path="res://Resources/recipeComponent.gd" id="2_6kl6y"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://Resources/liquidPoints.gd" id="4_tnfeb"]
 [ext_resource type="Script" path="res://Resources/liquidMixturePoints.gd" id="6_6kdyy"]
 [ext_resource type="Script" path="res://Resources/liquidMixtureComponent.gd" id="7_6786d"]
+[ext_resource type="Script" path="res://Resources/resultText.gd" id="10_2f4t1"]
 [ext_resource type="FontFile" uid="uid://ds8uy6wtxnlvu" path="res://arts/fonts/Zeyada-Regular.ttf" id="10_lxgpf"]
 [ext_resource type="FontFile" uid="uid://lf3j1njjt8sb" path="res://arts/fonts/RockSalt-Regular.ttf" id="11_3jbcm"]
 [ext_resource type="Texture2D" uid="uid://xepks47i42bx" path="res://arts/ingredients/chickenAdobo.png" id="12_rjpox"]
@@ -349,9 +350,17 @@ description = "Simmer on low heat for around 30 seconds while mixing constantly 
 formatDescription = false
 quantityPoints = Array[ExtResource("3_eufjj")]([])
 
+[sub_resource type="Resource" id="Resource_tag4s"]
+script = ExtResource("10_2f4t1")
+grade = 0
+description = ""
+
 [node name="RecipeManager" type="Node2D" groups=["RecipeManager"]]
 script = ExtResource("1_bgt5p")
 recipe = Array[ExtResource("2_6kl6y")]([SubResource("Resource_t5c2e"), SubResource("Resource_c5yxf"), SubResource("Resource_6h8y0"), SubResource("Resource_gqaa1"), SubResource("Resource_gv8wc"), SubResource("Resource_3s2vj"), SubResource("Resource_lw685")])
+note = Array[ExtResource("10_2f4t1")]([SubResource("Resource_tag4s")])
+badFood = "res://arts/end states/bad adobo v2.png"
+goodFood = "res://arts/end states/good adobo.png"
 
 [node name="RecipeNode" type="Node2D" parent="."]
 
@@ -427,7 +436,7 @@ text = "[b]Result[/b]
 "
 scroll_active = false
 
-[node name="EndText2" type="RichTextLabel" parent="EndNode"]
+[node name="NoteText" type="RichTextLabel" parent="EndNode"]
 offset_left = 415.0
 offset_top = -2481.0
 offset_right = 1496.0

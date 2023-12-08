@@ -1,6 +1,11 @@
 extends Node2D
 
 @export var recipe : Array[RecipeComponent] = [];
+@export var note : Array[ResultText] = [];
+
+@export_file var badFood : String;
+@export_file var goodFood : String;
+
 const heatDescriptions = {
 	0.5: "Low Heat",
 	0.75: "Medium Low",
@@ -13,6 +18,7 @@ var totalPoints : float;
 var allIngredients : Array
 var allLiquid : Array
 var stepText : String = "";
+var noteText : String = "";
 func _ready():
 	InitRecipeText();
 
@@ -57,7 +63,7 @@ func InitRecipeText():
 	# print("recipe text:\n", ingredientsText+recipeText);
 	$RecipeNode/RecipeText.append_text(recipeText);
 	$RecipeNode/IngredientText.append_text(ingredientsText)
-	
+
 func ToggleRecipeText(hide : bool):
 	var a = 0;
 	if hide: a = 1;
@@ -81,12 +87,31 @@ func CheckRecipePoints():
 			CheckLiquidMixture(recipeStep);
 	var resultsText = "[b]Results:\t%.0f / %.0f Points[/b]" % [points, totalPoints];
 	stepText = resultsText + '\n' + stepText;
-	$EndNode/EndText.append_text(stepText);
-	Global.sceneScores[Global.currentStage] = float(points)/totalPoints;
+	
+	GetFinalGrade();
+	
+	$EndNode/NoteText.clear();
+	$EndNode/NoteText.append_text(noteText);
 	print("scene score: ", Global.sceneScores[Global.currentStage])
 	# print("points: %.1f" % (points/totalPoints));
 	print("step text:\n", stepText);
 
+func GetFinalGrade():
+	var score = float(points)/totalPoints
+	$EndNode/EndText.append_text(stepText);
+	if points/totalPoints <= 0.5:
+		$EndNode/Sprite2D.texture = load(badFood);
+	else:
+		$EndNode/Sprite2D.texture = load(goodFood);
+		
+	var avgScore : float = 0;
+	for i in Global.sceneScores.values():
+		avgScore += i;
+	avgScore /= Global.sceneScores.size();
+	
+	
+	Global.sceneScores[Global.currentStage] = score;
+	
 func CheckIngredients(recipeStep : IngredientComponent) -> float:
 	if !Global.instantiationManager.pan.cookingObjects.keys().has(recipeStep.ingredient):
 		Global.instantiationManager.pan.cookingObjects[recipeStep.ingredient] = [];
