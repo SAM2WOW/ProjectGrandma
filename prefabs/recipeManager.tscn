@@ -1,4 +1,4 @@
-[gd_scene load_steps=67 format=3 uid="uid://w7pwgo4f8bvq"]
+[gd_scene load_steps=71 format=3 uid="uid://w7pwgo4f8bvq"]
 
 [ext_resource type="Script" path="res://scripts/RecipeManager.gd" id="1_bgt5p"]
 [ext_resource type="Script" path="res://Resources/recipeComponent.gd" id="2_6kl6y"]
@@ -14,6 +14,7 @@
 [ext_resource type="FontFile" uid="uid://lf3j1njjt8sb" path="res://arts/fonts/RockSalt-Regular.ttf" id="11_3jbcm"]
 [ext_resource type="Texture2D" uid="uid://xepks47i42bx" path="res://arts/ingredients/chickenAdobo.png" id="12_rjpox"]
 [ext_resource type="Texture2D" uid="uid://dppis8ot18uwq" path="res://arts/particles/SmokeParticle3.png" id="13_3j4ke"]
+[ext_resource type="Texture2D" uid="uid://0kshcgoxxdbg" path="res://arts/particles/SmokeParticle2.png" id="15_ajpeq"]
 
 [sub_resource type="Resource" id="Resource_jeml7"]
 script = ExtResource("6_6kdyy")
@@ -360,9 +361,15 @@ resultText = "My first attempt ended up pretty awful. It tasted nothing like how
 script = ExtResource("10_2f4t1")
 result = 1
 resultText = ""
+
 [sub_resource type="Gradient" id="Gradient_ev7pv"]
-offsets = PackedFloat32Array(0, 0.0580645, 1)
+offsets = PackedFloat32Array(0, 0.106452, 1)
 colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="Curve" id="Curve_opxqo"]
+min_value = -1.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, -1), -0.536812, 0.0, 0, 0]
+point_count = 2
 
 [node name="RecipeManager" type="Node2D" groups=["RecipeManager"]]
 script = ExtResource("1_bgt5p")
@@ -483,3 +490,45 @@ angle_max = 563.1
 scale_amount_max = 3.0
 color = Color(0.917647, 0.917647, 0.917647, 1)
 color_ramp = SubResource("Gradient_ev7pv")
+
+[node name="Smoke2" type="CPUParticles2D" parent="EndNode"]
+z_index = 10
+position = Vector2(6, -1553)
+emitting = false
+amount = 5
+lifetime = 3.0
+randomness = 0.34
+lifetime_randomness = 0.39
+texture = ExtResource("13_3j4ke")
+spread = 77.18
+gravity = Vector2(0, -300)
+initial_velocity_max = 16.76
+angular_velocity_min = -72.4
+angular_velocity_max = 88.49
+angle_max = 563.1
+scale_amount_max = 3.0
+color = Color(0.0823529, 0.0823529, 0.0823529, 1)
+color_ramp = SubResource("Gradient_ev7pv")
+
+[node name="Perfect" type="CPUParticles2D" parent="EndNode"]
+z_index = -1
+position = Vector2(-1, -1611)
+emitting = false
+amount = 9
+lifetime = 3.0
+randomness = 0.34
+lifetime_randomness = 0.39
+texture = ExtResource("15_ajpeq")
+direction = Vector2(0, 0)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 94.98
+initial_velocity_max = 547.48
+angular_velocity_min = -72.4
+angular_velocity_max = 88.49
+angle_max = 563.1
+scale_amount_max = 2.0
+color_ramp = SubResource("Gradient_ev7pv")
+hue_variation_min = 1.0
+hue_variation_max = 1.0
+hue_variation_curve = SubResource("Curve_opxqo")
