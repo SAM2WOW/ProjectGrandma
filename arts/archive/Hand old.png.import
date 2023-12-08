@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://wytpay3v2bjn"
-path="res://.godot/imported/Hand young.png-0faa5a70c630608954f16732924e2174.ctex"
+uid="uid://cb5akvyceomdt"
+path="res://.godot/imported/Hand old.png-607a5d1c101756e25cd83208055b2aba.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://arts/UI/player cursor/Hand young.png"
-dest_files=["res://.godot/imported/Hand young.png-0faa5a70c630608954f16732924e2174.ctex"]
+source_file="res://arts/archive/Hand old.png"
+dest_files=["res://.godot/imported/Hand old.png-607a5d1c101756e25cd83208055b2aba.ctex"]
 
 [params]
 
