@@ -10,7 +10,9 @@ func _ready():
 	$CanvasLayer/TestLevelText.text = "Level" + str(Global.gameManager.currentStage+1)
 	Global.recipeManager.GetCurrentRecipeIngredients()
 	$CanvasLayer/CompeletLevelButton.modulate.a = 0.1
- 
+	
+	MusicPlayer.fade_in() 
+	MusicPlayer.play_music()
 
 func _process(delta):
 	# offset the camera base on the mouse position to the center
@@ -44,6 +46,10 @@ func onGameEnd():
 	
 	$AnimationPlayer.play("Final")
 	
+	MusicPlayer.fade_out(true)
+	
+	$CompleteSound.play()
+	
 
 func _on_hover_area_mouse_entered():
 	recipeMode = true
@@ -64,6 +70,8 @@ func _on_hover_area_2_mouse_entered():
 
 
 func _on_hover_area_3_mouse_entered():
+	$CanvasLayer/HUD/HoverArea3.hide()
+	
 	$AnimationPlayer.play_backwards("Exit")
 
 
