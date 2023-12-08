@@ -23,7 +23,7 @@ size = Vector2(448, 32)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xl3c2"]
 radius = 128.0
-height = 1054.0
+height = 716.0
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_uug5u"]
 streams_count = 3
@@ -121,7 +121,8 @@ texture = ExtResource("5_tki2m")
 position = Vector2(0, 0)
 
 [node name="CollisionShape2D" parent="InteractArea" index="0"]
-position = Vector2(-175, -21)
+visible = true
+position = Vector2(6, -15)
 shape = SubResource("CapsuleShape2D_xl3c2")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." index="20"]

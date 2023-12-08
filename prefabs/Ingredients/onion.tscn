@@ -1,0 +1,75 @@
+[gd_scene load_steps=10 format=3 uid="uid://ctxeansygg0y6"]
+
+[ext_resource type="PackedScene" uid="uid://b5em8781rmds2" path="res://prefabs/ingredient.tscn" id="1_ydvrm"]
+[ext_resource type="Script" path="res://scripts/ingredientState.gd" id="2_twddl"]
+[ext_resource type="Texture2D" uid="uid://c0qhacwjxr6ly" path="res://arts/ingredients/onion.png" id="3_rfmg0"]
+
+[sub_resource type="Resource" id="Resource_vt8ak"]
+resource_local_to_scene = true
+script = ExtResource("2_twddl")
+state = 0
+cookTimer = 15.0
+typeInfluenceMultiplier = {
+0: 1.0,
+1: 0.5
+}
+stateColor = Color(1, 1, 1, 1)
+
+[sub_resource type="Resource" id="Resource_8dycj"]
+resource_local_to_scene = true
+script = ExtResource("2_twddl")
+state = 1
+cookTimer = 30.0
+typeInfluenceMultiplier = {
+0: 1.0,
+1: 0.5
+}
+stateColor = Color(0.94902, 0.776471, 0.4, 1)
+
+[sub_resource type="Resource" id="Resource_e3ioq"]
+resource_local_to_scene = true
+script = ExtResource("2_twddl")
+state = 2
+cookTimer = 20.0
+typeInfluenceMultiplier = {
+0: 1.5,
+1: 0.1
+}
+stateColor = Color(0.6, 0.443137, 0.101961, 1)
+
+[sub_resource type="Resource" id="Resource_h5afh"]
+resource_local_to_scene = true
+script = ExtResource("2_twddl")
+state = 3
+cookTimer = 0.0
+typeInfluenceMultiplier = {
+0: 1.0,
+1: 1.0
+}
+stateColor = Color(0.231373, 0.164706, 0.0196078, 1)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_52n1s"]
+radius = 14.0
+height = 128.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4snw1"]
+radius = 96.0
+height = 312.0
+
+[node name="Onion" instance=ExtResource("1_ydvrm")]
+ingredientType = 2
+ingredientStates = Array[ExtResource("2_twddl")]([SubResource("Resource_vt8ak"), SubResource("Resource_8dycj"), SubResource("Resource_e3ioq"), SubResource("Resource_h5afh")])
+
+[node name="Sprite2DShadow" parent="." index="0"]
+texture = ExtResource("3_rfmg0")
+
+[node name="Sprite2D" parent="." index="1"]
+texture = ExtResource("3_rfmg0")
+
+[node name="CollisionShape2D" parent="." index="2"]
+position = Vector2(-42, -40)
+rotation = 1.15654
+shape = SubResource("CapsuleShape2D_52n1s")
+
+[node name="CollisionShape2D" parent="InteractArea" index="0"]
+shape = SubResource("CapsuleShape2D_4snw1")

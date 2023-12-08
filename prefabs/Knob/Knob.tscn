@@ -1,31 +1,29 @@
 [gd_scene load_steps=8 format=3 uid="uid://besfnnu5msblc"]
 
 [ext_resource type="Script" path="res://prefabs/Knob/Knob.gd" id="1"]
-[ext_resource type="Texture2D" uid="uid://chwia5p33ca06" path="res://arts/main scene/Dial back.png" id="2_pbwmh"]
+[ext_resource type="Texture2D" uid="uid://chwia5p33ca06" path="res://arts/main scene/Dial back.png" id="2_acuav"]
 [ext_resource type="AudioStream" uid="uid://epmj6pcl5y8m" path="res://sounds/Switch.wav" id="3_jya4n"]
-[ext_resource type="Texture2D" uid="uid://c50j574vmyyu7" path="res://arts/main scene/Dial knob.png" id="3_qqu10"]
+[ext_resource type="Texture2D" uid="uid://c50j574vmyyu7" path="res://arts/main scene/Dial knob.png" id="3_v03mc"]
 [ext_resource type="Script" path="res://scripts/AudioRandomizer.gd" id="4_t11wf"]
 [ext_resource type="AudioStream" uid="uid://c2igwucp5k6ym" path="res://sounds/FireLoop.ogg" id="5_xcv63"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_40rb2"]
-radius = 86.0058
+radius = 64.0
 
 [node name="Knob" type="Node2D"]
 script = ExtResource("1")
 
 [node name="back" type="Sprite2D" parent="."]
-position = Vector2(4, -11)
-scale = Vector2(0.704643, 0.704643)
-texture = ExtResource("2_pbwmh")
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_acuav")
 
 [node name="knob" type="Marker2D" parent="."]
 rotation = -1.09258
 
 [node name="knob" type="Sprite2D" parent="knob"]
-position = Vector2(0.529485, -25.0543)
-rotation = 0.171806
-scale = Vector2(0.313147, 0.313147)
-texture = ExtResource("3_qqu10")
+position = Vector2(0, -17.9213)
+scale = Vector2(0.1, 0.30502)
+texture = ExtResource("3_v03mc")
 
 [node name="knobPoint" type="Marker2D" parent="knob"]
 position = Vector2(0, -56)

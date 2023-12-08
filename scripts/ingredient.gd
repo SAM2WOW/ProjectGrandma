@@ -2,7 +2,7 @@ extends Draggable
 class_name Ingredient
 
 enum IngredientType {
-	Chicken, Garlic, Onion, Peppercorn, BayLeaf
+	Chicken, Garlic, Onion, Peppercorn, BayLeaf, Pepper, Mushroom, Broccoli
 }
 @export var ingredientType: IngredientType;
 @export var ingredientStates: Array[IngredientState] = [];
@@ -33,6 +33,9 @@ func _process(delta):
 func Cook(cookingType: IngredientState.CookingType, heatMultiplier, delta):
 	if currentStateIndex >= ingredientStates.size()-1: return;
 	if cookingType == IngredientState.CookingType.Boiled:
+		if Global.currentStage == 0:
+			var c = Global.textManager.Activate("OnBoil");
+			# followText = c;
 		var currMult = clamp(linear_velocity.length(), 0, cookingVelocityThresholds);
 		currMult = Global.remap_range(currMult, 0, cookingVelocityThresholds, lowVelocityMultiplier, highVelocityMultiplier);
 		if currMult < currentVelocityMult:
@@ -46,6 +49,8 @@ func Cook(cookingType: IngredientState.CookingType, heatMultiplier, delta):
 		else:
 			currentVelocityMult = lowVelocityMultiplier;
 	# print("vel mult: ", currentVelocityMult);
+	#print(IngredientState.CookingType.keys()[cookingType]);
+	# currentVelocityMult
 	# print("multiplier: ", GetCurrentState().typeInfluenceMultiplier[cookingType] * velocityMultiplier * heatMultiplier);
 	cookingTimer += delta * GetCurrentState().typeInfluenceMultiplier[cookingType] * currentVelocityMult * heatMultiplier;
 	if cookingTimer >= GetCurrentState().cookTimer:
@@ -56,6 +61,8 @@ func ChangeState(newIndex):
 	currentStateIndex = newIndex;
 	cookingTimer = 0;
 	print("new state ", IngredientState.CookingState.keys()[GetCurrentState().state]);
+	if GetCurrentState().state == IngredientState.CookingState.Cooked && Global.currentStage == 0:
+		Global.textManager.Activate("3")
 
 func UpdateColor(delta):
 	if currentStateIndex >= ingredientStates.size()-1: return;
@@ -71,6 +78,28 @@ func GetState(checkState: IngredientState.CookingState):
 func GetCurrentState():
 	return ingredientStates[currentStateIndex];
 
+func StartDrag():
+	super.StartDrag();
+	if Global.currentStage == 0:
+		var c = Global.textManager.Activate("Item2");
+		followText = c;
+
+func OnHover():
+	super.OnHover();
+	if Global.currentStage == 0:
+		var c = Global.textManager.Activate("Item");
+		if c.firstTime:
+			followText = c;
+
+func _on_interact_area_mouse_entered():
+	super._on_interact_area_mouse_entered();
+	if Global.currentStage == 0:
+		var c = Global.textManager.Activate("Item");
+		if c.firstTime:
+			followText = c;
+			# c.set_position(Vector2(global_position.x, global_position.y-50))
+			
+			
 
 func _on_body_entered(body):
 	if not $AudioStreamPlayer2D.is_playing():

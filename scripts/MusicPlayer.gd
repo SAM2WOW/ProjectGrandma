@@ -39,6 +39,9 @@ func play_music():
 	if not $BGM.is_playing():
 		$BGM.play()
 
+func set_pitch(ptch):
+	$BGM.pitch_scale = 0.8;
+
 func stop_music():
 	$BGM.stop();
 

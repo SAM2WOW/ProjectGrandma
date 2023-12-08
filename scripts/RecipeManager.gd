@@ -89,16 +89,14 @@ func CheckRecipePoints():
 			CheckLiquidMixture(recipeStep);
 	var resultsText = "[b]Results:\t%.0f / %.0f Points[/b]" % [points, totalPoints];
 	stepText = resultsText + '\n' + stepText;
-	
 	GetFinalGrade();
-	
-	$EndNode/NoteText.clear();
-	$EndNode/NoteText.append_text(noteText);
 	print("scene score: ", Global.sceneScores[Global.currentStage])
 	# print("points: %.1f" % (points/totalPoints));
 	print("step text:\n", stepText);
 
 func GetFinalGrade():
+	$EndNode/NoteText.clear();
+	noteText = "[b]Result[/b]\n";
 	var score = float(points)/totalPoints
 	$EndNode/EndText.append_text(stepText);
 	if points/totalPoints <= 0.5:
@@ -111,21 +109,36 @@ func GetFinalGrade():
 		avgScore += i;
 	avgScore /= Global.sceneScores.size();
 	
+	var result : ResultText.FoodResult;
 	if score <= 0.5:
-		print("really bad");
 		$EndNode/Smoke2.set_emitting(true)
+		result = ResultText.FoodResult.Bad;
 	elif score <= 0.75:
-		print("ok")
 		$EndNode/Smoke.set_emitting(true)
+		result = ResultText.FoodResult.Average;
 	elif score <= 0.95:
-		print("good");
 		$EndNode/Smoke.set_emitting(true)
+		result = ResultText.FoodResult.Good;
 	else:
-		print("perfect");
 		$EndNode/Smoke.set_emitting(true)
 		$EndNode/Perfect.set_emitting(true)
+		result = ResultText.FoodResult.Perfect;
+	var progress : ProgressText.Progress;
+	if score <= avgScore - 0.1:
+		progress = ProgressText.Progress.Washed;
+	elif score >= avgScore-0.1 && score <= avgScore+0.1:
+		progress = ProgressText.Progress.Constant;
+	else:
+		progress = ProgressText.Progress.Improving;
+	for r in resultText:
+		if r.result != result: continue;
+		noteText += r.resultText + "\n\n";
+	for p in progressText:
+		if p.progress != progress: continue;
+		noteText += p.resultText;
 	
-	Global.sceneScores[Global.currentStage] = score;
+	$EndNode/NoteText.append_text(noteText);
+	Global.sceneScores[Global.currentStage] = clamp(score, 0, 1);
 	
 func CheckIngredients(recipeStep : IngredientComponent) -> float:
 	if !Global.instantiationManager.pan.cookingObjects.keys().has(recipeStep.ingredient):
@@ -183,9 +196,10 @@ func CheckLiquidMixture(recipeStep : LiquidMixtureComponent) -> float:
 	return stepPoints;
 
 func _input(event):
-	if event is InputEventKey && event.keycode == KEY_D:
-		print("total: ", Global.instantiationManager.pan.GetLiquidTotal());
-		Global.recipeManager.CheckRecipePoints();
+	#if event is InputEventKey && event.keycode == KEY_D:
+		#print("total: ", Global.instantiationManager.pan.GetLiquidTotal());
+		#Global.recipeManager.CheckRecipePoints();
+	pass;
 		
 func GetCurrentRecipeIngredients():
 	for i in allIngredients:

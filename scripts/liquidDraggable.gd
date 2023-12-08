@@ -25,6 +25,13 @@ func _ready():
 		2:
 			$WaterGen/SplashParticle.set_modulate(Color("2f1300"))
 
+func StartDrag():
+	super.StartDrag();
+	if Global.currentStage == 0:
+		var c = Global.textManager.Activate("LiquidDrag");
+		if c.firstTime:
+			followText = c;
+
 func ObjectAction(event):
 	super.ObjectAction(event);
 	produceLiquid = event.pressed;

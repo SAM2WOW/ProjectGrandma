@@ -18,7 +18,7 @@ size = Vector2(125.356, 35.7112)
 size = Vector2(125.356, 23.7014)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_waguf"]
-size = Vector2(194, 32)
+size = Vector2(194, 25)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xf1h7"]
 radius = 116.0
@@ -84,7 +84,7 @@ rotation = -0.463465
 shape = SubResource("RectangleShape2D_jdcx5")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="." index="9"]
-position = Vector2(-18, 60)
+position = Vector2(-16, 66)
 shape = SubResource("RectangleShape2D_waguf")
 
 [node name="Sprite2D" parent="." index="10"]
