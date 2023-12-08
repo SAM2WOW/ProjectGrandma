@@ -1,8 +1,18 @@
-[gd_scene load_steps=2 format=3 uid="uid://4rupeebm31op"]
+[gd_scene load_steps=3 format=3 uid="uid://4rupeebm31op"]
 
 [ext_resource type="PackedScene" uid="uid://dpg0gbpttdpy5" path="res://levels/main.tscn" id="1_a8jge"]
+[ext_resource type="Texture2D" uid="uid://ed50ld8jg5ks" path="res://arts/main scene/IMG_0049.png" id="2_x6dbl"]
 
 [node name="Main" instance=ExtResource("1_a8jge")]
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground" index="1"]
+motion_scale = Vector2(0.8, 0.8)
+
+[node name="Img0049" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2" index="0"]
+self_modulate = Color(1, 1, 1, 0.301961)
+position = Vector2(-561, 145)
+scale = Vector2(0.514732, 0.514732)
+texture = ExtResource("2_x6dbl")
 
 [node name="RichTextLabel" parent="Node2D/Recipe Scene" index="0"]
 text = "[b]Ingredients[/b]
@@ -24,5 +34,5 @@ text = "[b]Ingredients[/b]
 
 "
 
-[node name="ColorRect" parent="CanvasLayer" index="1"]
+[node name="ColorRect" parent="CanvasLayer" index="0"]
 visible = true
