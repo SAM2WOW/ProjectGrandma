@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://dpg0gbpttdpy5"]
+[gd_scene load_steps=43 format=3 uid="uid://dpg0gbpttdpy5"]
 
 [ext_resource type="Texture2D" uid="uid://cmp4cxxq8yuat" path="res://arts/ivory-off-white-paper-texture.jpg" id="1_1jmmi"]
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_udxji"]
@@ -23,10 +23,14 @@
 [ext_resource type="Script" path="res://textEvent.gd" id="19_5tann"]
 [ext_resource type="Texture2D" uid="uid://cfpcexdv1l3y4" path="res://arts/UI/IMG_0044.png" id="19_sp8nt"]
 [ext_resource type="PackedScene" uid="uid://v5qskld56om" path="res://prefabs/textManager.tscn" id="21_rjtit"]
-[ext_resource type="Script" path="res://scripts/SceneManager.gd" id="26_nryhn"]
 [ext_resource type="AudioStream" uid="uid://bwv3ngkmackai" path="res://sounds/CompleteSound.ogg" id="34_yowf1"]
 [ext_resource type="AudioStream" uid="uid://ml0deg4pqvk1" path="res://sounds/Slide1.wav" id="35_36j26"]
 [ext_resource type="AudioStream" uid="uid://gcr1455oig1v" path="res://sounds/Slide2.wav" id="36_0ahhm"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_c5rhk"]
+font = ExtResource("10_hjo2k")
+font_size = 90
+font_color = Color(0, 0, 0, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_thd3q"]
 size = Vector2(5056, 1370)
@@ -84,11 +88,6 @@ func _on_pressed():
 font = ExtResource("11_ml1rf")
 font_size = 50
 font_color = Color(0.00392157, 0.00392157, 0.00392157, 1)
-
-[sub_resource type="LabelSettings" id="LabelSettings_c5rhk"]
-font = ExtResource("10_hjo2k")
-font_size = 90
-font_color = Color(0, 0, 0, 1)
 
 [sub_resource type="Animation" id="Animation_jsi21"]
 resource_name = "Exit"
@@ -284,6 +283,25 @@ stream_1/weight = 1.0
 
 [node name="Main2" type="Node"]
 script = ExtResource("1_udxji")
+
+[node name="RecipeManager" parent="." instance=ExtResource("11_bxixm")]
+
+[node name="InstantiationManager" parent="." instance=ExtResource("6_mkygc")]
+
+[node name="TextManager" parent="." groups=["TextManager"] instance=ExtResource("21_rjtit")]
+
+[node name="Note of Pain" type="Node2D" parent="TextManager"]
+position = Vector2(0, -75)
+script = ExtResource("19_5tann")
+dissapearTimer = 5.0
+
+[node name="Label" type="Label" parent="TextManager/Note of Pain"]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "pain"
+label_settings = SubResource("LabelSettings_c5rhk")
+
+[node name="gameManager" parent="." instance=ExtResource("13_cncv6")]
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
@@ -515,28 +533,6 @@ offset_bottom = 23.0
 mouse_filter = 1
 text = "Level"
 label_settings = SubResource("LabelSettings_5i7dh")
-
-[node name="RecipeManager" parent="." instance=ExtResource("11_bxixm")]
-
-[node name="InstantiationManager" parent="." instance=ExtResource("6_mkygc")]
-
-[node name="TextManager" parent="." groups=["TextManager"] instance=ExtResource("21_rjtit")]
-
-[node name="Note of Pain" type="Node2D" parent="TextManager"]
-position = Vector2(0, -75)
-script = ExtResource("19_5tann")
-dissapearTimer = 5.0
-
-[node name="Label" type="Label" parent="TextManager/Note of Pain"]
-offset_right = 40.0
-offset_bottom = 23.0
-text = "pain"
-label_settings = SubResource("LabelSettings_c5rhk")
-
-[node name="SceneManager" type="Node2D" parent="." groups=["SceneManager"]]
-script = ExtResource("26_nryhn")
-
-[node name="gameManager" parent="." instance=ExtResource("13_cncv6")]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

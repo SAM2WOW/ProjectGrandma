@@ -32,6 +32,7 @@ var cursors = {
 }
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	Global.gameManager = self
 	print("Game Manager is ready")
 	if Global.currentStage == 0 || Global.currentStage == 4:
 		cursorState['normal'] = cursors['normal'][0]
@@ -86,7 +87,7 @@ func UpdateStage():
 	Global.currentStage += 1
 	var scenePath = stageScenes[Global.currentStage]
 	#print(scenePath)
-	Global.sceneManager.SwitchScene(scenePath)
+	get_tree().change_scene_to_file(scenePath)
 	
 func CheckGameEnd():
 	if Global.currentStage == Global.stageNumbers:

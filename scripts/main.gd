@@ -28,6 +28,7 @@ func _process(delta):
 func completeStage():
 	#print('Stage Complete')
 	$CanvasLayer/HUD/CompeletLevelButton.modulate.a = 1	
+	
 
 func _input(ev):
 	if ev is InputEventKey and ev.keycode == KEY_K:
@@ -42,16 +43,7 @@ func _input(ev):
 func onGameEnd():
 	print("Game END")
 	
-	$CanvasLayer/HUD/HoverArea.hide()
-	$CanvasLayer/HUD/HoverArea2.hide()
-	$AnimationPlayer.play("Final")
-	$Sounds/SlideSound.play()
-	Global.recipeManager.CheckRecipePoints();
-	$CanvasLayer/HUD/RestartButton.hide()
-	$CanvasLayer/HUD/CompeletLevelButton.hide()
-	MusicPlayer.fade_out(true)
 	
-	$Sounds/CompleteSound.play()
 	
 
 func _on_hover_area_mouse_entered():
@@ -88,15 +80,24 @@ func _on_animation_player_animation_finished(anim_name):
 	elif anim_name == "Final":
 		$CanvasLayer/HUD/HoverArea3.show()
 	if anim_name == "Exit":
-		Global.sceneManager.ReloadCurrentScene()
+		get_tree().reload_current_scene()
 
 
 func _on_compelet_level_button_pressed():
 	if !Global.gameManager.canCompleteStage:
 		return
+	#
+	$CanvasLayer/HUD/HoverArea.hide()
+	$CanvasLayer/HUD/HoverArea2.hide()
+	$AnimationPlayer.play("Final")
+	$Sounds/SlideSound.play()
+	Global.recipeManager.CheckRecipePoints();
+	$CanvasLayer/HUD/RestartButton.hide()
+	$CanvasLayer/HUD/CompeletLevelButton.hide()
+	MusicPlayer.fade_out(true)
+	$Sounds/CompleteSound.play()
+	await get_tree().create_timer(3).timeout
 	Global.gameManager.OnCompleteStage()
 
-
 func _on_restart_button_pressed():
-	Global.sceneManager.ReloadCurrentScene()
-	pass # Replace with function body.
+	get_tree().reload_current_scene()

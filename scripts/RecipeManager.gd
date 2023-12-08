@@ -20,6 +20,7 @@ var allLiquid : Array
 var stepText : String = "";
 var noteText : String = "";
 func _ready():
+	Global.recipeManager = self
 	InitRecipeText();
 
 func InitRecipeText():

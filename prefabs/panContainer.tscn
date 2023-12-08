@@ -1,11 +1,14 @@
-[gd_scene load_steps=14 format=3 uid="uid://h7fkjxle4fr2"]
+[gd_scene load_steps=18 format=3 uid="uid://h7fkjxle4fr2"]
 
 [ext_resource type="PackedScene" uid="uid://drn5x3vivefyp" path="res://prefabs/liquidContainer.tscn" id="1_ribvh"]
 [ext_resource type="Script" path="res://scripts/panContainer.gd" id="2_2j0dy"]
 [ext_resource type="Texture2D" uid="uid://dqy1ywdlmbisa" path="res://arts/kitchenware/pan with handle.png" id="2_ksjrc"]
 [ext_resource type="Texture2D" uid="uid://diyloqr1ltoak" path="res://arts/kitchenware/pan line art only.png" id="3_k10yi"]
 [ext_resource type="Texture2D" uid="uid://b6nr0o5mal2iv" path="res://arts/kitchenware/pan watercolor only.png" id="5_tki2m"]
+[ext_resource type="AudioStream" uid="uid://d13e5rwaividr" path="res://sounds/Pan1.wav" id="6_iv5gy"]
+[ext_resource type="AudioStream" uid="uid://ch6xu4y77lnk5" path="res://sounds/Pan2.wav" id="7_x3ovp"]
 [ext_resource type="Texture2D" uid="uid://dppis8ot18uwq" path="res://arts/particles/SmokeParticle3.png" id="8_basl4"]
+[ext_resource type="AudioStream" uid="uid://bq0gnic7ujbke" path="res://sounds/Pan3.wav" id="8_onjhu"]
 [ext_resource type="AudioStream" uid="uid://bl2fotgrfpwkd" path="res://sounds/Boiling.ogg" id="9_cbi0f"]
 [ext_resource type="AudioStream" uid="uid://b82q7jpr6qms4" path="res://sounds/Frying.ogg" id="10_8lyt6"]
 
@@ -22,12 +25,23 @@ size = Vector2(448, 32)
 radius = 128.0
 height = 1054.0
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_uug5u"]
+streams_count = 3
+stream_0/stream = ExtResource("6_iv5gy")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("7_x3ovp")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("8_onjhu")
+stream_2/weight = 1.0
+
 [sub_resource type="Gradient" id="Gradient_l41xf"]
 offsets = PackedFloat32Array(0, 0.0580645, 1)
 colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0)
 
 [node name="Pan" instance=ExtResource("1_ribvh")]
 collision_priority = 1000.0
+max_contacts_reported = 1
+contact_monitor = true
 script = ExtResource("2_2j0dy")
 liquidThreshold = 20
 heatUpCoefficient = 0.2
@@ -110,13 +124,17 @@ position = Vector2(0, 0)
 position = Vector2(-175, -21)
 shape = SubResource("CapsuleShape2D_xl3c2")
 
-[node name="Boiling" type="AudioStreamPlayer2D" parent="." index="20"]
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." index="20"]
+stream = SubResource("AudioStreamRandomizer_uug5u")
+bus = &"SFX"
+
+[node name="Boiling" type="AudioStreamPlayer2D" parent="." index="21"]
 stream = ExtResource("9_cbi0f")
 
-[node name="Frying" type="AudioStreamPlayer2D" parent="." index="21"]
+[node name="Frying" type="AudioStreamPlayer2D" parent="." index="22"]
 stream = ExtResource("10_8lyt6")
 
-[node name="Smoke" type="CPUParticles2D" parent="." index="22"]
+[node name="Smoke" type="CPUParticles2D" parent="." index="23"]
 z_index = 10
 emitting = false
 lifetime = 2.0
@@ -132,3 +150,5 @@ angle_max = 563.1
 scale_amount_max = 2.0
 color = Color(0.752941, 0.752941, 0.752941, 1)
 color_ramp = SubResource("Gradient_l41xf")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
