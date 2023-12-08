@@ -60,6 +60,22 @@ text = "I couldn't bring even bring myself to make this dish.
 The memories made the pain of losing her feel so real."
 label_settings = SubResource("LabelSettings_c5rhk")
 
+[node name="4" type="Node2D" parent="TextManager" index="4"]
+position = Vector2(-755, 59)
+rotation = -0.144135
+script = ExtResource("3_ijpwm")
+dissapearTimer = 5.0
+
+[node name="Label" type="Label" parent="TextManager/4" index="0"]
+offset_left = 75.0
+offset_top = -386.0
+offset_right = 1651.0
+offset_bottom = -97.0
+rotation = 0.151215
+text = "I couldn't bring even bring myself to make this dish.
+The memories made the pain of losing her feel so real."
+label_settings = SubResource("LabelSettings_c5rhk")
+
 [node name="ParallaxLayer" parent="ParallaxBackground" index="0"]
 motion_mirroring = Vector2(3840, 2160)
 
