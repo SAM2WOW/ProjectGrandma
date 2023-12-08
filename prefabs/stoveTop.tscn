@@ -17,11 +17,13 @@ script = ExtResource("1_1055t")
 
 [node name="Knob" parent="." instance=ExtResource("2_fay6n")]
 z_index = 1
+position = Vector2(0, 6)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 polygon = PackedVector2Array(-128, -64, 128, -64, 192, 64, -192, 64)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
 texture = ExtResource("2_34qb8")
 
 [node name="Area2D" type="Area2D" parent="."]
@@ -33,7 +35,6 @@ polygon = PackedVector2Array(-128, -128, -128, -32, 128, -32, 128, -128)
 [node name="Smoke" type="CPUParticles2D" parent="."]
 z_index = 10
 position = Vector2(1, -164)
-emitting = false
 amount = 3
 lifetime = 2.0
 randomness = 0.34
@@ -43,7 +44,6 @@ emission_shape = 3
 emission_rect_extents = Vector2(50, 1)
 spread = 77.18
 gravity = Vector2(0, -10)
-scale_amount_max = 1.2
 color = Color(1, 1, 1, 0.85098)
 color_ramp = SubResource("Gradient_2dk6w")
 
