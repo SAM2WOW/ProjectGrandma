@@ -14,20 +14,50 @@ var allIngredients : Array
 var allLiquid : Array
 func _ready():
 	recipe.sort_custom(func(x, y): return x.step < y.step);
+	$RecipeText.clear();
+	$IngredientText.clear();
+	var recipeText : String = "[b]Steps[/b]";
+	var ingredientsText : String = "[b]Ingredients[/b]\n";
+	var prevStep = -1;
 	for component in recipe:
 		component._ready();
+		var desc = component.GetDescription().strip_edges(true,true);
+		print(prevStep, " vs ", component.step)
+		if component.step >= 0 && component.step != prevStep:
+			recipeText += "\n* " +desc + '. ';
+		elif component.step == prevStep:
+			recipeText += desc + '. ';
+		# $RecipeText.add_text(component.GetDescription() + "\n");
+		print(desc);
 		if component is IngredientComponent:
+			var quantRange = component.GetQuantityRange(component.quantityPoints);
+			var quantityText : String = str(quantRange[0].belowOrEqualQuantity+1);
+			if quantRange.size() > 1: 
+				quantityText += " - " + str(quantRange[1].belowOrEqualQuantity);
+			ingredientsText += " * " +Ingredient.IngredientType.keys()[component.ingredient] + ": " + quantityText + '\n';
 			if(!allIngredients.has(component.ingredient)):
 				allIngredients.append(component.ingredient)
-		#print(component.GetDescription());
 		elif component is LiquidMixtureComponent:
+			for liquid in component.mixtureDict.keys():
+				# var quantRange = component.GetQuantityRange(component.mixtureDict[liquid]);
+				ingredientsText += " * " + Global.LiquidType.keys()[liquid] + ": " + "1/2 Cup\n";
+				#if(!allLiquid.has(liquid)):
+					#allLiquid.append(liquid)
 			for i:LiquidMixturePoints in component.liquidMixtureRecipe:
+				# ingredientsText += " * " + Global.LiquidType.keys()[i.liquidType] + ": " + "1/2 Cup\n";
 				if(!allLiquid.has(i.liquidType)):
 					allLiquid.append(i.liquidType)
-
-				
-			
-	Global.recipeManager.CheckRecipePoints();
+		prevStep = component.step;
+	
+	print("recipe text:\n", ingredientsText+recipeText);
+	$RecipeText.append_text(recipeText);
+	$IngredientText.append_text(ingredientsText)
+	
+func ToggleText(hide : bool):
+	var a = 0;
+	if hide: a = 1;
+	create_tween().tween_property(self, "modulate", Color(1,1,1,a), 0.5).set_ease(Tween.EASE_OUT);
+	# visible = false;
 	
 func CheckRecipePoints():
 	totalPoints = 0.0;
@@ -92,6 +122,7 @@ func GetCurrentRecipeIngredients():
 		print("Ingredients:",i)
 	for i in allLiquid:
 		print("Liquid:", i)
+
 
 # func CheckQuantity(quantityArr)
 #func initRecipes():

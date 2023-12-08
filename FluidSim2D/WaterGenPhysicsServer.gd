@@ -3,7 +3,7 @@ extends Node2D
 class_name LiquidGenerator
 #Water Gen with Physics2DServer
 @export var particle_texture:Texture;
-@export var max_water_particles = 1000
+@export var max_water_particles = 1000;
 @export var size_variance : float = 0.2;
 @export var numParticlesPerSpawn : int = 3;
 var current_particle_count = 0
@@ -11,6 +11,7 @@ var spawn_timer = 0
 var liquid_type : Global.LiquidType;
 @export var spawn_time = 0.05
 @export var base_particle_size = 4.5;
+# @export var base_particle_size = 6.0;
 var water_particles = []
 @export var generate = false;
 
@@ -69,8 +70,9 @@ func create_particle():
 func _physics_process(delta):
 	spawn_timer -= delta;
 	#add particles while less than max amount set and timer < 0
-	if spawn_timer < 0 and current_particle_count < max_water_particles and generate:
+	if spawn_timer < 0 and current_particle_count < max_water_particles and Global.instantiationManager.numParticles < Global.instantiationManager.maxNumParticles and generate:
 		for i in range(numParticlesPerSpawn):
 			create_particle()
 			current_particle_count += 1
+			Global.instantiationManager.numParticles += 1;
 		spawn_timer = spawn_time

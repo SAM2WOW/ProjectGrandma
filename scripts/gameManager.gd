@@ -1,7 +1,6 @@
 extends Node2D
 
-var stageNumbers = 4;
-var currentStage = 0;
+
 var canCompleteStage = false
 # @onready var recipeManager = preload("res://scripts/RecipeManager.gd").new()
 
@@ -42,12 +41,8 @@ func _input(event):
 func BeginDragObject(object : Draggable):
 	if draggedObject: DropObject();
 	draggedObject = object;
-
-func HoverObject(object : Draggable):
-	if hoveredObject: hoveredObject.hovering = false;
-	hoveredObject = object;
-	object.hovering = true;
-
+	draggedObject.UnHover()
+	
 func DropObject():
 	if !draggedObject: return;
 	draggedObject.StopDrag();
@@ -59,13 +54,13 @@ func DragObject(delta):
 func UpdateStage():
 	if !canCompleteStage: return
 	print('Update Scene')
-	currentStage += 1
-	var scenePath = stageScenes[currentStage]
+	Global.currentStage += 1
+	var scenePath = stageScenes[Global.currentStage]
 	#print(scenePath)
 	Global.sceneManager.SwitchScene(scenePath)
 	
 func CheckGameEnd():
-	if currentStage == stageNumbers:
+	if Global.currentStage == Global.stageNumbers:
 		gameEnd.emit()
 		return true
 	return false

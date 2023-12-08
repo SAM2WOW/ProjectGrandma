@@ -1,8 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://sytwr8cbqvm1"]
+[gd_scene load_steps=15 format=3 uid="uid://sytwr8cbqvm1"]
 
 [ext_resource type="PackedScene" uid="uid://b5em8781rmds2" path="res://prefabs/ingredient.tscn" id="1_56ysr"]
 [ext_resource type="Script" path="res://scripts/ingredientState.gd" id="2_t4qnj"]
 [ext_resource type="Texture2D" uid="uid://7n8v3vrmu2v2" path="res://arts/ingredients/drumstick.png" id="2_xxpdl"]
+[ext_resource type="AudioStream" uid="uid://c2qrl37kvmna" path="res://sounds/FTWet2.wav" id="4_t0kp3"]
+[ext_resource type="AudioStream" uid="uid://oajtjo7fux7c" path="res://sounds/FTWet3.wav" id="5_7dlyb"]
+[ext_resource type="AudioStream" uid="uid://bbqnyw7rmhlp1" path="res://sounds/FTWet4.wav" id="6_1bcbd"]
 
 [sub_resource type="Resource" id="Resource_onfv7"]
 resource_local_to_scene = true
@@ -58,9 +61,20 @@ height = 70.7096
 radius = 52.0
 height = 200.0
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_tye7y"]
+streams_count = 3
+stream_0/stream = ExtResource("4_t0kp3")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("5_7dlyb")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("6_1bcbd")
+stream_2/weight = 1.0
+
 [node name="Chicken" instance=ExtResource("1_56ysr")]
+mass = 4.0
+max_contacts_reported = 1
+contact_monitor = true
 ingredientStates = Array[ExtResource("2_t4qnj")]([SubResource("Resource_onfv7"), SubResource("Resource_atocn"), SubResource("Resource_hxhva"), SubResource("Resource_gd71g")])
-lowVelocityMultiplier = 1.0
 
 [node name="Sprite2DShadow" parent="." index="0"]
 scale = Vector2(0.233, 0.233)
@@ -89,6 +103,11 @@ position = Vector2(0, -35)
 [node name="CollisionShape2D" parent="InteractArea" index="0"]
 shape = SubResource("CapsuleShape2D_qbico")
 
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." index="7"]
+stream = SubResource("AudioStreamRandomizer_tye7y")
+bus = &"SFX"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

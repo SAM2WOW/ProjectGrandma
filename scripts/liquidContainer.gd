@@ -13,8 +13,8 @@ var rotateSpeed : float = 4.0;
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
-
+	super._ready();
+	containedLiquid.clear()
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
 	super._physics_process(delta);
@@ -22,7 +22,10 @@ func _physics_process(delta):
 	
 func UpdatePouring(delta):
 	if pouring:
-		rotation = lerp_angle(rotation, deg_to_rad(135), rotateSpeed*delta);
+		var angle = 135;
+		if Global.instantiationManager.pan.global_position.x < global_position.x:
+			angle *= -1;
+		rotation = lerp_angle(rotation, deg_to_rad(angle), rotateSpeed*delta);
 	else:
 		rotation = lerp_angle(rotation, deg_to_rad(0), rotateSpeed*2*delta);
 
@@ -44,7 +47,10 @@ func _on_area_2d_body_shape_exited(body_rid, body, body_shape_index, local_shape
 
 func OnLiquidEnter(id, body_rid):
 	if !containedLiquid.keys().has(id): containedLiquid[id] = {};
+	if !Global.instantiationManager.liquidParticles.has(id) || !Global.instantiationManager.liquidParticles[id].has(body_rid):
+		return
 	containedLiquid[id][body_rid] = Global.instantiationManager.liquidParticles[id][body_rid];
+	# print("amt: ", containedLiquid[id].keys().size())
 
 func OnLiquidExit(id, body_rid):
 	if !containedLiquid.keys().has(id): return;
@@ -83,14 +89,19 @@ func _on_area_2d_input_event(viewport, event, shape_idx):
 
 func _on_body_entered(body):
 	if not $AudioStreamPlayer2D.is_playing():
-
+		
+		# don't play if mass is too small
+		if body == RigidBody2D:
+			if body.get_mass() <= 20:
+				return
+		
 		# get velocity
 		var velocity = get_linear_velocity()
 		var speed = clamp(velocity.length() / 500.0, 0.0, 1.0)
-		var volume = lerp(0.7, 1.0, speed)
+		var volume = lerp(0.0, 1.0, speed)
 		var pitch = lerp(0.8, 1.2, speed)
-
+		
 		# set volume and pitch
-		$AudioStreamPlayer2D.volume_db = -80.0 + 80.0 * volume;
+		$AudioStreamPlayer2D.volume_db = linear_to_db(volume);
 		$AudioStreamPlayer2D.pitch_scale = pitch;
 		$AudioStreamPlayer2D.play()

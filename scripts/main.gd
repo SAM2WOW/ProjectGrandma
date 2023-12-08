@@ -7,10 +7,12 @@ func _ready():
 	print("Main is ready")
 	Global.gameManager.stageComplete.connect(completeStage)
 	Global.gameManager.gameEnd.connect(onGameEnd)
-	$CanvasLayer/TestLevelText.text = "Level" + str(Global.gameManager.currentStage+1)
+	$CanvasLayer/TestLevelText.text = "Level" + str(Global.currentStage+1)
 	Global.recipeManager.GetCurrentRecipeIngredients()
-	$CanvasLayer/CompeletLevelButton.modulate.a = 0.1
- 
+	$CanvasLayer/HUD/CompeletLevelButton.modulate.a = 0.1
+	
+	MusicPlayer.fade_in() 
+	MusicPlayer.play_music()
 
 func _process(delta):
 	# offset the camera base on the mouse position to the center
@@ -24,16 +26,16 @@ func _process(delta):
 	
 func completeStage():
 	#print('Stage Complete')
-	$CanvasLayer/CompeletLevelButton.modulate.a = 1	
+	$CanvasLayer/HUD/CompeletLevelButton.modulate.a = 1	
 
 func _input(ev):
 	if ev is InputEventKey and ev.keycode == KEY_K:
 		onGameEnd()
-	if ev is InputEventKey and ev.keycode == KEY_ENTER:
-		if Global.gameManager.canCompleteStage:
-			Global.gameManager.OnCompleteStage()
-	if ev is InputEventKey and ev.keycode == KEY_S:
-		Global.gameManager.UpdateStage()
+	#if ev is InputEventKey and ev.keycode == KEY_ENTER:
+		#if Global.gameManager.canCompleteStage:
+			#Global.gameManager.OnCompleteStage()
+	#if ev is InputEventKey and ev.keycode == KEY_S:
+		#Global.gameManager.UpdateStage()
 
 
 func onGameEnd():
@@ -41,42 +43,59 @@ func onGameEnd():
 	
 	$CanvasLayer/HUD/HoverArea.hide()
 	$CanvasLayer/HUD/HoverArea2.hide()
-	
+	Global.recipeManager.ToggleText(false);
 	$AnimationPlayer.play("Final")
+	$Sounds/SlideSound.play()
+	$CanvasLayer/HUD/RestartButton.hide()
+	$CanvasLayer/HUD/CompeletLevelButton.hide()
+	MusicPlayer.fade_out(true)
+	
+	$Sounds/CompleteSound.play()
 	
 
 func _on_hover_area_mouse_entered():
 	recipeMode = true
-	
+	Global.recipeManager.ToggleText(true);
 	$CanvasLayer/HUD/HoverArea.hide()
 	$CanvasLayer/HUD/HoverArea2.show()
 	
 	$AnimationPlayer.play("Transition")
+	$Sounds/SlideSound.play()
 
 
 func _on_hover_area_2_mouse_entered():
 	recipeMode = false
-	
+	Global.recipeManager.ToggleText(false);
 	$CanvasLayer/HUD/HoverArea.show()
 	$CanvasLayer/HUD/HoverArea2.hide()
 	
 	$AnimationPlayer.play_backwards("Transition")
+	$Sounds/SlideSound.play()
 
 
 func _on_hover_area_3_mouse_entered():
+	$CanvasLayer/HUD/HoverArea3.hide()
+	
 	$AnimationPlayer.play_backwards("Exit")
+	$Sounds/SlideSound.play()
 
 
 func _on_animation_player_animation_finished(anim_name):
 	if anim_name == "Intro":
 		$CanvasLayer/HUD/HoverArea.show()
+		Global.recipeManager.ToggleText(false);
 	elif anim_name == "Final":
 		$CanvasLayer/HUD/HoverArea3.show()
 	if anim_name == "Exit":
-		get_tree().reload_current_scene()
+		Global.sceneManager.ReloadCurrentScene()
 
 
 func _on_compelet_level_button_pressed():
 	if !Global.gameManager.canCompleteStage:
 		return
 	Global.gameManager.OnCompleteStage()
+
+
+func _on_restart_button_pressed():
+	Global.sceneManager.ReloadCurrentScene()
+	pass # Replace with function body.
