@@ -1,11 +1,32 @@
-[gd_scene load_steps=8 format=3 uid="uid://uetxp6v8gega"]
+[gd_scene load_steps=13 format=3 uid="uid://uetxp6v8gega"]
 
 [ext_resource type="PackedScene" uid="uid://dpg0gbpttdpy5" path="res://levels/main.tscn" id="1_y2kh4"]
 [ext_resource type="Script" path="res://levels/stageOne.gd" id="2_3n783"]
 [ext_resource type="Script" path="res://textEvent.gd" id="2_3ui8n"]
+[ext_resource type="Script" path="res://Resources/resultText.gd" id="3_8kcoe"]
 [ext_resource type="Texture2D" uid="uid://eu58chmihkcv" path="res://arts/main scene/Day1.jpg" id="3_cluy4"]
 [ext_resource type="Texture2D" uid="uid://ed50ld8jg5ks" path="res://arts/main scene/IMG_0049.png" id="3_eq81a"]
 [ext_resource type="FontFile" uid="uid://ds8uy6wtxnlvu" path="res://arts/fonts/Zeyada-Regular.ttf" id="3_wy54e"]
+
+[sub_resource type="Resource" id="Resource_w23gh"]
+script = ExtResource("3_8kcoe")
+result = 0
+resultText = "My first attempt ended up pretty awful. It tasted nothing like how my grandma made it; as a matter of fact i'm not sure it was edible at all. Hopefully its only up from here."
+
+[sub_resource type="Resource" id="Resource_g87ig"]
+script = ExtResource("3_8kcoe")
+result = 1
+resultText = "For my first attempt, it could have been worse. Also could have been better. Hopefully it's only up from here."
+
+[sub_resource type="Resource" id="Resource_3e0xj"]
+script = ExtResource("3_8kcoe")
+result = 2
+resultText = "As far as first attempts go, I'd say it was pretty good. It's not quite as good as my Lola's, but it's a good sign."
+
+[sub_resource type="Resource" id="Resource_rjt77"]
+script = ExtResource("3_8kcoe")
+result = 3
+resultText = "I'm amazed I actually managed to nail it this hard on my first attempt. Everything felt like it was cooked perfectly. I need to make this for my Lola sometime."
 
 [sub_resource type="LabelSettings" id="LabelSettings_c5rhk"]
 font = ExtResource("3_wy54e")
@@ -15,47 +36,58 @@ font_color = Color(0, 0, 0, 1)
 [node name="Main2" instance=ExtResource("1_y2kh4")]
 script = ExtResource("2_3n783")
 
+[node name="RecipeManager" parent="." index="0"]
+resultText = Array[ExtResource("3_8kcoe")]([SubResource("Resource_w23gh"), SubResource("Resource_g87ig"), SubResource("Resource_3e0xj"), SubResource("Resource_rjt77")])
+
 [node name="TextManager" parent="." index="2"]
 rotation = -0.0680678
 
-[node name="Hungry" type="Node2D" parent="TextManager" index="1"]
-position = Vector2(-519, -600)
+[node name="1" type="Node2D" parent="TextManager" index="1"]
+position = Vector2(-1041.79, -420.832)
 script = ExtResource("2_3ui8n")
-dissapearTimer = 10.0
+dissapearTimer = 7.0
 
-[node name="Label" type="Label" parent="TextManager/Hungry" index="0"]
-offset_left = -153.0
-offset_top = -170.0
-offset_right = 100.0
-offset_bottom = -27.0
-text = "I’m so hungry… I should cook something."
+[node name="Label" type="Label" parent="TextManager/1" index="0"]
+offset_left = 44.9571
+offset_top = -224.151
+offset_right = 1275.96
+offset_bottom = 64.8494
+text = "My Lola recently left me with this
+old recipe of hers."
 label_settings = SubResource("LabelSettings_c5rhk")
+metadata/_edit_use_anchors_ = true
 
-[node name="Adobo" type="Node2D" parent="TextManager" index="2"]
-position = Vector2(-132.288, -456.054)
+[node name="2" type="Node2D" parent="TextManager" index="2"]
+position = Vector2(108.245, -411.591)
+rotation = 0.185181
 script = ExtResource("2_3ui8n")
-dissapearTimer = 10.0
+dissapearTimer = 7.0
 
-[node name="Label" type="Label" parent="TextManager/Adobo" index="0"]
-offset_left = 272.185
-offset_top = -169.881
-offset_right = 1031.18
-offset_bottom = -26.8807
-text = "Gonna try making Adobo tonight."
+[node name="Label" type="Label" parent="TextManager/2" index="0"]
+offset_left = 44.9571
+offset_top = -224.151
+offset_right = 1275.96
+offset_bottom = 64.8494
+text = "My Lola always made this for me as a kid, so
+I thought I should also give it a go."
 label_settings = SubResource("LabelSettings_c5rhk")
+metadata/_edit_use_anchors_ = true
 
-[node name="Adobo1" type="Node2D" parent="TextManager" index="3"]
-position = Vector2(-1249.85, -206.487)
+[node name="3" type="Node2D" parent="TextManager" index="3"]
+position = Vector2(-627.793, -97.9262)
+rotation = 0.0553048
 script = ExtResource("2_3ui8n")
-dissapearTimer = 10.0
+dissapearTimer = 7.0
 
-[node name="Label" type="Label" parent="TextManager/Adobo1" index="0"]
-offset_left = -418.914
-offset_top = -59.6306
-offset_right = 575.086
-offset_bottom = 83.3694
-text = "What ingredients do I need?"
+[node name="Label" type="Label" parent="TextManager/3" index="0"]
+offset_left = 38.4641
+offset_top = -349.538
+offset_right = 1328.46
+offset_bottom = -60.5372
+text = "Cooking this adobo reminded me of home.
+        ...It was comforting."
 label_settings = SubResource("LabelSettings_c5rhk")
+metadata/_edit_use_anchors_ = true
 
 [node name="Sauce" type="Node2D" parent="TextManager" index="4"]
 position = Vector2(609.333, -234.098)
@@ -67,20 +99,21 @@ offset_left = -418.914
 offset_top = -59.6306
 offset_right = 575.086
 offset_bottom = 83.3694
-text = "How much sauce to put in the pan?"
+text = "Right Click to Pour Sauce"
 label_settings = SubResource("LabelSettings_c5rhk")
+metadata/_edit_use_anchors_ = true
 
-[node name="Sauce2" type="Node2D" parent="TextManager" index="5"]
+[node name="OnBoil" type="Node2D" parent="TextManager" index="5"]
 position = Vector2(921.519, -64.4719)
 script = ExtResource("2_3ui8n")
 dissapearTimer = 5.0
 
-[node name="Label" type="Label" parent="TextManager/Sauce2" index="0"]
+[node name="Label" type="Label" parent="TextManager/OnBoil" index="0"]
 offset_left = -418.914
 offset_top = -59.6306
 offset_right = 575.086
 offset_bottom = 83.3694
-text = "Should I measure it first?"
+text = "Occasionally stir to stop things from burning"
 label_settings = SubResource("LabelSettings_c5rhk")
 
 [node name="Item" type="Node2D" parent="TextManager" index="6"]
@@ -93,7 +126,7 @@ offset_left = -435.739
 offset_top = -62.7823
 offset_right = 558.261
 offset_bottom = 80.2177
-text = "It’s time to add the chicken!"
+text = "Click to Drag"
 label_settings = SubResource("LabelSettings_c5rhk")
 
 [node name="Item2" type="Node2D" parent="TextManager" index="7"]
@@ -102,14 +135,41 @@ script = ExtResource("2_3ui8n")
 dissapearTimer = 5.0
 
 [node name="Label" type="Label" parent="TextManager/Item2" index="0"]
-offset_left = -1158.2
-offset_top = 66.3787
-offset_right = -102.197
-offset_bottom = 209.379
-text = "What seasonings should I add?"
+offset_left = -758.444
+offset_top = -4.59637
+offset_right = 297.559
+offset_bottom = 138.404
+text = "move to the pan to cook it"
 label_settings = SubResource("LabelSettings_c5rhk")
 
-[node name="Fire" type="Node2D" parent="TextManager" index="8"]
+[node name="ContainerDrag" type="Node2D" parent="TextManager" index="8"]
+position = Vector2(-425.279, 768.855)
+script = ExtResource("2_3ui8n")
+dissapearTimer = 10.0
+
+[node name="Label" type="Label" parent="TextManager/ContainerDrag" index="0"]
+offset_left = -418.914
+offset_top = -59.6306
+offset_right = 575.086
+offset_bottom = 83.3694
+text = "Right Click to Pour Contents"
+label_settings = SubResource("LabelSettings_c5rhk")
+
+[node name="LiquidDrag" type="Node2D" parent="TextManager" index="9"]
+position = Vector2(-212.639, 384.427)
+script = ExtResource("2_3ui8n")
+dissapearTimer = 10.0
+
+[node name="Label" type="Label" parent="TextManager/LiquidDrag" index="0"]
+offset_left = -418.914
+offset_top = -59.6306
+offset_right = 575.086
+offset_bottom = 83.3694
+text = "Right Click to Pour Liquid"
+label_settings = SubResource("LabelSettings_c5rhk")
+
+[node name="Fire" type="Node2D" parent="TextManager" index="10"]
+visible = false
 position = Vector2(-112.51, 194.799)
 script = ExtResource("2_3ui8n")
 dissapearTimer = 10.0
@@ -123,6 +183,22 @@ text = "Don't forget to turn on the fire
 
 
                    < Right Here"
+label_settings = SubResource("LabelSettings_c5rhk")
+
+[node name="PanHover" type="Node2D" parent="TextManager" index="11"]
+position = Vector2(-106.32, 192.214)
+script = ExtResource("2_3ui8n")
+dissapearTimer = 10.0
+
+[node name="Label" type="Label" parent="TextManager/PanHover" index="0"]
+offset_left = -418.914
+offset_top = -59.6306
+offset_right = 575.086
+offset_bottom = 83.3694
+text = "Turn on the heat to cook ingredients in the pan
+
+
+                   < Turn this dial to increase the heat"
 label_settings = SubResource("LabelSettings_c5rhk")
 
 [node name="ParallaxLayer" parent="ParallaxBackground" index="0"]
@@ -147,3 +223,8 @@ offset_left = 1366.0
 offset_top = 886.0
 offset_right = 1570.0
 offset_bottom = 982.0
+
+[connection signal="on_mouse_hovering" from="Node2D/Cooking Scene/LiquidDraggable" to="." method="_on_liquid_draggable_on_mouse_hovering"]
+[connection signal="on_grabbed" from="Node2D/Cooking Scene/LiquidDraggable2" to="." method="_on_liquid_draggable_2_on_grabbed"]
+[connection signal="on_mouse_hovering" from="Node2D/Cooking Scene/Pan" to="." method="_on_pan_on_mouse_hovering"]
+[connection signal="on_grabbed" from="Node2D/Cooking Scene/Container" to="." method="_on_container_on_grabbed"]

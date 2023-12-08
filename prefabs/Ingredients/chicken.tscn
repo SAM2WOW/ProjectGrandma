@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://sytwr8cbqvm1"]
+[gd_scene load_steps=14 format=3 uid="uid://sytwr8cbqvm1"]
 
 [ext_resource type="PackedScene" uid="uid://b5em8781rmds2" path="res://prefabs/ingredient.tscn" id="1_56ysr"]
 [ext_resource type="Script" path="res://scripts/ingredientState.gd" id="2_t4qnj"]
@@ -49,13 +49,9 @@ typeInfluenceMultiplier = {
 }
 stateColor = Color(0.231373, 0.164706, 0.0196078, 1)
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ljngj"]
-radius = 5.83658
-height = 35.0195
-
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_n6mev"]
-radius = 17.3308
-height = 70.7096
+radius = 18.024
+height = 63.7773
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qbico"]
 radius = 52.0
@@ -86,24 +82,18 @@ position = Vector2(1.43051e-06, 1.43051e-06)
 scale = Vector2(0.233446, 0.233446)
 texture = ExtResource("2_xxpdl")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="." index="2"]
-position = Vector2(-46, 3)
-rotation = 1.5708
-scale = Vector2(1.542, 1.542)
-shape = SubResource("CapsuleShape2D_ljngj")
-
-[node name="CollisionShape2D" parent="." index="3"]
+[node name="CollisionShape2D" parent="." index="2"]
 position = Vector2(21, 1)
 scale = Vector2(1.44252, 1.44252)
 shape = SubResource("CapsuleShape2D_n6mev")
 
-[node name="DragPoint" parent="." index="5"]
+[node name="DragPoint" parent="." index="4"]
 position = Vector2(0, -35)
 
 [node name="CollisionShape2D" parent="InteractArea" index="0"]
 shape = SubResource("CapsuleShape2D_qbico")
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." index="7"]
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." index="6"]
 stream = SubResource("AudioStreamRandomizer_tye7y")
 bus = &"SFX"
 

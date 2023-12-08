@@ -1,9 +1,9 @@
 [gd_scene load_steps=8 format=3 uid="uid://besfnnu5msblc"]
 
 [ext_resource type="Script" path="res://prefabs/Knob/Knob.gd" id="1"]
-[ext_resource type="Texture2D" uid="uid://cxt1od4epjtpf" path="res://icon.svg" id="2"]
 [ext_resource type="Texture2D" uid="uid://chwia5p33ca06" path="res://arts/main scene/Dial back.png" id="2_acuav"]
 [ext_resource type="AudioStream" uid="uid://epmj6pcl5y8m" path="res://sounds/Switch.wav" id="3_jya4n"]
+[ext_resource type="Texture2D" uid="uid://c50j574vmyyu7" path="res://arts/main scene/Dial knob.png" id="3_v03mc"]
 [ext_resource type="Script" path="res://scripts/AudioRandomizer.gd" id="4_t11wf"]
 [ext_resource type="AudioStream" uid="uid://c2igwucp5k6ym" path="res://sounds/FireLoop.ogg" id="5_xcv63"]
 
@@ -23,7 +23,7 @@ rotation = -1.09258
 [node name="knob" type="Sprite2D" parent="knob"]
 position = Vector2(0, -17.9213)
 scale = Vector2(0.1, 0.30502)
-texture = ExtResource("2")
+texture = ExtResource("3_v03mc")
 
 [node name="knobPoint" type="Marker2D" parent="knob"]
 position = Vector2(0, -56)

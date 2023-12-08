@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://bqwwcxspfiwuf"]
+[gd_scene load_steps=22 format=3 uid="uid://332m60fwj635"]
 
 [ext_resource type="Script" path="res://scripts/menu.gd" id="1_35sua"]
 [ext_resource type="FontFile" uid="uid://ds8uy6wtxnlvu" path="res://arts/fonts/Zeyada-Regular.ttf" id="6_y4lxk"]

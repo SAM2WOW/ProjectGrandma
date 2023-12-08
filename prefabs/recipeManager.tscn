@@ -21,42 +21,42 @@ script = ExtResource("6_6kdyy")
 liquidType = 0
 lessOrEqualRatio = 0.35
 points = 0.0
-description = "there's not enough soy sauce"
+description = "Incorrect Soy Sauce Ratio"
 
 [sub_resource type="Resource" id="Resource_4x1ep"]
 script = ExtResource("6_6kdyy")
 liquidType = 0
 lessOrEqualRatio = 0.65
 points = 1.0
-description = "there's enough soy sauce."
+description = "correct Soy Sauce Ratio"
 
 [sub_resource type="Resource" id="Resource_0l17c"]
 script = ExtResource("6_6kdyy")
 liquidType = 0
 lessOrEqualRatio = 1.0
 points = 0.0
-description = "there's too much soy sauce"
+description = "Soy Sauce Ratio too High"
 
 [sub_resource type="Resource" id="Resource_i8hd8"]
 script = ExtResource("6_6kdyy")
 liquidType = 1
 lessOrEqualRatio = 0.35
 points = 0.0
-description = "there's too little vinegar"
+description = "incorrect Vinegar ratio"
 
 [sub_resource type="Resource" id="Resource_fl8sh"]
 script = ExtResource("6_6kdyy")
 liquidType = 1
 lessOrEqualRatio = 0.65
 points = 1.0
-description = "there's enough vinegar"
+description = "correct vinegar ratio"
 
 [sub_resource type="Resource" id="Resource_22652"]
 script = ExtResource("6_6kdyy")
 liquidType = 1
 lessOrEqualRatio = 1.0
 points = 0.0
-description = "there's too much vinegar"
+description = "incorrect vinegar ratio"
 
 [sub_resource type="Resource" id="Resource_o8but"]
 script = ExtResource("3_eufjj")
@@ -94,7 +94,7 @@ quantityPoints = Array[ExtResource("3_eufjj")]([SubResource("Resource_o8but"), S
 [sub_resource type="Resource" id="Resource_7xp4x"]
 script = ExtResource("2_yyyyq")
 doneness = 0
-points = 0.0
+points = -2.0
 description = "the chicken is undercooked"
 
 [sub_resource type="Resource" id="Resource_koqgb"]
@@ -123,7 +123,7 @@ description = "there's no chicken"
 
 [sub_resource type="Resource" id="Resource_cabr1"]
 script = ExtResource("3_eufjj")
-belowOrEqualQuantity = 3
+belowOrEqualQuantity = 2
 quantityPoints = 1.0
 description = "there's not enough chicken"
 
@@ -363,7 +363,7 @@ result = 1
 resultText = ""
 
 [sub_resource type="Gradient" id="Gradient_ev7pv"]
-offsets = PackedFloat32Array(0, 0.106452, 1)
+offsets = PackedFloat32Array(0, 0.0580645, 1)
 colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0)
 
 [sub_resource type="Curve" id="Curve_opxqo"]
@@ -392,18 +392,6 @@ theme_override_fonts/bold_font = ExtResource("11_3jbcm")
 theme_override_font_sizes/normal_font_size = 90
 theme_override_font_sizes/bold_font_size = 71
 bbcode_enabled = true
-text = "[b]Ingredients[/b]
-	* 1/2 pounds chicken thighs
-	* 1/4 cup white vinegar
-	* 1/4 cup soy sauce
-	* Steamed rice, for serving
-
-[b]Steps[/b]
-	1. Brown the chicken thighs in a small pan with oil. Add crushed garlic to cook slightly with chicken
-	2. Combine vinegar and soy sauce. Add to pot with chicken
-	3. Bring to a boil then let simmer for 30-40mins with cover on
-	4. Serve over rice!
-"
 scroll_active = false
 
 [node name="RecipeText" type="RichTextLabel" parent="RecipeNode"]
@@ -418,18 +406,6 @@ theme_override_fonts/bold_font = ExtResource("11_3jbcm")
 theme_override_font_sizes/normal_font_size = 90
 theme_override_font_sizes/bold_font_size = 71
 bbcode_enabled = true
-text = "[b]Ingredients[/b]
-	* 1/2 pounds chicken thighs
-	* 1/4 cup white vinegar
-	* 1/4 cup soy sauce
-	* Steamed rice, for serving
-
-[b]Steps[/b]
-	1. Brown the chicken thighs in a small pan with oil. Add crushed garlic to cook slightly with chicken
-	2. Combine vinegar and soy sauce. Add to pot with chicken
-	3. Bring to a boil then let simmer for 30-40mins with cover on
-	4. Serve over rice!
-"
 scroll_active = false
 
 [node name="EndNode" type="Node2D" parent="."]

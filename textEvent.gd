@@ -6,9 +6,11 @@ class_name TextEvent;
 @export var playOnce : bool = true;
 var hasPlayed : bool = false;
 var active : bool = false;
+var firstTime : bool = false;
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	z_index = 10;
 	pass # Replace with function body.
 
 

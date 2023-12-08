@@ -45,6 +45,8 @@ func CheckCollision(state, trans):
 	var results = space_state.intersect_shape(query)
 	for coll in results:
 		if Global.LiquidType.values().has(coll.collider_id):
+			if !liquidParticles.has(coll.collider_id) || !liquidParticles[coll.collider_id].has(coll.rid):
+				return;
 			var collTwoState = liquidParticles[coll.collider_id][coll.rid];
 			state.MixLiquid(collTwoState);
 		# print(PhysicsServer2D.body_get_collision_layer(coll.rid));

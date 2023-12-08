@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=3 uid="uid://dpg0gbpttdpy5"]
+[gd_scene load_steps=50 format=3 uid="uid://dpg0gbpttdpy5"]
 
 [ext_resource type="Texture2D" uid="uid://cmp4cxxq8yuat" path="res://arts/ivory-off-white-paper-texture.jpg" id="1_1jmmi"]
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_udxji"]
@@ -20,12 +20,14 @@
 [ext_resource type="Texture2D" uid="uid://y0x4wmm0704m" path="res://arts/UI/black.png" id="13_3lq1v"]
 [ext_resource type="PackedScene" uid="uid://h7fkjxle4fr2" path="res://prefabs/panContainer.tscn" id="13_blku6"]
 [ext_resource type="PackedScene" uid="uid://bt4diyeaca8l0" path="res://prefabs/gameManager.tscn" id="13_cncv6"]
+[ext_resource type="PackedScene" uid="uid://dx5ta564ps4td" path="res://prefabs/smallContainer.tscn" id="14_nwfij"]
 [ext_resource type="Texture2D" uid="uid://dxjkg2o64jyn4" path="res://arts/UI/Buttons/Complete Button.png" id="17_m74cn"]
 [ext_resource type="Material" uid="uid://be65qpikd7xak" path="res://arts/UI/wiggleMaterial.tres" id="17_rnnhh"]
 [ext_resource type="Script" path="res://textEvent.gd" id="19_5tann"]
 [ext_resource type="Texture2D" uid="uid://dtytl3pf8yl1v" path="res://arts/UI/Buttons/Restart button.jpg" id="19_8xmlg"]
 [ext_resource type="Texture2D" uid="uid://cfpcexdv1l3y4" path="res://arts/UI/IMG_0044.png" id="19_sp8nt"]
 [ext_resource type="PackedScene" uid="uid://v5qskld56om" path="res://prefabs/textManager.tscn" id="21_rjtit"]
+[ext_resource type="Texture2D" uid="uid://bp8heb6uyu7u5" path="res://bar.png" id="31_8evkg"]
 [ext_resource type="AudioStream" uid="uid://bwv3ngkmackai" path="res://sounds/CompleteSound.ogg" id="34_yowf1"]
 [ext_resource type="AudioStream" uid="uid://ml0deg4pqvk1" path="res://sounds/Slide1.wav" id="35_36j26"]
 [ext_resource type="AudioStream" uid="uid://gcr1455oig1v" path="res://sounds/Slide2.wav" id="36_0ahhm"]
@@ -324,6 +326,14 @@ z_index = -10
 position = Vector2(1920, 1280)
 texture = ExtResource("1_1jmmi")
 
+[node name="filter" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0.180392)
+self_modulate = Color(0.0470588, 0.192157, 0.192157, 1)
+position = Vector2(64.5002, -1209)
+scale = Vector2(156.781, 181.187)
+texture = ExtResource("31_8evkg")
+
 [node name="Node2D" type="Node2D" parent="."]
 
 [node name="Camera2D" type="Camera2D" parent="Node2D"]
@@ -342,20 +352,20 @@ gravity_scale = 1.0
 liquidType = 1
 
 [node name="Pan" parent="Node2D/Cooking Scene" instance=ExtResource("13_blku6")]
-position = Vector2(0, 222)
+position = Vector2(61, 412)
 collision_priority = 1.0
 
 [node name="Container" parent="Node2D/Cooking Scene" instance=ExtResource("7_wm87n")]
 position = Vector2(-640, 446)
 
 [node name="IngredientGroup" parent="Node2D/Cooking Scene/Container" instance=ExtResource("6_b25a0")]
-position = Vector2(0, -128)
+position = Vector2(-516, -130)
 scale = Vector2(-6.59748, -6.59748)
 ingredientPath = "res://prefabs/Ingredients/garlic.tscn"
 numIngredients = 10
 
 [node name="IngredientGroup2" parent="Node2D/Cooking Scene/Container" instance=ExtResource("6_b25a0")]
-position = Vector2(0, -305)
+position = Vector2(4.02451e-11, -128)
 rotation = 3.14159
 scale = Vector2(6.59748, 6.59748)
 ingredientPath = "res://prefabs/Ingredients/chicken.tscn"
@@ -364,17 +374,17 @@ numIngredients = 3
 [node name="StoveTop" parent="Node2D/Cooking Scene" instance=ExtResource("8_fma0h")]
 position = Vector2(59, 640)
 
-[node name="Container2" parent="Node2D/Cooking Scene" instance=ExtResource("7_wm87n")]
-position = Vector2(-1280, 446)
+[node name="Container3" parent="Node2D/Cooking Scene" instance=ExtResource("14_nwfij")]
+position = Vector2(-1154, 448)
 
-[node name="IngredientGroup" parent="Node2D/Cooking Scene/Container2" instance=ExtResource("6_b25a0")]
+[node name="IngredientGroup" parent="Node2D/Cooking Scene/Container3" instance=ExtResource("6_b25a0")]
 position = Vector2(0, -128)
 scale = Vector2(-6.59748, -6.59748)
 ingredientPath = "res://prefabs/Ingredients/peppercorn.tscn"
 numIngredients = 10
 
-[node name="IngredientGroup2" parent="Node2D/Cooking Scene/Container2" instance=ExtResource("6_b25a0")]
-position = Vector2(0, -305)
+[node name="IngredientGroup2" parent="Node2D/Cooking Scene/Container3" instance=ExtResource("6_b25a0")]
+position = Vector2(0, -130)
 scale = Vector2(-6.59748, -6.59748)
 ingredientPath = "res://prefabs/Ingredients/bayLeaf.tscn"
 numIngredients = 3
@@ -460,6 +470,7 @@ texture = ExtResource("3_u1ivw")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="ColorRect" type="TextureRect" parent="CanvasLayer"]
+visible = false
 texture_filter = 1
 material = SubResource("ShaderMaterial_kbxna")
 anchors_preset = 15
@@ -617,9 +628,6 @@ volume_db = -5.0
 [connection signal="input_event" from="Node2D/Cooking Scene/Container" to="Node2D/Cooking Scene/Container" method="_on_input_event"]
 [connection signal="mouse_entered" from="Node2D/Cooking Scene/Container" to="Node2D/Cooking Scene/Container" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Node2D/Cooking Scene/Container" to="Node2D/Cooking Scene/Container" method="_on_mouse_exited"]
-[connection signal="input_event" from="Node2D/Cooking Scene/Container2" to="Node2D/Cooking Scene/Container2" method="_on_input_event"]
-[connection signal="mouse_entered" from="Node2D/Cooking Scene/Container2" to="Node2D/Cooking Scene/Container2" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="Node2D/Cooking Scene/Container2" to="Node2D/Cooking Scene/Container2" method="_on_mouse_exited"]
 [connection signal="input_event" from="Node2D/Cooking Scene/CompleteButton" to="." method="_on_complete_button_input_event"]
 [connection signal="mouse_entered" from="Node2D/Cooking Scene/CompleteButton" to="." method="_on_complete_button_mouse_entered"]
 [connection signal="mouse_exited" from="Node2D/Cooking Scene/CompleteButton" to="." method="_on_complete_button_mouse_exited"]
