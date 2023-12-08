@@ -1,10 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://4rupeebm31op"]
+[gd_scene load_steps=10 format=3 uid="uid://4rupeebm31op"]
 
 [ext_resource type="PackedScene" uid="uid://dpg0gbpttdpy5" path="res://levels/main.tscn" id="1_a8jge"]
 [ext_resource type="Texture2D" uid="uid://ctc85ci7t7dfj" path="res://arts/main scene/Day2.jpg" id="2_i2w18"]
 [ext_resource type="Script" path="res://textEvent.gd" id="2_wpnyr"]
 [ext_resource type="Texture2D" uid="uid://ed50ld8jg5ks" path="res://arts/main scene/IMG_0049.png" id="2_x6dbl"]
 [ext_resource type="FontFile" uid="uid://ds8uy6wtxnlvu" path="res://arts/fonts/Zeyada-Regular.ttf" id="3_bjmo5"]
+[ext_resource type="PackedScene" uid="uid://bnnp1hg4d66h0" path="res://prefabs/Decors/baby_bottle.tscn" id="6_04x5s"]
+[ext_resource type="PackedScene" uid="uid://b1vd7f8me6fey" path="res://prefabs/Decors/baby_bottle_cap.tscn" id="7_qlnvg"]
+[ext_resource type="PackedScene" uid="uid://d0unpm168scpi" path="res://prefabs/Decors/photo.tscn" id="8_65c7q"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_c5rhk"]
 font = ExtResource("3_bjmo5")
@@ -132,3 +135,18 @@ self_modulate = Color(1, 1, 1, 0.301961)
 position = Vector2(-561, 145)
 scale = Vector2(0.514732, 0.514732)
 texture = ExtResource("2_x6dbl")
+
+[node name="BabyBottle" parent="Node2D/Cooking Scene" index="11" instance=ExtResource("6_04x5s")]
+position = Vector2(-1437, 843)
+
+[node name="BabyBottleCap" parent="Node2D/Cooking Scene" index="12" instance=ExtResource("7_qlnvg")]
+position = Vector2(-1436, 682)
+
+[node name="Photo" parent="Node2D/Cooking Scene" index="13" instance=ExtResource("8_65c7q")]
+position = Vector2(-1761, 828)
+
+[node name="BabyBottle2" parent="Node2D/Cooking Scene" index="14" instance=ExtResource("6_04x5s")]
+position = Vector2(-1249, 839)
+
+[node name="BabyBottleCap2" parent="Node2D/Cooking Scene" index="15" instance=ExtResource("7_qlnvg")]
+position = Vector2(-1240, 678)
