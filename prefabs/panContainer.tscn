@@ -32,6 +32,9 @@ position = Vector2(10, 10)
 scale = Vector2(1.2, 1.2)
 texture = ExtResource("3_k10yi")
 
+[node name="EnterBox" parent="EnterArea" index="0"]
+polygon = PackedVector2Array(-308, -97, -307, -41, -184, 80, 187, 81, 309, -39, 318, -92)
+
 [node name="Collider" parent="." index="2"]
 polygon = PackedVector2Array(-320, -96, -288, 32, -224, 96, 224, 96, 288, 32, 320, -96, 276, -148, 288, -96, 256, 0, 192, 64, -192, 64, -256, 0, -288, -96, -279, -151)
 
