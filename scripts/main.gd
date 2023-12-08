@@ -85,7 +85,7 @@ func _on_animation_player_animation_finished(anim_name):
 	elif anim_name == "Final":
 		$CanvasLayer/HUD/HoverArea3.show()
 	if anim_name == "Exit":
-		get_tree().reload_current_scene()
+		Global.sceneManager.ReloadCurrentScene()
 
 
 func _on_compelet_level_button_pressed():
