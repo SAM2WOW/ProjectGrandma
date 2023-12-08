@@ -35,7 +35,7 @@ func Cook(cookingType: IngredientState.CookingType, heatMultiplier, delta):
 	if cookingType == IngredientState.CookingType.Boiled:
 		if Global.currentStage == 0:
 			var c = Global.textManager.Activate("OnBoil");
-			followText = c;
+			# followText = c;
 		var currMult = clamp(linear_velocity.length(), 0, cookingVelocityThresholds);
 		currMult = Global.remap_range(currMult, 0, cookingVelocityThresholds, lowVelocityMultiplier, highVelocityMultiplier);
 		if currMult < currentVelocityMult:
