@@ -19,9 +19,6 @@ func SwitchScene(filePath):
 	#get_tree().change_scene_to_file(filePath)
 	
 func DeferredSwitchScene(filePath):
-
-
-	#currentScene.free()
 	root.remove_child(currentScene)
 	print(root)
 	var scene = load(filePath)
