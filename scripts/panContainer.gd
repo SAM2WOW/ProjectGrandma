@@ -18,9 +18,9 @@ var averageIngredientVelocity : float = 0;
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	super._ready();
+	Global.instantiationManager.pan = self;
 	cookingObjects.clear();
 	containedLiquid.clear();
-	Global.instantiationManager.pan = self;
 
 func ObjectAction(event):
 	super.ObjectAction(event);
@@ -35,7 +35,6 @@ func _process(delta):
 	UpdateHeat(delta);
 	UpdateFluids(delta);
 	CookIngredients(delta);
-	
 	# update audio
 	if GetCookingSize() > 0 and cookingHeat > 0.0:
 		if not $Boiling.is_playing():

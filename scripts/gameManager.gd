@@ -75,6 +75,7 @@ func BeginDragObject(object : Draggable):
 	draggedObject = object;
 	draggedObject.UnHover()
 	ToggleCursor('grab')
+	Global.iscooking = true
 	
 func DropObject():
 	if !draggedObject: return;
@@ -89,6 +90,7 @@ func UpdateStage():
 	if !canCompleteStage: return
 	print('Update Scene')
 	Global.currentStage += 1
+	queue_free()
 	var scenePath = stageScenes[Global.currentStage]
 	#print(scenePath)
 	get_tree().change_scene_to_file(scenePath)
@@ -100,7 +102,7 @@ func CheckGameEnd():
 	return false
 
 func AddObjectToPan(type,id):
-		
+	if !Global.iscooking: return	
 	if type == "Ingredient":
 		if !ingredientsInPan.has(id):
 			print("Add ",type,": ",id)
@@ -109,6 +111,7 @@ func AddObjectToPan(type,id):
 		if !liquidInPan.has(id):
 			print("Add ",type,": ",id)
 			liquidInPan.append(id)
+	ArraysAreEqual(Global.recipeManager.allLiquid,liquidInPan)
 	if ArraysAreEqual(Global.recipeManager.allIngredients,ingredientsInPan) and ArraysAreEqual(Global.recipeManager.allLiquid,liquidInPan):
 		canCompleteStage = true
 		stageComplete.emit()
@@ -123,7 +126,9 @@ func ArraysAreEqual(array1,array2):
 	return true
 
 func OnCompleteStage():
+	Global.iscooking = false
 	if CheckGameEnd():
+		Global.currentStage = 0
 		get_tree().change_scene_to_file(menu)
 		print("Complete last stage, game ends")
 		gameEnd.emit()

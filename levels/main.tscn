@@ -354,9 +354,11 @@ liquidType = 1
 [node name="Pan" parent="Node2D/Cooking Scene" instance=ExtResource("13_blku6")]
 position = Vector2(61, 412)
 collision_priority = 1.0
+containedLiquid = {}
 
 [node name="Container" parent="Node2D/Cooking Scene" instance=ExtResource("7_wm87n")]
 position = Vector2(-640, 446)
+containedLiquid = {}
 
 [node name="IngredientGroup" parent="Node2D/Cooking Scene/Container" instance=ExtResource("6_b25a0")]
 position = Vector2(-516, -130)
@@ -376,6 +378,7 @@ position = Vector2(59, 640)
 
 [node name="Container3" parent="Node2D/Cooking Scene" instance=ExtResource("14_nwfij")]
 position = Vector2(-1154, 448)
+containedLiquid = {}
 
 [node name="IngredientGroup" parent="Node2D/Cooking Scene/Container3" instance=ExtResource("6_b25a0")]
 position = Vector2(0, -128)
@@ -411,6 +414,7 @@ position = Vector2(1408, -96)
 
 [node name="MeasuringCup" parent="Node2D/Cooking Scene" instance=ExtResource("10_vgqss")]
 position = Vector2(1073, 400)
+containedLiquid = {}
 
 [node name="CompleteButton" type="Area2D" parent="Node2D/Cooking Scene"]
 position = Vector2(-2247, 816)
@@ -597,6 +601,7 @@ text = "Complete"
 script = SubResource("GDScript_eekhh")
 
 [node name="TestLevelText" type="Label" parent="CanvasLayer"]
+visible = false
 offset_right = 40.0
 offset_bottom = 23.0
 mouse_filter = 1

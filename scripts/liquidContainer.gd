@@ -2,7 +2,7 @@ extends Draggable
 
 class_name LiquidContainer
 
-var containedLiquid = {};
+@export var containedLiquid = {};
 var pouring=false;
 var rotateSpeed : float = 4.0;
 @export var mixThresholdRatio = 0.25;

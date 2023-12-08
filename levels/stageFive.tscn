@@ -1,8 +1,8 @@
-[gd_scene load_steps=94 format=3 uid="uid://gsv6vap2dyly"]
+[gd_scene load_steps=94 format=3 uid="uid://iefyv8leivqi"]
 
 [ext_resource type="PackedScene" uid="uid://dpg0gbpttdpy5" path="res://levels/main.tscn" id="1_572cr"]
 [ext_resource type="Script" path="res://levels/stageFive.gd" id="2_eg751"]
-[ext_resource type="PackedScene" uid="uid://p10wedylbibp" path="res://prefabs/shelf.tscn" id="3_3rr2a"]
+[ext_resource type="PackedScene" path="res://prefabs/shelf.tscn" id="3_3rr2a"]
 [ext_resource type="Script" path="res://textEvent.gd" id="3_553pb"]
 [ext_resource type="Script" path="res://Resources/liquidMixturePoints.gd" id="3_fxykp"]
 [ext_resource type="FontFile" uid="uid://ds8uy6wtxnlvu" path="res://arts/fonts/Zeyada-Regular.ttf" id="4_4qt5k"]
@@ -621,6 +621,7 @@ position = Vector2(1529, -261)
 
 [node name="Container5" parent="Node2D/Cooking Scene" index="12" instance=ExtResource("6_wnvrn")]
 position = Vector2(1148, -411)
+containedLiquid = {}
 
 [node name="IngredientGroup2" parent="Node2D/Cooking Scene/Container5" index="15" instance=ExtResource("7_ryuv4")]
 position = Vector2(0, -130)

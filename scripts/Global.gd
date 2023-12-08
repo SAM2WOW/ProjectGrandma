@@ -10,7 +10,7 @@ var instantiationManager;
 var textManager;
 var sceneManager;
 var finishSeqText = false;
-
+var iscooking = false
 # Called when the node enters the scene tree for the first time.
 #func _ready():
 	#recipeManager = get_tree().get_first_node_in_group("RecipeManager");
@@ -36,5 +36,4 @@ func randv_circle(min_radius := 1.0, max_radius := 1.0) -> Vector2:
 	var t := rng.randf() * TAU
 	return Vector2(r, 0).rotated(t)
 
-func LoadGameScene():
-	pass
+

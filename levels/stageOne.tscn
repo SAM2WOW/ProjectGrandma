@@ -218,6 +218,18 @@ position = Vector2(-561, 145)
 scale = Vector2(0.514732, 0.514732)
 texture = ExtResource("7_uluv3")
 
+[node name="Pan" parent="Node2D/Cooking Scene" index="2"]
+containedLiquid = {}
+
+[node name="Container" parent="Node2D/Cooking Scene" index="3"]
+containedLiquid = {}
+
+[node name="Container3" parent="Node2D/Cooking Scene" index="5"]
+containedLiquid = {}
+
+[node name="MeasuringCup" parent="Node2D/Cooking Scene" index="8"]
+containedLiquid = {}
+
 [node name="CompeletLevelButton" parent="CanvasLayer/HUD" index="4"]
 offset_left = 1366.0
 offset_top = 886.0

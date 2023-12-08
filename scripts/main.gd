@@ -10,7 +10,7 @@ func _ready():
 	$CanvasLayer/TestLevelText.text = "Level" + str(Global.currentStage+1)
 	Global.recipeManager.GetCurrentRecipeIngredients()
 	$CanvasLayer/HUD/CompeletLevelButton.modulate.a = 0.1
-	
+	Global.iscooking = false
 	MusicPlayer.fade_in() 
 	MusicPlayer.play_music()
 	Global.gameManager.ToggleCursor('normal')
