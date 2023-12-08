@@ -42,12 +42,8 @@ func _input(event):
 func BeginDragObject(object : Draggable):
 	if draggedObject: DropObject();
 	draggedObject = object;
-
-func HoverObject(object : Draggable):
-	if hoveredObject: hoveredObject.hovering = false;
-	hoveredObject = object;
-	object.hovering = true;
-
+	draggedObject.UnHover()
+	
 func DropObject():
 	if !draggedObject: return;
 	draggedObject.StopDrag();

@@ -30,6 +30,26 @@ func _process(delta):
 	UpdateHeat(delta);
 	UpdateFluids(delta);
 	CookIngredients(delta);
+	
+	# update audio
+	if cookingObjects.has("Ingredient"):
+		print(cookingObjects["Ingredient"].size())
+		if cookingObjects["Ingredient"].size() > 0 and cookingHeat > 0.0:
+			if not $Boiling.is_playing():
+				$Boiling.play()
+				$Frying.play()
+				
+			var heatWeight =  (cookingHeat / 2)
+			var boiledWeight = clamp(GetLiquidTotal() / liquidThreshold, 0.0, 1.0)
+			$Boiling.set_volume_db(linear_to_db(boiledWeight * heatWeight))
+			$Frying.set_volume_db(linear_to_db((1 - boiledWeight) * heatWeight))
+			
+			var deepWaterWeight = clamp(GetLiquidTotal() / 400.0, 0.0, 1.0)
+			$Boiling.set_pitch_scale(lerp(1.0, 0.76, deepWaterWeight))
+		else:
+			if $Boiling.is_playing():
+				$Boiling.stop()
+				$Frying.stop()
 
 func _physics_process(delta):
 	super._physics_process(delta);
@@ -108,3 +128,10 @@ func OnLiquidExit(id, body_rid):
 	super.OnLiquidExit(id, body_rid);
 	if GetLiquidTotal() < liquidThreshold:
 		currentCookingState = IngredientState.CookingType.Fried;
+
+func GetCookingSize() -> int:
+	var total = 0;
+	for i in cookingObjects.values():
+		total+= i.size();
+	# print("total: ", total);
+	return total;

@@ -1,7 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://dcdllixbqh58h"]
+[gd_scene load_steps=13 format=3 uid="uid://dcdllixbqh58h"]
 
 [ext_resource type="PackedScene" uid="uid://c3gtn7dcgsaa0" path="res://prefabs/draggable.tscn" id="1_6ia7r"]
 [ext_resource type="Script" path="res://scripts/mixingSpoon.gd" id="2_lmuof"]
+[ext_resource type="AudioStream" uid="uid://bvnntyidr4bjj" path="res://sounds/Impact2.wav" id="3_86le3"]
+[ext_resource type="AudioStream" uid="uid://cmc2mhscfc4am" path="res://sounds/Impact3.wav" id="4_i3626"]
+[ext_resource type="AudioStream" uid="uid://d1fimxj74503o" path="res://sounds/Impact5.wav" id="5_7svpn"]
+[ext_resource type="AudioStream" uid="uid://c0d2nx1rafyhd" path="res://sounds/Impact1.wav" id="6_sxugj"]
+[ext_resource type="AudioStream" uid="uid://cw4wi1e2536hj" path="res://sounds/Impact4.wav" id="7_cgg0j"]
+[ext_resource type="AudioStream" uid="uid://0m5vtnxc3wex" path="res://sounds/Impact6.wav" id="8_f2cdj"]
+[ext_resource type="AudioStream" uid="uid://qt5xnbvjptbt" path="res://sounds/Impact7.wav" id="9_bqyqs"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jo5k7"]
 radius = 32.0
@@ -11,7 +18,26 @@ height = 640.0
 radius = 96.0
 height = 704.0
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_t4ijv"]
+streams_count = 7
+stream_0/stream = ExtResource("3_86le3")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("4_i3626")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("5_7svpn")
+stream_2/weight = 1.0
+stream_3/stream = ExtResource("6_sxugj")
+stream_3/weight = 1.0
+stream_4/stream = ExtResource("7_cgg0j")
+stream_4/weight = 1.0
+stream_5/stream = ExtResource("8_f2cdj")
+stream_5/weight = 1.0
+stream_6/stream = ExtResource("9_bqyqs")
+stream_6/weight = 1.0
+
 [node name="MixingSpoon" instance=ExtResource("1_6ia7r")]
+max_contacts_reported = 1
+contact_monitor = true
 script = ExtResource("2_lmuof")
 rotateSpeed = 100.0
 
@@ -26,3 +52,9 @@ shape = SubResource("CapsuleShape2D_jo5k7")
 [node name="CollisionShape2D" parent="InteractArea" index="0"]
 rotation = 0.0
 shape = SubResource("CapsuleShape2D_g0hsb")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." index="6"]
+stream = SubResource("AudioStreamRandomizer_t4ijv")
+bus = &"SFX"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

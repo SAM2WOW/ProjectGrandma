@@ -1,4 +1,4 @@
-[gd_scene load_steps=104 format=3 uid="uid://dpg0gbpttdpy5"]
+[gd_scene load_steps=105 format=3 uid="uid://dpg0gbpttdpy5"]
 
 [ext_resource type="Texture2D" uid="uid://cmp4cxxq8yuat" path="res://arts/ivory-off-white-paper-texture.jpg" id="1_1jmmi"]
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_udxji"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://dnle2jjcpad0l" path="res://arts/main scene/kitchen scene.png" id="8_ocn02"]
 [ext_resource type="PackedScene" uid="uid://dcdllixbqh58h" path="res://prefabs/mixingSpoon.tscn" id="9_vpwpm"]
 [ext_resource type="FontFile" uid="uid://ds8uy6wtxnlvu" path="res://arts/fonts/Zeyada-Regular.ttf" id="10_hjo2k"]
+[ext_resource type="PackedScene" uid="uid://bvlk2bnpkqn8u" path="res://prefabs/measuringCup.tscn" id="10_vgqss"]
 [ext_resource type="Shader" path="res://arts/UI/transition.gdshader" id="11_b5byl"]
 [ext_resource type="PackedScene" uid="uid://w7pwgo4f8bvq" path="res://prefabs/recipeManager.tscn" id="11_bxixm"]
 [ext_resource type="FontFile" uid="uid://lf3j1njjt8sb" path="res://arts/fonts/RockSalt-Regular.ttf" id="11_ml1rf"]
@@ -57,6 +58,18 @@ shader_parameter/water_color = Color(0, 0.462745, 1, 1)
 shader_parameter/bubble_color = Color(1, 1, 1, 1)
 shader_parameter/noise = SubResource("4")
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kbxna"]
+shader = ExtResource("11_b5byl")
+shader_parameter/cutoff = 0.0
+shader_parameter/smooth_size = 0.125
+shader_parameter/mask = ExtResource("12_hwjn3")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1lh3a"]
+shader = ExtResource("11_b5byl")
+shader_parameter/cutoff = 1.0
+shader_parameter/smooth_size = 0.125
+shader_parameter/mask = ExtResource("12_hwjn3")
+
 [sub_resource type="GDScript" id="GDScript_eekhh"]
 script/source = "extends Button
 
@@ -76,18 +89,6 @@ func _on_pressed():
 	
 	pass # Replace with function body.
 "
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_kbxna"]
-shader = ExtResource("11_b5byl")
-shader_parameter/cutoff = 0.0
-shader_parameter/smooth_size = 0.125
-shader_parameter/mask = ExtResource("12_hwjn3")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_1lh3a"]
-shader = ExtResource("11_b5byl")
-shader_parameter/cutoff = 1.0
-shader_parameter/smooth_size = 0.125
-shader_parameter/mask = ExtResource("12_hwjn3")
 
 [sub_resource type="LabelSettings" id="LabelSettings_5i7dh"]
 font = ExtResource("11_ml1rf")
@@ -604,6 +605,18 @@ tracks/2/keys = {
 "update": 0,
 "values": [Vector2(0, -3000), Vector2(0, 0)]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Node2D/Recipe Scene/RichTextLabel:visible_ratio")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
 
 [sub_resource type="Animation" id="Animation_na2py"]
 length = 0.001
@@ -642,6 +655,18 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [1.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Node2D/Recipe Scene/RichTextLabel:visible_ratio")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
 }
 
 [sub_resource type="Animation" id="Animation_qwj85"]
@@ -765,6 +790,9 @@ shape = SubResource("RectangleShape2D_thd3q")
 [node name="MixingSpoon" parent="Node2D/Cooking Scene" instance=ExtResource("9_vpwpm")]
 position = Vector2(1408, -96)
 
+[node name="MeasuringCup" parent="Node2D/Cooking Scene" instance=ExtResource("10_vgqss")]
+position = Vector2(1073, 400)
+
 [node name="WaterColor" type="Sprite2D" parent="Node2D"]
 visible = false
 material = SubResource("ShaderMaterial_h723b")
@@ -780,6 +808,7 @@ offset_top = -2618.0
 offset_right = 1233.0
 offset_bottom = -426.0
 rotation = -0.0488692
+mouse_filter = 1
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_fonts/normal_font = ExtResource("10_hjo2k")
 theme_override_fonts/bold_font = ExtResource("11_ml1rf")
@@ -798,8 +827,8 @@ text = "[b]Ingredients[/b]
 	3. Bring to a boil then let simmer for 30-40mins with cover on
 	4. Serve over rice!
 "
-visible_characters = 74
-visible_ratio = 0.2
+visible_characters = 0
+visible_ratio = 0.0
 
 [node name="Result Scene" type="Node2D" parent="Node2D"]
 modulate = Color(1, 1, 1, 0)
@@ -810,6 +839,7 @@ offset_top = -2179.0
 offset_right = -521.0
 offset_bottom = -1795.0
 rotation = -0.0488692
+mouse_filter = 1
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_fonts/normal_font = ExtResource("10_hjo2k")
 theme_override_fonts/bold_font = ExtResource("11_ml1rf")
@@ -832,18 +862,8 @@ texture = ExtResource("14_qm216")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="CompeletLevelButton" type="Button" parent="CanvasLayer"]
-modulate = Color(0.027451, 0, 0.0117647, 1)
-offset_left = 1569.0
-offset_top = 222.0
-offset_right = 1773.0
-offset_bottom = 318.0
-mouse_filter = 2
-mouse_default_cursor_shape = 2
-text = "Complete"
-script = SubResource("GDScript_eekhh")
-
 [node name="ColorRect" type="TextureRect" parent="CanvasLayer"]
+visible = false
 texture_filter = 1
 material = SubResource("ShaderMaterial_kbxna")
 anchors_preset = 15
@@ -949,6 +969,16 @@ theme_override_fonts/font = ExtResource("10_hjo2k")
 theme_override_font_sizes/font_size = 40
 text = "Next Page"
 
+[node name="CompeletLevelButton" type="Button" parent="CanvasLayer/HUD"]
+layout_mode = 0
+offset_left = 1569.0
+offset_top = 222.0
+offset_right = 1773.0
+offset_bottom = 318.0
+mouse_default_cursor_shape = 2
+text = "Complete"
+script = SubResource("GDScript_eekhh")
+
 [node name="TestLevelText" type="Label" parent="CanvasLayer"]
 offset_right = 40.0
 offset_bottom = 23.0
@@ -1007,8 +1037,8 @@ volume_db = -5.0
 [connection signal="input_event" from="Node2D/Cooking Scene/Container2" to="Node2D/Cooking Scene/Container2" method="_on_input_event"]
 [connection signal="mouse_entered" from="Node2D/Cooking Scene/Container2" to="Node2D/Cooking Scene/Container2" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Node2D/Cooking Scene/Container2" to="Node2D/Cooking Scene/Container2" method="_on_mouse_exited"]
-[connection signal="pressed" from="CanvasLayer/CompeletLevelButton" to="." method="_on_compelet_level_button_pressed"]
 [connection signal="mouse_entered" from="CanvasLayer/HUD/HoverArea" to="." method="_on_hover_area_mouse_entered"]
 [connection signal="mouse_entered" from="CanvasLayer/HUD/HoverArea2" to="." method="_on_hover_area_2_mouse_entered"]
 [connection signal="mouse_entered" from="CanvasLayer/HUD/HoverArea3" to="." method="_on_hover_area_3_mouse_entered"]
+[connection signal="pressed" from="CanvasLayer/HUD/CompeletLevelButton" to="." method="_on_compelet_level_button_pressed"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

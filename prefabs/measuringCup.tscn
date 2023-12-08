@@ -1,0 +1,73 @@
+[gd_scene load_steps=8 format=3 uid="uid://bvlk2bnpkqn8u"]
+
+[ext_resource type="PackedScene" uid="uid://drn5x3vivefyp" path="res://prefabs/liquidContainer.tscn" id="1_sbf78"]
+[ext_resource type="Texture2D" uid="uid://ci5i6sujtt1ry" path="res://arts/kitchenware/measuring cup line.png" id="2_seyaj"]
+[ext_resource type="Texture2D" uid="uid://t2ow6qe8g01o" path="res://arts/kitchenware/measuring cup color.png" id="3_psmt4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l4jx0"]
+size = Vector2(221.213, 35.2608)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ro6cm"]
+size = Vector2(232.709, 32.8927)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3umpj"]
+size = Vector2(212, 28)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vs7ud"]
+radius = 177.0
+height = 370.0
+
+[node name="MeasuringCup" instance=ExtResource("1_sbf78")]
+
+[node name="Sprite2DShadow" parent="." index="0"]
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("2_seyaj")
+
+[node name="EnterBox" parent="EnterArea" index="0"]
+polygon = PackedVector2Array(-148, -169, -112, 11, -81, 106, 31, 109, 94, 104, 107, 26, 141, -170)
+
+[node name="Collider" parent="." index="2"]
+disabled = true
+
+[node name="CollisionPolygon2D2" parent="." index="3"]
+position = Vector2(436, -153)
+rotation = -0.218531
+
+[node name="CollisionPolygon2D" parent="." index="4"]
+position = Vector2(171, -33)
+rotation = 0.150388
+polygon = PackedVector2Array(-329.456, -15.3956, -290, -16, -294, -72)
+
+[node name="CollisionShape2D4" parent="." index="5"]
+position = Vector2(-109.88, -1.76956)
+shape = SubResource("RectangleShape2D_l4jx0")
+
+[node name="CollisionShape2D5" parent="." index="6"]
+visible = false
+disabled = true
+
+[node name="CollisionShape2D6" parent="." index="7"]
+position = Vector2(107.999, -9.39846)
+rotation = -1.42565
+shape = SubResource("RectangleShape2D_ro6cm")
+
+[node name="CollisionShape2D3" parent="." index="8"]
+visible = false
+disabled = true
+
+[node name="CollisionShape2D2" parent="." index="9"]
+position = Vector2(2, 102)
+shape = SubResource("RectangleShape2D_3umpj")
+
+[node name="Sprite2D" parent="." index="10"]
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("2_seyaj")
+
+[node name="FrontSprite" parent="Sprite2D" index="0"]
+position = Vector2(0, -0.625)
+texture = ExtResource("3_psmt4")
+
+[node name="CollisionShape2D" parent="InteractArea" index="0"]
+visible = true
+position = Vector2(-1, -32)
+shape = SubResource("CapsuleShape2D_vs7ud")

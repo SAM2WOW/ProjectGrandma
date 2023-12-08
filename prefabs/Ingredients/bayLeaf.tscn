@@ -52,12 +52,12 @@ typeInfluenceMultiplier = {
 stateColor = Color(0.231373, 0.164706, 0.0196078, 1)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6r7tc"]
-radius = 18.0
-height = 78.0
+radius = 13.0
+height = 58.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_18hcg"]
-radius = 55.0
-height = 248.0
+radius = 42.0
+height = 174.0
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_xqxg5"]
 streams_count = 3
@@ -69,22 +69,22 @@ stream_2/stream = ExtResource("6_b6kd8")
 stream_2/weight = 1.0
 
 [node name="BayLeaf" instance=ExtResource("1_niybt")]
+mass = 0.5
 max_contacts_reported = 1
 contact_monitor = true
 ingredientType = 4
 ingredientStates = Array[ExtResource("2_bffmu")]([SubResource("Resource_54sm5"), SubResource("Resource_nrcvm"), SubResource("Resource_4btwd"), SubResource("Resource_6bdik")])
-lowVelocityMultiplier = 1.0
 
 [node name="Sprite2DShadow" parent="." index="0"]
 scale = Vector2(0.4, 0.4)
 texture = null
 
 [node name="Sprite2D" parent="." index="1"]
-scale = Vector2(0.4, 0.4)
+scale = Vector2(0.266132, 0.4)
 texture = ExtResource("3_ejqvq")
 
 [node name="CollisionShape2D" parent="." index="2"]
-position = Vector2(0, 5)
+position = Vector2(0, 2)
 shape = SubResource("CapsuleShape2D_6r7tc")
 
 [node name="CollisionShape2D" parent="InteractArea" index="0"]
