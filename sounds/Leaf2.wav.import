@@ -2,13 +2,13 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://bx110kly8mlfu"
-path="res://.godot/imported/SmallImpact2.wav-91440c1d74a95772c7ccbff9ff718c5a.sample"
+uid="uid://xq1wdhylt7cv"
+path="res://.godot/imported/Leaf2.wav-f8fafd0a0bde55aba1c7dc12ec422c83.sample"
 
 [deps]
 
-source_file="res://sounds/SmallImpact2.wav"
-dest_files=["res://.godot/imported/SmallImpact2.wav-91440c1d74a95772c7ccbff9ff718c5a.sample"]
+source_file="res://sounds/Leaf2.wav"
+dest_files=["res://.godot/imported/Leaf2.wav-f8fafd0a0bde55aba1c7dc12ec422c83.sample"]
 
 [params]
 

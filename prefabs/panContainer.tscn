@@ -1,14 +1,13 @@
-[gd_scene load_steps=15 format=3 uid="uid://h7fkjxle4fr2"]
+[gd_scene load_steps=14 format=3 uid="uid://h7fkjxle4fr2"]
 
 [ext_resource type="PackedScene" uid="uid://drn5x3vivefyp" path="res://prefabs/liquidContainer.tscn" id="1_ribvh"]
 [ext_resource type="Script" path="res://scripts/panContainer.gd" id="2_2j0dy"]
 [ext_resource type="Texture2D" uid="uid://dqy1ywdlmbisa" path="res://arts/kitchenware/pan with handle.png" id="2_ksjrc"]
 [ext_resource type="Texture2D" uid="uid://b6nr0o5mal2iv" path="res://arts/kitchenware/pan watercolor only.png" id="3_3boog"]
 [ext_resource type="Texture2D" uid="uid://diyloqr1ltoak" path="res://arts/kitchenware/pan line art only.png" id="3_k10yi"]
-[ext_resource type="AudioStream" uid="uid://drlguceke1g54" path="res://sounds/Box1.wav" id="6_qom6s"]
-[ext_resource type="AudioStream" uid="uid://1buwgie2uf8p" path="res://sounds/Box2.wav" id="7_eak34"]
-[ext_resource type="AudioStream" uid="uid://38kap31d6i36" path="res://sounds/Box3.wav" id="8_2w7dw"]
-[ext_resource type="AudioStream" uid="uid://bg021yocvbyv1" path="res://sounds/Box4.wav" id="9_cy4ce"]
+[ext_resource type="AudioStream" uid="uid://d13e5rwaividr" path="res://sounds/Pan1.wav" id="6_gq0qs"]
+[ext_resource type="AudioStream" uid="uid://ch6xu4y77lnk5" path="res://sounds/Pan2.wav" id="7_xwidv"]
+[ext_resource type="AudioStream" uid="uid://bq0gnic7ujbke" path="res://sounds/Pan3.wav" id="8_et1v3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2c82j"]
 size = Vector2(160, 48)
@@ -24,15 +23,13 @@ radius = 128.0
 height = 1054.0
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_6upfq"]
-streams_count = 4
-stream_0/stream = ExtResource("6_qom6s")
+streams_count = 3
+stream_0/stream = ExtResource("6_gq0qs")
 stream_0/weight = 1.0
-stream_1/stream = ExtResource("7_eak34")
+stream_1/stream = ExtResource("7_xwidv")
 stream_1/weight = 1.0
-stream_2/stream = ExtResource("8_2w7dw")
+stream_2/stream = ExtResource("8_et1v3")
 stream_2/weight = 1.0
-stream_3/stream = ExtResource("9_cy4ce")
-stream_3/weight = 1.0
 
 [node name="Pan" instance=ExtResource("1_ribvh")]
 collision_priority = 1000.0

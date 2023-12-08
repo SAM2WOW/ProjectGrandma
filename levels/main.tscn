@@ -1,4 +1,4 @@
-[gd_scene load_steps=101 format=3 uid="uid://dpg0gbpttdpy5"]
+[gd_scene load_steps=104 format=3 uid="uid://dpg0gbpttdpy5"]
 
 [ext_resource type="Texture2D" uid="uid://cmp4cxxq8yuat" path="res://arts/ivory-off-white-paper-texture.jpg" id="1_1jmmi"]
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_udxji"]
@@ -34,6 +34,8 @@
 [ext_resource type="Script" path="res://Resources/liquidComponent.gd" id="27_qhic2"]
 [ext_resource type="Script" path="res://Resources/recipeComponent.gd" id="28_evxnv"]
 [ext_resource type="AudioStream" uid="uid://bwv3ngkmackai" path="res://sounds/CompleteSound.ogg" id="34_yowf1"]
+[ext_resource type="AudioStream" uid="uid://ml0deg4pqvk1" path="res://sounds/Slide1.wav" id="35_36j26"]
+[ext_resource type="AudioStream" uid="uid://gcr1455oig1v" path="res://sounds/Slide2.wav" id="36_0ahhm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_thd3q"]
 size = Vector2(5056, 1370)
@@ -666,6 +668,13 @@ _data = {
 "Transition": SubResource("Animation_qwj85")
 }
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_ygqxs"]
+streams_count = 2
+stream_0/stream = ExtResource("35_36j26")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("36_0ahhm")
+stream_1/weight = 1.0
+
 [node name="Main2" type="Node"]
 script = ExtResource("1_udxji")
 
@@ -976,8 +985,14 @@ libraries = {
 }
 autoplay = "Intro"
 
-[node name="CompleteSound" type="AudioStreamPlayer" parent="."]
+[node name="Sounds" type="Node" parent="."]
+
+[node name="CompleteSound" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource("34_yowf1")
+volume_db = -5.0
+
+[node name="SlideSound" type="AudioStreamPlayer" parent="Sounds"]
+stream = SubResource("AudioStreamRandomizer_ygqxs")
 volume_db = -5.0
 
 [connection signal="input_event" from="Node2D/Cooking Scene/LiquidDraggable" to="Node2D/Cooking Scene/LiquidDraggable" method="_on_input_event"]
