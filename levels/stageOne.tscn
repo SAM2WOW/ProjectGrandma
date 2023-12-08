@@ -71,7 +71,7 @@ text = "Gonna try making Adobo tonight."
 label_settings = SubResource("LabelSettings_c5rhk")
 
 [node name="Adobo1" type="Node2D" parent="TextManager" index="3"]
-position = Vector2(-1141.1, -110.869)
+position = Vector2(-1249.85, -206.487)
 script = ExtResource("2_3ui8n")
 dissapearTimer = 10.0
 
@@ -99,7 +99,7 @@ label_settings = SubResource("LabelSettings_c5rhk")
 [node name="Sauce2" type="Node2D" parent="TextManager" index="5"]
 position = Vector2(921.519, -64.4719)
 script = ExtResource("2_3ui8n")
-dissapearTimer = 10.0
+dissapearTimer = 5.0
 
 [node name="Label" type="Label" parent="TextManager/Sauce2" index="0"]
 offset_left = -418.914
@@ -108,3 +108,51 @@ offset_right = 575.086
 offset_bottom = 83.3694
 text = "Should I measure it first?"
 label_settings = SubResource("LabelSettings_c5rhk")
+
+[node name="Item" type="Node2D" parent="TextManager" index="6"]
+position = Vector2(-645.705, 3.08932)
+script = ExtResource("2_3ui8n")
+dissapearTimer = 5.0
+
+[node name="Label" type="Label" parent="TextManager/Item" index="0"]
+offset_left = -435.739
+offset_top = -62.7823
+offset_right = 558.261
+offset_bottom = 80.2177
+text = "It’s time to add the chicken!"
+label_settings = SubResource("LabelSettings_c5rhk")
+
+[node name="Item2" type="Node2D" parent="TextManager" index="7"]
+position = Vector2(-645.705, 3.08932)
+script = ExtResource("2_3ui8n")
+dissapearTimer = 5.0
+
+[node name="Label" type="Label" parent="TextManager/Item2" index="0"]
+offset_left = -1158.2
+offset_top = 66.3787
+offset_right = -102.197
+offset_bottom = 209.379
+text = "What seasonings should I add?"
+label_settings = SubResource("LabelSettings_c5rhk")
+
+[node name="Fire" type="Node2D" parent="TextManager" index="8"]
+position = Vector2(-112.51, 194.799)
+script = ExtResource("2_3ui8n")
+dissapearTimer = 10.0
+
+[node name="Label" type="Label" parent="TextManager/Fire" index="0"]
+offset_left = -418.914
+offset_top = -59.6306
+offset_right = 575.086
+offset_bottom = 83.3694
+text = "Don't forget to turn on the fire
+
+
+                   < Right Here"
+label_settings = SubResource("LabelSettings_c5rhk")
+
+[connection signal="on_mouse_hovering" from="Node2D/Cooking Scene/LiquidDraggable" to="." method="_on_liquid_draggable_on_mouse_hovering"]
+[connection signal="on_grabbed" from="Node2D/Cooking Scene/LiquidDraggable2" to="." method="_on_liquid_draggable_2_on_grabbed"]
+[connection signal="on_mouse_hovering" from="Node2D/Cooking Scene/Pan" to="." method="_on_pan_on_mouse_hovering"]
+[connection signal="on_grabbed" from="Node2D/Cooking Scene/Container" to="." method="_on_container_on_grabbed"]
+[connection signal="on_grabbed" from="Node2D/Cooking Scene/Container2" to="." method="_on_container_2_on_grabbed"]
